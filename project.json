@@ -1,0 +1,14 @@
+{
+    "Type": "nap::ProjectInfo",
+    "mID": "ProjectInfo",
+    "Title": "Graphic Tool",
+    "Version": "1.0.0",
+    "RequiredModules": [
+        "mod_graphictool",
+        "mod_napapp",
+        "mod_napimgui"
+    ],
+    "Data": "data/default.json",
+    "ServiceConfig": "",
+    "PathMapping": "cache/path_mapping.json"
+}
