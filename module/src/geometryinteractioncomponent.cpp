@@ -126,8 +126,22 @@ namespace nap
 		mSphereMesh(std::make_unique<SphereMesh>(*entity.getCore())) { }
 
 
+	bool GeometryInteractionComponent::init(utility::ErrorState& errorState)
+	{
+		// Enforce nap::ConstantShader
+		if (!errorState.check(mMaterialInstanceResource.mMaterial->getShader().get_type() == RTTI_OF(ConstantShader), "%s: Property 'Shader' must be of type 'nap::ConstantShader'", mID.c_str()))
+			return false;
+
+		return true;
+	}
+
+
 	bool GeometryInteractionComponentInstance::init(utility::ErrorState& errorState)
 	{
+		// Init base class
+		if (!RenderableComponentInstance::init(errorState))
+			return false;
+
 		// Fetch resource
 		GeometryInteractionComponent* resource = getComponent<GeometryInteractionComponent>();
 
@@ -148,19 +162,6 @@ namespace nap
 
 		// Init sphere
 		if (!mSphereMesh->init(errorState))
-			return false;
-
-		// Setup constant material
-		auto* material = mRenderService->getOrCreateMaterial<ConstantShader>(errorState);
-		if (!errorState.check(material != nullptr, "Unable to get or create constant material"))
-			return false;
-
-		resource->mMaterialInstanceResource.mMaterial = material;
-		resource->mMaterialInstanceResource.mBlendMode = EBlendMode::Opaque;
-		resource->mMaterialInstanceResource.mDepthMode = EDepthMode::InheritFromBlendMode;
-
-		// Init base class
-		if (!RenderableComponentInstance::init(errorState))
 			return false;
 
 		// Initialize material based on resource

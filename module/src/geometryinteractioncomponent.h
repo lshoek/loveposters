@@ -23,8 +23,9 @@ namespace nap
 		RTTI_ENABLE(RenderableMeshComponent)
 		DECLARE_COMPONENT(GeometryInteractionComponent, GeometryInteractionComponentInstance)
 	public:
-
 		virtual void getDependentComponents(std::vector<rtti::TypeInfo>& components) const override;
+
+		virtual bool init(utility::ErrorState& errorState) override;
 
 		ComponentPtr<PerspCameraComponent>		mCamera;
 		ResourcePtr<RenderWindow>				mRenderWindow;
@@ -53,6 +54,8 @@ namespace nap
 		 * Renders the model from the ModelResource, using the material on the ModelResource.
 		 */
 		virtual void onDraw(IRenderTarget& renderTarget, VkCommandBuffer commandBuffer, const glm::mat4& viewMatrix, const glm::mat4& projectionMatrix) override;
+
+		virtual void onDestroy() override { getComponent<GeometryInteractionComponent>()->mMaterialInstanceResource.mMaterial = nullptr; }
 
 		/**
 		 * 
