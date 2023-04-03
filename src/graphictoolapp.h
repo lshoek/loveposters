@@ -6,6 +6,7 @@
 
 // Module includes
 #include <renderservice.h>
+#include <renderadvancedservice.h>
 #include <imguiservice.h>
 #include <sceneservice.h>
 #include <inputservice.h>
@@ -70,14 +71,15 @@ namespace nap
         int shutdown() override;
 
     private:
-        ResourceManager*			mResourceManager = nullptr;		///< Manages all the loaded data
-		RenderService*				mRenderService = nullptr;		///< Render Service that handles render calls
-		SceneService*				mSceneService = nullptr;		///< Manages all the objects in the scene
-		InputService*				mInputService = nullptr;		///< Input service for processing input
-		IMGuiService*				mGuiService = nullptr;			///< Manages GUI related update / draw calls
-		ObjectPtr<RenderWindow>		mRenderWindow;					///< Pointer to the render window	
-		ObjectPtr<Scene>			mScene = nullptr;				///< Pointer to the main scene
-		ObjectPtr<EntityInstance>	mCameraEntity = nullptr;		///< Pointer to the entity that holds the perspective camera
-		ObjectPtr<EntityInstance>	mWorldEntity = nullptr;			///< Pointer to the world entity
+        ResourceManager*			mResourceManager = nullptr;			///< Manages all the loaded data
+		RenderService*				mRenderService = nullptr;			///< Render Service that handles render calls
+		RenderAdvancedService*		mRenderAdvancedService = nullptr;	///< Render Service that handles render calls
+		SceneService*				mSceneService = nullptr;			///< Manages all the objects in the scene
+		InputService*				mInputService = nullptr;			///< Input service for processing input
+		IMGuiService*				mGuiService = nullptr;				///< Manages GUI related update / draw calls
+		ObjectPtr<RenderWindow>		mRenderWindow;						///< Pointer to the render window	
+		ObjectPtr<Scene>			mScene = nullptr;					///< Pointer to the main scene
+		ObjectPtr<EntityInstance>	mCameraEntity = nullptr;			///< Pointer to the entity that holds the perspective camera
+		ObjectPtr<EntityInstance>	mWorldEntity = nullptr;				///< Pointer to the world entity
 	};
 }

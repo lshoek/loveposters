@@ -158,6 +158,157 @@
         },
         {
             "Type": "nap::Entity",
+            "mID": "LightEntity",
+            "Components": [
+                {
+                    "Type": "nap::DirectionalLightComponent",
+                    "mID": "Light",
+                    "Color": "LightColorParam",
+                    "Intensity": "LightIntensityParam",
+                    "Enable Shadows": false,
+                    "ShadowCamera": "",
+                    "Attenuation": "AttenuationParam"
+                },
+                {
+                    "Type": "nap::TransformComponent",
+                    "mID": "TransformLight",
+                    "Properties": {
+                        "Translate": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "Rotate": {
+                            "x": 45.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "Scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        },
+                        "UniformScale": 1.0
+                    }
+                }
+            ],
+            "Children": []
+        },
+        {
+            "Type": "nap::Entity",
+            "mID": "TorusEntity",
+            "Components": [
+                {
+                    "Type": "nap::TransformComponent",
+                    "mID": "TransformTorus",
+                    "Properties": {
+                        "Translate": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "Rotate": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "Scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        },
+                        "UniformScale": 1.0
+                    }
+                },
+                {
+                    "Type": "nap::RenderableMeshComponent",
+                    "mID": "RenderTorus",
+                    "Visible": true,
+                    "Mesh": "TorusMesh",
+                    "MaterialInstance": {
+                        "Uniforms": [
+                            {
+                                "Type": "nap::UniformStruct",
+                                "mID": "UniformStruct_2db9e2d8",
+                                "Name": "UBO",
+                                "Uniforms": [
+                                    {
+                                        "Type": "nap::UniformVec3",
+                                        "mID": "UniformVec3_1965fac3",
+                                        "Name": "ambient",
+                                        "Value": {
+                                            "x": 0.125,
+                                            "y": 0.125,
+                                            "z": 0.125
+                                        }
+                                    },
+                                    {
+                                        "Type": "nap::UniformVec3",
+                                        "mID": "UniformVec3_10824dd8",
+                                        "Name": "diffuse",
+                                        "Value": {
+                                            "x": 0.0,
+                                            "y": 0.0,
+                                            "z": 1.0
+                                        }
+                                    },
+                                    {
+                                        "Type": "nap::UniformVec3",
+                                        "mID": "UniformVec3_0934a9a8",
+                                        "Name": "specular",
+                                        "Value": {
+                                            "x": 1.0,
+                                            "y": 1.0,
+                                            "z": 1.0
+                                        }
+                                    },
+                                    {
+                                        "Type": "nap::UniformVec2",
+                                        "mID": "UniformVec2_391fcb43",
+                                        "Name": "fresnel",
+                                        "Value": {
+                                            "x": 0.125,
+                                            "y": 2.0
+                                        }
+                                    },
+                                    {
+                                        "Type": "nap::UniformFloat",
+                                        "mID": "UniformFloat_dae222c9",
+                                        "Name": "shininess",
+                                        "Value": 32.0
+                                    },
+                                    {
+                                        "Type": "nap::UniformFloat",
+                                        "mID": "UniformFloat_7378862b",
+                                        "Name": "alpha",
+                                        "Value": 1.0
+                                    }
+                                ]
+                            }
+                        ],
+                        "Samplers": [],
+                        "Buffers": [],
+                        "Material": "PhongColorMaterial",
+                        "BlendMode": "Opaque",
+                        "DepthMode": "ReadWrite"
+                    },
+                    "LineWidth": 1.0,
+                    "ClipRect": {
+                        "Min": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "Max": {
+                            "x": 0.0,
+                            "y": 0.0
+                        }
+                    }
+                }
+            ],
+            "Children": []
+        },
+        {
+            "Type": "nap::Entity",
             "mID": "WorldEntity",
             "Components": [
                 {
@@ -184,7 +335,8 @@
                 }
             ],
             "Children": [
-                "ImageEntity"
+                "ImageEntity",
+                "TorusEntity"
             ]
         },
         {
@@ -201,6 +353,17 @@
             "Samplers": [],
             "Buffers": [],
             "Shader": "ConstantShader",
+            "VertexAttributeBindings": [],
+            "BlendMode": "Opaque",
+            "DepthMode": "InheritFromBlendMode"
+        },
+        {
+            "Type": "nap::Material",
+            "mID": "PhongColorMaterial",
+            "Uniforms": [],
+            "Samplers": [],
+            "Buffers": [],
+            "Shader": "PhongColorShader",
             "VertexAttributeBindings": [],
             "BlendMode": "Opaque",
             "DepthMode": "InheritFromBlendMode"
@@ -256,6 +419,41 @@
             "VertexAttributeBindings": [],
             "BlendMode": "Opaque",
             "DepthMode": "InheritFromBlendMode"
+        },
+        {
+            "Type": "nap::ParameterGroup",
+            "mID": "Parameters",
+            "Parameters": [
+                {
+                    "Type": "nap::ParameterRGBColorFloat",
+                    "mID": "LightColorParam",
+                    "Name": "LightColor",
+                    "Value": {
+                        "Values": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    }
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "LightIntensityParam",
+                    "Name": "LightIntensityParam",
+                    "Value": 1.0,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "AttenuationParam",
+                    "Name": "Attenuation",
+                    "Value": 0.0,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
+                }
+            ],
+            "Groups": []
         },
         {
             "Type": "nap::PlaneMesh",
@@ -319,7 +517,9 @@
                 ]
             },
             "Samples": "Four",
-            "AdditionalSwapImages": 1
+            "AdditionalSwapImages": 1,
+            "RestoreSize": true,
+            "RestorePosition": true
         },
         {
             "Type": "nap::Scene",
@@ -332,12 +532,43 @@
                 {
                     "Entity": "WorldEntity",
                     "InstanceProperties": []
+                },
+                {
+                    "Entity": "LightEntity",
+                    "InstanceProperties": []
                 }
             ]
         },
         {
+            "Type": "nap::ShaderFromFile",
+            "mID": "PhongColorShader",
+            "VertShader": "C:/dev/nap/modules/naprenderadvanced/data/shaders/blinnphongcolor.vert",
+            "FragShader": "C:/dev/nap/modules/naprenderadvanced/data/shaders/blinnphongcolor.frag",
+            "RestrictModuleIncludes": false
+        },
+        {
             "Type": "nap::TextureShader",
             "mID": "TextureShader"
+        },
+        {
+            "Type": "nap::TorusMesh",
+            "mID": "TorusMesh",
+            "Radius": 1.5,
+            "TubeRadius": 0.25,
+            "Segments": 64,
+            "TubeSegments": 64,
+            "AngleOffset": 0.0,
+            "Usage": "Static",
+            "PolygonMode": "Fill",
+            "CullMode": "Back",
+            "Color": {
+                "Values": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            }
         }
     ]
 }

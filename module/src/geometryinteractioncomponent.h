@@ -55,8 +55,6 @@ namespace nap
 		 */
 		virtual void onDraw(IRenderTarget& renderTarget, VkCommandBuffer commandBuffer, const glm::mat4& viewMatrix, const glm::mat4& projectionMatrix) override;
 
-		virtual void onDestroy() override { getComponent<GeometryInteractionComponent>()->mMaterialInstanceResource.mMaterial = nullptr; }
-
 		/**
 		 * 
 		 */

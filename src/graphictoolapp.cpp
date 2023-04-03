@@ -13,10 +13,11 @@ namespace nap
     bool GraphicToolApp::init(utility::ErrorState& error)
     {
 		// Retrieve services
-		mRenderService	= getCore().getService<nap::RenderService>();
-		mSceneService	= getCore().getService<nap::SceneService>();
-		mInputService	= getCore().getService<nap::InputService>();
-		mGuiService		= getCore().getService<nap::IMGuiService>();
+		mRenderService			= getCore().getService<nap::RenderService>();
+		mRenderAdvancedService	= getCore().getService<nap::RenderAdvancedService>();
+		mSceneService			= getCore().getService<nap::SceneService>();
+		mInputService			= getCore().getService<nap::InputService>();
+		mGuiService				= getCore().getService<nap::IMGuiService>();
 
 		// Fetch the resource manager
         mResourceManager = getCore().getResourceManager();
@@ -60,7 +61,14 @@ namespace nap
 			std::vector<nap::RenderableComponentInstance*> components_to_render;
 			mWorldEntity->getComponentsOfTypeRecursive<RenderableComponentInstance>(components_to_render);
 
-			// Render Gnomon
+			utility::ErrorState error_state;
+			if (!mRenderAdvancedService->pushLights(components_to_render, error_state))
+			{
+				nap::Logger::error(error_state.toString().c_str());
+				assert(false);
+			}
+
+			// Render Comps
 			mRenderService->renderObjects(*mRenderWindow, perp_cam, components_to_render);
 
 			// Draw GUI elements
