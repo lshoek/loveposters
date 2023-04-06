@@ -112,7 +112,6 @@ namespace nap
 
 	void GeometryInteractionComponent::getDependentComponents(std::vector<rtti::TypeInfo>& components) const
 	{
-		components.emplace_back(RTTI_OF(PerspCameraComponent));
 		components.emplace_back(RTTI_OF(PointerInputComponent));
 	}
 

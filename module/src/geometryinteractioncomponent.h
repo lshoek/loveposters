@@ -2,7 +2,7 @@
 
 // External includes
 #include <renderablemeshcomponent.h>
-#include <perspcameracomponent.h>
+#include <cameracomponent.h>
 #include <nap/resourceptr.h>
 #include <componentptr.h>
 #include <inputevent.h>
@@ -27,7 +27,7 @@ namespace nap
 
 		virtual bool init(utility::ErrorState& errorState) override;
 
-		ComponentPtr<PerspCameraComponent>		mCamera;
+		ComponentPtr<CameraComponent>			mCamera;
 		ResourcePtr<RenderWindow>				mRenderWindow;
 		RGBColorFloat							mColor = { 1.0f, 1.0f, 1.0f };
 
@@ -71,7 +71,7 @@ namespace nap
 		void onMouseMove(const PointerMoveEvent& moveEvent);
 		void onMouseUp(const PointerReleaseEvent& releaseEvent);	
 
-		ComponentInstancePtr<PerspCameraComponent> mCamera = { this, &nap::GeometryInteractionComponent::mCamera };
+		ComponentInstancePtr<CameraComponent> mCamera = { this, &nap::GeometryInteractionComponent::mCamera };
 		std::vector<ComponentInstancePtr<RenderableMeshComponent>> mGeometries = initComponentInstancePtr(this, &nap::GeometryInteractionComponent::mInteractionGeometries);
 
 		bool									mIntersects = false;

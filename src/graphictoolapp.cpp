@@ -3,10 +3,16 @@
 
 // External Includes
 #include <utility/fileutils.h>
+#include <imguiutils.h>
 #include <nap/logger.h>
 #include <inputrouter.h>
 #include <rendergnomoncomponent.h>
 #include <perspcameracomponent.h>
+#include <rendertotexturecomponent.h>
+#include <renderbloomcomponent.h>
+
+#include <audio/component/levelmetercomponent.h>
+#include <audio/component/playbackcomponent.h>
 
 namespace nap 
 {    
@@ -27,6 +33,8 @@ namespace nap
 		if (!error.check(mRenderWindow != nullptr, "unable to find render window with name: %s", "Window"))
 			return false;
 
+		mRenderTarget = mResourceManager->findObject<RenderTarget>("ColorTarget");
+
 		// Get the scene that contains our entities and components
 		mScene = mResourceManager->findObject<Scene>("Scene");
 		if (!error.check(mScene != nullptr, "unable to find scene with name: %s", "Scene"))
@@ -35,6 +43,11 @@ namespace nap
 		// Get the camera and origin Gnomon entity
 		mCameraEntity = mScene->findEntity("CameraEntity");
 		mWorldEntity = mScene->findEntity("WorldEntity");
+		mAudioEntity = mScene->findEntity("AudioEntity");
+		mRenderEntity = mScene->findEntity("RenderEntity");
+		mRenderCameraEntity = mScene->findEntity("RenderCameraEntity");
+
+		mAppGUIs = mResourceManager->getObjects<AppGUI>();
 
 		// All done!
         return true;
@@ -49,6 +62,35 @@ namespace nap
 		// Multiple frames are in flight at the same time, but if the graphics load is heavy the system might wait here to ensure resources are available.
 		mRenderService->beginFrame();
 
+		// Begin recording the render commands for the offscreen render target. Rendering always happens after compute.
+		// This prepares a command buffer and starts a render pass.
+		if (mRenderService->beginHeadlessRecording())
+		{
+			// The world entity holds all visible renderable components in the scene.
+			std::vector<RenderableComponentInstance*> render_comps;
+			mWorldEntity->getComponentsOfTypeRecursive<RenderableComponentInstance>(render_comps);
+
+			// Get Perspective camera to render with
+			auto& cam = mCameraEntity->getComponent<CameraComponentInstance>();
+
+			// Offscreen color pass -> Render all available geometry to the color texture bound to the render target.
+			mRenderTarget->beginRendering();
+			mRenderService->renderObjects(*mRenderTarget, cam, render_comps);
+			mRenderTarget->endRendering();
+
+			// Offscreen contrast pass -> Use previous `ColorTexture` as input, `ColorTextureFX` as output.
+			// Input and output resources of these operations are described in JSON in their appropriate components.
+			mRenderEntity->findComponentByID<RenderToTextureComponentInstance>("ChangeColor")->draw();
+
+			// Offscreen bloom pass -> Use `ColorTextureFX` as input and output.
+			// This is fine as the bloom component blits the input to internally managed render targets on which the effect is applied.
+			// the effect result is blitted to the output texture. The effect therefore does not write to itself.
+			mRenderEntity->getComponent<RenderBloomComponentInstance>().draw();
+
+			// End headless recording
+			mRenderService->endHeadlessRecording();
+		}
+
 		// Begin recording the render commands for the main render window
 		if (mRenderService->beginRecording(*mRenderWindow))
 		{
@@ -56,20 +98,14 @@ namespace nap
 			mRenderWindow->beginRendering();
 
 			// Get Perspective camera to render with
-			auto& perp_cam = mCameraEntity->getComponent<PerspCameraComponentInstance>();
+			auto& cam = mRenderCameraEntity->getComponent<CameraComponentInstance>();
 
-			std::vector<nap::RenderableComponentInstance*> components_to_render;
-			mWorldEntity->getComponentsOfTypeRecursive<RenderableComponentInstance>(components_to_render);
+			// Get composite component responsible for rendering final texture
+			auto* composite_comp = mRenderEntity->findComponentByID<RenderToTextureComponentInstance>("BlendTogether");
 
-			utility::ErrorState error_state;
-			if (!mRenderAdvancedService->pushLights(components_to_render, error_state))
-			{
-				nap::Logger::error(error_state.toString().c_str());
-				assert(false);
-			}
-
-			// Render Comps
-			mRenderService->renderObjects(*mRenderWindow, perp_cam, components_to_render);
+			// Render composite component
+			// The nap::RenderToTextureComponentInstance transforms a plane to match the window dimensions and applies the texture to it.
+			mRenderService->renderObjects(*mRenderWindow, cam, { composite_comp });
 
 			// Draw GUI elements
 			mGuiService->draw();
@@ -103,14 +139,11 @@ namespace nap
 
 			if (press_event->mKey == nap::EKeyCode::KEY_f)
 				mRenderWindow->toggleFullscreen();
+
+			if (press_event->mKey == nap::EKeyCode::KEY_h)
+				mHideGUI = !mHideGUI;
 		}
 		mInputService->addEvent(std::move(inputEvent));
-    }
-
-
-    int GraphicToolApp::shutdown()
-    {
-		return 0;
     }
 
 
@@ -121,8 +154,34 @@ namespace nap
 		nap::DefaultInputRouter input_router(true);
 		mInputService->processWindowEvents(*mRenderWindow, input_router, { &mScene->getRootEntity() });
 
-		ImGui::Begin("Performance");
-		ImGui::Text("%.02ffps | %.02fms", getCore().getFramerate(), deltaTime*1000.0);
-		ImGui::End();
+		if (!mHideGUI)
+		{
+			//const auto& trans_comp = mScene->findEntity("Poster_TitleEntity")->getComponent<TransformComponentInstance>();
+			//const auto& pos = math::extractPosition(trans_comp.getGlobalTransform());
+
+			const auto& cam = mCameraEntity->getComponent<CameraComponentInstance>();
+			const auto& cam_trans_comp = cam.getEntityInstance()->getComponent<TransformComponentInstance>();
+			const auto& cam_pos = math::extractPosition(cam_trans_comp.getGlobalTransform());
+
+			ImGui::Begin("Performance");
+			ImGui::Text("%.02ffps | %.02fms", getCore().getFramerate(), deltaTime * 1000.0);
+			ImGui::Text("cam (%.02f, %.02f, %.02f)", cam_pos.x, cam_pos.y, cam_pos.z);
+
+			auto playback = mAudioEntity->findComponent<audio::PlaybackComponentInstance>();
+			if (!playback->isPlaying())
+			{
+				if (ImGui::Button("Play"))
+					playback->start();
+			}
+			else
+			{
+				if (ImGui::Button("Stop"))
+					playback->stop();
+			}
+			ImGui::End();
+
+			for (auto& gui : mAppGUIs)
+				gui->draw(deltaTime);
+		}
     }
 }

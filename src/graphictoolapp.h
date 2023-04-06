@@ -12,8 +12,12 @@
 #include <inputservice.h>
 #include <scene.h>
 #include <renderwindow.h>
+#include <rendertarget.h>
 #include <entity.h>
 #include <app.h>
+#include <appgui.h>
+
+#include "audiodevicesettingsgui.h"
 
 namespace nap 
 {
@@ -68,7 +72,7 @@ namespace nap
 		 * Called when the app is shutting down after quit() has been invoked
 		 * @return the application exit code, this is returned when the main loop is exited
          */
-        int shutdown() override;
+		int shutdown() override { return 0; }
 
     private:
         ResourceManager*			mResourceManager = nullptr;			///< Manages all the loaded data
@@ -77,9 +81,18 @@ namespace nap
 		SceneService*				mSceneService = nullptr;			///< Manages all the objects in the scene
 		InputService*				mInputService = nullptr;			///< Input service for processing input
 		IMGuiService*				mGuiService = nullptr;				///< Manages GUI related update / draw calls
+
 		ObjectPtr<RenderWindow>		mRenderWindow;						///< Pointer to the render window	
-		ObjectPtr<Scene>			mScene = nullptr;					///< Pointer to the main scene
-		ObjectPtr<EntityInstance>	mCameraEntity = nullptr;			///< Pointer to the entity that holds the perspective camera
-		ObjectPtr<EntityInstance>	mWorldEntity = nullptr;				///< Pointer to the world entity
+		ObjectPtr<RenderTarget>		mRenderTarget;						///< Pointer to the render window	
+		ObjectPtr<Scene>			mScene;								///< Pointer to the main scene
+		ObjectPtr<EntityInstance>	mCameraEntity;						///< Pointer to the entity that holds the perspective camera
+		ObjectPtr<EntityInstance>	mWorldEntity;						///< Pointer to the world entity
+		ObjectPtr<EntityInstance>	mAudioEntity;						///< Pointer to the audio entity
+		ObjectPtr<EntityInstance>	mRenderEntity;						///< Pointer to the render entity
+		ObjectPtr<EntityInstance>	mRenderCameraEntity;				///< Pointer to the render camera entity
+
+		std::vector<ObjectPtr<AppGUI>> mAppGUIs;						///< AppGUIs
+
+		bool mHideGUI = true;
 	};
 }

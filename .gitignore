@@ -2,3 +2,4 @@ cached_project_json.cmake
 cached_module_json.cmake
 .ini/
 cache/
+data/poster

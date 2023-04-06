@@ -5,7 +5,12 @@
         "mod_naprenderadvanced",
         "mod_napscene",
         "mod_napcameracontrol",
-        "mod_napparameter"
+        "mod_napparameter",
+        "mod_napaudio",
+        "mod_napaudioadvanced",
+        "mod_naposc",
+        "mod_napappgui",
+        "mod_napparametergui"
     ],
     "WindowsDllSearchPaths": []
 }
