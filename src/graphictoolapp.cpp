@@ -167,17 +167,17 @@ namespace nap
 			ImGui::Text("%.02ffps | %.02fms", getCore().getFramerate(), deltaTime * 1000.0);
 			ImGui::Text("cam (%.02f, %.02f, %.02f)", cam_pos.x, cam_pos.y, cam_pos.z);
 
-			auto playback = mAudioEntity->findComponent<audio::PlaybackComponentInstance>();
-			if (!playback->isPlaying())
-			{
-				if (ImGui::Button("Play"))
-					playback->start();
-			}
-			else
-			{
-				if (ImGui::Button("Stop"))
-					playback->stop();
-			}
+			//auto playback = mAudioEntity->findComponent<audio::PlaybackComponentInstance>();
+			//if (!playback->isPlaying())
+			//{
+			//	if (ImGui::Button("Play"))
+			//		playback->start();
+			//}
+			//else
+			//{
+			//	if (ImGui::Button("Stop"))
+			//		playback->stop();
+			//}
 			ImGui::End();
 
 			for (auto& gui : mAppGUIs)

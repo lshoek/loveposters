@@ -6,20 +6,11 @@
 #include <nap/resourceptr.h>
 #include <parameternumeric.h>
 
+#include "affinetransform.h"
+
 namespace nap
 {
 	class FunTransformComponentInstance;
-
-	struct AffineTransform
-	{
-		AffineTransform(const TransformComponentInstance& transform) :
-			mTranslate(transform.getTranslate()), mRotate(transform.getRotate()), mScale(transform.getScale()), mUniformScale(transform.getUniformScale()) {}
-		glm::vec3 mTranslate;
-		glm::quat mRotate;
-		glm::vec3 mScale;
-		float mUniformScale;
-	};
-
 
 	/**
 	 * FunTransformComponent
@@ -80,8 +71,6 @@ namespace nap
 
 		std::unique_ptr<AffineTransform> mCachedTransform;
 		glm::vec4 mRandomSeed;
-
-		double mElapsedTime = 0.0;
 
 		float mRotationTime = 0.0f;
 		float mRotationAccumulator = 0.0f;

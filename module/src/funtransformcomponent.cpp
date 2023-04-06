@@ -63,7 +63,7 @@ namespace nap
 		const float movement = mResource->mMovementParam->mValue * intensity;
 
 		// Rotation
-		if (mResource->mMultiplyScale > 0.0f)
+		if (mResource->mMultiplyRotation > 0.0f)
 		{
 			mRotationAccumulator += movement * mResource->mRotationAccumulatorIntensityParam->mValue * static_cast<float>(deltaTime);
 			mRotationTime += delta_time * mResource->mRotationIntensityParam->mValue;
@@ -75,7 +75,7 @@ namespace nap
 		}
 
 		// Scale
-		if (mResource->mMultiplyRotation > 0.0f)
+		if (mResource->mMultiplyScale > 0.0f)
 		{
 			mScaleAccumulator += movement * mResource->mScaleAccumulatorIntensityParam->mValue * static_cast<float>(deltaTime);
 			float strength = glm::simplex<float>(glm::vec2(mScaleAccumulator + mRandomSeed.y, mRandomSeed.y)) * intensity;
@@ -86,7 +86,7 @@ namespace nap
 			mTransformComponent->setUniformScale(uniform_scale);
 		}
 
-		// Scale
+		// Translation
 		if (mResource->mMultiplyTranslation.x > 0.0f || mResource->mMultiplyTranslation.y > 0.0f)
 		{
 			mTranslationAccumulator += movement * glm::vec2(mResource->mTranslateXIntensityParam->mValue, mResource->mTranslateYIntensityParam->mValue) * static_cast<float>(deltaTime);
