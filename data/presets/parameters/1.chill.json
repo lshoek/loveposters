@@ -1,0 +1,75 @@
+{
+    "Objects": [
+        {
+            "Type": "nap::ParameterGroup",
+            "mID": "Parameters",
+            "Parameters": [
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "IntensityParam",
+                    "Name": "Intensity",
+                    "Value": 1.0,
+                    "Minimum": 0.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "RotationIntensityParam",
+                    "Name": "RotationIntensity",
+                    "Value": 1.0,
+                    "Minimum": 0.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "ScaleIntensityParam",
+                    "Name": "ScaleIntensity",
+                    "Value": 1.0,
+                    "Minimum": 0.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "RotationAccumulatorIntensityParam",
+                    "Name": "RotationAccumulatorIntensity",
+                    "Value": 1.0,
+                    "Minimum": 0.0,
+                    "Maximum": 100.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "ScaleAccumulatorIntensityParam",
+                    "Name": "ScaleAccumulatorIntensity",
+                    "Value": 1.0,
+                    "Minimum": 0.0,
+                    "Maximum": 5.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "TranslateXIntensityParam",
+                    "Name": "TranslateX",
+                    "Value": 1.0,
+                    "Minimum": 0.0,
+                    "Maximum": 10.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "TranslateYIntensityParam",
+                    "Name": "TranslateY",
+                    "Value": 1.0,
+                    "Minimum": 0.0,
+                    "Maximum": 10.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "BloomIntensityParam",
+                    "Name": "BloomIntensity",
+                    "Value": 1.0,
+                    "Minimum": 0.0,
+                    "Maximum": 10.0
+                }
+            ],
+            "Groups": []
+        }
+    ]
+}

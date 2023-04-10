@@ -34,8 +34,8 @@ namespace nap
          */
         virtual void getDependentComponents(std::vector<rtti::TypeInfo>& components) const override;
 
-		ResourcePtr<ParameterGroup>	mParameterGroup;
-		bool						mVerbose = false;
+		std::vector<ResourcePtr<ParameterGroup>>	mParameterGroups;
+		bool										mVerbose = false;
 
     private:
     };
@@ -92,9 +92,6 @@ namespace nap
 
 		// Generic parameter update function
 		void updateParameter(const OSCEvent& oscEvent, ParameterFloat& parameter);
-
-		// Generic parameter update function
-		void updateMasterParameter(const OSCEvent& oscEvent, ParameterFloat& parameter);
 
 		// Cached list of addresses for display in the OSC menu
 		std::vector<std::string> mCachedAddresses;

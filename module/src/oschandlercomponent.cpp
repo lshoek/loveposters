@@ -7,12 +7,11 @@
 // External includes
 #include <entity.h>
 #include <oscinputcomponent.h>
-
 #include <nap/logger.h>
 
 RTTI_BEGIN_CLASS(nap::OscHandlerComponent)
-	RTTI_PROPERTY("ParameterGroup",	&nap::OscHandlerComponent::mParameterGroup,	nap::rtti::EPropertyMetaData::Default)
-	RTTI_PROPERTY("Verbose",		&nap::OscHandlerComponent::mVerbose,		nap::rtti::EPropertyMetaData::Default)
+	RTTI_PROPERTY("ParameterGroups",	&nap::OscHandlerComponent::mParameterGroups,	nap::rtti::EPropertyMetaData::Default)
+	RTTI_PROPERTY("Verbose",			&nap::OscHandlerComponent::mVerbose,			nap::rtti::EPropertyMetaData::Default)
 RTTI_END_CLASS
 
 RTTI_BEGIN_CLASS_NO_DEFAULT_CONSTRUCTOR(nap::OscHandlerComponentInstance)
@@ -39,21 +38,27 @@ namespace nap
 		// Get the resource part of the component
 		mResource = getComponent<OscHandlerComponent>();
 
-		// Register parametersq
-		for (auto& param : mResource->mParameterGroup->mMembers)
+		// Register parameters
+		for (auto& group : mResource->mParameterGroups)
 		{
-			// Filter float parameters for simplicity
-			if (!errorState.check(param.get()->get_type().is_derived_from(RTTI_OF(ParameterFloat)), "%s: Unsupported parameter type found in group", mID.c_str()))
-				return false;
+			for (auto& param : group->mMembers)
+			{
+				// Filter float parameters for simplicity
+				if (!param.get()->get_type().is_derived_from(RTTI_OF(ParameterFloat)))
+				{
+					nap::Logger::warn("Skipping registration of '%s': unsupporter parameter type", param->mID.c_str());
+					continue;
+				}
 
-			// Cast to float param
-			auto* fparam = static_cast<ParameterFloat*>(param.get());
+				// Cast to float param
+				auto* fparam = static_cast<ParameterFloat*>(param.get());
 
-			// Construct an osc address for this parameter
-			std::vector<std::string> elements = { filter, param->getDisplayName() };
-			const auto address = utility::joinString(elements, "/");
-			addParameter(address, *fparam);
-			mCachedAddresses.emplace_back(address);		
+				// Construct an osc address for this parameter
+				std::vector<std::string> elements = { filter, param->getDisplayName() };
+				const auto address = utility::joinString(elements, "/");
+				addParameter(address, *fparam);
+				mCachedAddresses.emplace_back(address);
+			}
 		}
         return true;
     }
@@ -83,27 +88,6 @@ namespace nap
 
 		if (mResource->mVerbose)
 			nap::Logger::info("%s: %s = %.02f", mResource->mID.c_str(), oscEvent.getAddress().c_str(), lvalue);
-	}
-
-
-	// Generic parameter update function
-	void OscHandlerComponentInstance::updateMasterParameter(const OSCEvent& oscEvent, ParameterFloat& parameter)
-	{
-		//assert(oscEvent.getCount() >= 1);
-
-		//// Update master parameter
-		//float lvalue = math::lerp<float>(parameter.getMin(), parameter.getMax(), oscEvent[0].asFloat());
-		//parameter.setValue(lvalue);
-
-		//// Update controller masters
-		//for (auto& ctrl : mResource->mRingComposer->mControllers)
-		//{
-		//	if (ctrl->getMasterEffect() != nullptr)
-		//		ctrl->getMasterEffect()->mIntensity->setValue(lvalue);
-		//}
-
-		//if (mResource->mVerbose)
-		//	nap::Logger::info("%s: %s = %.02f", mResource->mID.c_str(), oscEvent.getAddress().c_str(), lvalue);
 	}
 
     

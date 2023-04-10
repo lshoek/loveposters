@@ -63,11 +63,7 @@ namespace nap
 		std::unique_ptr<AffineTransform> mCachedTransform;
 		glm::vec4 mRandomSeed;
 
-		double mElapsedTime = 0.0;
-
-		float mRotationTime = 0.0f;
-		float mRotationAccumulator = 0.0f;
-		float mScaleAccumulator = 0.0f;
+		float mMovementTime = 0.0f;
 		glm::vec2 mTranslationAccumulator = { 0.0f, 0.0f };
 	};
 }

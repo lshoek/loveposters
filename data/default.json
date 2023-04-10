@@ -17,7 +17,8 @@
                     "Name": "Parameters",
                     "ParameterGUIs": [
                         "ParameterGUI",
-                        "LevelParameterGUI"
+                        "LevelParameterGUI",
+                        "EtcParameterGUI"
                     ]
                 },
                 {
@@ -114,7 +115,7 @@
                     "LevelMeterParameter": "MidFreqParam",
                     "LevelMeter": "./MidFreqLevelMeter",
                     "Multiply": 2.0,
-                    "SmoothTime": 0.009999999776482582
+                    "SmoothTime": 0.02500000037252903
                 },
                 {
                     "Type": "nap::LevelMeterParameterComponent",
@@ -122,7 +123,7 @@
                     "LevelMeterParameter": "HighFreqParam",
                     "LevelMeter": "./HighFreqLevelMeter",
                     "Multiply": 50.0,
-                    "SmoothTime": 0.009999999776482582
+                    "SmoothTime": 0.02500000037252903
                 }
             ],
             "Children": []
@@ -137,7 +138,7 @@
                     "Properties": {
                         "Translate": {
                             "x": -0.75,
-                            "y": -0.25,
+                            "y": -0.5,
                             "z": 1.0
                         },
                         "Rotate": {
@@ -192,7 +193,7 @@
                     "Type": "nap::MoveOrthoCameraComponent",
                     "mID": "MoveOrthoCamera",
                     "Movement": "LowFreqParam",
-                    "Intensity": "IntensityParam",
+                    "Intensity": "CameraSpeedParam",
                     "MultiplyIntensity": 0.05000000074505806,
                     "MoveExtents": {
                         "x": 0.10000000149011612,
@@ -257,8 +258,120 @@
                 {
                     "Type": "nap::OscHandlerComponent",
                     "mID": "OSCHandler",
-                    "ParameterGroup": "Parameters",
-                    "Verbose": true
+                    "ParameterGroups": [
+                        "Parameters",
+                        "ParametersEtc"
+                    ],
+                    "Verbose": false
+                }
+            ],
+            "Children": []
+        },
+        {
+            "Type": "nap::Entity",
+            "mID": "PlaylistEntity",
+            "Components": [
+                {
+                    "Type": "nap::PlaylistControlComponent",
+                    "mID": "ControlPlaylist",
+                    "Items": [
+                        {
+                            "Type": "nap::PlaylistControlComponent::Item",
+                            "mID": "Item_39b3324a",
+                            "Groups": [
+                                {
+                                    "Preset": "presets/parameters/0.default.json",
+                                    "ParameterGroup": "Parameters",
+                                    "Blender": "ParameterBlender"
+                                }
+                            ],
+                            "AverageDuration": 240.0,
+                            "DurationDeviation": 120.0,
+                            "TransitionTime": 30.0
+                        },
+                        {
+                            "Type": "nap::PlaylistControlComponent::Item",
+                            "mID": "Item_e5641a78",
+                            "Groups": [
+                                {
+                                    "Preset": "presets/parameters/1.chill.json",
+                                    "ParameterGroup": "Parameters",
+                                    "Blender": "ParameterBlender"
+                                }
+                            ],
+                            "AverageDuration": 240.0,
+                            "DurationDeviation": 120.0,
+                            "TransitionTime": 30.0
+                        },
+                        {
+                            "Type": "nap::PlaylistControlComponent::Item",
+                            "mID": "Item_5b2f2fac",
+                            "Groups": [
+                                {
+                                    "Preset": "presets/parameters/2.xtrans.json",
+                                    "ParameterGroup": "Parameters",
+                                    "Blender": "ParameterBlender"
+                                }
+                            ],
+                            "AverageDuration": 240.0,
+                            "DurationDeviation": 120.0,
+                            "TransitionTime": 30.0
+                        },
+                        {
+                            "Type": "nap::PlaylistControlComponent::Item",
+                            "mID": "Item_cec195a8",
+                            "Groups": [
+                                {
+                                    "Preset": "presets/parameters/3.ytrans.json",
+                                    "ParameterGroup": "Parameters",
+                                    "Blender": "ParameterBlender"
+                                }
+                            ],
+                            "AverageDuration": 240.0,
+                            "DurationDeviation": 120.0,
+                            "TransitionTime": 30.0
+                        },
+                        {
+                            "Type": "nap::PlaylistControlComponent::Item",
+                            "mID": "Item_dee89628",
+                            "Groups": [
+                                {
+                                    "Preset": "presets/parameters/5.fastcam.json",
+                                    "ParameterGroup": "Parameters",
+                                    "Blender": "ParameterBlender"
+                                }
+                            ],
+                            "AverageDuration": 240.0,
+                            "DurationDeviation": 120.0,
+                            "TransitionTime": 30.0
+                        },
+                        {
+                            "Type": "nap::PlaylistControlComponent::Item",
+                            "mID": "Item_cc27c1a7",
+                            "Groups": [
+                                {
+                                    "Preset": "presets/parameters/6.all.json",
+                                    "ParameterGroup": "Parameters",
+                                    "Blender": "ParameterBlender"
+                                }
+                            ],
+                            "AverageDuration": 240.0,
+                            "DurationDeviation": 120.0,
+                            "TransitionTime": 30.0
+                        }
+                    ],
+                    "RandomizePlaylist": true,
+                    "Enable": "TogglePlaylistControlParam",
+                    "Verbose": false
+                },
+                {
+                    "Type": "nap::ParameterBlendComponent",
+                    "mID": "ParameterBlender",
+                    "EnableBlending": true,
+                    "BlendGroup": "ParameterBlendGroup",
+                    "PresetIndex": "PresetIndexParam",
+                    "PresetBlendTime": "PresetBlendTimeParam",
+                    "IgnoreNonBlendable": true
                 }
             ],
             "Children": []
@@ -2338,6 +2451,27 @@
             "AllowPortReuse": false
         },
         {
+            "Type": "nap::ParameterBlendGroup",
+            "mID": "ParameterBlendGroup",
+            "Parameters": [],
+            "RootGroup": "Parameters",
+            "BlendAll": true
+        },
+        {
+            "Type": "nap::ParameterFloat",
+            "mID": "PresetBlendTimeParam",
+            "Name": "PresetBlendTime",
+            "Value": 10.0,
+            "Minimum": 0.0,
+            "Maximum": 1.0
+        },
+        {
+            "Type": "nap::ParameterGUI",
+            "mID": "EtcParameterGUI",
+            "Serializable": true,
+            "Group": "ParametersEtc"
+        },
+        {
             "Type": "nap::ParameterGUI",
             "mID": "LevelParameterGUI",
             "Serializable": true,
@@ -2447,9 +2581,40 @@
                     "Value": 1.0,
                     "Minimum": 0.0,
                     "Maximum": 10.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "CameraSpeedParam",
+                    "Name": "CameraSpeed",
+                    "Value": 1.0,
+                    "Minimum": 0.0,
+                    "Maximum": 10.0
                 }
             ],
             "Groups": []
+        },
+        {
+            "Type": "nap::ParameterGroup",
+            "mID": "ParametersEtc",
+            "Parameters": [
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "TogglePlaylistControlParam",
+                    "Name": "TogglePlaylistControl",
+                    "Value": 1.0,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
+                }
+            ],
+            "Groups": []
+        },
+        {
+            "Type": "nap::ParameterInt",
+            "mID": "PresetIndexParam",
+            "Name": "PresetIndex",
+            "Value": 0,
+            "Minimum": 0,
+            "Maximum": 1
         },
         {
             "Type": "nap::RenderTagRegistry",
@@ -2972,6 +3137,10 @@
                 },
                 {
                     "Entity": "RenderCameraEntity",
+                    "InstanceProperties": []
+                },
+                {
+                    "Entity": "PlaylistEntity",
                     "InstanceProperties": []
                 }
             ]

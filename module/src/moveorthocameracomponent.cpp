@@ -48,9 +48,9 @@ namespace nap
 		if (!mResource->mEnable)
 			return;
 
-		mElapsedTime += deltaTime;
+		mMovementTime += static_cast<float>(deltaTime) * mResource->mIntensityParam->mValue;
 
-		float movement_speed = mElapsedTime * mResource->mIntensityParam->mValue * mResource->mMultiplyIntensity;
+		float movement_speed = mMovementTime * mResource->mMultiplyIntensity;
 		auto move_translate = glm::vec2(glm::simplex<float>(glm::vec2(movement_speed + mRandomSeed.x, mRandomSeed.x)), glm::simplex<float>(glm::vec2(movement_speed + mRandomSeed.y, mRandomSeed.y)));
 		auto translate = mCachedTransform->mTranslate + glm::vec3(move_translate.x, move_translate.y, 0.0f) * glm::vec3(mResource->mMoveExtents, 1.0f);
 		mTransformComponent->setTranslate(translate);
