@@ -2,15 +2,16 @@
     "Type": "nap::ModuleInfo",
     "mID": "ModuleInfo",
     "RequiredModules": [
-        "mod_naprenderadvanced",
-        "mod_napscene",
-        "mod_napcameracontrol",
-        "mod_napparameter",
-        "mod_napaudio",
-        "mod_napaudioadvanced",
-        "mod_naposc",
-        "mod_napappgui",
-        "mod_napparametergui"
+        "naprenderadvanced",
+        "napscene",
+        "napcameracontrol",
+        "napparameter",
+        "napaudio",
+        "napaudioadvanced",
+        "naposc",
+        "napappgui",
+        "napparametergui",
+        "napfft"
     ],
     "WindowsDllSearchPaths": []
 }

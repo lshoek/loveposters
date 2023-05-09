@@ -3,12 +3,12 @@
     "mID": "ProjectInfo",
     "Title": "Graphic Tool",
     "Version": "1.0.0",
-    "Data": "data/default_lowres.json",
+    "Data": "data/default.json",
     "PathMapping": "cache/path_mapping.json",
     "ServiceConfig": "service_config.json",
     "RequiredModules": [
-        "mod_graphictool",
-        "mod_napapp",
-        "mod_napimgui"
+        "napgraphictool",
+        "napapp",
+        "napimgui"
     ]
 }

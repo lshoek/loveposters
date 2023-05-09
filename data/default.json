@@ -2444,6 +2444,11 @@
             ]
         },
         {
+            "Type": "nap::FFTBufferFloat",
+            "mID": "FFTBufferFloat_1010827b",
+            "RequestedFFTSize": 1024
+        },
+        {
             "Type": "nap::OSCReceiver",
             "mID": "OSCReceiver",
             "Port": 7000,
@@ -2630,7 +2635,8 @@
                     "mID": "RenderTag_Poster",
                     "Name": "Poster"
                 }
-            ]
+            ],
+            "Children": []
         },
         {
             "Type": "nap::RenderTarget",
