@@ -64,7 +64,15 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "BloomIntensityParam",
                     "Name": "BloomIntensity",
-                    "Value": 1.1649999618530274,
+                    "Value": 2.5,
+                    "Minimum": 0.0,
+                    "Maximum": 10.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "CameraSpeedParam",
+                    "Name": "CameraSpeed",
+                    "Value": 1.0,
                     "Minimum": 0.0,
                     "Maximum": 10.0
                 }

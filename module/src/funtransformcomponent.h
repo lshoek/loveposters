@@ -65,6 +65,11 @@ namespace nap
 		 */
 		virtual void update(double deltaTime) override;
 
+		/**
+		 *
+		 */
+		void enable(bool enable) { mEnabled = enable; }
+
 	private:
 		FunTransformComponent* mResource = nullptr;
 		TransformComponentInstance* mTransformComponent = nullptr;
@@ -76,5 +81,7 @@ namespace nap
 		float mRotationAccumulator = 0.0f;
 		float mScaleAccumulator = 0.0f;
 		glm::vec2 mTranslationAccumulator = { 0.0f, 0.0f };
+
+		bool mEnabled = true;
 	};
 }

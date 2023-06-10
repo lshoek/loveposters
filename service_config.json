@@ -1,6 +1,11 @@
 {
     "Objects": [
         {
+            "Type": "nap::CVServiceConfiguration",
+            "mID": "nap::CVServiceConfiguration",
+            "ThreadCount": -1
+        },
+        {
             "Type": "nap::IMGuiServiceConfiguration",
             "mID": "IMGuiServiceConfiguration_d86ced98-93dd-4e73-94d9-b755950f275a",
             "ColorScheme": "Dark",
@@ -134,7 +139,7 @@
                 "OutputChannelCount": 2,
                 "DisableInput": false,
                 "DisableOutput": false,
-                "SampleRate": 48000.0,
+                "SampleRate": 44100.0,
                 "BufferSize": 1024,
                 "InternalBufferSize": 1024
             },

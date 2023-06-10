@@ -12,7 +12,7 @@ namespace nap
 	class LevelMeterParameterComponentInstance;
 
 	/**
-	 *	LevelMeterParameterComponent
+	 * LevelMeterParameterComponent
 	 */
 	class NAPAPI LevelMeterParameterComponent : public Component
 	{
@@ -28,7 +28,7 @@ namespace nap
 
 		ComponentPtr<audio::LevelMeterComponent> mLevelMeter;
 		ResourcePtr<ParameterFloat> mLevelMeterParam;
-		float mMultiply = 1.0f;
+		ResourcePtr<ParameterFloat> mMultiplyParam;
 		float mSmoothtime = 0.01f;
 	};
 

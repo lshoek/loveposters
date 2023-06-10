@@ -7,11 +7,12 @@
         "napcameracontrol",
         "napparameter",
         "napaudio",
-        "napaudioadvanced",
         "naposc",
         "napappgui",
         "napparametergui",
-        "napfft"
+        "napfft",
+        "napetherdream",
+        "napopencv"
     ],
     "WindowsDllSearchPaths": []
 }

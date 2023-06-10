@@ -10,6 +10,7 @@
 #include <perspcameracomponent.h>
 #include <rendertotexturecomponent.h>
 #include <renderbloomcomponent.h>
+#include <funtransformcomponent.h>
 
 #include <audio/component/levelmetercomponent.h>
 #include <audio/component/playbackcomponent.h>
@@ -142,6 +143,19 @@ namespace nap
 
 			if (press_event->mKey == nap::EKeyCode::KEY_h)
 				mHideGUI = !mHideGUI;
+
+			// For testing purposes only
+			if (press_event->mKey == nap::EKeyCode::KEY_p)
+			{
+				auto* playback = mAudioEntity->findComponent<audio::PlaybackComponentInstance>();
+				if (playback != nullptr)
+				{
+					if (!playback->isPlaying())
+						playback->start();
+					else
+						playback->stop();
+				}
+			}
 		}
 		mInputService->addEvent(std::move(inputEvent));
     }
@@ -156,30 +170,6 @@ namespace nap
 
 		if (!mHideGUI)
 		{
-			//const auto& trans_comp = mScene->findEntity("Poster_TitleEntity")->getComponent<TransformComponentInstance>();
-			//const auto& pos = math::extractPosition(trans_comp.getGlobalTransform());
-
-			const auto& cam = mCameraEntity->getComponent<CameraComponentInstance>();
-			const auto& cam_trans_comp = cam.getEntityInstance()->getComponent<TransformComponentInstance>();
-			const auto& cam_pos = math::extractPosition(cam_trans_comp.getGlobalTransform());
-
-			ImGui::Begin("Performance");
-			ImGui::Text("%.02ffps | %.02fms", getCore().getFramerate(), deltaTime * 1000.0);
-			ImGui::Text("cam (%.02f, %.02f, %.02f)", cam_pos.x, cam_pos.y, cam_pos.z);
-
-			//auto playback = mAudioEntity->findComponent<audio::PlaybackComponentInstance>();
-			//if (!playback->isPlaying())
-			//{
-			//	if (ImGui::Button("Play"))
-			//		playback->start();
-			//}
-			//else
-			//{
-			//	if (ImGui::Button("Stop"))
-			//		playback->stop();
-			//}
-			ImGui::End();
-
 			for (auto& gui : mAppGUIs)
 				gui->draw(deltaTime);
 		}

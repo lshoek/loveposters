@@ -45,6 +45,8 @@ namespace nap
 	bool FunTransformComponentInstance::init(utility::ErrorState& errorState)
 	{
 		mResource = getComponent<FunTransformComponent>();
+		mEnabled = mResource->mEnable;
+
 		mTransformComponent = &getEntityInstance()->getComponent<TransformComponentInstance>();
 		mCachedTransform = std::make_unique<AffineTransform>(*mTransformComponent);
 		mRandomSeed = { glm::linearRand<float>(0.0f, 1000.0f), glm::linearRand<float>(0.0f, 1000.0f), glm::linearRand<float>(0.0f, 1000.0f), glm::linearRand<float>(0.0f, 1000.0f) };
@@ -55,7 +57,7 @@ namespace nap
 
 	void FunTransformComponentInstance::update(double deltaTime)
 	{
-		if (!mResource->mEnable)
+		if (!mEnabled)
 			return;
 
 		float delta_time = static_cast<float>(deltaTime);

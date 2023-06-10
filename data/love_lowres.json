@@ -104,25 +104,25 @@
                 {
                     "Type": "nap::LevelMeterParameterComponent",
                     "mID": "LowFreqParamComp",
-                    "LevelMeterParameter": "LowFreqParam",
                     "LevelMeter": "./LowFreqLevelMeter",
-                    "Multiply": 0.25,
+                    "LevelMeterParameter": "LowFreqParam",
+                    "MultiplyParameter": "",
                     "SmoothTime": 0.02500000037252903
                 },
                 {
                     "Type": "nap::LevelMeterParameterComponent",
                     "mID": "MidFreqParamComp",
-                    "LevelMeterParameter": "MidFreqParam",
                     "LevelMeter": "./MidFreqLevelMeter",
-                    "Multiply": 2.0,
+                    "LevelMeterParameter": "MidFreqParam",
+                    "MultiplyParameter": "",
                     "SmoothTime": 0.02500000037252903
                 },
                 {
                     "Type": "nap::LevelMeterParameterComponent",
                     "mID": "HighFreqParamComp",
-                    "LevelMeterParameter": "HighFreqParam",
                     "LevelMeter": "./HighFreqLevelMeter",
-                    "Multiply": 50.0,
+                    "LevelMeterParameter": "HighFreqParam",
+                    "MultiplyParameter": "",
                     "SmoothTime": 0.02500000037252903
                 }
             ],
@@ -272,11 +272,11 @@
             "mID": "PlaylistEntity",
             "Components": [
                 {
-                    "Type": "nap::ParameterPlaylistComponent",
+                    "Type": "nap::PlaylistControlComponent",
                     "mID": "ControlPlaylist",
                     "Items": [
                         {
-                            "Type": "nap::ParameterPlaylistComponent::Item",
+                            "Type": "nap::PlaylistControlComponent::Item",
                             "mID": "Item_39b3324a",
                             "Groups": [
                                 {
@@ -290,7 +290,7 @@
                             "TransitionTime": 30.0
                         },
                         {
-                            "Type": "nap::ParameterPlaylistComponent::Item",
+                            "Type": "nap::PlaylistControlComponent::Item",
                             "mID": "Item_e5641a78",
                             "Groups": [
                                 {
@@ -304,7 +304,7 @@
                             "TransitionTime": 30.0
                         },
                         {
-                            "Type": "nap::ParameterPlaylistComponent::Item",
+                            "Type": "nap::PlaylistControlComponent::Item",
                             "mID": "Item_5b2f2fac",
                             "Groups": [
                                 {
@@ -318,7 +318,7 @@
                             "TransitionTime": 30.0
                         },
                         {
-                            "Type": "nap::ParameterPlaylistComponent::Item",
+                            "Type": "nap::PlaylistControlComponent::Item",
                             "mID": "Item_cec195a8",
                             "Groups": [
                                 {
@@ -332,7 +332,7 @@
                             "TransitionTime": 30.0
                         },
                         {
-                            "Type": "nap::ParameterPlaylistComponent::Item",
+                            "Type": "nap::PlaylistControlComponent::Item",
                             "mID": "Item_dee89628",
                             "Groups": [
                                 {
@@ -346,7 +346,7 @@
                             "TransitionTime": 30.0
                         },
                         {
-                            "Type": "nap::ParameterPlaylistComponent::Item",
+                            "Type": "nap::PlaylistControlComponent::Item",
                             "mID": "Item_cc27c1a7",
                             "Groups": [
                                 {
@@ -361,7 +361,7 @@
                         }
                     ],
                     "RandomizePlaylist": true,
-                    "Enabled": false,
+                    "Enable": "",
                     "Verbose": false
                 },
                 {

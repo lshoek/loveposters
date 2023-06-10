@@ -5,8 +5,8 @@
 
 // nap::ControlBloomComponent run time class definition 
 RTTI_BEGIN_CLASS(nap::ControlBloomComponent)
-	RTTI_PROPERTY("Movement", &nap::ControlBloomComponent::mMovementParam, nap::rtti::EPropertyMetaData::Required)
-	RTTI_PROPERTY("Intensity", &nap::ControlBloomComponent::mIntensityParam, nap::rtti::EPropertyMetaData::Required)
+	RTTI_PROPERTY("Movement", &nap::ControlBloomComponent::mMovementParam, nap::rtti::EPropertyMetaData::Default)
+	RTTI_PROPERTY("Intensity", &nap::ControlBloomComponent::mIntensityParam, nap::rtti::EPropertyMetaData::Default)
 	RTTI_PROPERTY("RenderToTexture", &nap::ControlBloomComponent::mRenderToTextureComponent, nap::rtti::EPropertyMetaData::Required)
 RTTI_END_CLASS
 
@@ -43,6 +43,8 @@ namespace nap
 
 	void ControlBloomComponentInstance::update(double deltaTime)
 	{
-		mBlendUniform->setValue(mResource->mMovementParam->mValue * mResource->mIntensityParam->mValue);
+		float intensity = (mResource->mIntensityParam != nullptr) ? mResource->mIntensityParam->mValue : 0.0f;
+		float movement = (mResource->mMovementParam != nullptr) ? mResource->mMovementParam->mValue : 1.0f;
+		mBlendUniform->setValue(movement * intensity);
 	}
 }

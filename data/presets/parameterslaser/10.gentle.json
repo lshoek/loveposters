@@ -1,0 +1,123 @@
+{
+    "Objects": [
+        {
+            "Type": "nap::ParameterGroup",
+            "mID": "ParametersLaser",
+            "Parameters": [
+                {
+                    "Type": "nap::ParameterRGBColorFloat",
+                    "mID": "LineColorOneParam",
+                    "Name": "LineColorOne",
+                    "Value": {
+                        "Values": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                {
+                    "Type": "nap::ParameterRGBColorFloat",
+                    "mID": "LineColorTwoParam",
+                    "Name": "LineColorTwo",
+                    "Value": {
+                        "Values": [
+                            1.0,
+                            0.0,
+                            0.00006008148193359375
+                        ]
+                    }
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "LineFrequencyParam",
+                    "Name": "LineFrequency",
+                    "Value": 0.7089999914169312,
+                    "Minimum": 0.0,
+                    "Maximum": 10.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "LineSpeedParam",
+                    "Name": "LineSpeed",
+                    "Value": 0.4620000123977661,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "LineOffsetParam",
+                    "Name": "LineOffset",
+                    "Value": 0.0,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "LineAmplitudeParam",
+                    "Name": "LineAmplitude",
+                    "Value": 0.03999999910593033,
+                    "Minimum": 0.0,
+                    "Maximum": 0.10000000149011612
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "LineShiftParam",
+                    "Name": "LineShift",
+                    "Value": 0.0,
+                    "Minimum": -2.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "LowLevelIntensityParam",
+                    "Name": "LowLevelIntensity",
+                    "Value": 5.077000141143799,
+                    "Minimum": 0.0,
+                    "Maximum": 10.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "MidLevelIntensityParam",
+                    "Name": "MidLevelIntensity",
+                    "Value": 0.0,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "HighLevelIntensityParam",
+                    "Name": "HighLevelIntensity",
+                    "Value": 0.0,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "LowLevelAccumulationParam",
+                    "Name": "LowLevelAccumulation",
+                    "Value": 0.0,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "MidLevelAccumulationParam",
+                    "Name": "MidLevelAccumulation",
+                    "Value": 0.0,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "HighLevelAccumulationParam",
+                    "Name": "HighLevelAccumulation",
+                    "Value": 0.0,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
+                }
+            ],
+            "Groups": []
+        }
+    ]
+}

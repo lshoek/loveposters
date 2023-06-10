@@ -2,6 +2,7 @@
 #include "graphictoolservice.h"
 #include "parameterwindow.h"
 #include "audiodevicesettingsgui.h"
+#include "infowindow.h"
 
 // External Includes
 #include <parameterguiservice.h>
@@ -30,6 +31,7 @@ namespace nap
     void GraphicToolService::registerObjectCreators(rtti::Factory &factory)
     {
         auto* appgui_service = getCore().getService<AppGUIService>();
+        factory.addObjectCreator(std::make_unique<InfoWindowObjectCreator>(*appgui_service));
         factory.addObjectCreator(std::make_unique<ParameterWindowObjectCreator>(*appgui_service));
         factory.addObjectCreator(std::make_unique<audio::AudioDeviceSettingsWindowObjectCreator>(*appgui_service));
     }

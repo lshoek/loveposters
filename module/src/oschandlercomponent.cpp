@@ -33,31 +33,36 @@ namespace nap
 			return false;
 
         osc_input->messageReceived.connect(eventReceivedSlot);
-		const std::string filter = !osc_input->mAddressFilter.empty() ? osc_input->mAddressFilter[0] : "default";
 
 		// Get the resource part of the component
 		mResource = getComponent<OscHandlerComponent>();
+
+		if (!errorState.check(!osc_input->mAddressFilter.empty(), "OscHandlerComponent requires at least one filter"))
+			return false;
 
 		// Register parameters
 		for (auto& group : mResource->mParameterGroups)
 		{
 			for (auto& param : group->mMembers)
 			{
-				// Filter float parameters for simplicity
-				if (!param.get()->get_type().is_derived_from(RTTI_OF(ParameterFloat)))
+				for (const auto& filter : osc_input->mAddressFilter)
 				{
-					nap::Logger::warn("Skipping registration of '%s': unsupporter parameter type", param->mID.c_str());
-					continue;
+					// Filter float parameters for simplicity
+					if (!param.get()->get_type().is_derived_from(RTTI_OF(ParameterFloat)))
+					{
+						nap::Logger::warn("Skipping registration of '%s': unsupporter parameter type", param->mID.c_str());
+						continue;
+					}
+
+					// Cast to float param
+					auto* fparam = static_cast<ParameterFloat*>(param.get());
+
+					// Construct an osc address for this parameter
+					std::vector<std::string> elements = { filter, param->getDisplayName() };
+					const auto address = utility::joinString(elements, "/");
+					addParameter(address, *fparam);
+					mCachedAddresses.emplace_back(address);
 				}
-
-				// Cast to float param
-				auto* fparam = static_cast<ParameterFloat*>(param.get());
-
-				// Construct an osc address for this parameter
-				std::vector<std::string> elements = { filter, param->getDisplayName() };
-				const auto address = utility::joinString(elements, "/");
-				addParameter(address, *fparam);
-				mCachedAddresses.emplace_back(address);
 			}
 		}
         return true;
