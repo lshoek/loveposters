@@ -10,9 +10,8 @@
 #include <perspcameracomponent.h>
 #include <rendertotexturecomponent.h>
 #include <renderbloomcomponent.h>
+#include <renderdofcomponent.h>
 #include <funtransformcomponent.h>
-
-#include <audio/component/levelmetercomponent.h>
 #include <audio/component/playbackcomponent.h>
 
 namespace nap 
@@ -50,6 +49,10 @@ namespace nap
 
 		mAppGUIs = mResourceManager->getObjects<AppGUI>();
 
+		// Debug
+		//setFramerate(60.0f);
+		//capFramerate(true);
+
 		// All done!
         return true;
     }
@@ -78,6 +81,9 @@ namespace nap
 			mRenderTarget->beginRendering();
 			mRenderService->renderObjects(*mRenderTarget, cam, render_comps);
 			mRenderTarget->endRendering();
+
+			// DOF
+			mRenderEntity->getComponent<RenderDOFComponentInstance>().draw();
 
 			// Offscreen contrast pass -> Use previous `ColorTexture` as input, `ColorTextureFX` as output.
 			// Input and output resources of these operations are described in JSON in their appropriate components.
@@ -132,9 +138,9 @@ namespace nap
     void GraphicToolApp::inputMessageReceived(InputEventPtr inputEvent)
     {
 		// If we pressed escape, quit the loop
-		if (inputEvent->get_type().is_derived_from(RTTI_OF(nap::KeyPressEvent)))
+		if (inputEvent->get_type().is_derived_from(RTTI_OF(KeyPressEvent)))
 		{
-			nap::KeyPressEvent* press_event = static_cast<nap::KeyPressEvent*>(inputEvent.get());
+			KeyPressEvent* press_event = static_cast<KeyPressEvent*>(inputEvent.get());
 			if (press_event->mKey == nap::EKeyCode::KEY_ESCAPE)
 				quit();
 
@@ -172,6 +178,10 @@ namespace nap
 		{
 			for (auto& gui : mAppGUIs)
 				gui->draw(deltaTime);
+
+			ImGui::Begin("DOF");
+			ImGui::Image(*mResourceManager->findObject<RenderTexture2D>("DOFTexture"), { 1920.0f, 1080.0f });
+			ImGui::End();
 		}
     }
 }

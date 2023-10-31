@@ -17,13 +17,7 @@ namespace nap
 		RTTI_ENABLE(Component)
 		DECLARE_COMPONENT(ControlBloomComponent, ControlBloomComponentInstance)
 	public:
-
-		/**
-		* Get a list of all component types that this component is dependent on (i.e. must be initialized before this one)
-		* @param components the components this object depends on
-		*/
-		virtual void getDependentComponents(std::vector<rtti::TypeInfo>& components) const override;
-
+		float mBaseIntensity = 0.0f;
 		ResourcePtr<ParameterFloat> mMovementParam;
 		ResourcePtr<ParameterFloat> mIntensityParam;
 

@@ -10,9 +10,7 @@
         "naposc",
         "napappgui",
         "napparametergui",
-        "napfft",
-        "napetherdream",
-        "napopencv"
+        "napfft"
     ],
     "WindowsDllSearchPaths": []
 }

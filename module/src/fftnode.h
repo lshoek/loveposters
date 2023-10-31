@@ -5,10 +5,13 @@
 #pragma once
 
 // Local includes
-#include "fft.h"
+#include "fftbuffer.h"
 
 // Std includes
 #include <atomic>
+
+// NAP includes
+#include <nap/resourceptr.h>
 
 // Audio includes
 #include <audio/core/audionode.h>
@@ -34,7 +37,7 @@ namespace nap
 		 * @param analysisWindowSize: the time window in milliseconds that will be used to generate one single output value. Also the period that corresponds to the analysis frequency.
 		 * @param rootProcess: indicates that the node is registered as root process with the @AudioNodeManager and is processed automatically.
 		 */
-		FFTNode(audio::NodeManager& nodeManager);
+		FFTNode(audio::NodeManager& nodeManager, FFTBuffer::EOverlap overlaps = FFTBuffer::EOverlap::One);
 
 		virtual ~FFTNode();
 
@@ -44,19 +47,19 @@ namespace nap
 		void process() override;
 
 		/**
-		 * Return the cached FFT result
+		 *
 		 */
-		const std::vector<std::complex<float>>& getFFT() const				{ return mBuffer->getFFT(); }
+		const FFTBuffer& getFFTBuffer() const				{ return *mFFTBuffer; }
 
 		/**
-		 * Return whether the FFT was updated since the last fetch
+		 * 
 		 */
-		bool isUpdated() const												{ return mBuffer->isDirty(); }
+		FFTBuffer& getFFTBuffer()							{ return *mFFTBuffer; }
 
 		// The input for the audio signal that will be analyzed.
 		audio::InputPin mInput = { this };
 
-	private:
-		std::unique_ptr<FFTBuffer>	mBuffer;
+		// The FFT buffer
+		std::unique_ptr<FFTBuffer> mFFTBuffer;
 	};
 }

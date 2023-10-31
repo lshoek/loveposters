@@ -12,13 +12,12 @@ RTTI_BEGIN_CLASS_NO_DEFAULT_CONSTRUCTOR(nap::FFTNode)
 RTTI_END_CLASS
 
 
-
 namespace nap
 {
-	FFTNode::FFTNode(audio::NodeManager& nodeManager) :
+	FFTNode::FFTNode(audio::NodeManager& nodeManager, FFTBuffer::EOverlap overlaps) :
 		audio::Node(nodeManager)
 	{
-		mBuffer = std::make_unique<FFTBuffer>(getNodeManager().getInternalBufferSize());
+		mFFTBuffer = std::make_unique<FFTBuffer>(getNodeManager().getInternalBufferSize(), overlaps);
 		getNodeManager().registerRootProcess(*this);
 	}
 
@@ -35,6 +34,6 @@ namespace nap
 		if (input_buffer == nullptr)
 			return;
 
-		mBuffer->supplySamples(*input_buffer);
+		mFFTBuffer->supply(*input_buffer);
 	}
 }
