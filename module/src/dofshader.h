@@ -11,6 +11,7 @@ namespace nap
 {
 	// Forward declares
 	class Core;
+	class RenderAdvancedService;
 
 	/**
 	 * Uniform names
@@ -70,6 +71,6 @@ namespace nap
 		virtual bool init(utility::ErrorState& errorState) override;
 
 	private:
-		RenderService* mRenderService = nullptr;
+		RenderAdvancedService* mRenderAdvancedService = nullptr;
 	};
 }

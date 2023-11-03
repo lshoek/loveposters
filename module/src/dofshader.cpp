@@ -4,10 +4,10 @@
 
 // Local includes
 #include "dofshader.h"
-#include "renderservice.h"
 
 // External includes
 #include <nap/core.h>
+#include <renderadvancedservice.h>
 
 // nap::DOFShader run time class definition 
 RTTI_BEGIN_CLASS_NO_DEFAULT_CONSTRUCTOR(nap::DOFShader)
@@ -26,7 +26,7 @@ namespace nap
 	}
 
     DOFShader::DOFShader(Core& core) :
-		Shader(core), mRenderService(core.getService<RenderService>())
+		Shader(core), mRenderAdvancedService(core.getService<RenderAdvancedService>())
 	{ }
 
     bool DOFShader::init(utility::ErrorState& errorState)
@@ -49,8 +49,7 @@ namespace nap
 			return false;
 
 		// Search paths
-		auto search_paths = mRenderService->getShaderSearchPaths();
-		search_paths.emplace_back(utility::getFileDir(vertex_shader_path));
+		const auto search_paths = mRenderAdvancedService->getModule().getInformation().mDataSearchPaths;
 
 		// Parse shader
 		std::string shader_name = utility::getFileNameWithoutExtension(vertex_shader_path);

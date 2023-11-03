@@ -26,6 +26,9 @@ RTTI_BEGIN_CLASS(nap::RenderDOFComponent)
 	RTTI_PROPERTY("PassCount",					&nap::RenderDOFComponent::mPassCount,					nap::rtti::EPropertyMetaData::Default)
 	RTTI_PROPERTY("InputTarget",				&nap::RenderDOFComponent::mInputTarget,					nap::rtti::EPropertyMetaData::Required)
 	RTTI_PROPERTY("OutputTexture",				&nap::RenderDOFComponent::mOutputTexture,				nap::rtti::EPropertyMetaData::Required)
+	RTTI_PROPERTY("Aperture",					&nap::RenderDOFComponent::mAperture,					nap::rtti::EPropertyMetaData::Required)
+	RTTI_PROPERTY("FocalDistance",				&nap::RenderDOFComponent::mFocalDistance,				nap::rtti::EPropertyMetaData::Required)
+	RTTI_PROPERTY("FocusDistance",				&nap::RenderDOFComponent::mFocusDistance,				nap::rtti::EPropertyMetaData::Required)
 RTTI_END_CLASS
 
 // nap::RenderDOFComponentInstance run time class definition 
@@ -227,7 +230,7 @@ namespace nap
 		auto& initial_texture = *mBloomRTs.front()[TARGET_A]->mColorTexture;
 
 		// Blit the input texture to the smaller size RT
-		blit(command_buffer, mInputTarget->getColorTexture(), initial_texture);
+		utility::blit(command_buffer, mInputTarget->getColorTexture(), initial_texture);
 
 		int pass_count = 0;
 		for (auto& bloom_target : mBloomRTs)
@@ -260,7 +263,7 @@ namespace nap
 			if (pass_count+1 < mBloomRTs.size())
 			{
 				auto& blit_dst = *mBloomRTs[pass_count + 1][TARGET_A]->mColorTexture;
-				blit(command_buffer, *bloom_target[TARGET_A]->mColorTexture, blit_dst);
+				utility::blit(command_buffer, *bloom_target[TARGET_A]->mColorTexture, blit_dst);
 				++pass_count;
 			}
 		}
@@ -270,7 +273,7 @@ namespace nap
 		auto& final_texture = *mBloomRTs.back()[TARGET_A]->mColorTexture;
 
 		// Blit to output, potentially resizing the texture another time
-		blit(command_buffer, final_texture, *mOutputTexture);
+		utility::blit(command_buffer, final_texture, *mOutputTexture);
 	}
 
 
