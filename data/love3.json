@@ -54,7 +54,7 @@
                     ],
                     "Gain": 1.0,
                     "StereoPanning": 0.5,
-                    "AutoPlay": false,
+                    "AutoPlay": true,
                     "StartPosition": 0.0,
                     "Duration": 0.0,
                     "FadeInTime": 0.0,
@@ -495,7 +495,7 @@
                         ],
                         "Buffers": [],
                         "Constants": [],
-                        "Material": "TextureMaterial",
+                        "Material": "TextureClipMaterial",
                         "BlendMode": "NotSet",
                         "DepthMode": "NotSet"
                     },
@@ -528,7 +528,7 @@
                         "x": 0.5,
                         "y": 0.5
                     },
-                    "Enable": false
+                    "Enable": true
                 }
             ],
             "Children": []
@@ -591,7 +591,7 @@
                         ],
                         "Buffers": [],
                         "Constants": [],
-                        "Material": "TextureMaterial",
+                        "Material": "TextureClipMaterial",
                         "BlendMode": "NotSet",
                         "DepthMode": "NotSet"
                     },
@@ -624,7 +624,7 @@
                         "x": 0.5,
                         "y": 0.5
                     },
-                    "Enable": false
+                    "Enable": true
                 }
             ],
             "Children": []
@@ -687,7 +687,7 @@
                         ],
                         "Buffers": [],
                         "Constants": [],
-                        "Material": "TextureMaterial",
+                        "Material": "TextureClipMaterial",
                         "BlendMode": "NotSet",
                         "DepthMode": "NotSet"
                     },
@@ -720,7 +720,7 @@
                         "x": 0.5,
                         "y": 0.5
                     },
-                    "Enable": false
+                    "Enable": true
                 }
             ],
             "Children": []
@@ -783,7 +783,7 @@
                         ],
                         "Buffers": [],
                         "Constants": [],
-                        "Material": "TextureMaterial",
+                        "Material": "TextureClipMaterial",
                         "BlendMode": "NotSet",
                         "DepthMode": "NotSet"
                     },
@@ -816,7 +816,7 @@
                         "x": 0.5,
                         "y": 0.5
                     },
-                    "Enable": false
+                    "Enable": true
                 }
             ],
             "Children": []
@@ -881,7 +881,7 @@
                         ],
                         "Buffers": [],
                         "Constants": [],
-                        "Material": "TextureMaterial",
+                        "Material": "TextureClipMaterial",
                         "BlendMode": "NotSet",
                         "DepthMode": "NotSet"
                     },
@@ -914,7 +914,7 @@
                         "x": 0.5,
                         "y": 0.5
                     },
-                    "Enable": false
+                    "Enable": true
                 }
             ],
             "Children": []
@@ -979,7 +979,7 @@
                         ],
                         "Buffers": [],
                         "Constants": [],
-                        "Material": "TextureMaterial",
+                        "Material": "TextureClipMaterial",
                         "BlendMode": "NotSet",
                         "DepthMode": "NotSet"
                     },
@@ -1012,7 +1012,7 @@
                         "x": 0.5,
                         "y": 0.5
                     },
-                    "Enable": false
+                    "Enable": true
                 }
             ],
             "Children": []
@@ -1077,7 +1077,7 @@
                         ],
                         "Buffers": [],
                         "Constants": [],
-                        "Material": "TextureMaterial",
+                        "Material": "TextureClipMaterial",
                         "BlendMode": "NotSet",
                         "DepthMode": "NotSet"
                     },
@@ -1110,7 +1110,7 @@
                         "x": 0.5,
                         "y": 0.5
                     },
-                    "Enable": false
+                    "Enable": true
                 }
             ],
             "Children": []
@@ -1175,7 +1175,7 @@
                         ],
                         "Buffers": [],
                         "Constants": [],
-                        "Material": "TextureMaterial",
+                        "Material": "TextureClipMaterial",
                         "BlendMode": "NotSet",
                         "DepthMode": "NotSet"
                     },
@@ -1208,7 +1208,7 @@
                         "x": 0.5,
                         "y": 0.5
                     },
-                    "Enable": false
+                    "Enable": true
                 }
             ],
             "Children": []
@@ -1273,7 +1273,7 @@
                         ],
                         "Buffers": [],
                         "Constants": [],
-                        "Material": "TextureMaterial",
+                        "Material": "TextureClipMaterial",
                         "BlendMode": "NotSet",
                         "DepthMode": "NotSet"
                     },
@@ -1306,7 +1306,7 @@
                         "x": 0.25,
                         "y": 0.25
                     },
-                    "Enable": false
+                    "Enable": true
                 }
             ],
             "Children": []
@@ -1371,7 +1371,7 @@
                         ],
                         "Buffers": [],
                         "Constants": [],
-                        "Material": "TextureMaterial",
+                        "Material": "TextureClipMaterial",
                         "BlendMode": "NotSet",
                         "DepthMode": "NotSet"
                     },
@@ -1404,7 +1404,7 @@
                         "x": 0.20000000298023225,
                         "y": 0.20000000298023225
                     },
-                    "Enable": false
+                    "Enable": true
                 }
             ],
             "Children": []
@@ -1469,7 +1469,7 @@
                         ],
                         "Buffers": [],
                         "Constants": [],
-                        "Material": "TextureMaterial",
+                        "Material": "TextureClipMaterial",
                         "BlendMode": "NotSet",
                         "DepthMode": "NotSet"
                     },
@@ -1502,7 +1502,7 @@
                         "x": 0.5,
                         "y": 0.5
                     },
-                    "Enable": false
+                    "Enable": true
                 }
             ],
             "Children": []
@@ -1567,7 +1567,7 @@
                         ],
                         "Buffers": [],
                         "Constants": [],
-                        "Material": "TextureMaterial",
+                        "Material": "TextureClipMaterial",
                         "BlendMode": "NotSet",
                         "DepthMode": "NotSet"
                     },
@@ -1600,7 +1600,7 @@
                         "x": 0.5,
                         "y": 0.5
                     },
-                    "Enable": false
+                    "Enable": true
                 }
             ],
             "Children": []
@@ -1665,7 +1665,7 @@
                         ],
                         "Buffers": [],
                         "Constants": [],
-                        "Material": "TextureMaterial",
+                        "Material": "TextureClipMaterial",
                         "BlendMode": "NotSet",
                         "DepthMode": "NotSet"
                     },
@@ -1698,7 +1698,7 @@
                         "x": 0.5,
                         "y": 0.5
                     },
-                    "Enable": false
+                    "Enable": true
                 }
             ],
             "Children": []
@@ -1761,7 +1761,7 @@
                         ],
                         "Buffers": [],
                         "Constants": [],
-                        "Material": "TextureMaterial",
+                        "Material": "TextureClipMaterial",
                         "BlendMode": "NotSet",
                         "DepthMode": "NotSet"
                     },
@@ -1794,7 +1794,7 @@
                         "x": 0.5,
                         "y": 0.5
                     },
-                    "Enable": false
+                    "Enable": true
                 }
             ],
             "Children": []
@@ -1859,7 +1859,7 @@
                         ],
                         "Buffers": [],
                         "Constants": [],
-                        "Material": "TextureMaterial",
+                        "Material": "TextureClipMaterial",
                         "BlendMode": "NotSet",
                         "DepthMode": "NotSet"
                     },
@@ -1892,7 +1892,7 @@
                         "x": 0.5,
                         "y": 0.5
                     },
-                    "Enable": false
+                    "Enable": true
                 }
             ],
             "Children": []
@@ -1957,7 +1957,7 @@
                         ],
                         "Buffers": [],
                         "Constants": [],
-                        "Material": "TextureMaterial",
+                        "Material": "TextureClipMaterial",
                         "BlendMode": "NotSet",
                         "DepthMode": "NotSet"
                     },
@@ -1990,7 +1990,7 @@
                         "x": 0.5,
                         "y": 0.5
                     },
-                    "Enable": false
+                    "Enable": true
                 }
             ],
             "Children": []
@@ -2104,7 +2104,7 @@
                                 "BorderColor": "IntOpaqueBlack",
                                 "CompareMode": "LessOrEqual",
                                 "EnableCompare": false,
-                                "Texture": "ColorTexture"
+                                "Texture": "DOFTexture"
                             }
                         ],
                         "Buffers": [],
@@ -2179,7 +2179,7 @@
                                 "CompareMode": "LessOrEqual",
                                 "EnableCompare": false,
                                 "Textures": [
-                                    "ColorTexture",
+                                    "DOFTexture",
                                     "BloomTexture"
                                 ]
                             }
@@ -2423,15 +2423,15 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "ApertureParam",
                     "Name": "Aperture",
-                    "Value": 0.5,
+                    "Value": 1.0,
                     "Minimum": 0.0,
-                    "Maximum": 1.0
+                    "Maximum": 10.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
                     "mID": "FocalDistanceParam",
                     "Name": "FocalDistance",
-                    "Value": 0.5,
+                    "Value": 0.6000000238418579,
                     "Minimum": 0.0,
                     "Maximum": 1.0
                 },
@@ -2439,7 +2439,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "FocusDistanceParam",
                     "Name": "FocusDistance",
-                    "Value": 1.0,
+                    "Value": 1.5,
                     "Minimum": 0.0,
                     "Maximum": 2.0
                 }
@@ -2693,7 +2693,7 @@
                 },
                 {
                     "Type": "nap::Material",
-                    "mID": "TextureMaterial",
+                    "mID": "TextureClipMaterial",
                     "Uniforms": [
                         {
                             "Type": "nap::UniformStruct",
@@ -2741,7 +2741,7 @@
                     ],
                     "Buffers": [],
                     "Constants": [],
-                    "Shader": "TextureShader",
+                    "Shader": "TextureClipShader",
                     "VertexAttributeBindings": [],
                     "BlendMode": "AlphaBlend",
                     "DepthMode": "ReadWrite"
@@ -3213,6 +3213,13 @@
             "mID": "CompositeShader",
             "VertShader": "shaders/composite.vert",
             "FragShader": "shaders/composite.frag",
+            "RestrictModuleIncludes": false
+        },
+        {
+            "Type": "nap::ShaderFromFile",
+            "mID": "TextureClipShader",
+            "VertShader": "shaders/textureclip.vert",
+            "FragShader": "shaders/textureclip.frag",
             "RestrictModuleIncludes": false
         }
     ]

@@ -179,9 +179,9 @@ namespace nap
 			for (auto& gui : mAppGUIs)
 				gui->draw(deltaTime);
 
-			ImGui::Begin("DOF");
-			ImGui::Image(*mResourceManager->findObject<RenderTexture2D>("DOFTexture"), { 1920.0f, 1080.0f });
-			ImGui::End();
+			//ImGui::Begin("DOF");
+			//ImGui::Image(*mResourceManager->findObject<RenderTexture2D>("DOFTexture"), { 1920.0f, 1080.0f });
+			//ImGui::End();
 		}
     }
 }

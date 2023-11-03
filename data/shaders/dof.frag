@@ -22,40 +22,39 @@ uniform sampler2D depthTexture;		// The input color texture to sample from
 in vec2 pass_UV;
 out vec4 out_Color;
 
-const float EPSILON = 0.000001;
+const float weight[] = { 0.2270270270, 0.1945945946, 0.1216216216, 0.0540540541, 0.0162162162 };
+
 
 // Sampler must be configured with filter VK_FILTER_LINEAR
 vec4 blur(sampler2D tx, vec4 col, float s) 
 {
-	const vec2 off1 = ubo.direction * (1.0 / ubo.textureSize);
-	const vec2 off2 = ubo.direction * (2.0 / ubo.textureSize);
-	const vec2 off3 = ubo.direction * (3.0 / ubo.textureSize);
+	const vec2 offset[] = { 
+		ubo.direction * (0.0/ubo.textureSize), 
+		ubo.direction * (1.0/ubo.textureSize), 
+		ubo.direction * (2.0/ubo.textureSize),
+		ubo.direction * (3.0/ubo.textureSize),
+		ubo.direction * (4.0/ubo.textureSize)
+	};
 
-	col = col * 0.1964825502;
-	col += texture(tx, pass_UV + off1 * s) * 0.2969069647;
-	col += texture(tx, pass_UV + off1 * s) * 0.2969069647;
-	col += texture(tx, pass_UV + off2 * s) * 0.0944703979;
-	col += texture(tx, pass_UV + off2 * s) * 0.0944703979;
-	col += texture(tx, pass_UV + off3 * s) * 0.0103813624;
-	col += texture(tx, pass_UV + off3 * s) * 0.0103813624;
-
+	col = col * weight[0];
+	for (uint i = 1; i < offset.length(); i++)
+	{
+		col += texture(tx, pass_UV + offset[i] * s) * weight[i];
+		col += texture(tx, pass_UV - offset[i] * s) * weight[i];
+	}	
 	return col;
 }
 
 
 void main() 
 {
-	// Alpha test
-	vec4 frag_col = texture(colorTexture, pass_UV);
-	if (frag_col.a <= EPSILON)
-		discard;
-
 	// Adding this small constant to resolve sampling artifacts in cube seams
 	float near = min(ubo.nearFar.x + 0.001, ubo.nearFar.y);
 	float far = ubo.nearFar.y;
 
+	vec4 frag_col = texture(colorTexture, pass_UV);
 	float frag_depth = texture(depthTexture, pass_UV).x;
-	float linear_depth = linearDepth(frag_depth, near, far);
+	float linear_depth = frag_depth;//linearDepth(frag_depth, near, far);
 
 	// https://developer.nvidia.com/gpugems/gpugems/part-iv-image-processing/chapter-23-depth-field-survey-techniques
 	const float aperture = ubo.aperture;
