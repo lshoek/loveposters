@@ -3,7 +3,7 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 // Local Includes
-#include "RenderDOFComponent.h"
+#include "renderdofcomponent.h"
 #include "rendertarget.h"
 #include "renderservice.h"
 #include "gpubuffer.h"
