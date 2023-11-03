@@ -54,7 +54,6 @@ void main()
 
 	vec4 frag_col = texture(colorTexture, pass_UV);
 	float frag_depth = texture(depthTexture, pass_UV).x;
-	float linear_depth = frag_depth;//linearDepth(frag_depth, near, far);
 
 	// https://developer.nvidia.com/gpugems/gpugems/part-iv-image-processing/chapter-23-depth-field-survey-techniques
 	const float aperture = ubo.aperture;
@@ -63,7 +62,7 @@ void main()
 
 	float coc_scale = (aperture * focal * focus * (far - near)) / ((focus - focal) * near * far);
 	float coc_bias = (aperture * focal * (near - focus)) / ((focus * focal) * near);
-	float coc = abs(linear_depth * coc_scale + coc_bias);
+	float coc = abs(frag_depth * coc_scale + coc_bias);
 
 	out_Color = blur(colorTexture, frag_col, coc);
 }

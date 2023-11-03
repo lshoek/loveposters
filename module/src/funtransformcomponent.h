@@ -37,6 +37,7 @@ namespace nap
 		float mMultiplyScale = 1.0f;
 		glm::vec2 mMultiplyTranslation = { 1.0f, 1.0f };
 
+		bool mRandomOffset = false;
 		bool mEnable = true;
 	};
 
@@ -75,7 +76,7 @@ namespace nap
 		TransformComponentInstance* mTransformComponent = nullptr;
 
 		std::unique_ptr<AffineTransform> mCachedTransform;
-		glm::vec4 mRandomSeed;
+		glm::vec4 mRandomSeed = { 0.0f, 0.0f, 0.0f, 0.0f };
 
 		float mRotationTime = 0.0f;
 		float mRotationAccumulator = 0.0f;

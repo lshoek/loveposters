@@ -18,6 +18,7 @@ RTTI_BEGIN_CLASS(nap::FunTransformComponent)
 	RTTI_PROPERTY("MultiplyRotation", &nap::FunTransformComponent::mMultiplyRotation, nap::rtti::EPropertyMetaData::Default)
 	RTTI_PROPERTY("MultiplyScale", &nap::FunTransformComponent::mMultiplyScale, nap::rtti::EPropertyMetaData::Default)
 	RTTI_PROPERTY("MultiplyTranslation", &nap::FunTransformComponent::mMultiplyTranslation, nap::rtti::EPropertyMetaData::Default)
+	RTTI_PROPERTY("RandomOffset", &nap::FunTransformComponent::mRandomOffset, nap::rtti::EPropertyMetaData::Default)
 	RTTI_PROPERTY("Enable", &nap::FunTransformComponent::mEnable, nap::rtti::EPropertyMetaData::Default)
 RTTI_END_CLASS
 
@@ -49,7 +50,9 @@ namespace nap
 
 		mTransformComponent = &getEntityInstance()->getComponent<TransformComponentInstance>();
 		mCachedTransform = std::make_unique<AffineTransform>(*mTransformComponent);
-		mRandomSeed = { glm::linearRand<float>(0.0f, 1000.0f), glm::linearRand<float>(0.0f, 1000.0f), glm::linearRand<float>(0.0f, 1000.0f), glm::linearRand<float>(0.0f, 1000.0f) };
+
+		if (mResource->mRandomOffset)
+			mRandomSeed = { glm::linearRand<float>(0.0f, 1000.0f), glm::linearRand<float>(0.0f, 1000.0f), glm::linearRand<float>(0.0f, 1000.0f), glm::linearRand<float>(0.0f, 1000.0f) };
 
 		return true;
 	}

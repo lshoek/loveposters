@@ -417,36 +417,36 @@
                 }
             ],
             "Children": [
-                "PosterLayer00_LoveTransmission",
-                "PosterLayer11_DonnThomas",
-                "PosterLayer07_EMan",
-                "PosterLayer04_Lonnie",
-                "PosterLayer08_NaturesDivine",
-                "PosterLayer05_Slave",
-                "PosterLayer10_Pisces",
-                "PosterLayer06_Ray",
-                "PosterLayer01L_ZuluLeft",
-                "PosterLayer01R_ZuluRight",
-                "PosterLayer01X_Rose",
-                "PosterLayer09_EboneeWebb",
-                "PosterLayer03_Queer",
-                "PosterLayer02_Voices",
-                "PosterLayer022_NewBirth",
-                "PosterLayer023_Mighty"
+                "PosterLayer01_LoveTransmission",
+                "PosterLayer15_DonnThomas",
+                "PosterLayer11_EMan",
+                "PosterLayer08_Lonnie",
+                "PosterLayer12_NaturesDivine",
+                "PosterLayer09_Slave",
+                "PosterLayer14_Pisces",
+                "PosterLayer12_Ray",
+                "PosterLayer022_ZuluLeft",
+                "PosterLayer02_ZuluRight",
+                "PosterLayer03_Rose",
+                "PosterLayer13_EboneeWebb",
+                "PosterLayer07_Queer",
+                "PosterLayer06_Voices",
+                "PosterLayer04_NewBirth",
+                "PosterLayer05_Mighty"
             ]
         },
         {
             "Type": "nap::Entity",
-            "mID": "PosterLayer00_LoveTransmission",
+            "mID": "PosterLayer01_LoveTransmission",
             "Components": [
                 {
                     "Type": "nap::TransformComponent",
-                    "mID": "TransformPosterLayer00",
+                    "mID": "TransformPosterLayer01",
                     "Properties": {
                         "Translate": {
                             "x": 0.0,
                             "y": 0.10000000149011612,
-                            "z": -1.0
+                            "z": -6.0
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -463,7 +463,7 @@
                 },
                 {
                     "Type": "nap::RenderableMeshComponent",
-                    "mID": "RenderPosterLayer00",
+                    "mID": "RenderPosterLayer01",
                     "Visible": true,
                     "Tags": [
                         "RenderTag_Poster"
@@ -485,7 +485,7 @@
                                 "AddressModeHorizontal": "ClampToEdge",
                                 "MinLodLevel": 0,
                                 "MaxLodLevel": 1000,
-                                "LodBias": 0,
+                                "LodBias": -1.0,
                                 "AnisotropicSamples": "Default",
                                 "BorderColor": "IntOpaqueBlack",
                                 "CompareMode": "LessOrEqual",
@@ -513,7 +513,7 @@
                 },
                 {
                     "Type": "nap::FunTransformComponent",
-                    "mID": "MovePosterLayer00",
+                    "mID": "MovePosterLayer01",
                     "Movement": "LowOnsetParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
@@ -528,6 +528,7 @@
                         "x": 0.5,
                         "y": 0.5
                     },
+                    "RandomOffset": false,
                     "Enable": true
                 }
             ],
@@ -535,16 +536,16 @@
         },
         {
             "Type": "nap::Entity",
-            "mID": "PosterLayer01L_ZuluLeft",
+            "mID": "PosterLayer022_ZuluLeft",
             "Components": [
                 {
                     "Type": "nap::TransformComponent",
-                    "mID": "TransformPosterLayer01L",
+                    "mID": "TransformPosterLayer022",
                     "Properties": {
                         "Translate": {
                             "x": -0.6000000238418579,
                             "y": -0.2199999988079071,
-                            "z": -1.0
+                            "z": -2.0
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -561,7 +562,7 @@
                 },
                 {
                     "Type": "nap::RenderableMeshComponent",
-                    "mID": "RenderPosterLayer01L",
+                    "mID": "RenderPosterLayer022",
                     "Visible": false,
                     "Tags": [],
                     "LayerRegistry": "",
@@ -581,302 +582,12 @@
                                 "AddressModeHorizontal": "ClampToEdge",
                                 "MinLodLevel": 0,
                                 "MaxLodLevel": 1000,
-                                "LodBias": 0,
+                                "LodBias": -1.0,
                                 "AnisotropicSamples": "Default",
                                 "BorderColor": "IntOpaqueBlack",
                                 "CompareMode": "LessOrEqual",
                                 "EnableCompare": false,
                                 "Texture": "Poster_ZuluPlantsLeft"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    },
-                    "LineWidth": 1.0,
-                    "ClipRect": {
-                        "Min": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "Max": {
-                            "x": 0.0,
-                            "y": 0.0
-                        }
-                    }
-                },
-                {
-                    "Type": "nap::FunTransformComponent",
-                    "mID": "MovePosterLayer01L",
-                    "Movement": "LowOnsetParam",
-                    "Intensity": "IntensityParam",
-                    "RotationIntensity": "RotationIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
-                    "TranslateXIntensity": "TranslateXIntensityParam",
-                    "TranslateYIntensity": "TranslateYIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
-                    "MultiplyRotation": 0.5,
-                    "MultiplyScale": 1.0,
-                    "MultiplyTranslation": {
-                        "x": 0.5,
-                        "y": 0.5
-                    },
-                    "Enable": true
-                }
-            ],
-            "Children": []
-        },
-        {
-            "Type": "nap::Entity",
-            "mID": "PosterLayer01R_ZuluRight",
-            "Components": [
-                {
-                    "Type": "nap::TransformComponent",
-                    "mID": "TransformPosterLayer01R",
-                    "Properties": {
-                        "Translate": {
-                            "x": 0.6000000238418579,
-                            "y": -0.20000000298023225,
-                            "z": -1.0
-                        },
-                        "Rotate": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "Scale": {
-                            "x": 0.3440000116825104,
-                            "y": 1.0,
-                            "z": 1.0
-                        },
-                        "UniformScale": 1.0
-                    }
-                },
-                {
-                    "Type": "nap::RenderableMeshComponent",
-                    "mID": "RenderPosterLayer01R",
-                    "Visible": false,
-                    "Tags": [],
-                    "LayerRegistry": "",
-                    "Layer": "",
-                    "Mesh": "SquareMesh",
-                    "MaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "Sampler2D_e7cc88ca",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_ZuluPlantsRight"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    },
-                    "LineWidth": 1.0,
-                    "ClipRect": {
-                        "Min": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "Max": {
-                            "x": 0.0,
-                            "y": 0.0
-                        }
-                    }
-                },
-                {
-                    "Type": "nap::FunTransformComponent",
-                    "mID": "MovePosterLayer01R",
-                    "Movement": "LowOnsetParam",
-                    "Intensity": "IntensityParam",
-                    "RotationIntensity": "RotationIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
-                    "TranslateXIntensity": "TranslateXIntensityParam",
-                    "TranslateYIntensity": "TranslateYIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
-                    "MultiplyRotation": 0.5,
-                    "MultiplyScale": 1.0,
-                    "MultiplyTranslation": {
-                        "x": 0.5,
-                        "y": 0.5
-                    },
-                    "Enable": true
-                }
-            ],
-            "Children": []
-        },
-        {
-            "Type": "nap::Entity",
-            "mID": "PosterLayer01X_Rose",
-            "Components": [
-                {
-                    "Type": "nap::TransformComponent",
-                    "mID": "TransformPosterLayer01X",
-                    "Properties": {
-                        "Translate": {
-                            "x": -0.4000000059604645,
-                            "y": -0.44999998807907107,
-                            "z": -1.0
-                        },
-                        "Rotate": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "Scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        },
-                        "UniformScale": 0.10000000149011612
-                    }
-                },
-                {
-                    "Type": "nap::RenderableMeshComponent",
-                    "mID": "RenderPosterLayer01X",
-                    "Visible": true,
-                    "Tags": [],
-                    "LayerRegistry": "",
-                    "Layer": "",
-                    "Mesh": "SquareMesh",
-                    "MaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "Sampler2D_fee9939f",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_Rose"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    },
-                    "LineWidth": 1.0,
-                    "ClipRect": {
-                        "Min": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "Max": {
-                            "x": 0.0,
-                            "y": 0.0
-                        }
-                    }
-                },
-                {
-                    "Type": "nap::FunTransformComponent",
-                    "mID": "MovePosterLayer01X",
-                    "Movement": "HighOnsetParam",
-                    "Intensity": "IntensityParam",
-                    "RotationIntensity": "RotationIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
-                    "TranslateXIntensity": "TranslateXIntensityParam",
-                    "TranslateYIntensity": "TranslateYIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
-                    "MultiplyRotation": 2.0,
-                    "MultiplyScale": 1.0,
-                    "MultiplyTranslation": {
-                        "x": 0.5,
-                        "y": 0.5
-                    },
-                    "Enable": true
-                }
-            ],
-            "Children": []
-        },
-        {
-            "Type": "nap::Entity",
-            "mID": "PosterLayer022_NewBirth",
-            "Components": [
-                {
-                    "Type": "nap::TransformComponent",
-                    "mID": "TransformPosterLayer022",
-                    "Properties": {
-                        "Translate": {
-                            "x": -0.30000001192092898,
-                            "y": 0.3499999940395355,
-                            "z": -1.0
-                        },
-                        "Rotate": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "Scale": {
-                            "x": 0.7599999904632568,
-                            "y": 1.0,
-                            "z": 1.0
-                        },
-                        "UniformScale": 0.4000000059604645
-                    }
-                },
-                {
-                    "Type": "nap::RenderableMeshComponent",
-                    "mID": "RenderPosterLayer022",
-                    "Visible": true,
-                    "Tags": [
-                        "RenderTag_Poster"
-                    ],
-                    "LayerRegistry": "RenderLayerRegistry",
-                    "Layer": "RenderLayer_PosterLayer02",
-                    "Mesh": "SquareMesh",
-                    "MaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "Sampler2D_ba25ba1d22",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_NewBirth"
                             }
                         ],
                         "Buffers": [],
@@ -908,12 +619,13 @@
                     "TranslateYIntensity": "TranslateYIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
-                    "MultiplyRotation": 1.0,
+                    "MultiplyRotation": 0.5,
                     "MultiplyScale": 1.0,
                     "MultiplyTranslation": {
                         "x": 0.5,
                         "y": 0.5
                     },
+                    "RandomOffset": false,
                     "Enable": true
                 }
             ],
@@ -921,113 +633,15 @@
         },
         {
             "Type": "nap::Entity",
-            "mID": "PosterLayer023_Mighty",
-            "Components": [
-                {
-                    "Type": "nap::TransformComponent",
-                    "mID": "TransformPosterLayer023",
-                    "Properties": {
-                        "Translate": {
-                            "x": 0.15000000596046449,
-                            "y": -0.5,
-                            "z": -2.0
-                        },
-                        "Rotate": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "Scale": {
-                            "x": 1.0,
-                            "y": 0.5600000023841858,
-                            "z": 1.0
-                        },
-                        "UniformScale": 0.4000000059604645
-                    }
-                },
-                {
-                    "Type": "nap::RenderableMeshComponent",
-                    "mID": "RenderPosterLayer023",
-                    "Visible": true,
-                    "Tags": [
-                        "RenderTag_Poster"
-                    ],
-                    "LayerRegistry": "RenderLayerRegistry",
-                    "Layer": "RenderLayer_PosterLayer02",
-                    "Mesh": "SquareMesh",
-                    "MaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "Sampler2D_ba25ba1d23",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_Mighty"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    },
-                    "LineWidth": 1.0,
-                    "ClipRect": {
-                        "Min": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "Max": {
-                            "x": 0.0,
-                            "y": 0.0
-                        }
-                    }
-                },
-                {
-                    "Type": "nap::FunTransformComponent",
-                    "mID": "MovePosterLayer023",
-                    "Movement": "LowOnsetParam",
-                    "Intensity": "IntensityParam",
-                    "RotationIntensity": "RotationIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
-                    "TranslateXIntensity": "TranslateXIntensityParam",
-                    "TranslateYIntensity": "TranslateYIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
-                    "MultiplyRotation": 1.0,
-                    "MultiplyScale": 1.0,
-                    "MultiplyTranslation": {
-                        "x": 0.5,
-                        "y": 0.5
-                    },
-                    "Enable": true
-                }
-            ],
-            "Children": []
-        },
-        {
-            "Type": "nap::Entity",
-            "mID": "PosterLayer02_Voices",
+            "mID": "PosterLayer02_ZuluRight",
             "Components": [
                 {
                     "Type": "nap::TransformComponent",
                     "mID": "TransformPosterLayer02",
                     "Properties": {
                         "Translate": {
-                            "x": 0.30000001192092898,
-                            "y": 0.44999998807907107,
+                            "x": 0.6000000238418579,
+                            "y": -0.20000000298023225,
                             "z": -2.0
                         },
                         "Rotate": {
@@ -1036,29 +650,27 @@
                             "z": 0.0
                         },
                         "Scale": {
-                            "x": 1.0,
-                            "y": 0.550000011920929,
+                            "x": 0.3440000116825104,
+                            "y": 1.0,
                             "z": 1.0
                         },
-                        "UniformScale": 0.20000000298023225
+                        "UniformScale": 1.0
                     }
                 },
                 {
                     "Type": "nap::RenderableMeshComponent",
                     "mID": "RenderPosterLayer02",
-                    "Visible": true,
-                    "Tags": [
-                        "RenderTag_Poster"
-                    ],
-                    "LayerRegistry": "RenderLayerRegistry",
-                    "Layer": "RenderLayer_PosterLayer02",
+                    "Visible": false,
+                    "Tags": [],
+                    "LayerRegistry": "",
+                    "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
                         "Uniforms": [],
                         "Samplers": [
                             {
                                 "Type": "nap::Sampler2D",
-                                "mID": "Sampler2D_ba25ba1d2",
+                                "mID": "Sampler2D_e7cc88ca",
                                 "Name": "colorTexture",
                                 "MinFilter": "Linear",
                                 "MaxFilter": "Linear",
@@ -1067,12 +679,12 @@
                                 "AddressModeHorizontal": "ClampToEdge",
                                 "MinLodLevel": 0,
                                 "MaxLodLevel": 1000,
-                                "LodBias": 0,
+                                "LodBias": -1.0,
                                 "AnisotropicSamples": "Default",
                                 "BorderColor": "IntOpaqueBlack",
                                 "CompareMode": "LessOrEqual",
                                 "EnableCompare": false,
-                                "Texture": "Poster_Voices"
+                                "Texture": "Poster_ZuluPlantsRight"
                             }
                         ],
                         "Buffers": [],
@@ -1104,12 +716,13 @@
                     "TranslateYIntensity": "TranslateYIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
-                    "MultiplyRotation": 1.0,
+                    "MultiplyRotation": 0.5,
                     "MultiplyScale": 1.0,
                     "MultiplyTranslation": {
                         "x": 0.5,
                         "y": 0.5
                     },
+                    "RandomOffset": false,
                     "Enable": true
                 }
             ],
@@ -1117,15 +730,15 @@
         },
         {
             "Type": "nap::Entity",
-            "mID": "PosterLayer03_Queer",
+            "mID": "PosterLayer03_Rose",
             "Components": [
                 {
                     "Type": "nap::TransformComponent",
                     "mID": "TransformPosterLayer03",
                     "Properties": {
                         "Translate": {
-                            "x": 0.3499999940395355,
-                            "y": -0.25,
+                            "x": -0.4000000059604645,
+                            "y": -0.44999998807907107,
                             "z": -3.0
                         },
                         "Rotate": {
@@ -1134,29 +747,27 @@
                             "z": 0.0
                         },
                         "Scale": {
-                            "x": 0.7599999904632568,
+                            "x": 1.0,
                             "y": 1.0,
                             "z": 1.0
                         },
-                        "UniformScale": 0.30000001192092898
+                        "UniformScale": 0.15000000596046449
                     }
                 },
                 {
                     "Type": "nap::RenderableMeshComponent",
                     "mID": "RenderPosterLayer03",
                     "Visible": true,
-                    "Tags": [
-                        "RenderTag_Poster"
-                    ],
-                    "LayerRegistry": "RenderLayerRegistry",
-                    "Layer": "RenderLayer_PosterLayer03",
+                    "Tags": [],
+                    "LayerRegistry": "",
+                    "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
                         "Uniforms": [],
                         "Samplers": [
                             {
                                 "Type": "nap::Sampler2D",
-                                "mID": "Sampler2D_12d532ffx",
+                                "mID": "Sampler2D_fee9939f",
                                 "Name": "colorTexture",
                                 "MinFilter": "Linear",
                                 "MaxFilter": "Linear",
@@ -1165,12 +776,12 @@
                                 "AddressModeHorizontal": "ClampToEdge",
                                 "MinLodLevel": 0,
                                 "MaxLodLevel": 1000,
-                                "LodBias": 0,
+                                "LodBias": -1.0,
                                 "AnisotropicSamples": "Default",
                                 "BorderColor": "IntOpaqueBlack",
                                 "CompareMode": "LessOrEqual",
                                 "EnableCompare": false,
-                                "Texture": "Poster_Queer"
+                                "Texture": "Poster_Rose"
                             }
                         ],
                         "Buffers": [],
@@ -1194,7 +805,7 @@
                 {
                     "Type": "nap::FunTransformComponent",
                     "mID": "MovePosterLayer03",
-                    "Movement": "LowOnsetParam",
+                    "Movement": "HighOnsetParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "ScaleIntensity": "ScaleIntensityParam",
@@ -1202,12 +813,13 @@
                     "TranslateYIntensity": "TranslateYIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
-                    "MultiplyRotation": 1.0,
+                    "MultiplyRotation": 2.0,
                     "MultiplyScale": 1.0,
                     "MultiplyTranslation": {
                         "x": 0.5,
                         "y": 0.5
                     },
+                    "RandomOffset": false,
                     "Enable": true
                 }
             ],
@@ -1215,15 +827,15 @@
         },
         {
             "Type": "nap::Entity",
-            "mID": "PosterLayer04_Lonnie",
+            "mID": "PosterLayer04_NewBirth",
             "Components": [
                 {
                     "Type": "nap::TransformComponent",
                     "mID": "TransformPosterLayer04",
                     "Properties": {
                         "Translate": {
-                            "x": 0.0,
-                            "y": -0.30000001192092898,
+                            "x": -0.30000001192092898,
+                            "y": 0.3499999940395355,
                             "z": -4.0
                         },
                         "Rotate": {
@@ -1232,11 +844,11 @@
                             "z": 0.0
                         },
                         "Scale": {
-                            "x": 1.0,
-                            "y": 0.7300000190734863,
+                            "x": 0.7599999904632568,
+                            "y": 1.0,
                             "z": 1.0
                         },
-                        "UniformScale": 1.0
+                        "UniformScale": 0.4000000059604645
                     }
                 },
                 {
@@ -1246,15 +858,15 @@
                     "Tags": [
                         "RenderTag_Poster"
                     ],
-                    "LayerRegistry": "RenderLayerRegistry",
-                    "Layer": "RenderLayer_PosterLayer04",
+                    "LayerRegistry": "",
+                    "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
                         "Uniforms": [],
                         "Samplers": [
                             {
                                 "Type": "nap::Sampler2D",
-                                "mID": "Sampler2D_8c82e8dc",
+                                "mID": "Sampler2D_ba25ba1d22",
                                 "Name": "colorTexture",
                                 "MinFilter": "Linear",
                                 "MaxFilter": "Linear",
@@ -1263,12 +875,12 @@
                                 "AddressModeHorizontal": "ClampToEdge",
                                 "MinLodLevel": 0,
                                 "MaxLodLevel": 1000,
-                                "LodBias": 0,
+                                "LodBias": -1.0,
                                 "AnisotropicSamples": "Default",
                                 "BorderColor": "IntOpaqueBlack",
                                 "CompareMode": "LessOrEqual",
                                 "EnableCompare": false,
-                                "Texture": "Poster_Lonnie"
+                                "Texture": "Poster_NewBirth"
                             }
                         ],
                         "Buffers": [],
@@ -1292,7 +904,7 @@
                 {
                     "Type": "nap::FunTransformComponent",
                     "mID": "MovePosterLayer04",
-                    "Movement": "MidOnsetParam",
+                    "Movement": "LowOnsetParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "ScaleIntensity": "ScaleIntensityParam",
@@ -1303,9 +915,10 @@
                     "MultiplyRotation": 1.0,
                     "MultiplyScale": 1.0,
                     "MultiplyTranslation": {
-                        "x": 0.25,
-                        "y": 0.25
+                        "x": 0.5,
+                        "y": 0.5
                     },
+                    "RandomOffset": false,
                     "Enable": true
                 }
             ],
@@ -1313,15 +926,15 @@
         },
         {
             "Type": "nap::Entity",
-            "mID": "PosterLayer05_Slave",
+            "mID": "PosterLayer05_Mighty",
             "Components": [
                 {
                     "Type": "nap::TransformComponent",
                     "mID": "TransformPosterLayer05",
                     "Properties": {
                         "Translate": {
-                            "x": -0.25,
-                            "y": -0.15000000596046449,
+                            "x": 0.15000000596046449,
+                            "y": -0.5,
                             "z": -5.0
                         },
                         "Rotate": {
@@ -1330,11 +943,11 @@
                             "z": 0.0
                         },
                         "Scale": {
-                            "x": 0.6000000238418579,
-                            "y": 1.0,
+                            "x": 1.0,
+                            "y": 0.5600000023841858,
                             "z": 1.0
                         },
-                        "UniformScale": 0.5
+                        "UniformScale": 0.4000000059604645
                     }
                 },
                 {
@@ -1344,15 +957,15 @@
                     "Tags": [
                         "RenderTag_Poster"
                     ],
-                    "LayerRegistry": "RenderLayerRegistry",
-                    "Layer": "RenderLayer_PosterLayer05",
+                    "LayerRegistry": "",
+                    "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
                         "Uniforms": [],
                         "Samplers": [
                             {
                                 "Type": "nap::Sampler2D",
-                                "mID": "Sampler2D_750d4627",
+                                "mID": "Sampler2D_ba25ba1d23",
                                 "Name": "colorTexture",
                                 "MinFilter": "Linear",
                                 "MaxFilter": "Linear",
@@ -1361,12 +974,12 @@
                                 "AddressModeHorizontal": "ClampToEdge",
                                 "MinLodLevel": 0,
                                 "MaxLodLevel": 1000,
-                                "LodBias": 0,
+                                "LodBias": -1.0,
                                 "AnisotropicSamples": "Default",
                                 "BorderColor": "IntOpaqueBlack",
                                 "CompareMode": "LessOrEqual",
                                 "EnableCompare": false,
-                                "Texture": "Poster_Slave"
+                                "Texture": "Poster_Mighty"
                             }
                         ],
                         "Buffers": [],
@@ -1398,12 +1011,13 @@
                     "TranslateYIntensity": "TranslateYIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
-                    "MultiplyRotation": 0.5,
-                    "MultiplyScale": 0.5,
+                    "MultiplyRotation": 1.0,
+                    "MultiplyScale": 1.0,
                     "MultiplyTranslation": {
-                        "x": 0.20000000298023225,
-                        "y": 0.20000000298023225
+                        "x": 0.5,
+                        "y": 0.5
                     },
+                    "RandomOffset": false,
                     "Enable": true
                 }
             ],
@@ -1411,16 +1025,16 @@
         },
         {
             "Type": "nap::Entity",
-            "mID": "PosterLayer06_Ray",
+            "mID": "PosterLayer06_Voices",
             "Components": [
                 {
                     "Type": "nap::TransformComponent",
                     "mID": "TransformPosterLayer06",
                     "Properties": {
                         "Translate": {
-                            "x": -0.15000000596046449,
-                            "y": 0.4000000059604645,
-                            "z": -6.0
+                            "x": 0.30000001192092898,
+                            "y": 0.44999998807907107,
+                            "z": -10.0
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -1429,10 +1043,10 @@
                         },
                         "Scale": {
                             "x": 1.0,
-                            "y": 0.6700000166893005,
+                            "y": 0.550000011920929,
                             "z": 1.0
                         },
-                        "UniformScale": 0.10000000149011612
+                        "UniformScale": 0.20000000298023225
                     }
                 },
                 {
@@ -1442,15 +1056,15 @@
                     "Tags": [
                         "RenderTag_Poster"
                     ],
-                    "LayerRegistry": "RenderLayerRegistry",
-                    "Layer": "RenderLayer_PosterLayer06",
+                    "LayerRegistry": "",
+                    "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
                         "Uniforms": [],
                         "Samplers": [
                             {
                                 "Type": "nap::Sampler2D",
-                                "mID": "Sampler2D_b9d6d610",
+                                "mID": "Sampler2D_ba25ba1d2",
                                 "Name": "colorTexture",
                                 "MinFilter": "Linear",
                                 "MaxFilter": "Linear",
@@ -1459,12 +1073,12 @@
                                 "AddressModeHorizontal": "ClampToEdge",
                                 "MinLodLevel": 0,
                                 "MaxLodLevel": 1000,
-                                "LodBias": 0,
+                                "LodBias": -1.0,
                                 "AnisotropicSamples": "Default",
                                 "BorderColor": "IntOpaqueBlack",
                                 "CompareMode": "LessOrEqual",
                                 "EnableCompare": false,
-                                "Texture": "Poster_Ray"
+                                "Texture": "Poster_Voices"
                             }
                         ],
                         "Buffers": [],
@@ -1502,6 +1116,7 @@
                         "x": 0.5,
                         "y": 0.5
                     },
+                    "RandomOffset": false,
                     "Enable": true
                 }
             ],
@@ -1509,16 +1124,313 @@
         },
         {
             "Type": "nap::Entity",
-            "mID": "PosterLayer07_EMan",
+            "mID": "PosterLayer07_Queer",
             "Components": [
                 {
                     "Type": "nap::TransformComponent",
                     "mID": "TransformPosterLayer07",
                     "Properties": {
                         "Translate": {
+                            "x": 0.3499999940395355,
+                            "y": -0.25,
+                            "z": -3.0
+                        },
+                        "Rotate": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "Scale": {
+                            "x": 0.7599999904632568,
+                            "y": 1.0,
+                            "z": 1.0
+                        },
+                        "UniformScale": 0.30000001192092898
+                    }
+                },
+                {
+                    "Type": "nap::RenderableMeshComponent",
+                    "mID": "RenderPosterLayer07",
+                    "Visible": true,
+                    "Tags": [
+                        "RenderTag_Poster"
+                    ],
+                    "LayerRegistry": "",
+                    "Layer": "",
+                    "Mesh": "SquareMesh",
+                    "MaterialInstance": {
+                        "Uniforms": [],
+                        "Samplers": [
+                            {
+                                "Type": "nap::Sampler2D",
+                                "mID": "Sampler2D_12d532ffx",
+                                "Name": "colorTexture",
+                                "MinFilter": "Linear",
+                                "MaxFilter": "Linear",
+                                "MipMapMode": "Linear",
+                                "AddressModeVertical": "ClampToEdge",
+                                "AddressModeHorizontal": "ClampToEdge",
+                                "MinLodLevel": 0,
+                                "MaxLodLevel": 1000,
+                                "LodBias": -1.0,
+                                "AnisotropicSamples": "Default",
+                                "BorderColor": "IntOpaqueBlack",
+                                "CompareMode": "LessOrEqual",
+                                "EnableCompare": false,
+                                "Texture": "Poster_Queer"
+                            }
+                        ],
+                        "Buffers": [],
+                        "Constants": [],
+                        "Material": "TextureClipMaterial",
+                        "BlendMode": "NotSet",
+                        "DepthMode": "NotSet"
+                    },
+                    "LineWidth": 1.0,
+                    "ClipRect": {
+                        "Min": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "Max": {
+                            "x": 0.0,
+                            "y": 0.0
+                        }
+                    }
+                },
+                {
+                    "Type": "nap::FunTransformComponent",
+                    "mID": "MovePosterLayer07",
+                    "Movement": "LowOnsetParam",
+                    "Intensity": "IntensityParam",
+                    "RotationIntensity": "RotationIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
+                    "TranslateXIntensity": "TranslateXIntensityParam",
+                    "TranslateYIntensity": "TranslateYIntensityParam",
+                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
+                    "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
+                    "MultiplyRotation": 1.0,
+                    "MultiplyScale": 1.0,
+                    "MultiplyTranslation": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "RandomOffset": false,
+                    "Enable": true
+                }
+            ],
+            "Children": []
+        },
+        {
+            "Type": "nap::Entity",
+            "mID": "PosterLayer08_Lonnie",
+            "Components": [
+                {
+                    "Type": "nap::TransformComponent",
+                    "mID": "TransformPosterLayer08",
+                    "Properties": {
+                        "Translate": {
+                            "x": 0.0,
+                            "y": -0.30000001192092898,
+                            "z": -8.0
+                        },
+                        "Rotate": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "Scale": {
+                            "x": 1.0,
+                            "y": 0.7300000190734863,
+                            "z": 1.0
+                        },
+                        "UniformScale": 1.0
+                    }
+                },
+                {
+                    "Type": "nap::RenderableMeshComponent",
+                    "mID": "RenderPosterLayer08",
+                    "Visible": true,
+                    "Tags": [
+                        "RenderTag_Poster"
+                    ],
+                    "LayerRegistry": "",
+                    "Layer": "",
+                    "Mesh": "SquareMesh",
+                    "MaterialInstance": {
+                        "Uniforms": [],
+                        "Samplers": [
+                            {
+                                "Type": "nap::Sampler2D",
+                                "mID": "Sampler2D_8c82e8dc",
+                                "Name": "colorTexture",
+                                "MinFilter": "Linear",
+                                "MaxFilter": "Linear",
+                                "MipMapMode": "Linear",
+                                "AddressModeVertical": "ClampToEdge",
+                                "AddressModeHorizontal": "ClampToEdge",
+                                "MinLodLevel": 0,
+                                "MaxLodLevel": 1000,
+                                "LodBias": -1.0,
+                                "AnisotropicSamples": "Default",
+                                "BorderColor": "IntOpaqueBlack",
+                                "CompareMode": "LessOrEqual",
+                                "EnableCompare": false,
+                                "Texture": "Poster_Lonnie"
+                            }
+                        ],
+                        "Buffers": [],
+                        "Constants": [],
+                        "Material": "TextureClipMaterial",
+                        "BlendMode": "NotSet",
+                        "DepthMode": "NotSet"
+                    },
+                    "LineWidth": 1.0,
+                    "ClipRect": {
+                        "Min": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "Max": {
+                            "x": 0.0,
+                            "y": 0.0
+                        }
+                    }
+                },
+                {
+                    "Type": "nap::FunTransformComponent",
+                    "mID": "MovePosterLayer08",
+                    "Movement": "MidOnsetParam",
+                    "Intensity": "IntensityParam",
+                    "RotationIntensity": "RotationIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
+                    "TranslateXIntensity": "TranslateXIntensityParam",
+                    "TranslateYIntensity": "TranslateYIntensityParam",
+                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
+                    "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
+                    "MultiplyRotation": 1.0,
+                    "MultiplyScale": 1.0,
+                    "MultiplyTranslation": {
+                        "x": 0.25,
+                        "y": 0.25
+                    },
+                    "RandomOffset": false,
+                    "Enable": true
+                }
+            ],
+            "Children": []
+        },
+        {
+            "Type": "nap::Entity",
+            "mID": "PosterLayer09_Slave",
+            "Components": [
+                {
+                    "Type": "nap::TransformComponent",
+                    "mID": "TransformPosterLayer09",
+                    "Properties": {
+                        "Translate": {
+                            "x": -0.25,
+                            "y": -0.15000000596046449,
+                            "z": -12.0
+                        },
+                        "Rotate": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "Scale": {
+                            "x": 0.6000000238418579,
+                            "y": 1.0,
+                            "z": 1.0
+                        },
+                        "UniformScale": 0.5
+                    }
+                },
+                {
+                    "Type": "nap::RenderableMeshComponent",
+                    "mID": "RenderPosterLayer09",
+                    "Visible": true,
+                    "Tags": [
+                        "RenderTag_Poster"
+                    ],
+                    "LayerRegistry": "",
+                    "Layer": "",
+                    "Mesh": "SquareMesh",
+                    "MaterialInstance": {
+                        "Uniforms": [],
+                        "Samplers": [
+                            {
+                                "Type": "nap::Sampler2D",
+                                "mID": "Sampler2D_750d4627",
+                                "Name": "colorTexture",
+                                "MinFilter": "Linear",
+                                "MaxFilter": "Linear",
+                                "MipMapMode": "Linear",
+                                "AddressModeVertical": "ClampToEdge",
+                                "AddressModeHorizontal": "ClampToEdge",
+                                "MinLodLevel": 0,
+                                "MaxLodLevel": 1000,
+                                "LodBias": -1.0,
+                                "AnisotropicSamples": "Default",
+                                "BorderColor": "IntOpaqueBlack",
+                                "CompareMode": "LessOrEqual",
+                                "EnableCompare": false,
+                                "Texture": "Poster_Slave"
+                            }
+                        ],
+                        "Buffers": [],
+                        "Constants": [],
+                        "Material": "TextureClipMaterial",
+                        "BlendMode": "NotSet",
+                        "DepthMode": "NotSet"
+                    },
+                    "LineWidth": 1.0,
+                    "ClipRect": {
+                        "Min": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "Max": {
+                            "x": 0.0,
+                            "y": 0.0
+                        }
+                    }
+                },
+                {
+                    "Type": "nap::FunTransformComponent",
+                    "mID": "MovePosterLayer09",
+                    "Movement": "LowOnsetParam",
+                    "Intensity": "IntensityParam",
+                    "RotationIntensity": "RotationIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
+                    "TranslateXIntensity": "TranslateXIntensityParam",
+                    "TranslateYIntensity": "TranslateYIntensityParam",
+                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
+                    "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
+                    "MultiplyRotation": 0.5,
+                    "MultiplyScale": 0.5,
+                    "MultiplyTranslation": {
+                        "x": 0.20000000298023225,
+                        "y": 0.20000000298023225
+                    },
+                    "RandomOffset": false,
+                    "Enable": true
+                }
+            ],
+            "Children": []
+        },
+        {
+            "Type": "nap::Entity",
+            "mID": "PosterLayer11_EMan",
+            "Components": [
+                {
+                    "Type": "nap::TransformComponent",
+                    "mID": "TransformPosterLayer11",
+                    "Properties": {
+                        "Translate": {
                             "x": 0.15000000596046449,
                             "y": -0.20000000298023225,
-                            "z": -7.0
+                            "z": -11.0
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -1535,13 +1447,13 @@
                 },
                 {
                     "Type": "nap::RenderableMeshComponent",
-                    "mID": "RenderPosterLayer07",
+                    "mID": "RenderPosterLayer11",
                     "Visible": true,
                     "Tags": [
                         "RenderTag_Poster"
                     ],
-                    "LayerRegistry": "RenderLayerRegistry",
-                    "Layer": "RenderLayer_PosterLayer07",
+                    "LayerRegistry": "",
+                    "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
                         "Uniforms": [],
@@ -1557,7 +1469,7 @@
                                 "AddressModeHorizontal": "ClampToEdge",
                                 "MinLodLevel": 0,
                                 "MaxLodLevel": 1000,
-                                "LodBias": 0,
+                                "LodBias": -1.0,
                                 "AnisotropicSamples": "Default",
                                 "BorderColor": "IntOpaqueBlack",
                                 "CompareMode": "LessOrEqual",
@@ -1585,7 +1497,7 @@
                 },
                 {
                     "Type": "nap::FunTransformComponent",
-                    "mID": "MovePosterLayer07",
+                    "mID": "MovePosterLayer11",
                     "Movement": "HighOnsetParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
@@ -1600,6 +1512,7 @@
                         "x": 0.5,
                         "y": 0.5
                     },
+                    "RandomOffset": false,
                     "Enable": true
                 }
             ],
@@ -1607,16 +1520,16 @@
         },
         {
             "Type": "nap::Entity",
-            "mID": "PosterLayer08_NaturesDivine",
+            "mID": "PosterLayer12_NaturesDivine",
             "Components": [
                 {
                     "Type": "nap::TransformComponent",
-                    "mID": "TransformPosterLayer08",
+                    "mID": "TransformPosterLayer12",
                     "Properties": {
                         "Translate": {
                             "x": 0.30000001192092898,
                             "y": -0.05000000074505806,
-                            "z": -8.0
+                            "z": -9.0
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -1633,13 +1546,13 @@
                 },
                 {
                     "Type": "nap::RenderableMeshComponent",
-                    "mID": "RenderPosterLayer08",
+                    "mID": "RenderPosterLayer12",
                     "Visible": true,
                     "Tags": [
                         "RenderTag_Poster"
                     ],
-                    "LayerRegistry": "RenderLayerRegistry",
-                    "Layer": "RenderLayer_PosterLayer08",
+                    "LayerRegistry": "",
+                    "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
                         "Uniforms": [],
@@ -1655,7 +1568,7 @@
                                 "AddressModeHorizontal": "ClampToEdge",
                                 "MinLodLevel": 0,
                                 "MaxLodLevel": 1000,
-                                "LodBias": 0,
+                                "LodBias": -1.0,
                                 "AnisotropicSamples": "Default",
                                 "BorderColor": "IntOpaqueBlack",
                                 "CompareMode": "LessOrEqual",
@@ -1683,7 +1596,7 @@
                 },
                 {
                     "Type": "nap::FunTransformComponent",
-                    "mID": "MovePosterLayer08",
+                    "mID": "MovePosterLayer12",
                     "Movement": "LowOnsetParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
@@ -1698,6 +1611,7 @@
                         "x": 0.5,
                         "y": 0.5
                     },
+                    "RandomOffset": false,
                     "Enable": true
                 }
             ],
@@ -1705,16 +1619,115 @@
         },
         {
             "Type": "nap::Entity",
-            "mID": "PosterLayer09_EboneeWebb",
+            "mID": "PosterLayer12_Ray",
             "Components": [
                 {
                     "Type": "nap::TransformComponent",
-                    "mID": "TransformPosterLayer09",
+                    "mID": "TransformPosterLayer10",
+                    "Properties": {
+                        "Translate": {
+                            "x": -0.15000000596046449,
+                            "y": 0.4300000071525574,
+                            "z": -13.0
+                        },
+                        "Rotate": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "Scale": {
+                            "x": 1.0,
+                            "y": 0.6700000166893005,
+                            "z": 1.0
+                        },
+                        "UniformScale": 0.10000000149011612
+                    }
+                },
+                {
+                    "Type": "nap::RenderableMeshComponent",
+                    "mID": "RenderPosterLayer10",
+                    "Visible": true,
+                    "Tags": [
+                        "RenderTag_Poster"
+                    ],
+                    "LayerRegistry": "",
+                    "Layer": "",
+                    "Mesh": "SquareMesh",
+                    "MaterialInstance": {
+                        "Uniforms": [],
+                        "Samplers": [
+                            {
+                                "Type": "nap::Sampler2D",
+                                "mID": "Sampler2D_b9d6d610",
+                                "Name": "colorTexture",
+                                "MinFilter": "Linear",
+                                "MaxFilter": "Linear",
+                                "MipMapMode": "Linear",
+                                "AddressModeVertical": "ClampToEdge",
+                                "AddressModeHorizontal": "ClampToEdge",
+                                "MinLodLevel": 0,
+                                "MaxLodLevel": 1000,
+                                "LodBias": -1.0,
+                                "AnisotropicSamples": "Default",
+                                "BorderColor": "IntOpaqueBlack",
+                                "CompareMode": "LessOrEqual",
+                                "EnableCompare": false,
+                                "Texture": "Poster_Ray"
+                            }
+                        ],
+                        "Buffers": [],
+                        "Constants": [],
+                        "Material": "TextureClipMaterial",
+                        "BlendMode": "NotSet",
+                        "DepthMode": "NotSet"
+                    },
+                    "LineWidth": 1.0,
+                    "ClipRect": {
+                        "Min": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "Max": {
+                            "x": 0.0,
+                            "y": 0.0
+                        }
+                    }
+                },
+                {
+                    "Type": "nap::FunTransformComponent",
+                    "mID": "MovePosterLayer10",
+                    "Movement": "LowOnsetParam",
+                    "Intensity": "IntensityParam",
+                    "RotationIntensity": "RotationIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
+                    "TranslateXIntensity": "TranslateXIntensityParam",
+                    "TranslateYIntensity": "TranslateYIntensityParam",
+                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
+                    "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
+                    "MultiplyRotation": 1.0,
+                    "MultiplyScale": 1.0,
+                    "MultiplyTranslation": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "RandomOffset": false,
+                    "Enable": true
+                }
+            ],
+            "Children": []
+        },
+        {
+            "Type": "nap::Entity",
+            "mID": "PosterLayer13_EboneeWebb",
+            "Components": [
+                {
+                    "Type": "nap::TransformComponent",
+                    "mID": "TransformPosterLayer13",
                     "Properties": {
                         "Translate": {
                             "x": 0.0,
                             "y": 0.0,
-                            "z": -9.0
+                            "z": -16.0
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -1731,11 +1744,11 @@
                 },
                 {
                     "Type": "nap::RenderableMeshComponent",
-                    "mID": "RenderPosterLayer09",
+                    "mID": "RenderPosterLayer13",
                     "Visible": true,
                     "Tags": [],
-                    "LayerRegistry": "RenderLayerRegistry",
-                    "Layer": "RenderLayer_PosterLayer09",
+                    "LayerRegistry": "",
+                    "Layer": "",
                     "Mesh": "PosterMesh",
                     "MaterialInstance": {
                         "Uniforms": [],
@@ -1751,7 +1764,7 @@
                                 "AddressModeHorizontal": "ClampToEdge",
                                 "MinLodLevel": 0,
                                 "MaxLodLevel": 1000,
-                                "LodBias": 0,
+                                "LodBias": -1.0,
                                 "AnisotropicSamples": "Default",
                                 "BorderColor": "IntOpaqueBlack",
                                 "CompareMode": "LessOrEqual",
@@ -1779,7 +1792,7 @@
                 },
                 {
                     "Type": "nap::FunTransformComponent",
-                    "mID": "MovePosterLayer09",
+                    "mID": "MovePosterLayer13",
                     "Movement": "MidOnsetParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
@@ -1794,6 +1807,7 @@
                         "x": 0.5,
                         "y": 0.5
                     },
+                    "RandomOffset": false,
                     "Enable": true
                 }
             ],
@@ -1801,16 +1815,16 @@
         },
         {
             "Type": "nap::Entity",
-            "mID": "PosterLayer10_Pisces",
+            "mID": "PosterLayer14_Pisces",
             "Components": [
                 {
                     "Type": "nap::TransformComponent",
-                    "mID": "TransformPosterLayer10",
+                    "mID": "TransformPosterLayer14",
                     "Properties": {
                         "Translate": {
                             "x": 0.30000001192092898,
                             "y": 0.30000001192092898,
-                            "z": -10.0
+                            "z": -18.0
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -1827,13 +1841,13 @@
                 },
                 {
                     "Type": "nap::RenderableMeshComponent",
-                    "mID": "RenderPosterLayer10",
+                    "mID": "RenderPosterLayer14",
                     "Visible": true,
                     "Tags": [
                         "RenderTag_Poster"
                     ],
-                    "LayerRegistry": "RenderLayerRegistry",
-                    "Layer": "RenderLayer_PosterLayer10",
+                    "LayerRegistry": "",
+                    "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
                         "Uniforms": [],
@@ -1849,7 +1863,7 @@
                                 "AddressModeHorizontal": "ClampToEdge",
                                 "MinLodLevel": 0,
                                 "MaxLodLevel": 1000,
-                                "LodBias": 0,
+                                "LodBias": -1.0,
                                 "AnisotropicSamples": "Default",
                                 "BorderColor": "IntOpaqueBlack",
                                 "CompareMode": "LessOrEqual",
@@ -1877,7 +1891,7 @@
                 },
                 {
                     "Type": "nap::FunTransformComponent",
-                    "mID": "MovePosterLayer10",
+                    "mID": "MovePosterLayer14",
                     "Movement": "HighOnsetParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
@@ -1892,6 +1906,7 @@
                         "x": 0.5,
                         "y": 0.5
                     },
+                    "RandomOffset": false,
                     "Enable": true
                 }
             ],
@@ -1899,16 +1914,16 @@
         },
         {
             "Type": "nap::Entity",
-            "mID": "PosterLayer11_DonnThomas",
+            "mID": "PosterLayer15_DonnThomas",
             "Components": [
                 {
                     "Type": "nap::TransformComponent",
-                    "mID": "TransformPosterLayer11",
+                    "mID": "TransformPosterLayer15",
                     "Properties": {
                         "Translate": {
                             "x": 0.0,
                             "y": 0.0,
-                            "z": -11.0
+                            "z": -20.0
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -1925,13 +1940,13 @@
                 },
                 {
                     "Type": "nap::RenderableMeshComponent",
-                    "mID": "RenderPosterLayer11",
+                    "mID": "RenderPosterLayer15",
                     "Visible": true,
                     "Tags": [
                         "RenderTag_Poster"
                     ],
-                    "LayerRegistry": "RenderLayerRegistry",
-                    "Layer": "RenderLayer_PosterLayerBackground",
+                    "LayerRegistry": "",
+                    "Layer": "",
                     "Mesh": "PosterMesh",
                     "MaterialInstance": {
                         "Uniforms": [],
@@ -1947,7 +1962,7 @@
                                 "AddressModeHorizontal": "ClampToEdge",
                                 "MinLodLevel": 0,
                                 "MaxLodLevel": 1000,
-                                "LodBias": 0,
+                                "LodBias": -1.0,
                                 "AnisotropicSamples": "Default",
                                 "BorderColor": "IntOpaqueBlack",
                                 "CompareMode": "LessOrEqual",
@@ -1975,7 +1990,7 @@
                 },
                 {
                     "Type": "nap::FunTransformComponent",
-                    "mID": "MovePosterLayer11",
+                    "mID": "MovePosterLayer15",
                     "Movement": "LowOnsetParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
@@ -1990,6 +2005,7 @@
                         "x": 0.5,
                         "y": 0.5
                     },
+                    "RandomOffset": false,
                     "Enable": true
                 }
             ],
@@ -2099,7 +2115,7 @@
                                 "AddressModeHorizontal": "ClampToEdge",
                                 "MinLodLevel": 0,
                                 "MaxLodLevel": 1000,
-                                "LodBias": 0,
+                                "LodBias": -1.0,
                                 "AnisotropicSamples": "Default",
                                 "BorderColor": "IntOpaqueBlack",
                                 "CompareMode": "LessOrEqual",
@@ -2173,7 +2189,7 @@
                                 "AddressModeHorizontal": "ClampToEdge",
                                 "MinLodLevel": 0,
                                 "MaxLodLevel": 1000,
-                                "LodBias": 0,
+                                "LodBias": -1.0,
                                 "AnisotropicSamples": "Default",
                                 "BorderColor": "IntOpaqueBlack",
                                 "CompareMode": "LessOrEqual",
@@ -2423,7 +2439,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "ApertureParam",
                     "Name": "Aperture",
-                    "Value": 1.0,
+                    "Value": 1.2000000476837159,
                     "Minimum": 0.0,
                     "Maximum": 10.0
                 },
@@ -2431,7 +2447,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "FocalDistanceParam",
                     "Name": "FocalDistance",
-                    "Value": 0.6000000238418579,
+                    "Value": 0.5699999928474426,
                     "Minimum": 0.0,
                     "Maximum": 1.0
                 },
@@ -2439,7 +2455,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "FocusDistanceParam",
                     "Name": "FocusDistance",
-                    "Value": 1.5,
+                    "Value": 1.25,
                     "Minimum": 0.0,
                     "Maximum": 2.0
                 }
@@ -2500,102 +2516,6 @@
             "Value": 0,
             "Minimum": 0,
             "Maximum": 1
-        },
-        {
-            "Type": "nap::RenderLayerRegistry",
-            "mID": "RenderLayerRegistry",
-            "Layers": [
-                {
-                    "Type": "nap::RenderLayer",
-                    "mID": "RenderLayer_PosterLayer00",
-                    "Name": "PosterLayer00"
-                },
-                {
-                    "Type": "nap::RenderLayer",
-                    "mID": "RenderLayer_PosterLayer01",
-                    "Name": "PosterLayer01"
-                },
-                {
-                    "Type": "nap::RenderLayer",
-                    "mID": "RenderLayer_PosterLayer02",
-                    "Name": "PosterLayer02"
-                },
-                {
-                    "Type": "nap::RenderLayer",
-                    "mID": "RenderLayer_PosterLayer03",
-                    "Name": "PosterLayer03"
-                },
-                {
-                    "Type": "nap::RenderLayer",
-                    "mID": "RenderLayer_PosterLayer04",
-                    "Name": "PosterLayer04"
-                },
-                {
-                    "Type": "nap::RenderLayer",
-                    "mID": "RenderLayer_PosterLayer05",
-                    "Name": "PosterLayer05"
-                },
-                {
-                    "Type": "nap::RenderLayer",
-                    "mID": "RenderLayer_PosterLayer06",
-                    "Name": "PosterLayer06"
-                },
-                {
-                    "Type": "nap::RenderLayer",
-                    "mID": "RenderLayer_PosterLayer07",
-                    "Name": "PosterLayer07"
-                },
-                {
-                    "Type": "nap::RenderLayer",
-                    "mID": "RenderLayer_PosterLayer08",
-                    "Name": "PosterLayer08"
-                },
-                {
-                    "Type": "nap::RenderLayer",
-                    "mID": "RenderLayer_PosterLayer09",
-                    "Name": "PosterLayer09"
-                },
-                {
-                    "Type": "nap::RenderLayer",
-                    "mID": "RenderLayer_PosterLayer10",
-                    "Name": "PosterLayer10"
-                },
-                {
-                    "Type": "nap::RenderLayer",
-                    "mID": "RenderLayer_PosterLayer11",
-                    "Name": "PosterLayer11"
-                },
-                {
-                    "Type": "nap::RenderLayer",
-                    "mID": "RenderLayer_PosterLayer12",
-                    "Name": "PosterLayer12"
-                },
-                {
-                    "Type": "nap::RenderLayer",
-                    "mID": "RenderLayer_PosterLayer13",
-                    "Name": "PosterLayer13"
-                },
-                {
-                    "Type": "nap::RenderLayer",
-                    "mID": "RenderLayer_PosterLayer14",
-                    "Name": "PosterLayer14"
-                },
-                {
-                    "Type": "nap::RenderLayer",
-                    "mID": "RenderLayer_PosterLayer15",
-                    "Name": "PosterLayer15"
-                },
-                {
-                    "Type": "nap::RenderLayer",
-                    "mID": "RenderLayer_PosterLayerBackground",
-                    "Name": "PosterLayerBackground"
-                },
-                {
-                    "Type": "nap::RenderLayer",
-                    "mID": "RenderLayer_Background",
-                    "Name": "Background"
-                }
-            ]
         },
         {
             "Type": "nap::RenderTagGroup",
@@ -2731,7 +2651,7 @@
                             "AddressModeHorizontal": "ClampToEdge",
                             "MinLodLevel": 0,
                             "MaxLodLevel": 1000,
-                            "LodBias": 0,
+                            "LodBias": -1.0,
                             "AnisotropicSamples": "Default",
                             "BorderColor": "IntOpaqueBlack",
                             "CompareMode": "LessOrEqual",
@@ -2844,7 +2764,7 @@
                             "AddressModeHorizontal": "ClampToEdge",
                             "MinLodLevel": 0,
                             "MaxLodLevel": 1000,
-                            "LodBias": 0,
+                            "LodBias": -1.0,
                             "AnisotropicSamples": "Default",
                             "BorderColor": "IntOpaqueBlack",
                             "CompareMode": "LessOrEqual",
