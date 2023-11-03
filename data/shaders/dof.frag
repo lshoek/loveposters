@@ -27,9 +27,9 @@ const float EPSILON = 0.000001;
 // Sampler must be configured with filter VK_FILTER_LINEAR
 vec4 blur(sampler2D tx, vec4 col, float s) 
 {
-	const vec2 off1 = (vec2(1.411764705882353) * ubo.direction) / ubo.textureSize;
-	const vec2 off2 = (vec2(3.2941176470588234) * ubo.direction) / ubo.textureSize;
-	const vec2 off3 = (vec2(5.176470588235294) * ubo.direction) / ubo.textureSize;
+	const vec2 off1 = ubo.direction * (1.0 / ubo.textureSize);
+	const vec2 off2 = ubo.direction * (2.0 / ubo.textureSize);
+	const vec2 off3 = ubo.direction * (3.0 / ubo.textureSize);
 
 	col = col * 0.1964825502;
 	col += texture(tx, pass_UV + off1 * s) * 0.2969069647;
