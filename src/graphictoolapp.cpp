@@ -77,6 +77,9 @@ namespace nap
 			// Get Perspective camera to render with
 			auto& cam = mCameraEntity->getComponent<CameraComponentInstance>();
 
+			// Render shadows
+			mRenderAdvancedService->renderShadows(render_comps);
+
 			// Offscreen color pass -> Render all available geometry to the color texture bound to the render target.
 			mRenderTarget->beginRendering();
 			mRenderService->renderObjects(*mRenderTarget, cam, render_comps);
@@ -149,6 +152,15 @@ namespace nap
 
 			if (press_event->mKey == nap::EKeyCode::KEY_h)
 				mHideGUI = !mHideGUI;
+
+			if (press_event->mKey == nap::EKeyCode::KEY_r)
+			{
+				mRandomizeOffset = !mRandomizeOffset;
+				std::vector<FunTransformComponentInstance*> move_comps;
+				mWorldEntity->getComponentsOfTypeRecursive<FunTransformComponentInstance>(move_comps);
+				for (auto& comp : move_comps)
+					comp->randomize(mRandomizeOffset);
+			}
 
 			// For testing purposes only
 			if (press_event->mKey == nap::EKeyCode::KEY_p)

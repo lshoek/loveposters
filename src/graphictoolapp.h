@@ -94,5 +94,6 @@ namespace nap
 		std::vector<ObjectPtr<AppGUI>> mAppGUIs;						///< AppGUIs
 
 		bool mHideGUI = true;
+		bool mRandomizeOffset = false;
 	};
 }

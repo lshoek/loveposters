@@ -4,13 +4,7 @@
 
 #version 450 core
 
-uniform UBO
-{
-	vec3 color;
-	float alpha;
-} ubo;
-
-in vec3 pass_Uvs;
+in vec2 pass_UV;
 
 out vec4 out_Color;
 
@@ -20,11 +14,8 @@ const float EPSILON = 0.001;
 
 void main(void)
 {
-	// Sample colorTexture
-	vec4 texture_color = texture(colorTexture, pass_Uvs.xy);
-	if (texture_color.a <= EPSILON)
+	if (texture(colorTexture, pass_UV).a < EPSILON)
 		discard;
 
-	// Set output color
-	out_Color = vec4(texture_color.rgb * ubo.color, texture_color.a * ubo.alpha); 
+	gl_FragDepth = gl_FragCoord.z;
 }

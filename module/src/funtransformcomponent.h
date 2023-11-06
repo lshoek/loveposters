@@ -71,6 +71,11 @@ namespace nap
 		 */
 		void enable(bool enable) { mEnabled = enable; }
 
+		/**
+		 * 
+		 */
+		void randomize(bool enable);
+
 	private:
 		FunTransformComponent* mResource = nullptr;
 		TransformComponentInstance* mTransformComponent = nullptr;
@@ -84,5 +89,6 @@ namespace nap
 		glm::vec2 mTranslationAccumulator = { 0.0f, 0.0f };
 
 		bool mEnabled = true;
+		bool mRandomize = false;
 	};
 }

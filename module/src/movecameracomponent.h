@@ -27,7 +27,7 @@ namespace nap
 		ResourcePtr<ParameterFloat> mMovementParam;
 		ResourcePtr<ParameterFloat> mIntensityParam;
 
-		glm::vec2 mMoveExtents = { 1.0f, 1.0f };
+		glm::vec3 mMoveExtents = { 1.0f, 1.0f, 0.0f };
 		float mMultiplyIntensity = 1.0f;
 		bool mEnable = true;
 	};

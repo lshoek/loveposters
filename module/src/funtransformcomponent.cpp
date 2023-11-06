@@ -50,11 +50,27 @@ namespace nap
 
 		mTransformComponent = &getEntityInstance()->getComponent<TransformComponentInstance>();
 		mCachedTransform = std::make_unique<AffineTransform>(*mTransformComponent);
-
-		if (mResource->mRandomOffset)
-			mRandomSeed = { glm::linearRand<float>(0.0f, 1000.0f), glm::linearRand<float>(0.0f, 1000.0f), glm::linearRand<float>(0.0f, 1000.0f), glm::linearRand<float>(0.0f, 1000.0f) };
+		mRandomize = mResource->mRandomOffset;
+		randomize(mRandomize);
 
 		return true;
+	}
+
+
+	void FunTransformComponentInstance::randomize(bool enable)
+	{
+		static const float rand_max = 1000.0f;
+		if (enable)
+		{
+			mRandomSeed = {
+				glm::linearRand<float>(0.0f, rand_max),
+				glm::linearRand<float>(0.0f, rand_max),
+				glm::linearRand<float>(0.0f, rand_max),
+				glm::linearRand<float>(0.0f, rand_max)
+			};
+			return;
+		}
+		mRandomSeed = { 0.0f, 0.0f, 0.0f, 0.0f };
 	}
 
 
