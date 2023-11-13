@@ -29,6 +29,7 @@ namespace nap
 
 		glm::vec3 mMoveExtents = { 1.0f, 1.0f, 0.0f };
 		float mMultiplyIntensity = 1.0f;
+		float mFocusDepth = -1.0f;
 		bool mEnable = true;
 	};
 

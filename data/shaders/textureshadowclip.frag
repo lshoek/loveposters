@@ -48,8 +48,10 @@ uniform UBO
 	vec3	specular;						//< Specular
 	vec2	fresnel;						//< Fresnel [scale, power]
 	float	shininess;						//< Shininess
+	float	reflection;						//< Reflection
 	float	alpha;							//< Alpha
 	uint	environment;					//< Whether to sample an environment map
+	float	elapsedTime;
 } ubo;
 
 // Fragment Input
@@ -77,14 +79,6 @@ void main()
 		discard;
 
 	BlinnPhongMaterial mtl = { ubo.ambient, texture_color.rgb * ubo.diffuse, ubo.specular, ubo.shininess };
-
-	// Sample environment map
-	if (ENABLE_ENVIRONMENT_MAPPING > 0 && ubo.environment > 0)
-	{
-		vec3 I = normalize(passPosition - mvp.cameraPosition);
-		vec3 R = reflect(I, normalize(passNormal));
-		mtl.diffuse *= mix(mtl.diffuse, texture(environmentMap, R).rgb, 1.0);
-	}
 
 	// Compute light contribution
 	vec3 color_result = { 0.0, 0.0, 0.0 };
@@ -119,7 +113,7 @@ void main()
 					// Remap coordinate from ndc [-1, 1] to normalized [0, 1]
 					coord.xy = (coord.xy + 1.0) * 0.5;
 
-					// Multi sample
+					// Multi saample
 					const uint map_index = getShadowMapIndex(flags);
 					float sum = 0.0;
 					for (int s=0; s<QUAD_SAMPLE_COUNT; s++) 
@@ -155,6 +149,18 @@ void main()
 				break;
 			}
 		}
+
+		// Sample environment map
+		if (ENABLE_ENVIRONMENT_MAPPING > 0 && ubo.environment > 0)
+		{
+			vec3 I = normalize(passPosition - vec3(0.0, 0.25, 0.0));
+			vec3 R = reflect(I, normalize(passNormal));
+			mat4 rot = rotationMatrix(vec3(0.0, 1.0, 0.0), ubo.elapsedTime * 0.1);
+			R = normalize((rot * vec4(R, 0.0)).xyz);
+			float env = texture(environmentMap, R).r;
+			shadow -= env;
+		}
+
 		color_result += color * (1.0 - shadow * sdw.strength[i]);
 	}
 

@@ -12,6 +12,7 @@ RTTI_BEGIN_CLASS(nap::MoveCameraComponent)
 	RTTI_PROPERTY("Intensity", &nap::MoveCameraComponent::mIntensityParam, nap::rtti::EPropertyMetaData::Required)
 	RTTI_PROPERTY("MultiplyIntensity", &nap::MoveCameraComponent::mMultiplyIntensity, nap::rtti::EPropertyMetaData::Default)
 	RTTI_PROPERTY("MoveExtents", &nap::MoveCameraComponent::mMoveExtents, nap::rtti::EPropertyMetaData::Default)
+	RTTI_PROPERTY("FocusDepth", &nap::MoveCameraComponent::mFocusDepth, nap::rtti::EPropertyMetaData::Default)
 	RTTI_PROPERTY("Enable", &nap::MoveCameraComponent::mEnable, nap::rtti::EPropertyMetaData::Default)
 RTTI_END_CLASS
 
@@ -58,5 +59,10 @@ namespace nap
 		};
 		auto translate = mCachedTransform->mTranslate + move_translate * mResource->mMoveExtents;
 		mTransformComponent->setTranslate(translate);
+
+		// Focus
+		const auto lookat_mat = glm::lookAt({ 0.0f, 0.0f, mResource->mFocusDepth }, translate, math::Y_AXIS);
+		const auto lookat_quat = glm::quat_cast(lookat_mat);
+		mTransformComponent->setRotate(lookat_quat);
 	}
 }

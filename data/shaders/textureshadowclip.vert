@@ -37,8 +37,10 @@ uniform UBO
 	vec3	specular;						//< Specular
 	vec2	fresnel;						//< Fresnel [scale, power]
 	float	shininess;						//< Shininess
+	float	reflection;						//< Reflection
 	float	alpha;							//< Alpha
 	uint	environment;					//< Whether to sample an environment map
+	float	elapsedTime;
 } ubo;
 
 // Vertex Input
