@@ -97,7 +97,7 @@
                 {
                     "Type": "nap::FFTAudioNodeComponent",
                     "mID": "FFTComponent",
-                    "Overlaps": "Five",
+                    "Overlaps": "Seven",
                     "Input": "./AudioPlayBack",
                     "Channel": 0
                 },
@@ -278,7 +278,7 @@
                     "Type": "nap::PerspCameraComponent",
                     "mID": "CenterShadowCamera",
                     "Properties": {
-                        "FieldOfView": 90.0,
+                        "FieldOfView": 60.0,
                         "NearClippingPlane": 0.10000000149011612,
                         "FarClippingPlane": 10.0,
                         "GridDimensions": {
@@ -398,7 +398,7 @@
                     "Type": "nap::PerspCameraComponent",
                     "mID": "LeftShadowCamera",
                     "Properties": {
-                        "FieldOfView": 90.0,
+                        "FieldOfView": 30.0,
                         "NearClippingPlane": 0.10000000149011612,
                         "FarClippingPlane": 10.0,
                         "GridDimensions": {
@@ -2943,7 +2943,7 @@
                     "Type": "nap::PerspCameraComponent",
                     "mID": "RightShadowCamera",
                     "Properties": {
-                        "FieldOfView": 90.0,
+                        "FieldOfView": 30.0,
                         "NearClippingPlane": 0.10000000149011612,
                         "FarClippingPlane": 10.0,
                         "GridDimensions": {
