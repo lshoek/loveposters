@@ -231,6 +231,7 @@ namespace nap
 
 		// Blit the input texture to the smaller size RT
 		utility::blit(command_buffer, mInputTarget->getColorTexture(), initial_texture);
+		assert(mInputTarget->hasDepthTexture());
 
 		int pass_count = 0;
 		for (auto& bloom_target : mBloomRTs)
@@ -239,7 +240,7 @@ namespace nap
 
 			// Horizontal
 			mColorTextureSampler->setTexture(*bloom_target[TARGET_A]->mColorTexture);
-			mDepthTextureSampler->setTexture(*mInputTarget->getDepthTexture());
+			mDepthTextureSampler->setTexture(mInputTarget->getDepthTexture());
 			mDirectionUniform->setValue({ 1.0f, 0.0f });
 			mTextureSizeUniform->setValue(bloom_target[TARGET_A]->mColorTexture->getSize());
 			mNearFarUniform->setValue({ mCamera->getNearClippingPlane(), mCamera->getFarClippingPlane() });
