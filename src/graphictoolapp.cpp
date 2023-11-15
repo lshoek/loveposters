@@ -13,6 +13,7 @@
 #include <renderdofcomponent.h>
 #include <funtransformcomponent.h>
 #include <audio/component/playbackcomponent.h>
+#include <depthsorter.h>
 
 namespace nap 
 {    
@@ -82,7 +83,7 @@ namespace nap
 
 			// Offscreen color pass -> Render all available geometry to the color texture bound to the render target.
 			mRenderTarget->beginRendering();
-			mRenderService->renderObjects(*mRenderTarget, cam, render_comps);
+			mRenderService->renderObjects(*mRenderTarget, cam, render_comps, std::bind(&sorter::sortObjectsByZ, std::placeholders::_1));
 			mRenderTarget->endRendering();
 
 			// DOF
@@ -190,10 +191,6 @@ namespace nap
 		{
 			for (auto& gui : mAppGUIs)
 				gui->draw(deltaTime);
-
-			//ImGui::Begin("DOF");
-			//ImGui::Image(*mResourceManager->findObject<RenderTexture2D>("DOFTexture"), { 1920.0f, 1080.0f });
-			//ImGui::End();
 		}
     }
 }
