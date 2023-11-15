@@ -31,7 +31,7 @@
                     "mID": "FFTWindow",
                     "Name": "FFT",
                     "EntityID": "AudioEntity",
-                    "Maximum": 0.5
+                    "Maximum": 5.0
                 }
             ],
             "Name": "Menu"
@@ -39,8 +39,8 @@
         {
             "Type": "nap::CubeMapFromFile",
             "mID": "MirrorBallCubeMap",
-            "Width": 1024,
-            "Height": 1024,
+            "Width": 256,
+            "Height": 256,
             "Format": "RGBA8",
             "ColorSpace": "Linear",
             "ClearColor": {
@@ -70,7 +70,7 @@
                     "Gain": 1.0,
                     "StereoPanning": 0.5,
                     "AutoPlay": true,
-                    "StartPosition": 0.0,
+                    "StartPosition": 9000.0,
                     "Duration": 0.0,
                     "FadeInTime": 0.0,
                     "FadeOutTime": 0.0,
@@ -107,21 +107,23 @@
                     "Parameters": [
                         {
                             "Type": "nap::OnsetDetectionComponent::FilterParameterItem",
-                            "mID": "FilterParameterItem_395c5f29",
+                            "mID": "LowPassFilter",
                             "Parameter": "LowOnsetParam",
                             "Multiplier": "MultiplyLowParam",
                             "ThresholdDecay": "OnsetThresholdDecayParam",
-                            "MinimumBin": 0,
-                            "MaximumBin": 8
+                            "MinimumBin": 1,
+                            "MaximumBin": 8,
+                            "SmoothTime": 0.02500000037252903
                         },
                         {
                             "Type": "nap::OnsetDetectionComponent::FilterParameterItem",
-                            "mID": "FilterParameterItem_79d91f0e",
+                            "mID": "HighPassFilter",
                             "Parameter": "HighOnsetParam",
                             "Multiplier": "MultiplyHighParam",
                             "ThresholdDecay": "OnsetThresholdDecayParam",
                             "MinimumBin": 110,
-                            "MaximumBin": 255
+                            "MaximumBin": 255,
+                            "SmoothTime": 0.02500000037252903
                         }
                     ]
                 }
@@ -170,7 +172,7 @@
                         "z": 0.5
                     },
                     "FocusDepth": 4.0,
-                    "Enable": true
+                    "Enable": false
                 },
                 {
                     "Type": "nap::PerspCameraComponent",
@@ -199,217 +201,6 @@
                 {
                     "Type": "nap::KeyInputComponent",
                     "mID": "KeyInputComponent"
-                }
-            ],
-            "Children": []
-        },
-        {
-            "Type": "nap::Entity",
-            "mID": "CenterSpotLightEntity",
-            "Components": [
-                {
-                    "Type": "nap::TransformComponent",
-                    "mID": "TransformLight",
-                    "Properties": {
-                        "Translate": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 1.0
-                        },
-                        "Rotate": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "Scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        },
-                        "UniformScale": 1.0
-                    }
-                },
-                {
-                    "Type": "nap::SpotLightComponent",
-                    "mID": "SpotLight",
-                    "Enabled": true,
-                    "Color": {
-                        "Type": "nap::ParameterEntryRGBColorFloat",
-                        "mID": "ParameterEntryRGBColorFloat_e4f0fa89",
-                        "Parameter": "",
-                        "Default": {
-                            "Values": [
-                                1.0,
-                                1.0,
-                                1.0
-                            ]
-                        }
-                    },
-                    "Intensity": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_4dbb2bfc",
-                        "Parameter": "",
-                        "Default": 1.0
-                    },
-                    "ShadowStrength": 0.5,
-                    "Enable Shadows": true,
-                    "ShadowCamera": "./CenterShadowCamera",
-                    "ShadowMapSize": 2048,
-                    "Attenuation": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_b49c3cc2",
-                        "Parameter": "",
-                        "Default": 1.0
-                    },
-                    "Angle": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_f499b46b",
-                        "Parameter": "",
-                        "Default": 20.0
-                    },
-                    "FallOff": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_c67b5bd7",
-                        "Parameter": "",
-                        "Default": 0.949999988079071
-                    }
-                },
-                {
-                    "Type": "nap::PerspCameraComponent",
-                    "mID": "CenterShadowCamera",
-                    "Properties": {
-                        "FieldOfView": 60.0,
-                        "NearClippingPlane": 0.10000000149011612,
-                        "FarClippingPlane": 10.0,
-                        "GridDimensions": {
-                            "x": 1,
-                            "y": 1
-                        },
-                        "GridLocation": {
-                            "x": 0,
-                            "y": 0
-                        }
-                    }
-                },
-                {
-                    "Type": "nap::RenderFrustumComponent",
-                    "mID": "RenderFrustum",
-                    "Visible": false,
-                    "Tags": [],
-                    "LayerRegistry": "",
-                    "Layer": "",
-                    "Mesh": "",
-                    "MaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "ConstantMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    },
-                    "LineWidth": 1.0,
-                    "ClipRect": {
-                        "Min": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "Max": {
-                            "x": 0.0,
-                            "y": 0.0
-                        }
-                    }
-                }
-            ],
-            "Children": []
-        },
-        {
-            "Type": "nap::Entity",
-            "mID": "LeftSpotLightEntity",
-            "Components": [
-                {
-                    "Type": "nap::TransformComponent",
-                    "mID": "TransformLeftSpotLight",
-                    "Properties": {
-                        "Translate": {
-                            "x": -1.5,
-                            "y": -0.25,
-                            "z": 1.0
-                        },
-                        "Rotate": {
-                            "x": 0.0,
-                            "y": -30.0,
-                            "z": 0.0
-                        },
-                        "Scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        },
-                        "UniformScale": 1.0
-                    }
-                },
-                {
-                    "Type": "nap::SpotLightComponent",
-                    "mID": "LeftSpotLight",
-                    "Enabled": true,
-                    "Color": {
-                        "Type": "nap::ParameterEntryRGBColorFloat",
-                        "mID": "ParameterEntryRGBColorFloat_d1169acd",
-                        "Parameter": "",
-                        "Default": {
-                            "Values": [
-                                1.0,
-                                0.0,
-                                0.0
-                            ]
-                        }
-                    },
-                    "Intensity": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_2419ec9c",
-                        "Parameter": "",
-                        "Default": 3.0
-                    },
-                    "ShadowStrength": 1.5,
-                    "Enable Shadows": true,
-                    "ShadowCamera": "./LeftShadowCamera",
-                    "ShadowMapSize": 1024,
-                    "Attenuation": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_b9b04e0c",
-                        "Parameter": "",
-                        "Default": 1.0
-                    },
-                    "Angle": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_74404af6",
-                        "Parameter": "",
-                        "Default": 4.0
-                    },
-                    "FallOff": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_3130a045",
-                        "Parameter": "",
-                        "Default": 0.75
-                    }
-                },
-                {
-                    "Type": "nap::PerspCameraComponent",
-                    "mID": "LeftShadowCamera",
-                    "Properties": {
-                        "FieldOfView": 30.0,
-                        "NearClippingPlane": 0.10000000149011612,
-                        "FarClippingPlane": 10.0,
-                        "GridDimensions": {
-                            "x": 1,
-                            "y": 1
-                        },
-                        "GridLocation": {
-                            "x": 0,
-                            "y": 0
-                        }
-                    }
                 }
             ],
             "Children": []
@@ -2870,11 +2661,102 @@
         },
         {
             "Type": "nap::Entity",
-            "mID": "RightSpotLightEntity",
+            "mID": "Spot01Entity",
             "Components": [
                 {
                     "Type": "nap::TransformComponent",
-                    "mID": "TransformRightSpotLight",
+                    "mID": "TransformSpot01",
+                    "Properties": {
+                        "Translate": {
+                            "x": -1.5,
+                            "y": -0.25,
+                            "z": 1.0
+                        },
+                        "Rotate": {
+                            "x": 0.0,
+                            "y": -30.0,
+                            "z": 0.0
+                        },
+                        "Scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        },
+                        "UniformScale": 1.0
+                    }
+                },
+                {
+                    "Type": "nap::SpotLightComponent",
+                    "mID": "Spot01",
+                    "Enabled": true,
+                    "Color": {
+                        "Type": "nap::ParameterEntryRGBColorFloat",
+                        "mID": "ParameterEntryRGBColorFloat_d1169acd",
+                        "Parameter": "",
+                        "Default": {
+                            "Values": [
+                                1.0,
+                                0.10980392247438431,
+                                0.0
+                            ]
+                        }
+                    },
+                    "Intensity": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_2419ec9c",
+                        "Parameter": "LowOnsetParam",
+                        "Default": 3.0
+                    },
+                    "ShadowStrength": 1.5,
+                    "Enable Shadows": true,
+                    "ShadowCamera": "./ShadowCameraSpot01",
+                    "ShadowMapSize": 1024,
+                    "Attenuation": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_b9b04e0c",
+                        "Parameter": "",
+                        "Default": 1.0
+                    },
+                    "Angle": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_74404af6",
+                        "Parameter": "",
+                        "Default": 4.0
+                    },
+                    "FallOff": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_3130a045",
+                        "Parameter": "",
+                        "Default": 0.75
+                    }
+                },
+                {
+                    "Type": "nap::PerspCameraComponent",
+                    "mID": "ShadowCameraSpot01",
+                    "Properties": {
+                        "FieldOfView": 30.0,
+                        "NearClippingPlane": 0.10000000149011612,
+                        "FarClippingPlane": 10.0,
+                        "GridDimensions": {
+                            "x": 1,
+                            "y": 1
+                        },
+                        "GridLocation": {
+                            "x": 0,
+                            "y": 0
+                        }
+                    }
+                }
+            ],
+            "Children": []
+        },
+        {
+            "Type": "nap::Entity",
+            "mID": "Spot02Entity",
+            "Components": [
+                {
+                    "Type": "nap::TransformComponent",
+                    "mID": "TransformSpot02",
                     "Properties": {
                         "Translate": {
                             "x": 1.5,
@@ -2882,7 +2764,7 @@
                             "z": 1.0
                         },
                         "Rotate": {
-                            "x": 0.0,
+                            "x": 10.0,
                             "y": 30.0,
                             "z": 0.0
                         },
@@ -2896,7 +2778,7 @@
                 },
                 {
                     "Type": "nap::SpotLightComponent",
-                    "mID": "RightSpotLight",
+                    "mID": "Spot02",
                     "Enabled": true,
                     "Color": {
                         "Type": "nap::ParameterEntryRGBColorFloat",
@@ -2913,12 +2795,12 @@
                     "Intensity": {
                         "Type": "nap::ParameterEntryFloat",
                         "mID": "ParameterEntryFloat_c95d42e2",
-                        "Parameter": "",
-                        "Default": 2.0
+                        "Parameter": "LowOnsetParam",
+                        "Default": 3.0
                     },
                     "ShadowStrength": 1.5,
                     "Enable Shadows": true,
-                    "ShadowCamera": "./RightShadowCamera",
+                    "ShadowCamera": "./ShadowCameraSpot02",
                     "ShadowMapSize": 1024,
                     "Attenuation": {
                         "Type": "nap::ParameterEntryFloat",
@@ -2941,7 +2823,7 @@
                 },
                 {
                     "Type": "nap::PerspCameraComponent",
-                    "mID": "RightShadowCamera",
+                    "mID": "ShadowCameraSpot02",
                     "Properties": {
                         "FieldOfView": 30.0,
                         "NearClippingPlane": 0.10000000149011612,
@@ -2953,6 +2835,217 @@
                         "GridLocation": {
                             "x": 0,
                             "y": 0
+                        }
+                    }
+                }
+            ],
+            "Children": []
+        },
+        {
+            "Type": "nap::Entity",
+            "mID": "Spot03Entity",
+            "Components": [
+                {
+                    "Type": "nap::TransformComponent",
+                    "mID": "TransformSpot03",
+                    "Properties": {
+                        "Translate": {
+                            "x": 0.75,
+                            "y": -0.75,
+                            "z": 1.0
+                        },
+                        "Rotate": {
+                            "x": 10.0,
+                            "y": 20.0,
+                            "z": 0.0
+                        },
+                        "Scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        },
+                        "UniformScale": 1.0
+                    }
+                },
+                {
+                    "Type": "nap::SpotLightComponent",
+                    "mID": "Spot03",
+                    "Enabled": true,
+                    "Color": {
+                        "Type": "nap::ParameterEntryRGBColorFloat",
+                        "mID": "ParameterEntryRGBColorFloat_c5acb3f8",
+                        "Parameter": "",
+                        "Default": {
+                            "Values": [
+                                1.0,
+                                0.6039215922355652,
+                                0.0
+                            ]
+                        }
+                    },
+                    "Intensity": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_7a2b13d0",
+                        "Parameter": "LowOnsetParam",
+                        "Default": 2.0
+                    },
+                    "ShadowStrength": 1.5,
+                    "Enable Shadows": true,
+                    "ShadowCamera": "./ShadowCameraSpot03",
+                    "ShadowMapSize": 1024,
+                    "Attenuation": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_019af07b",
+                        "Parameter": "",
+                        "Default": 1.0
+                    },
+                    "Angle": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_0f084d37",
+                        "Parameter": "",
+                        "Default": 4.0
+                    },
+                    "FallOff": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_5a14b6a9",
+                        "Parameter": "",
+                        "Default": 0.800000011920929
+                    }
+                },
+                {
+                    "Type": "nap::PerspCameraComponent",
+                    "mID": "ShadowCameraSpot03",
+                    "Properties": {
+                        "FieldOfView": 30.0,
+                        "NearClippingPlane": 0.10000000149011612,
+                        "FarClippingPlane": 10.0,
+                        "GridDimensions": {
+                            "x": 1,
+                            "y": 1
+                        },
+                        "GridLocation": {
+                            "x": 0,
+                            "y": 0
+                        }
+                    }
+                }
+            ],
+            "Children": []
+        },
+        {
+            "Type": "nap::Entity",
+            "mID": "SpotCenterEntity",
+            "Components": [
+                {
+                    "Type": "nap::TransformComponent",
+                    "mID": "TransformLight",
+                    "Properties": {
+                        "Translate": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 1.0
+                        },
+                        "Rotate": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "Scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        },
+                        "UniformScale": 1.0
+                    }
+                },
+                {
+                    "Type": "nap::SpotLightComponent",
+                    "mID": "SpotLight",
+                    "Enabled": true,
+                    "Color": {
+                        "Type": "nap::ParameterEntryRGBColorFloat",
+                        "mID": "ParameterEntryRGBColorFloat_e4f0fa89",
+                        "Parameter": "",
+                        "Default": {
+                            "Values": [
+                                1.0,
+                                1.0,
+                                1.0
+                            ]
+                        }
+                    },
+                    "Intensity": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_4dbb2bfc",
+                        "Parameter": "",
+                        "Default": 1.0
+                    },
+                    "ShadowStrength": 0.5,
+                    "Enable Shadows": true,
+                    "ShadowCamera": "./CenterShadowCamera",
+                    "ShadowMapSize": 2048,
+                    "Attenuation": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_b49c3cc2",
+                        "Parameter": "",
+                        "Default": 1.0
+                    },
+                    "Angle": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_f499b46b",
+                        "Parameter": "",
+                        "Default": 20.0
+                    },
+                    "FallOff": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_c67b5bd7",
+                        "Parameter": "",
+                        "Default": 0.949999988079071
+                    }
+                },
+                {
+                    "Type": "nap::PerspCameraComponent",
+                    "mID": "CenterShadowCamera",
+                    "Properties": {
+                        "FieldOfView": 60.0,
+                        "NearClippingPlane": 0.10000000149011612,
+                        "FarClippingPlane": 10.0,
+                        "GridDimensions": {
+                            "x": 1,
+                            "y": 1
+                        },
+                        "GridLocation": {
+                            "x": 0,
+                            "y": 0
+                        }
+                    }
+                },
+                {
+                    "Type": "nap::RenderFrustumComponent",
+                    "mID": "RenderFrustum",
+                    "Visible": false,
+                    "Tags": [],
+                    "LayerRegistry": "",
+                    "Layer": "",
+                    "Mesh": "",
+                    "MaterialInstance": {
+                        "Uniforms": [],
+                        "Samplers": [],
+                        "Buffers": [],
+                        "Constants": [],
+                        "Material": "ConstantMaterial",
+                        "BlendMode": "NotSet",
+                        "DepthMode": "NotSet"
+                    },
+                    "LineWidth": 1.0,
+                    "ClipRect": {
+                        "Min": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "Max": {
+                            "x": 0.0,
+                            "y": 0.0
                         }
                     }
                 }
@@ -2988,9 +3081,10 @@
             ],
             "Children": [
                 "PosterEntity",
-                "CenterSpotLightEntity",
-                "LeftSpotLightEntity",
-                "RightSpotLightEntity"
+                "SpotCenterEntity",
+                "Spot01Entity",
+                "Spot02Entity",
+                "Spot03Entity"
             ]
         },
         {
@@ -3049,24 +3143,24 @@
                     "mID": "HighOnsetParam",
                     "Name": "HighOnset",
                     "Value": 0.0,
-                    "Minimum": 0.0,
-                    "Maximum": 1.0
+                    "Minimum": 0.10000000149011612,
+                    "Maximum": 5.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
                     "mID": "LowOnsetParam",
                     "Name": "LowOnset",
                     "Value": 0.0,
-                    "Minimum": 0.0,
-                    "Maximum": 1.0
+                    "Minimum": 0.10000000149011612,
+                    "Maximum": 5.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
                     "mID": "MidOnsetParam",
                     "Name": "MidOnset",
                     "Value": 0.0,
-                    "Minimum": 0.0,
-                    "Maximum": 1.0
+                    "Minimum": 0.10000000149011612,
+                    "Maximum": 5.0
                 }
             ],
             "Groups": []
@@ -3214,7 +3308,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "OnsetThresholdDecayParam",
                     "Name": "OnsetThresholdDecay",
-                    "Value": 0.8999999761581421,
+                    "Value": 0.6000000238418579,
                     "Minimum": 0.0,
                     "Maximum": 1.0
                 }

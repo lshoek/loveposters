@@ -155,7 +155,7 @@ void main()
 		{
 			vec3 I = normalize(passPosition - vec3(0.0, 0.25, 0.0));
 			vec3 R = reflect(I, normalize(passNormal));
-			mat4 rot = rotationMatrix(vec3(0.0, 1.0, 0.0), ubo.elapsedTime * 0.1);
+			mat4 rot = rotationMatrix(vec3(0.0, 1.0, 0.0), ubo.elapsedTime * 0.075);
 			R = normalize((rot * vec4(R, 0.0)).xyz);
 			float env = texture(environmentMap, R).r;
 			shadow -= env;
