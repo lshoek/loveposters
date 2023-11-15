@@ -70,7 +70,7 @@
                     "Gain": 1.0,
                     "StereoPanning": 0.5,
                     "AutoPlay": true,
-                    "StartPosition": 9000.0,
+                    "StartPosition": 5000.0,
                     "Duration": 0.0,
                     "FadeInTime": 0.0,
                     "FadeOutTime": 0.0,
@@ -172,7 +172,7 @@
                         "z": 0.5
                     },
                     "FocusDepth": 4.0,
-                    "Enable": false
+                    "Enable": true
                 },
                 {
                     "Type": "nap::PerspCameraComponent",
@@ -362,7 +362,7 @@
                     "BlendGroup": "ParameterBlendGroup",
                     "PresetIndex": "PresetIndexParam",
                     "PresetBlendTime": "PresetBlendTimeParam",
-                    "BlendOnInit": false,
+                    "BlendOnInit": true,
                     "IgnoreNonBlendable": true
                 }
             ],
@@ -462,7 +462,7 @@
                                 "AddressModeHorizontal": "ClampToEdge",
                                 "MinLodLevel": 0,
                                 "MaxLodLevel": 1000,
-                                "LodBias": -1.0,
+                                "LodBias": 0.0,
                                 "AnisotropicSamples": "Default",
                                 "BorderColor": "IntOpaqueBlack",
                                 "CompareMode": "LessOrEqual",
@@ -1531,7 +1531,7 @@
                 {
                     "Type": "nap::FunTransformComponent",
                     "mID": "MovePosterLayer08",
-                    "Movement": "MidOnsetParam",
+                    "Movement": "LowOnsetParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "ScaleIntensity": "ScaleIntensityParam",
@@ -2156,7 +2156,7 @@
                 {
                     "Type": "nap::FunTransformComponent",
                     "mID": "MovePosterLayer13",
-                    "Movement": "MidOnsetParam",
+                    "Movement": "LowOnsetParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "ScaleIntensity": "ScaleIntensityParam",
@@ -2167,8 +2167,8 @@
                     "MultiplyRotation": 0.5,
                     "MultiplyScale": 1.0,
                     "MultiplyTranslation": {
-                        "x": 0.25,
-                        "y": 0.25
+                        "x": 0.5,
+                        "y": 0.5
                     },
                     "RandomOffset": true,
                     "Enable": true
@@ -2292,8 +2292,8 @@
                     "MultiplyRotation": 0.5,
                     "MultiplyScale": 1.0,
                     "MultiplyTranslation": {
-                        "x": 0.25,
-                        "y": 0.25
+                        "x": 0.4000000059604645,
+                        "y": 0.4000000059604645
                     },
                     "RandomOffset": true,
                     "Enable": true
@@ -2417,8 +2417,8 @@
                     "MultiplyRotation": 0.5,
                     "MultiplyScale": 1.0,
                     "MultiplyTranslation": {
-                        "x": 0.25,
-                        "y": 0.25
+                        "x": 0.30000001192092898,
+                        "y": 0.30000001192092898
                     },
                     "RandomOffset": true,
                     "Enable": true
@@ -3153,14 +3153,6 @@
                     "Value": 0.0,
                     "Minimum": 0.10000000149011612,
                     "Maximum": 5.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "MidOnsetParam",
-                    "Name": "MidOnset",
-                    "Value": 0.0,
-                    "Minimum": 0.10000000149011612,
-                    "Maximum": 5.0
                 }
             ],
             "Groups": []
@@ -3300,7 +3292,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "MultiplyHighParam",
                     "Name": "MultiplyHigh",
-                    "Value": 1.0,
+                    "Value": 10.0,
                     "Minimum": 0.0,
                     "Maximum": 100.0
                 },
@@ -3308,7 +3300,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "OnsetThresholdDecayParam",
                     "Name": "OnsetThresholdDecay",
-                    "Value": 0.6000000238418579,
+                    "Value": 0.30000001192092898,
                     "Minimum": 0.0,
                     "Maximum": 1.0
                 }
@@ -3404,7 +3396,7 @@
                 {
                     "Type": "nap::audio::AudioFileResource",
                     "mID": "AudioFile",
-                    "AudioFilePath": "poweroflove.mp3"
+                    "AudioFilePath": "airpowerbeyourself.wav"
                 }
             ],
             "Children": []

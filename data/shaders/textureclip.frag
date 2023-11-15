@@ -10,7 +10,7 @@ out vec4 out_Color;
 
 uniform sampler2D colorTexture;
 
-const float EPSILON = 0.01;
+const float EPSILON = 0.005;
 
 void main(void)
 {

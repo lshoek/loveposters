@@ -188,11 +188,12 @@ namespace nap
 
         mCurrentPlaylistItemDuration = mPlaylist[0].mAverageDuration;
         mCurrentPlaylistItemElapsedTime = 0;
-        mCurrentPlaylistIndex = 0;
+		mCurrentPlaylistIndex = 0;
 
 		if (isEnabled())
         {
-            mCurrentPlaylistItem = &mPlaylist[mCurrentPlaylistIndex];
+			//mCurrentPlaylistItem = &mPlaylist[mCurrentPlaylistIndex];
+			setItem(mCurrentPlaylistIndex);
 
             for(auto& group : mCurrentPlaylistItem->mGroups)
             {

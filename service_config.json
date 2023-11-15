@@ -91,6 +91,46 @@
                     ]
                 },
                 "InvertIcons": false
+            },
+            "Style": {
+                "AntiAliasedLines": true,
+                "AntiAliasedFill": true,
+                "WindowPadding": {
+                    "x": 10.0,
+                    "y": 10.0
+                },
+                "WindowRounding": 0.0,
+                "FramePadding": {
+                    "x": 5.0,
+                    "y": 5.0
+                },
+                "FrameRounding": 0.0,
+                "ItemSpacing": {
+                    "x": 12.0,
+                    "y": 6.0
+                },
+                "ItemInnerSpacing": {
+                    "x": 8.0,
+                    "y": 6.0
+                },
+                "IndentSpacing": 25.0,
+                "ScrollbarSize": 13.0,
+                "ScrollbarRounding": 0.0,
+                "GrabMinSize": 5.0,
+                "GrabRounding": 0.0,
+                "WindowBorderSize": 0.0,
+                "PopupRounding": 0.0,
+                "ChildRounding": 0.0,
+                "WindowTitleAlign": {
+                    "x": 0.5,
+                    "y": 0.5
+                },
+                "PopupBorderSize": 0.0,
+                "TabRounding": 0.0,
+                "TouchExtraPadding": {
+                    "x": 0.0,
+                    "y": 0.0
+                }
             }
         },
         {
@@ -101,8 +141,9 @@
         {
             "Type": "nap::RenderAdvancedServiceConfiguration",
             "mID": "RenderAdvancedServiceConfiguration_347e50e8-60a9-467c-a8c0-1b6c401c8cc1",
-            "ShadowDepthFormat": "D32",
-            "ShadowDepthFormatCube": "D32"
+            "ShadowDepthFormat": "D16",
+            "ShadowDepthFormatCube": "D16",
+            "EnableShadowMapping": true
         },
         {
             "Type": "nap::RenderServiceConfiguration",
@@ -114,11 +155,12 @@
             ],
             "Extensions": [],
             "VulkanMajor": 1,
-            "VulkanMinor": 0,
+            "VulkanMinor": 3,
             "AnisotropicSamples": 8,
             "EnableHighDPI": true,
             "EnableCompute": true,
             "EnableCaching": true,
+            "EnableDebug": true,
             "EnableRobustBufferAccess": false,
             "ShowLayers": false,
             "ShowExtensions": false
@@ -127,9 +169,9 @@
             "Type": "nap::audio::AudioServiceConfiguration",
             "mID": "AudioServiceConfiguration_67215e84-29bf-487a-a0d1-a9d7fa1647ae",
             "Audio Device Settings": {
-                "HostApi": "ASIO",
-                "InputDevice": "Focusrite USB ASIO",
-                "OutputDevice": "Focusrite USB ASIO",
+                "HostApi": "Windows DirectSound",
+                "InputDevice": "Analogue 1 + 2 (Focusrite USB Audio)",
+                "OutputDevice": "Speakers (Focusrite USB Audio)",
                 "InputChannelCount": 2,
                 "OutputChannelCount": 2,
                 "DisableInput": false,
