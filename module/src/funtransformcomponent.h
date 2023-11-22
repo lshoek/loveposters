@@ -26,15 +26,12 @@ namespace nap
 		ResourcePtr<ParameterFloat> mIntensityParam;
 
 		ResourcePtr<ParameterFloat> mRotationIntensityParam;
-		ResourcePtr<ParameterFloat> mScaleIntensityParam;
+		ResourcePtr<ParameterFloat> mRotationAccumulatorIntensityParam;
+
 		ResourcePtr<ParameterFloat> mTranslateXIntensityParam;
 		ResourcePtr<ParameterFloat> mTranslateYIntensityParam;
 
-		ResourcePtr<ParameterFloat> mRotationAccumulatorIntensityParam;
-		ResourcePtr<ParameterFloat> mScaleAccumulatorIntensityParam;
-
 		float mMultiplyRotation = 1.0f;
-		float mMultiplyScale = 1.0f;
 		glm::vec2 mMultiplyTranslation = { 1.0f, 1.0f };
 
 		bool mRandomOffset = false;
@@ -85,7 +82,6 @@ namespace nap
 
 		float mRotationTime = 0.0f;
 		float mRotationAccumulator = 0.0f;
-		float mScaleAccumulator = 0.0f;
 		glm::vec2 mTranslationAccumulator = { 0.0f, 0.0f };
 
 		bool mEnabled = true;

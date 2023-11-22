@@ -10,13 +10,10 @@ RTTI_BEGIN_CLASS(nap::FunTransformComponent)
 	RTTI_PROPERTY("Movement", &nap::FunTransformComponent::mMovementParam, nap::rtti::EPropertyMetaData::Required)
 	RTTI_PROPERTY("Intensity", &nap::FunTransformComponent::mIntensityParam, nap::rtti::EPropertyMetaData::Required)
 	RTTI_PROPERTY("RotationIntensity", &nap::FunTransformComponent::mRotationIntensityParam, nap::rtti::EPropertyMetaData::Required)
-	RTTI_PROPERTY("ScaleIntensity", &nap::FunTransformComponent::mScaleIntensityParam, nap::rtti::EPropertyMetaData::Required)
+	RTTI_PROPERTY("RotationAccumulatorIntensity", &nap::FunTransformComponent::mRotationAccumulatorIntensityParam, nap::rtti::EPropertyMetaData::Required)
 	RTTI_PROPERTY("TranslateXIntensity", &nap::FunTransformComponent::mTranslateXIntensityParam, nap::rtti::EPropertyMetaData::Required)
 	RTTI_PROPERTY("TranslateYIntensity", &nap::FunTransformComponent::mTranslateYIntensityParam, nap::rtti::EPropertyMetaData::Required)
-	RTTI_PROPERTY("RotationAccumulatorIntensity", &nap::FunTransformComponent::mRotationAccumulatorIntensityParam, nap::rtti::EPropertyMetaData::Required)
-	RTTI_PROPERTY("ScaleAccumulatorIntensity", &nap::FunTransformComponent::mScaleAccumulatorIntensityParam, nap::rtti::EPropertyMetaData::Required)
 	RTTI_PROPERTY("MultiplyRotation", &nap::FunTransformComponent::mMultiplyRotation, nap::rtti::EPropertyMetaData::Default)
-	RTTI_PROPERTY("MultiplyScale", &nap::FunTransformComponent::mMultiplyScale, nap::rtti::EPropertyMetaData::Default)
 	RTTI_PROPERTY("MultiplyTranslation", &nap::FunTransformComponent::mMultiplyTranslation, nap::rtti::EPropertyMetaData::Default)
 	RTTI_PROPERTY("RandomOffset", &nap::FunTransformComponent::mRandomOffset, nap::rtti::EPropertyMetaData::Default)
 	RTTI_PROPERTY("Enable", &nap::FunTransformComponent::mEnable, nap::rtti::EPropertyMetaData::Default)
@@ -92,18 +89,6 @@ namespace nap
 			float theta = glm::simplex<float>(glm::vec2(input + mRandomSeed.x, mRandomSeed.x) * sMaxRotationDeviation) * 0.5f * glm::pi<float>();
 			auto rotate = glm::rotate(glm::identity<glm::quat>(), theta * 0.25f, math::Z_AXIS) * mResource->mMultiplyRotation;
 			mTransformComponent->setRotate(rotate);
-		}
-
-		// Scale
-		if (mResource->mMultiplyScale > 0.0f)
-		{
-			mScaleAccumulator += movement * mResource->mScaleAccumulatorIntensityParam->mValue * static_cast<float>(deltaTime);
-			float strength = glm::simplex<float>(glm::vec2(mScaleAccumulator + mRandomSeed.y, mRandomSeed.y));
-
-			float scale_movement = movement * mResource->mScaleIntensityParam->mValue;
-			float scale_combined = (scale_movement + strength) * sMaxScaleDeviation * mResource->mMultiplyScale;
-			float uniform_scale = mCachedTransform->mUniformScale * (1.0f + scale_combined);
-			mTransformComponent->setUniformScale(uniform_scale);
 		}
 
 		// Translation

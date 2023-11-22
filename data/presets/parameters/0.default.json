@@ -8,7 +8,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "IntensityParam",
                     "Name": "Intensity",
-                    "Value": 0.10000000149011612,
+                    "Value": 1.0,
                     "Minimum": 0.0,
                     "Maximum": 2.0
                 },
@@ -32,7 +32,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "RotationAccumulatorIntensityParam",
                     "Name": "RotationAccumulatorIntensity",
-                    "Value": 30.0,
+                    "Value": 15.0,
                     "Minimum": 0.0,
                     "Maximum": 100.0
                 },
@@ -48,7 +48,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "TranslateXIntensityParam",
                     "Name": "TranslateX",
-                    "Value": 1.0,
+                    "Value": 0.4659999907016754,
                     "Minimum": 0.0,
                     "Maximum": 10.0
                 },
@@ -56,7 +56,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "TranslateYIntensityParam",
                     "Name": "TranslateY",
-                    "Value": 1.6410000324249268,
+                    "Value": 0.8700000047683716,
                     "Minimum": 0.0,
                     "Maximum": 10.0
                 },
@@ -64,7 +64,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "BloomIntensityParam",
                     "Name": "BloomIntensity",
-                    "Value": 0.546999990940094,
+                    "Value": 0.75,
                     "Minimum": 0.0,
                     "Maximum": 10.0
                 },
@@ -75,30 +75,6 @@
                     "Value": 1.5,
                     "Minimum": 0.0,
                     "Maximum": 10.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "ApertureParam",
-                    "Name": "Aperture",
-                    "Value": 1.2000000476837159,
-                    "Minimum": 0.0,
-                    "Maximum": 10.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "FocalDistanceParam",
-                    "Name": "FocalDistance",
-                    "Value": 0.5699999928474426,
-                    "Minimum": 0.0,
-                    "Maximum": 1.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "FocusDistanceParam",
-                    "Name": "FocusDistance",
-                    "Value": 1.25,
-                    "Minimum": 0.0,
-                    "Maximum": 2.0
                 }
             ],
             "Groups": []

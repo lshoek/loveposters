@@ -13,25 +13,32 @@
             "Items": [
                 {
                     "Type": "nap::ParameterWindow",
-                    "mID": "ParameterWindow",
-                    "Name": "Parameters",
+                    "mID": "PresetWindow",
+                    "Name": "Preset",
                     "ParameterGUIs": [
-                        "ParameterGUI",
+                        "ParameterGUI"
+                    ]
+                },
+                {
+                    "Type": "nap::ParameterWindow",
+                    "mID": "ParameterWindow_2545984e",
+                    "Name": "Global Parameters",
+                    "ParameterGUIs": [
                         "LevelParameterGUI",
                         "EtcParameterGUI"
                     ]
                 },
                 {
-                    "Type": "nap::audio::AudioDeviceSettingsWindow",
-                    "mID": "AudioDeviceSettingsWindow",
-                    "Name": "Audio Settings"
-                },
-                {
                     "Type": "nap::FFTWindow",
-                    "mID": "FFTWindow",
+                    "mID": "FFTWindow_a0a4960e",
                     "Name": "FFT",
                     "EntityID": "AudioEntity",
-                    "Maximum": 5.0
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::audio::AudioDeviceSettingsWindow",
+                    "mID": "AudioDeviceSettingsWindow_29878e6c",
+                    "Name": "Audio Settings"
                 }
             ],
             "Name": "Menu"
@@ -60,37 +67,10 @@
             "mID": "AudioEntity",
             "Components": [
                 {
-                    "Type": "nap::audio::PlaybackComponent",
-                    "mID": "AudioPlayBack",
-                    "Buffer": "AudioFile",
-                    "ChannelRouting": [
-                        0,
-                        1
-                    ],
-                    "Gain": 1.0,
-                    "StereoPanning": 0.5,
-                    "AutoPlay": true,
-                    "StartPosition": 5000.0,
-                    "Duration": 0.0,
-                    "FadeInTime": 0.0,
-                    "FadeOutTime": 0.0,
-                    "Pitch": 1.0
-                },
-                {
-                    "Type": "nap::audio::OutputComponent",
-                    "mID": "AudioOutput",
-                    "Input": "./AudioPlayBack",
-                    "Routing": [
-                        0,
-                        1
-                    ]
-                },
-                {
                     "Type": "nap::audio::AudioInputComponent",
                     "mID": "AudioInput",
                     "Channels": [
-                        0,
-                        1
+                        0
                     ],
                     "Gain": 1.0
                 },
@@ -98,7 +78,7 @@
                     "Type": "nap::FFTAudioNodeComponent",
                     "mID": "FFTComponent",
                     "Overlaps": "Seven",
-                    "Input": "./AudioPlayBack",
+                    "Input": "./AudioInput",
                     "Channel": 0
                 },
                 {
@@ -110,22 +90,23 @@
                             "mID": "LowPassFilter",
                             "Parameter": "LowOnsetParam",
                             "Multiplier": "MultiplyLowParam",
-                            "ThresholdDecay": "OnsetThresholdDecayParam",
-                            "MinimumBin": 1,
+                            "ThresholdDecay": "LowThresholdDecayParam",
+                            "MinimumBin": 0,
                             "MaximumBin": 8,
-                            "SmoothTime": 0.02500000037252903
+                            "SmoothTime": 0.030000001192092897
                         },
                         {
                             "Type": "nap::OnsetDetectionComponent::FilterParameterItem",
                             "mID": "HighPassFilter",
                             "Parameter": "HighOnsetParam",
                             "Multiplier": "MultiplyHighParam",
-                            "ThresholdDecay": "OnsetThresholdDecayParam",
-                            "MinimumBin": 110,
+                            "ThresholdDecay": "HighThresholdDecayParam",
+                            "MinimumBin": 8,
                             "MaximumBin": 255,
-                            "SmoothTime": 0.02500000037252903
+                            "SmoothTime": 0.030000001192092897
                         }
-                    ]
+                    ],
+                    "Enable": true
                 }
             ],
             "Children": []
@@ -522,13 +503,10 @@
                     "Movement": "LowOnsetParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
+                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
                     "MultiplyRotation": 1.0,
-                    "MultiplyScale": 1.0,
                     "MultiplyTranslation": {
                         "x": 0.5,
                         "y": 0.5
@@ -659,13 +637,10 @@
                     "Movement": "LowOnsetParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
+                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
                     "MultiplyRotation": 0.5,
-                    "MultiplyScale": 1.0,
                     "MultiplyTranslation": {
                         "x": 0.5,
                         "y": 0.5
@@ -784,13 +759,10 @@
                     "Movement": "LowOnsetParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
+                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
                     "MultiplyRotation": 0.5,
-                    "MultiplyScale": 1.0,
                     "MultiplyTranslation": {
                         "x": 0.5,
                         "y": 0.5
@@ -909,13 +881,10 @@
                     "Movement": "HighOnsetParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
+                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
                     "MultiplyRotation": 1.0,
-                    "MultiplyScale": 1.0,
                     "MultiplyTranslation": {
                         "x": 0.5,
                         "y": 0.5
@@ -1034,13 +1003,10 @@
                     "Movement": "LowOnsetParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
+                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
                     "MultiplyRotation": 1.0,
-                    "MultiplyScale": 1.0,
                     "MultiplyTranslation": {
                         "x": 0.5,
                         "y": 0.5
@@ -1159,13 +1125,10 @@
                     "Movement": "LowOnsetParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
+                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
                     "MultiplyRotation": 1.0,
-                    "MultiplyScale": 1.0,
                     "MultiplyTranslation": {
                         "x": 0.5,
                         "y": 0.5
@@ -1284,13 +1247,10 @@
                     "Movement": "LowOnsetParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
+                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
                     "MultiplyRotation": 1.0,
-                    "MultiplyScale": 1.0,
                     "MultiplyTranslation": {
                         "x": 0.5,
                         "y": 0.5
@@ -1409,13 +1369,10 @@
                     "Movement": "LowOnsetParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
+                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
                     "MultiplyRotation": 1.0,
-                    "MultiplyScale": 1.0,
                     "MultiplyTranslation": {
                         "x": 0.5,
                         "y": 0.5
@@ -1534,13 +1491,10 @@
                     "Movement": "LowOnsetParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
+                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
                     "MultiplyRotation": 0.5,
-                    "MultiplyScale": 1.0,
                     "MultiplyTranslation": {
                         "x": 0.25,
                         "y": 0.25
@@ -1659,13 +1613,10 @@
                     "Movement": "LowOnsetParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
+                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
                     "MultiplyRotation": 1.0,
-                    "MultiplyScale": 1.0,
                     "MultiplyTranslation": {
                         "x": 0.5,
                         "y": 0.5
@@ -1784,13 +1735,10 @@
                     "Movement": "HighOnsetParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
+                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
                     "MultiplyRotation": 1.0,
-                    "MultiplyScale": 1.0,
                     "MultiplyTranslation": {
                         "x": 0.5,
                         "y": 0.5
@@ -1909,13 +1857,10 @@
                     "Movement": "LowOnsetParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
+                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
                     "MultiplyRotation": 1.0,
-                    "MultiplyScale": 1.0,
                     "MultiplyTranslation": {
                         "x": 0.5,
                         "y": 0.5
@@ -2034,13 +1979,10 @@
                     "Movement": "LowOnsetParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
+                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
                     "MultiplyRotation": 1.0,
-                    "MultiplyScale": 1.0,
                     "MultiplyTranslation": {
                         "x": 0.5,
                         "y": 0.5
@@ -2159,13 +2101,10 @@
                     "Movement": "LowOnsetParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
+                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
                     "MultiplyRotation": 0.5,
-                    "MultiplyScale": 1.0,
                     "MultiplyTranslation": {
                         "x": 0.5,
                         "y": 0.5
@@ -2284,13 +2223,10 @@
                     "Movement": "HighOnsetParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
+                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
                     "MultiplyRotation": 0.5,
-                    "MultiplyScale": 1.0,
                     "MultiplyTranslation": {
                         "x": 0.4000000059604645,
                         "y": 0.4000000059604645
@@ -2409,13 +2345,10 @@
                     "Movement": "LowOnsetParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
+                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "ScaleAccumulatorIntensity": "ScaleAccumulatorIntensityParam",
                     "MultiplyRotation": 0.5,
-                    "MultiplyScale": 1.0,
                     "MultiplyTranslation": {
                         "x": 0.30000001192092898,
                         "y": 0.30000001192092898
@@ -2661,7 +2594,7 @@
         },
         {
             "Type": "nap::Entity",
-            "mID": "Spot01Entity",
+            "mID": "Spot001Entity",
             "Components": [
                 {
                     "Type": "nap::TransformComponent",
@@ -2704,7 +2637,7 @@
                     "Intensity": {
                         "Type": "nap::ParameterEntryFloat",
                         "mID": "ParameterEntryFloat_2419ec9c",
-                        "Parameter": "LowOnsetParam",
+                        "Parameter": "LowOnsetLightParam",
                         "Default": 3.0
                     },
                     "ShadowStrength": 1.5,
@@ -2795,7 +2728,7 @@
                     "Intensity": {
                         "Type": "nap::ParameterEntryFloat",
                         "mID": "ParameterEntryFloat_c95d42e2",
-                        "Parameter": "LowOnsetParam",
+                        "Parameter": "LowOnsetLightParam",
                         "Default": 3.0
                     },
                     "ShadowStrength": 1.5,
@@ -2886,7 +2819,7 @@
                     "Intensity": {
                         "Type": "nap::ParameterEntryFloat",
                         "mID": "ParameterEntryFloat_7a2b13d0",
-                        "Parameter": "LowOnsetParam",
+                        "Parameter": "HighOnsetLightParam",
                         "Default": 2.0
                     },
                     "ShadowStrength": 1.5,
@@ -3082,7 +3015,7 @@
             "Children": [
                 "PosterEntity",
                 "SpotCenterEntity",
-                "Spot01Entity",
+                "Spot001Entity",
                 "Spot02Entity",
                 "Spot03Entity"
             ]
@@ -3098,7 +3031,7 @@
             "Type": "nap::OSCReceiver",
             "mID": "OSCReceiver",
             "Port": 7000,
-            "EnableDebugOutput": false,
+            "EnableDebugOutput": true,
             "AllowPortReuse": false
         },
         {
@@ -3107,6 +3040,14 @@
             "Parameters": [],
             "RootGroup": "Parameters",
             "BlendAll": true
+        },
+        {
+            "Type": "nap::ParameterFloat",
+            "mID": "MultiplyMidParam",
+            "Name": "MultiplyMid",
+            "Value": 1.0,
+            "Minimum": 0.0,
+            "Maximum": 100.0
         },
         {
             "Type": "nap::ParameterFloat",
@@ -3143,16 +3084,36 @@
                     "mID": "HighOnsetParam",
                     "Name": "HighOnset",
                     "Value": 0.0,
-                    "Minimum": 0.10000000149011612,
-                    "Maximum": 5.0
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
                     "mID": "LowOnsetParam",
                     "Name": "LowOnset",
                     "Value": 0.0,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterMultiplyFloat",
+                    "mID": "HighOnsetLightParam",
+                    "Name": "HighOnsetLight",
+                    "Value": 0.0,
                     "Minimum": 0.10000000149011612,
-                    "Maximum": 5.0
+                    "Maximum": 5.0,
+                    "InputParameter": "HighOnsetParam",
+                    "Multiply": 5.0
+                },
+                {
+                    "Type": "nap::ParameterMultiplyFloat",
+                    "mID": "LowOnsetLightParam",
+                    "Name": "LowOnsetLight",
+                    "Value": 0.10000000149011612,
+                    "Minimum": 0.0,
+                    "Maximum": 5.0,
+                    "InputParameter": "LowOnsetParam",
+                    "Multiply": 5.0
                 }
             ],
             "Groups": []
@@ -3179,27 +3140,11 @@
                 },
                 {
                     "Type": "nap::ParameterFloat",
-                    "mID": "ScaleIntensityParam",
-                    "Name": "ScaleIntensity",
-                    "Value": 0.0,
-                    "Minimum": 0.0,
-                    "Maximum": 0.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
                     "mID": "RotationAccumulatorIntensityParam",
                     "Name": "RotationAccumulatorIntensity",
                     "Value": 0.0,
                     "Minimum": 0.0,
-                    "Maximum": 100.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "ScaleAccumulatorIntensityParam",
-                    "Name": "ScaleAccumulatorIntensity",
-                    "Value": 0.0,
-                    "Minimum": 0.0,
-                    "Maximum": 0.0
+                    "Maximum": 20.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
@@ -3207,7 +3152,7 @@
                     "Name": "TranslateX",
                     "Value": 0.0,
                     "Minimum": 0.0,
-                    "Maximum": 10.0
+                    "Maximum": 2.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
@@ -3215,7 +3160,7 @@
                     "Name": "TranslateY",
                     "Value": 0.0,
                     "Minimum": 0.0,
-                    "Maximum": 10.0
+                    "Maximum": 2.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
@@ -3223,7 +3168,7 @@
                     "Name": "BloomIntensity",
                     "Value": 0.0,
                     "Minimum": 0.0,
-                    "Maximum": 10.0
+                    "Maximum": 4.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
@@ -3232,6 +3177,53 @@
                     "Value": 0.0,
                     "Minimum": 0.0,
                     "Maximum": 10.0
+                }
+            ],
+            "Groups": []
+        },
+        {
+            "Type": "nap::ParameterGroup",
+            "mID": "ParametersGlobal",
+            "Parameters": [
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "TogglePlaylistControlParam",
+                    "Name": "TogglePlaylistControl",
+                    "Value": 1.0,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "MultiplyLowParam",
+                    "Name": "MultiplyLow",
+                    "Value": 1.0,
+                    "Minimum": 0.0,
+                    "Maximum": 100.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "MultiplyHighParam",
+                    "Name": "MultiplyHigh",
+                    "Value": 2.0,
+                    "Minimum": 0.0,
+                    "Maximum": 100.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "LowThresholdDecayParam",
+                    "Name": "LowThresholdDecay",
+                    "Value": 0.30000001192092898,
+                    "Minimum": 0.0,
+                    "Maximum": 0.8999999761581421
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "HighThresholdDecayParam",
+                    "Name": "HighThresholdDecay",
+                    "Value": 0.20000000298023225,
+                    "Minimum": 0.0,
+                    "Maximum": 0.8999999761581421
                 },
                 {
                     "Type": "nap::ParameterFloat",
@@ -3261,59 +3253,23 @@
             "Groups": []
         },
         {
-            "Type": "nap::ParameterGroup",
-            "mID": "ParametersGlobal",
-            "Parameters": [
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "TogglePlaylistControlParam",
-                    "Name": "TogglePlaylistControl",
-                    "Value": 1.0,
-                    "Minimum": 0.0,
-                    "Maximum": 1.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "MultiplyLowParam",
-                    "Name": "MultiplyLow",
-                    "Value": 1.0,
-                    "Minimum": 0.0,
-                    "Maximum": 100.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "MultiplyMidParam",
-                    "Name": "MultiplyMid",
-                    "Value": 1.0,
-                    "Minimum": 0.0,
-                    "Maximum": 100.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "MultiplyHighParam",
-                    "Name": "MultiplyHigh",
-                    "Value": 10.0,
-                    "Minimum": 0.0,
-                    "Maximum": 100.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "OnsetThresholdDecayParam",
-                    "Name": "OnsetThresholdDecay",
-                    "Value": 0.30000001192092898,
-                    "Minimum": 0.0,
-                    "Maximum": 1.0
-                }
-            ],
-            "Groups": []
-        },
-        {
             "Type": "nap::ParameterInt",
             "mID": "PresetIndexParam",
             "Name": "PresetIndex",
             "Value": 0,
             "Minimum": 0,
             "Maximum": 1
+        },
+        {
+            "Type": "nap::RenderLayerRegistry",
+            "mID": "RenderLayerRegistry_e1af11c3",
+            "Layers": [
+                {
+                    "Type": "nap::RenderLayer",
+                    "mID": "RenderLayer_49414818",
+                    "Name": ""
+                }
+            ]
         },
         {
             "Type": "nap::RenderTagGroup",
@@ -3388,18 +3344,6 @@
             "AdditionalSwapImages": 1,
             "RestoreSize": true,
             "RestorePosition": true
-        },
-        {
-            "Type": "nap::ResourceGroup",
-            "mID": "Audio",
-            "Members": [
-                {
-                    "Type": "nap::audio::AudioFileResource",
-                    "mID": "AudioFile",
-                    "AudioFilePath": "airpowerbeyourself.wav"
-                }
-            ],
-            "Children": []
         },
         {
             "Type": "nap::ResourceGroup",
