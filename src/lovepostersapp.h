@@ -24,11 +24,7 @@ namespace nap
 	using namespace rtti;
 
     /**
-     * Example application, called from within the main loop.
-	 * 
-	 * Use this app as a template for other apps that are created directly in 'source'.
-	 * This example links to and uses it's own custom module: 'mod_example'.
-	 * More information and documentation can be found at: https://www.napframework.com/doxygen/
+     * LovePostersApp
      */
     class LovePostersApp : public App 
 	{

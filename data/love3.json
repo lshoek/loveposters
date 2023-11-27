@@ -77,8 +77,8 @@
                 {
                     "Type": "nap::FFTAudioNodeComponent",
                     "mID": "FFTComponent",
-                    "Overlaps": "Seven",
-                    "Input": "./AudioInput",
+                    "Overlaps": "Three",
+                    "Input": "./Playback",
                     "Channel": 0
                 },
                 {
@@ -107,6 +107,20 @@
                         }
                     ],
                     "Enable": true
+                },
+                {
+                    "Type": "nap::audio::PlaybackComponent",
+                    "mID": "Playback",
+                    "Buffer": "AudioFile",
+                    "ChannelRouting": [],
+                    "Gain": 1.0,
+                    "StereoPanning": 0.5,
+                    "AutoPlay": true,
+                    "StartPosition": 0.0,
+                    "Duration": 0.0,
+                    "FadeInTime": 0.0,
+                    "FadeOutTime": 0.0,
+                    "Pitch": 1.0
                 }
             ],
             "Children": []
@@ -2521,6 +2535,12 @@
                                         "mID": "UniformFloat_5a1d06e5",
                                         "Name": "blend",
                                         "Value": 0.0
+                                    },
+                                    {
+                                        "Type": "nap::UniformFloat",
+                                        "mID": "abberation_83e34423",
+                                        "Name": "abberation",
+                                        "Value": 0.009999999776482582
                                     }
                                 ]
                             }
@@ -3962,6 +3982,11 @@
                     "InstanceProperties": []
                 }
             ]
+        },
+        {
+            "Type": "nap::audio::AudioFileResource",
+            "mID": "AudioFile",
+            "AudioFilePath": "hang.mp3"
         }
     ]
 }
