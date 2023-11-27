@@ -169,9 +169,9 @@
             "Type": "nap::audio::AudioServiceConfiguration",
             "mID": "AudioServiceConfiguration_67215e84-29bf-487a-a0d1-a9d7fa1647ae",
             "Audio Device Settings": {
-                "HostApi": "Windows DirectSound",
-                "InputDevice": "Analogue 1 + 2 (Focusrite USB Audio)",
-                "OutputDevice": "Speakers (Focusrite USB Audio)",
+                "HostApi": "ASIO",
+                "InputDevice": "Focusrite USB ASIO",
+                "OutputDevice": "Focusrite USB ASIO",
                 "InputChannelCount": 2,
                 "OutputChannelCount": 2,
                 "DisableInput": false,

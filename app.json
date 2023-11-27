@@ -1,13 +1,13 @@
 {
     "Type": "nap::ProjectInfo",
     "mID": "ProjectInfo",
-    "Title": "Graphic Tool",
+    "Title": "Love Posters",
     "Version": "1.0.0",
     "Data": "data/love3.json",
     "PathMapping": "cache/path_mapping.json",
     "ServiceConfig": "service_config.json",
     "RequiredModules": [
-        "napgraphictool",
+        "naploveposters",
         "napapp",
         "napimgui"
     ]

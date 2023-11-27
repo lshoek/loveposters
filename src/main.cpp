@@ -1,7 +1,7 @@
 // main.cpp : Defines the entry point for the console application.
 //
 // Local Includes
-#include "graphictoolapp.h"
+#include "lovepostersapp.h"
 
 // Nap includes
 #include <apprunner.h>
@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 
     // Create the application runner, based on the app to run
 	// and event handler that is used to forward information into the app.
-    nap::AppRunner<nap::GraphicToolApp, nap::GUIAppEventHandler> app_runner(core);
+    nap::AppRunner<nap::LovePostersApp, nap::GUIAppEventHandler> app_runner(core);
 
     // Start running
     nap::utility::ErrorState error;

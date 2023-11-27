@@ -6,12 +6,12 @@
 
 namespace nap
 {
-	class NAPAPI GraphicToolService : public Service
+	class NAPAPI LovePostersService : public Service
 	{
 		RTTI_ENABLE(Service)
 	public:
 		// Default Constructor
-		GraphicToolService(ServiceConfiguration* configuration) : Service(configuration)	{ }
+		LovePostersService(ServiceConfiguration* configuration) : Service(configuration)	{ }
 
 		/**
 		 * Use this call to register service dependencies

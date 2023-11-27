@@ -1,5 +1,5 @@
 // Local Includes
-#include "graphictoolapp.h"
+#include "lovepostersapp.h"
 
 // External Includes
 #include <utility/fileutils.h>
@@ -17,7 +17,7 @@
 
 namespace nap 
 {    
-    bool GraphicToolApp::init(utility::ErrorState& error)
+    bool LovePostersApp::init(utility::ErrorState& error)
     {
 		// Retrieve services
 		mRenderService			= getCore().getService<nap::RenderService>();
@@ -60,7 +60,7 @@ namespace nap
 
 
     // Called when the window is going to render
-    void GraphicToolApp::render()
+    void LovePostersApp::render()
     {
 		// Signal the beginning of a new frame, allowing it to be recorded.
 		// The system might wait until all commands that were previously associated with the new frame have been processed on the GPU.
@@ -133,13 +133,13 @@ namespace nap
     }
 
 
-    void GraphicToolApp::windowMessageReceived(WindowEventPtr windowEvent)
+    void LovePostersApp::windowMessageReceived(WindowEventPtr windowEvent)
     {
 		mRenderService->addEvent(std::move(windowEvent));
     }
 
 
-    void GraphicToolApp::inputMessageReceived(InputEventPtr inputEvent)
+    void LovePostersApp::inputMessageReceived(InputEventPtr inputEvent)
     {
 		// If we pressed escape, quit the loop
 		if (inputEvent->get_type().is_derived_from(RTTI_OF(KeyPressEvent)))
@@ -180,7 +180,7 @@ namespace nap
     }
 
 
-    void GraphicToolApp::update(double deltaTime)
+    void LovePostersApp::update(double deltaTime)
     {
 		// Use a default input router to forward input events (recursively) to all input components in the scene
 		// This is explicit because we don't know what entity should handle the events from a specific window.

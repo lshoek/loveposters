@@ -58,7 +58,7 @@
                     0.0
                 ]
             },
-            "SourceTexture": "MirrorBallEquiTexture",
+            "ImagePath": "images/equimirrorball.png",
             "SampleShading": false,
             "GenerateLODs": true
         },
@@ -3019,13 +3019,6 @@
                 "Spot02Entity",
                 "Spot03Entity"
             ]
-        },
-        {
-            "Type": "nap::ImageFromFile",
-            "mID": "MirrorBallEquiTexture",
-            "Usage": "Static",
-            "ImagePath": "images/equimirrorball.png",
-            "GenerateLods": false
         },
         {
             "Type": "nap::OSCReceiver",

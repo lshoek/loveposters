@@ -30,13 +30,13 @@ namespace nap
 	 * This example links to and uses it's own custom module: 'mod_example'.
 	 * More information and documentation can be found at: https://www.napframework.com/doxygen/
      */
-    class GraphicToolApp : public App 
+    class LovePostersApp : public App 
 	{
     public:
 		/**
 		 * Constructor
 		 */
-        GraphicToolApp(nap::Core& core) : App(core) {}
+        LovePostersApp(nap::Core& core) : App(core) {}
 
         /**
          * Initialize all the services and app specific data structures
