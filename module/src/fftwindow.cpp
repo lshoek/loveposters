@@ -10,7 +10,7 @@
 #include <imguiservice.h>
 #include <imguiutils.h>
 #include <appguiservice.h>
-#include <onsetdetectioncomponent.h>
+#include <fluxmeasurementcomponent.h>
 
 RTTI_BEGIN_CLASS_NO_DEFAULT_CONSTRUCTOR(nap::FFTWindow)
     RTTI_CONSTRUCTOR(nap::AppGUIService&)
@@ -20,7 +20,7 @@ RTTI_END_CLASS
 
 namespace nap
 {
-	bool FFTWindow::fetchFFTAudioComponent(FFTAudioComponentInstance*& outComponent, utility::ErrorState& errorState)
+	bool FFTWindow::fetchFFTAudioComponent(FFTAudioNodeComponentInstance*& outComponent, utility::ErrorState& errorState)
 	{
 		// Quite hacky but very useful
 		const auto scene = mGuiService->getCore().getResourceManager()->findObject<Scene>("Scene");
@@ -37,8 +37,8 @@ namespace nap
 			return false;
 		}
 
-		std::vector<FFTAudioComponentInstance*> comps;
-		entity->getComponentsOfTypeRecursive<FFTAudioComponentInstance>(comps);
+		std::vector<FFTAudioNodeComponentInstance*> comps;
+		entity->getComponentsOfTypeRecursive<FFTAudioNodeComponentInstance>(comps);
 
 		if (comps.empty())
 		{
@@ -60,7 +60,7 @@ namespace nap
 
 	void FFTWindow::drawContent(double deltaTime)
 	{
-		FFTAudioComponentInstance* fft_comp = nullptr;
+		FFTAudioNodeComponentInstance* fft_comp = nullptr;
 		utility::ErrorState error_state;
 		if (!fetchFFTAudioComponent(fft_comp, error_state))
 		{
@@ -80,8 +80,8 @@ namespace nap
 		//ImGui::SliderFloat("Centroid", &centroid, 0.0f, 1.0f);
 
 		// Onset detection
-		std::vector<OnsetDetectionComponentInstance*> onset_comps;
-		fft_comp->getEntityInstance()->getComponentsOfTypeRecursive<OnsetDetectionComponentInstance>(onset_comps);
+		std::vector<FluxMeasurementComponentInstance*> onset_comps;
+		fft_comp->getEntityInstance()->getComponentsOfTypeRecursive<FluxMeasurementComponentInstance>(onset_comps);
 
 		if (!onset_comps.empty())
 		{

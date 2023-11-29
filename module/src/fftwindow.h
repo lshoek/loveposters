@@ -1,7 +1,7 @@
 #pragma once
 
 // Local includes
-#include "fftaudiocomponent.h"
+#include <fftaudionodecomponent.h>
 
 // External Includes
 #include <appguiwidget.h>
@@ -34,7 +34,7 @@ namespace nap
 		/**
 		 *
 		 */
-		bool fetchFFTAudioComponent(FFTAudioComponentInstance*& outComponent, utility::ErrorState& errorState);
+		bool fetchFFTAudioComponent(FFTAudioNodeComponentInstance*& outComponent, utility::ErrorState& errorState);
 
 		IMGuiService* mGuiService = nullptr;
 

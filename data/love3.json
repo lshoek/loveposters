@@ -76,33 +76,33 @@
                 },
                 {
                     "Type": "nap::FFTAudioNodeComponent",
-                    "mID": "FFTComponent",
+                    "mID": "FFTAudioNodeComponent",
                     "Overlaps": "Three",
                     "Input": "./Playback",
                     "Channel": 0
                 },
                 {
-                    "Type": "nap::OnsetDetectionComponent",
-                    "mID": "OnsetDetection",
+                    "Type": "nap::FluxMeasurementComponent",
+                    "mID": "FluxMeasurement",
                     "Parameters": [
                         {
-                            "Type": "nap::OnsetDetectionComponent::FilterParameterItem",
+                            "Type": "nap::FluxMeasurementComponent::FilterParameterItem",
                             "mID": "LowPassFilter",
-                            "Parameter": "LowOnsetParam",
+                            "Parameter": "LowFrequencyFluxParam",
                             "Multiplier": "MultiplyLowParam",
                             "ThresholdDecay": "LowThresholdDecayParam",
-                            "MinimumBin": 0,
-                            "MaximumBin": 8,
+                            "MinHertz": 0.0,
+                            "MaxHertz": 2000.0,
                             "SmoothTime": 0.030000001192092897
                         },
                         {
-                            "Type": "nap::OnsetDetectionComponent::FilterParameterItem",
+                            "Type": "nap::FluxMeasurementComponent::FilterParameterItem",
                             "mID": "HighPassFilter",
-                            "Parameter": "HighOnsetParam",
+                            "Parameter": "HighFrequencyFluxParam",
                             "Multiplier": "MultiplyHighParam",
                             "ThresholdDecay": "HighThresholdDecayParam",
-                            "MinimumBin": 8,
-                            "MaximumBin": 255,
+                            "MinHertz": 2000.0,
+                            "MaxHertz": 10000.0,
                             "SmoothTime": 0.030000001192092897
                         }
                     ],
@@ -158,7 +158,7 @@
                 {
                     "Type": "nap::MoveCameraComponent",
                     "mID": "MoveCamera",
-                    "Movement": "LowOnsetParam",
+                    "Movement": "LowFrequencyFluxParam",
                     "Intensity": "CameraSpeedParam",
                     "MultiplyIntensity": 0.05000000074505806,
                     "MoveExtents": {
@@ -514,7 +514,7 @@
                 {
                     "Type": "nap::FunTransformComponent",
                     "mID": "MovePosterLayer01",
-                    "Movement": "LowOnsetParam",
+                    "Movement": "LowFrequencyFluxParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
@@ -648,7 +648,7 @@
                 {
                     "Type": "nap::FunTransformComponent",
                     "mID": "MovePosterLayer022",
-                    "Movement": "LowOnsetParam",
+                    "Movement": "LowFrequencyFluxParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
@@ -770,7 +770,7 @@
                 {
                     "Type": "nap::FunTransformComponent",
                     "mID": "MovePosterLayer02",
-                    "Movement": "LowOnsetParam",
+                    "Movement": "LowFrequencyFluxParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
@@ -892,7 +892,7 @@
                 {
                     "Type": "nap::FunTransformComponent",
                     "mID": "MovePosterLayer03",
-                    "Movement": "HighOnsetParam",
+                    "Movement": "HighFrequencyFluxParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
@@ -1014,7 +1014,7 @@
                 {
                     "Type": "nap::FunTransformComponent",
                     "mID": "MovePosterLayer04",
-                    "Movement": "LowOnsetParam",
+                    "Movement": "LowFrequencyFluxParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
@@ -1136,7 +1136,7 @@
                 {
                     "Type": "nap::FunTransformComponent",
                     "mID": "MovePosterLayer05",
-                    "Movement": "LowOnsetParam",
+                    "Movement": "LowFrequencyFluxParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
@@ -1258,7 +1258,7 @@
                 {
                     "Type": "nap::FunTransformComponent",
                     "mID": "MovePosterLayer06",
-                    "Movement": "LowOnsetParam",
+                    "Movement": "LowFrequencyFluxParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
@@ -1380,7 +1380,7 @@
                 {
                     "Type": "nap::FunTransformComponent",
                     "mID": "MovePosterLayer07",
-                    "Movement": "LowOnsetParam",
+                    "Movement": "LowFrequencyFluxParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
@@ -1502,7 +1502,7 @@
                 {
                     "Type": "nap::FunTransformComponent",
                     "mID": "MovePosterLayer08",
-                    "Movement": "LowOnsetParam",
+                    "Movement": "LowFrequencyFluxParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
@@ -1624,7 +1624,7 @@
                 {
                     "Type": "nap::FunTransformComponent",
                     "mID": "MovePosterLayer09",
-                    "Movement": "LowOnsetParam",
+                    "Movement": "LowFrequencyFluxParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
@@ -1746,7 +1746,7 @@
                 {
                     "Type": "nap::FunTransformComponent",
                     "mID": "MovePosterLayer11",
-                    "Movement": "HighOnsetParam",
+                    "Movement": "HighFrequencyFluxParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
@@ -1868,7 +1868,7 @@
                 {
                     "Type": "nap::FunTransformComponent",
                     "mID": "MovePosterLayer12",
-                    "Movement": "LowOnsetParam",
+                    "Movement": "LowFrequencyFluxParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
@@ -1990,7 +1990,7 @@
                 {
                     "Type": "nap::FunTransformComponent",
                     "mID": "MovePosterLayer10",
-                    "Movement": "LowOnsetParam",
+                    "Movement": "LowFrequencyFluxParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
@@ -2112,7 +2112,7 @@
                 {
                     "Type": "nap::FunTransformComponent",
                     "mID": "MovePosterLayer13",
-                    "Movement": "LowOnsetParam",
+                    "Movement": "LowFrequencyFluxParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
@@ -2234,7 +2234,7 @@
                 {
                     "Type": "nap::FunTransformComponent",
                     "mID": "MovePosterLayer14",
-                    "Movement": "HighOnsetParam",
+                    "Movement": "HighFrequencyFluxParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
@@ -2356,7 +2356,7 @@
                 {
                     "Type": "nap::FunTransformComponent",
                     "mID": "MovePosterLayer15",
-                    "Movement": "LowOnsetParam",
+                    "Movement": "LowFrequencyFluxParam",
                     "Intensity": "IntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
@@ -2590,7 +2590,7 @@
                     "Type": "nap::ControlBloomComponent",
                     "mID": "ControlBloom",
                     "BaseIntensity": 0.20000000298023225,
-                    "Movement": "HighOnsetParam",
+                    "Movement": "HighFrequencyFluxParam",
                     "Intensity": "BloomIntensityParam",
                     "RenderToTexture": "./BlendTogether"
                 },
@@ -2657,7 +2657,7 @@
                     "Intensity": {
                         "Type": "nap::ParameterEntryFloat",
                         "mID": "ParameterEntryFloat_2419ec9c",
-                        "Parameter": "LowOnsetLightParam",
+                        "Parameter": "LowFrequencyFluxLightParam",
                         "Default": 3.0
                     },
                     "ShadowStrength": 1.5,
@@ -2748,7 +2748,7 @@
                     "Intensity": {
                         "Type": "nap::ParameterEntryFloat",
                         "mID": "ParameterEntryFloat_c95d42e2",
-                        "Parameter": "LowOnsetLightParam",
+                        "Parameter": "LowFrequencyFluxLightParam",
                         "Default": 3.0
                     },
                     "ShadowStrength": 1.5,
@@ -2839,7 +2839,7 @@
                     "Intensity": {
                         "Type": "nap::ParameterEntryFloat",
                         "mID": "ParameterEntryFloat_7a2b13d0",
-                        "Parameter": "HighOnsetLightParam",
+                        "Parameter": "HighFrequencyFluxLightParam",
                         "Default": 2.0
                     },
                     "ShadowStrength": 1.5,
@@ -3094,38 +3094,38 @@
             "Parameters": [
                 {
                     "Type": "nap::ParameterFloat",
-                    "mID": "HighOnsetParam",
-                    "Name": "HighOnset",
+                    "mID": "HighFrequencyFluxParam",
+                    "Name": "HighFrequencyFlux",
                     "Value": 0.0,
                     "Minimum": 0.0,
                     "Maximum": 1.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
-                    "mID": "LowOnsetParam",
-                    "Name": "LowOnset",
+                    "mID": "LowFrequencyFluxParam",
+                    "Name": "LowFrequencyFlux",
                     "Value": 0.0,
                     "Minimum": 0.0,
                     "Maximum": 1.0
                 },
                 {
                     "Type": "nap::ParameterMultiplyFloat",
-                    "mID": "HighOnsetLightParam",
-                    "Name": "HighOnsetLight",
+                    "mID": "HighFrequencyFluxLightParam",
+                    "Name": "HighFrequencyFluxLight",
                     "Value": 0.0,
                     "Minimum": 0.10000000149011612,
                     "Maximum": 5.0,
-                    "InputParameter": "HighOnsetParam",
+                    "InputParameter": "HighFrequencyFluxParam",
                     "Multiply": 5.0
                 },
                 {
                     "Type": "nap::ParameterMultiplyFloat",
-                    "mID": "LowOnsetLightParam",
-                    "Name": "LowOnsetLight",
+                    "mID": "LowFrequencyFluxLightParam",
+                    "Name": "LowFrequencyFluxLight",
                     "Value": 0.10000000149011612,
                     "Minimum": 0.0,
                     "Maximum": 5.0,
-                    "InputParameter": "LowOnsetParam",
+                    "InputParameter": "LowFrequencyFluxParam",
                     "Multiply": 5.0
                 }
             ],
@@ -3272,17 +3272,6 @@
             "Value": 0,
             "Minimum": 0,
             "Maximum": 1
-        },
-        {
-            "Type": "nap::RenderLayerRegistry",
-            "mID": "RenderLayerRegistry_e1af11c3",
-            "Layers": [
-                {
-                    "Type": "nap::RenderLayer",
-                    "mID": "RenderLayer_49414818",
-                    "Name": ""
-                }
-            ]
         },
         {
             "Type": "nap::RenderTagGroup",
