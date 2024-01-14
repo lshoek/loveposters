@@ -5,6 +5,7 @@
 #include <parametervec.h>
 #include <parametersimple.h>
 #include <parametercolor.h>
+#include <uniforminstance.h>
 
 namespace nap
 {
@@ -68,5 +69,40 @@ namespace nap
 
 		UniformStructInstance* mUniformStruct = nullptr;
 		float mElapsedTime = 0.0f;
+
+		// Update handlers
+		template<typename T>
+		void onUniformValueUpdate(T value, TypedUniformValueInstance<T>* uniformInstance)
+		{
+			assert(uniformInstance != nullptr);
+			uniformInstance->setValue(value);
+		}
+
+		void onUniformRGBColorUpdate(RGBColorFloat value, UniformVec3Instance* uniformInstance)
+		{
+			assert(uniformInstance != nullptr);
+			uniformInstance->setValue(value.toVec3());
+		}
+
+		void onUniformRGBAColorUpdate(RGBAColorFloat value, UniformVec4Instance* uniformInstance)
+		{
+			assert(uniformInstance != nullptr);
+			uniformInstance->setValue(value.toVec4());
+		}
+
+		void onUniformBoolUpdate(bool value, UniformUIntInstance* uniformInstance)
+		{
+			assert(uniformInstance != nullptr);
+			uniformInstance->setValue(value);
+		}
+
+		// Slots
+		Slot<RGBAColorFloat>	mAmbientChangedSlot;
+		Slot<RGBColorFloat>		mDiffuseChangedSlot;
+		Slot<RGBColorFloat>		mSpecularChangedSlot;
+		Slot<glm::vec2>			mFresnelChangedSlot;
+		Slot<float>				mShininessChangedSlot;
+		Slot<float>				mAlphaChangedSlot;
+		Slot<bool>				mEnvironmentChangedSlot;
 	};
 }

@@ -4,7 +4,6 @@
 #include <entity.h>
 #include <renderablemeshcomponent.h>
 #include <blinnphongcolorshader.h>
-#include <uniformupdate.h>
 
 // nap::UpdateMaterialComponent run time class definition 
 RTTI_BEGIN_CLASS(nap::UpdateMaterialComponent)
@@ -51,31 +50,59 @@ namespace nap
 
 		auto* ambient = uni->getOrCreateUniform<UniformVec4Instance>("ambient");
 		if (ambient != nullptr && mResource->mAmbient != nullptr)
-			registerUniformUpdate(*ambient, *mResource->mAmbient);
-
+		{
+			ambient->setValue(mResource->mAmbient->mValue);
+			mAmbientChangedSlot.setFunction(std::bind(&UpdateMaterialComponentInstance::onUniformRGBAColorUpdate, this, std::placeholders::_1, ambient));
+			mResource->mAmbient->valueChanged.connect(mAmbientChangedSlot);
+		}
+		
 		auto* diffuse = uni->getOrCreateUniform<UniformVec3Instance>("diffuse");
 		if (diffuse != nullptr && mResource->mDiffuse != nullptr)
-			registerUniformUpdate(*diffuse, *mResource->mDiffuse);
+		{
+			diffuse->setValue(mResource->mDiffuse->mValue);
+			mDiffuseChangedSlot.setFunction(std::bind(&UpdateMaterialComponentInstance::onUniformRGBColorUpdate, this, std::placeholders::_1, diffuse));
+			mResource->mDiffuse->valueChanged.connect(mDiffuseChangedSlot);
+		}
 
 		auto* specular = uni->getOrCreateUniform<UniformVec3Instance>("specular");
 		if (specular != nullptr && mResource->mSpecular != nullptr)
-			registerUniformUpdate(*specular, *mResource->mSpecular);
+		{
+			specular->setValue(mResource->mSpecular->mValue);
+			mSpecularChangedSlot.setFunction(std::bind(&UpdateMaterialComponentInstance::onUniformRGBColorUpdate, this, std::placeholders::_1, specular));
+			mResource->mSpecular->valueChanged.connect(mSpecularChangedSlot);
+		}
 
 		auto* fresnel = uni->getOrCreateUniform<UniformVec2Instance>("fresnel");
 		if (fresnel != nullptr && mResource->mFresnel != nullptr)
-			registerUniformUpdate(*fresnel, *mResource->mFresnel);
+		{
+			fresnel->setValue(mResource->mFresnel->mValue);
+			mFresnelChangedSlot.setFunction(std::bind(&UpdateMaterialComponentInstance::onUniformValueUpdate<glm::vec2>, this, std::placeholders::_1, fresnel));
+			mResource->mFresnel->valueChanged.connect(mFresnelChangedSlot);
+		}
 
 		auto* shininess = uni->getOrCreateUniform<UniformFloatInstance>("shininess");
 		if (shininess != nullptr && mResource->mShininess != nullptr)
-			registerUniformUpdate(*shininess, *mResource->mShininess);
+		{
+			shininess->setValue(mResource->mShininess->mValue);
+			mShininessChangedSlot.setFunction(std::bind(&UpdateMaterialComponentInstance::onUniformValueUpdate<float>, this, std::placeholders::_1, shininess));
+			mResource->mShininess->valueChanged.connect(mShininessChangedSlot);
+		}
 
 		auto* alpha = uni->getOrCreateUniform<UniformFloatInstance>("alpha");
 		if (alpha != nullptr && mResource->mAlpha != nullptr)
-			registerUniformUpdate(*alpha, *mResource->mAlpha);
+		{
+			alpha->setValue(mResource->mAlpha->mValue);
+			mAlphaChangedSlot.setFunction(std::bind(&UpdateMaterialComponentInstance::onUniformValueUpdate<float>, this, std::placeholders::_1, alpha));
+			mResource->mAlpha->valueChanged.connect(mAlphaChangedSlot);
+		}
 
 		auto* environment = uni->getOrCreateUniform<UniformUIntInstance>("environment");
 		if (environment != nullptr && mResource->mEnvironment != nullptr)
-			registerUniformUpdate(*environment, *mResource->mEnvironment);
+		{
+			environment->setValue(mResource->mEnvironment->mValue);
+			mEnvironmentChangedSlot.setFunction(std::bind(&UpdateMaterialComponentInstance::onUniformBoolUpdate, this, std::placeholders::_1, environment));
+			mResource->mEnvironment->valueChanged.connect(mEnvironmentChangedSlot);
+		}
 
 		return true;
 	}
