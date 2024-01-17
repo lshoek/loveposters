@@ -9,7 +9,8 @@
         "naposc",
         "napappgui",
         "napparametergui",
-        "napfft"
+        "napfft",
+        "napmiditwister"
     ],
     "WindowsDllSearchPaths": []
 }

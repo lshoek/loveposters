@@ -7,16 +7,6 @@ uniform nap
 	mat4 modelMatrix;
 } mvp;
 
-uniform UBO
-{
-	vec2 textureSize;	// The size of 'colorTexture', used to pre-calculate sampling coordinates in vertex shader
-	vec2 direction;		// The sampling direction
-	vec2 nearFar;		// camera near/far planes
-	float aperture;
-	float focalDistance;
-	float focusDistance;
-} ubo;
-
 in vec3 in_Position;
 in vec3 in_UV0;
 

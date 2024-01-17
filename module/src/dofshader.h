@@ -31,8 +31,8 @@ namespace nap
 			inline constexpr const char* direction = "direction";					///< Direction of the blur e.g. {1.0, 0.0} for horizontal, {0.0, 1.0} for vertical 
 			inline constexpr const char* nearFar = "nearFar";
 			inline constexpr const char* aperture = "aperture";
-			inline constexpr const char* focalDistance = "focalDistance";
 			inline constexpr const char* focusDistance = "focusDistance";
+			inline constexpr const char* focalLength = "focalLength";
 		}
 	}
 

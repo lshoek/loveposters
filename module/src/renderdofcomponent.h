@@ -35,9 +35,8 @@ namespace nap
 		uint								mPassCount = 1;									///< Property: 'PassCount' the number of combined horizontal/vertical passes
 
 		ResourcePtr<ParameterFloat> mAperture;
-		ResourcePtr<ParameterFloat> mFocalDistance;
+		ResourcePtr<ParameterFloat> mFocalLength;
 		ResourcePtr<ParameterFloat> mFocusDistance;
-
 	};
 
 
@@ -137,8 +136,8 @@ namespace nap
 		UniformVec2Instance*		mDirectionUniform = nullptr;		///< Direction uniform of the blur material
 		UniformVec2Instance*		mTextureSizeUniform = nullptr;		///< Texture size uniform of the blur material
 		UniformVec2Instance*		mNearFarUniform = nullptr;			///< 
-		UniformFloatInstance*		mApertureUniform = nullptr;			///< 
-		UniformFloatInstance*		mFocalDistanceUniform = nullptr;	///< 
+		UniformFloatInstance*		mApertureUniform = nullptr;			///<
+		UniformFloatInstance*		mFocalLengthUniform = nullptr;		///<
 		UniformFloatInstance*		mFocusDistanceUniform = nullptr;	///< 
 
 		/**

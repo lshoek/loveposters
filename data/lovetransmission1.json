@@ -16,13 +16,14 @@
                     "mID": "PresetWindow",
                     "Name": "Preset",
                     "ParameterGUIs": [
-                        "ParameterGUI"
+                        "ParameterGUI",
+                        "ParameterGUICamera"
                     ]
                 },
                 {
                     "Type": "nap::ParameterWindow",
                     "mID": "ParameterWindow_2545984e",
-                    "Name": "Global Parameters",
+                    "Name": "Other Parameters",
                     "ParameterGUIs": [
                         "LevelParameterGUI",
                         "EtcParameterGUI"
@@ -144,7 +145,7 @@
                         "Translate": {
                             "x": 0.0,
                             "y": 0.0,
-                            "z": 0.5
+                            "z": 0.0
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -170,12 +171,12 @@
                     "Intensity": "CameraSpeedParam",
                     "MultiplyIntensity": 0.05000000074505806,
                     "MoveExtents": {
-                        "x": 0.75,
-                        "y": 0.5,
-                        "z": 0.5
+                        "x": 1.0,
+                        "y": 0.75,
+                        "z": 1.5
                     },
-                    "FocusDepth": 4.0,
-                    "Enable": false
+                    "FocusDepth": 1.0,
+                    "Enable": true
                 },
                 {
                     "Type": "nap::PerspCameraComponent",
@@ -2958,7 +2959,7 @@
                     "InputTarget": "ColorTarget",
                     "OutputTexture": "DOFTexture",
                     "Aperture": "ApertureParam",
-                    "FocalDistance": "FocalDistanceParam",
+                    "FocalLength": "FocalLengthParam",
                     "FocusDistance": "FocusDistanceParam"
                 }
             ],
@@ -3419,7 +3420,7 @@
             "Type": "nap::ParameterGUI",
             "mID": "EtcParameterGUI",
             "Serializable": true,
-            "Group": "ParametersGlobal"
+            "Group": "ParametersAudio"
         },
         {
             "Type": "nap::ParameterGUI",
@@ -3432,6 +3433,12 @@
             "mID": "ParameterGUI",
             "Serializable": true,
             "Group": "Parameters"
+        },
+        {
+            "Type": "nap::ParameterGUI",
+            "mID": "ParameterGUICamera",
+            "Serializable": true,
+            "Group": "ParametersCamera"
         },
         {
             "Type": "nap::ParameterGroup",
@@ -3541,7 +3548,7 @@
         },
         {
             "Type": "nap::ParameterGroup",
-            "mID": "ParametersGlobal",
+            "mID": "ParametersAudio",
             "Parameters": [
                 {
                     "Type": "nap::ParameterFloat",
@@ -3582,30 +3589,37 @@
                     "Value": 0.20000000298023225,
                     "Minimum": 0.0,
                     "Maximum": 0.8999999761581421
-                },
+                }
+            ],
+            "Groups": []
+        },
+        {
+            "Type": "nap::ParameterGroup",
+            "mID": "ParametersCamera",
+            "Parameters": [
                 {
                     "Type": "nap::ParameterFloat",
-                    "mID": "ApertureParam",
-                    "Name": "Aperture",
-                    "Value": 1.2000000476837159,
+                    "mID": "FocalLengthParam",
+                    "Name": "FocalLength",
+                    "Value": 0.800000011920929,
                     "Minimum": 0.0,
-                    "Maximum": 10.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "FocalDistanceParam",
-                    "Name": "FocalDistance",
-                    "Value": 0.5699999928474426,
-                    "Minimum": 0.0,
-                    "Maximum": 1.0
+                    "Maximum": 4.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
                     "mID": "FocusDistanceParam",
                     "Name": "FocusDistance",
-                    "Value": 1.25,
+                    "Value": 3.25,
                     "Minimum": 0.0,
-                    "Maximum": 2.0
+                    "Maximum": 10.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "ApertureParam",
+                    "Name": "Aperture",
+                    "Value": 3.5,
+                    "Minimum": 0.0,
+                    "Maximum": 10.0
                 }
             ],
             "Groups": []

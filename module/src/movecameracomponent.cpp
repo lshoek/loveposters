@@ -50,19 +50,26 @@ namespace nap
 			return;
 
 		mMovementTime += static_cast<float>(deltaTime) * mResource->mIntensityParam->mValue;
-
 		float movement_speed = mMovementTime * mResource->mMultiplyIntensity;
-		glm::vec3 move_translate = {
+
+		glm::vec3 noise = {
 			glm::simplex<float>(glm::vec2(movement_speed + mRandomSeed.x, mRandomSeed.x)),
 			glm::simplex<float>(glm::vec2(movement_speed + mRandomSeed.y, mRandomSeed.y)),
 			glm::simplex<float>(glm::vec2(movement_speed + mRandomSeed.z, mRandomSeed.z))
 		};
-		auto translate = mCachedTransform->mTranslate + move_translate * mResource->mMoveExtents;
+
+		float theta_x = noise.x * mResource->mMoveExtents.x * glm::half_pi<float>();
+		float distance = ((noise.z + 1.0f) * 0.5f) * mResource->mMoveExtents.z;
+		glm::vec3 polar_translate = glm::angleAxis(theta_x, math::Y_AXIS) * glm::vec3(0.0f, 0.0f, distance);
+		glm::vec3 height_translate = { 0.0f, noise.y * mResource->mMoveExtents.y, 0.0f };
+
+		auto translate = mCachedTransform->mTranslate + height_translate  + polar_translate;
 		mTransformComponent->setTranslate(translate);
 
 		// Focus
-		const auto lookat_mat = glm::lookAt({ 0.0f, 0.0f, mResource->mFocusDepth }, translate, math::Y_AXIS);
-		const auto lookat_quat = glm::quat_cast(lookat_mat);
+		glm::vec3 focus_point = { 0.0f, 0.0f, -mResource->mFocusDepth };
+		glm::mat3 orient_mat = glm::lookAt(translate, focus_point, math::Y_AXIS);
+		const auto lookat_quat = glm::quat_cast(glm::transpose(orient_mat));
 		mTransformComponent->setRotate(lookat_quat);
 	}
 }
