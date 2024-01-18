@@ -5,7 +5,7 @@
 #pragma once
 #include <appguiwidget.h>
 #include <imguiservice.h>
-#include <audio/service/audioservice.h>
+#include <audio/service/portaudioservice.h>
 
 namespace nap
 {
@@ -52,7 +52,7 @@ namespace nap
             };
 
         private:
-	        AudioService& mAudioService;
+	        PortAudioService& mAudioService;
 			IMGuiService& mGuiService;
 
             int mDriverSelection = 0;

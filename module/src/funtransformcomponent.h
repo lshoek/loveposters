@@ -31,7 +31,10 @@ namespace nap
 		ResourcePtr<ParameterFloat> mTranslateXIntensityParam;
 		ResourcePtr<ParameterFloat> mTranslateYIntensityParam;
 
+		ResourcePtr<ParameterFloat> mScaleIntensityParam;
+
 		float mMultiplyRotation = 1.0f;
+		float mMultiplyScale = 1.0f;
 		glm::vec2 mMultiplyTranslation = { 1.0f, 1.0f };
 
 		bool mRandomOffset = false;

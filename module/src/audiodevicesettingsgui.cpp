@@ -31,7 +31,7 @@ namespace nap
 
 		AudioDeviceSettingsWindow::AudioDeviceSettingsWindow(AppGUIService& appGUIService) :
 			AppGUIWindow(appGUIService),
-			mAudioService(*appGUIService.getCore().getService<audio::AudioService>()),
+			mAudioService(*appGUIService.getCore().getService<audio::PortAudioService>()),
 			mGuiService(*appGUIService.getCore().getService<IMGuiService>())
         {}
 

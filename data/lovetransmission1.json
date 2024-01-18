@@ -79,7 +79,8 @@
                     "Channels": [
                         0
                     ],
-                    "Gain": 1.0
+                    "Gain": 1.0,
+                    "AllowOutOfBoundChannels": true
                 },
                 {
                     "Type": "nap::FFTAudioNodeComponent",
@@ -98,10 +99,10 @@
                             "Parameter": "LowFrequencyFluxParam",
                             "Multiplier": "MultiplyLowParam",
                             "Offset": "",
-                            "Decay": "",
+                            "Decay": "DecayParam",
                             "MinHertz": 0.0,
                             "MaxHertz": 2000.0,
-                            "SmoothTime": 0.030000001192092897
+                            "SmoothTime": 0.03999999910593033
                         },
                         {
                             "Type": "nap::FluxMeasurementComponent::FilterParameterItem",
@@ -109,10 +110,10 @@
                             "Parameter": "HighFrequencyFluxParam",
                             "Multiplier": "MultiplyHighParam",
                             "Offset": "",
-                            "Decay": "",
+                            "Decay": "DecayParam",
                             "MinHertz": 2000.0,
                             "MaxHertz": 10000.0,
-                            "SmoothTime": 0.030000001192092897
+                            "SmoothTime": 0.03999999910593033
                         }
                     ],
                     "Enable": true
@@ -130,6 +131,15 @@
                     "FadeInTime": 0.0,
                     "FadeOutTime": 0.0,
                     "Pitch": 1.0
+                },
+                {
+                    "Type": "nap::audio::OutputComponent",
+                    "mID": "AudioOutput",
+                    "Input": "./Playback",
+                    "Routing": [
+                        0,
+                        1
+                    ]
                 }
             ],
             "Children": []
@@ -172,7 +182,7 @@
                     "MultiplyIntensity": 0.05000000074505806,
                     "MoveExtents": {
                         "x": 1.0,
-                        "y": 0.75,
+                        "y": 0.8500000238418579,
                         "z": 1.5
                     },
                     "FocusDepth": 1.0,
@@ -507,11 +517,13 @@
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
                     "MultiplyRotation": 1.0,
                     "MultiplyTranslation": {
                         "x": 1.0,
                         "y": 1.0
                     },
+                    "MultiplyScale": 1.0,
                     "RandomOffset": false,
                     "Enable": true
                 }
@@ -629,11 +641,13 @@
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
                     "MultiplyRotation": 0.5,
                     "MultiplyTranslation": {
                         "x": 0.5,
                         "y": 1.0
                     },
+                    "MultiplyScale": 1.0,
                     "RandomOffset": false,
                     "Enable": true
                 }
@@ -751,11 +765,13 @@
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
                     "MultiplyRotation": 1.0,
                     "MultiplyTranslation": {
                         "x": 1.0,
                         "y": 1.0
                     },
+                    "MultiplyScale": 1.0,
                     "RandomOffset": false,
                     "Enable": true
                 }
@@ -873,11 +889,13 @@
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
                     "MultiplyRotation": 0.5,
                     "MultiplyTranslation": {
                         "x": 1.0,
                         "y": 1.0
                     },
+                    "MultiplyScale": 1.0,
                     "RandomOffset": false,
                     "Enable": true
                 }
@@ -995,11 +1013,13 @@
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
                     "MultiplyRotation": 1.0,
                     "MultiplyTranslation": {
                         "x": 1.0,
                         "y": 1.0
                     },
+                    "MultiplyScale": 1.0,
                     "RandomOffset": false,
                     "Enable": true
                 }
@@ -1117,11 +1137,13 @@
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
                     "MultiplyRotation": 1.0,
                     "MultiplyTranslation": {
                         "x": 1.0,
                         "y": 1.0
                     },
+                    "MultiplyScale": 1.0,
                     "RandomOffset": false,
                     "Enable": true
                 }
@@ -1239,11 +1261,13 @@
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
                     "MultiplyRotation": 1.0,
                     "MultiplyTranslation": {
                         "x": 1.0,
                         "y": 1.0
                     },
+                    "MultiplyScale": 1.0,
                     "RandomOffset": false,
                     "Enable": true
                 }
@@ -1361,11 +1385,13 @@
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
                     "MultiplyRotation": 1.0,
                     "MultiplyTranslation": {
                         "x": 1.0,
                         "y": 1.0
                     },
+                    "MultiplyScale": 1.0,
                     "RandomOffset": false,
                     "Enable": true
                 }
@@ -1483,11 +1509,13 @@
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
                     "MultiplyRotation": 1.0,
                     "MultiplyTranslation": {
                         "x": 1.0,
                         "y": 1.0
                     },
+                    "MultiplyScale": 1.0,
                     "RandomOffset": false,
                     "Enable": true
                 }
@@ -1605,11 +1633,13 @@
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
                     "MultiplyRotation": 1.0,
                     "MultiplyTranslation": {
                         "x": 1.0,
                         "y": 1.0
                     },
+                    "MultiplyScale": 1.0,
                     "RandomOffset": false,
                     "Enable": true
                 }
@@ -1727,11 +1757,13 @@
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
                     "MultiplyRotation": 0.5,
                     "MultiplyTranslation": {
                         "x": 1.0,
                         "y": 1.0
                     },
+                    "MultiplyScale": 1.0,
                     "RandomOffset": false,
                     "Enable": true
                 }
@@ -1849,11 +1881,13 @@
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
                     "MultiplyRotation": 1.0,
                     "MultiplyTranslation": {
                         "x": 1.0,
                         "y": 1.0
                     },
+                    "MultiplyScale": 1.0,
                     "RandomOffset": false,
                     "Enable": true
                 }
@@ -1971,11 +2005,13 @@
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
                     "MultiplyRotation": 2.0,
                     "MultiplyTranslation": {
                         "x": 1.0,
                         "y": 1.0
                     },
+                    "MultiplyScale": 1.0,
                     "RandomOffset": false,
                     "Enable": true
                 }
@@ -2093,11 +2129,13 @@
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
                     "MultiplyRotation": 1.0,
                     "MultiplyTranslation": {
                         "x": 1.0,
                         "y": 1.0
                     },
+                    "MultiplyScale": 1.0,
                     "RandomOffset": false,
                     "Enable": true
                 }
@@ -2215,11 +2253,13 @@
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
                     "MultiplyRotation": 0.75,
                     "MultiplyTranslation": {
                         "x": 1.0,
                         "y": 1.0
                     },
+                    "MultiplyScale": 1.0,
                     "RandomOffset": false,
                     "Enable": true
                 }
@@ -2337,11 +2377,13 @@
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
                     "MultiplyRotation": 1.0,
                     "MultiplyTranslation": {
                         "x": 1.0,
                         "y": 1.0
                     },
+                    "MultiplyScale": 1.0,
                     "RandomOffset": false,
                     "Enable": true
                 },
@@ -2471,11 +2513,13 @@
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
                     "MultiplyRotation": 1.0,
                     "MultiplyTranslation": {
                         "x": 1.0,
                         "y": 1.0
                     },
+                    "MultiplyScale": 1.0,
                     "RandomOffset": false,
                     "Enable": true
                 }
@@ -2593,11 +2637,13 @@
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
                     "MultiplyRotation": 0.5,
                     "MultiplyTranslation": {
                         "x": 1.0,
                         "y": 1.0
                     },
+                    "MultiplyScale": 1.0,
                     "RandomOffset": false,
                     "Enable": true
                 }
@@ -2715,11 +2761,13 @@
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
                     "MultiplyRotation": 0.5,
                     "MultiplyTranslation": {
                         "x": 1.0,
                         "y": 1.0
                     },
+                    "MultiplyScale": 1.0,
                     "RandomOffset": false,
                     "Enable": true
                 }
@@ -2864,7 +2912,7 @@
                     "LayerRegistry": "",
                     "Layer": "",
                     "PassCount": 2,
-                    "Kernel": "13x13",
+                    "Kernel": "9x9",
                     "InputTexture": "BloomTexture",
                     "OutputTexture": "BloomTexture"
                 },
@@ -2955,12 +3003,12 @@
                     "LayerRegistry": "",
                     "Layer": "",
                     "Camera": "../CameraEntity/PerspectiveCamera",
-                    "PassCount": 1,
                     "InputTarget": "ColorTarget",
                     "OutputTexture": "DOFTexture",
                     "Aperture": "ApertureParam",
                     "FocalLength": "FocalLengthParam",
-                    "FocusDistance": "FocusDistanceParam"
+                    "FocusDistance": "FocusDistanceParam",
+                    "FocusPower": "FocusPowerParam"
                 }
             ],
             "Children": []
@@ -3542,6 +3590,14 @@
                     "Value": 0.0,
                     "Minimum": 0.0,
                     "Maximum": 10.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "ScaleIntensityParam",
+                    "Name": "ScaleIntensity",
+                    "Value": 1.0,
+                    "Minimum": 0.10000000149011612,
+                    "Maximum": 2.0
                 }
             ],
             "Groups": []
@@ -3589,6 +3645,14 @@
                     "Value": 0.20000000298023225,
                     "Minimum": 0.0,
                     "Maximum": 0.8999999761581421
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "DecayParam",
+                    "Name": "Decay",
+                    "Value": 0.05000000074505806,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
                 }
             ],
             "Groups": []
@@ -3620,6 +3684,14 @@
                     "Value": 3.5,
                     "Minimum": 0.0,
                     "Maximum": 10.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "FocusPowerParam",
+                    "Name": "FocusPower",
+                    "Value": 1.0,
+                    "Minimum": 1.0,
+                    "Maximum": 2.0
                 }
             ],
             "Groups": []
@@ -4327,7 +4399,7 @@
         {
             "Type": "nap::audio::AudioFileResource",
             "mID": "AudioFile",
-            "AudioFilePath": "hang.mp3"
+            "AudioFilePath": "debugdisco.mp3"
         }
     ]
 }
