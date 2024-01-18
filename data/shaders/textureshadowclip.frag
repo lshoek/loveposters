@@ -71,11 +71,13 @@ uniform samplerCube environmentMap;
 
 uniform sampler2D colorTexture;
 
+const float ALPHA_CLIP = 0.2;
+
 void main()
 {
 	// Material color
 	vec4 texture_color = texture(colorTexture, passUV0.xy);
-	if (texture_color.a <= EPSILON)
+	if (texture_color.a <= ALPHA_CLIP)
 		discard;
 
 	BlinnPhongMaterial mtl = { ubo.ambient, texture_color.rgb * ubo.diffuse, ubo.specular, ubo.shininess };

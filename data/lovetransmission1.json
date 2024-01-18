@@ -1829,7 +1829,7 @@
                         "Buffers": [],
                         "Constants": [],
                         "Material": "TextureShadowClipMaterial",
-                        "BlendMode": "NotSet",
+                        "BlendMode": "AlphaBlend",
                         "DepthMode": "NotSet"
                     },
                     "LineWidth": 1.0,
@@ -2325,7 +2325,7 @@
                         "Buffers": [],
                         "Constants": [],
                         "Material": "TextureShadowClipMaterial",
-                        "BlendMode": "NotSet",
+                        "BlendMode": "AlphaBlend",
                         "DepthMode": "NotSet"
                     },
                     "LineWidth": 1.0,
@@ -2422,7 +2422,7 @@
                         },
                         "Scale": {
                             "x": 1.0,
-                            "y": 0.7599999904632568,
+                            "y": 0.5,
                             "z": 1.0
                         },
                         "UniformScale": 0.699999988079071
@@ -2461,7 +2461,7 @@
                         "Buffers": [],
                         "Constants": [],
                         "Material": "TextureShadowClipMaterial",
-                        "BlendMode": "NotSet",
+                        "BlendMode": "AlphaBlend",
                         "DepthMode": "NotSet"
                     },
                     "LineWidth": 1.0,
@@ -2911,7 +2911,7 @@
                     "Tags": [],
                     "LayerRegistry": "",
                     "Layer": "",
-                    "PassCount": 2,
+                    "PassCount": 3,
                     "Kernel": "9x9",
                     "InputTexture": "BloomTexture",
                     "OutputTexture": "BloomTexture"
@@ -3778,7 +3778,7 @@
                     "Constants": [],
                     "Shader": "TextureClipShader",
                     "VertexAttributeBindings": [],
-                    "BlendMode": "AlphaBlend",
+                    "BlendMode": "Opaque",
                     "DepthMode": "ReadWrite"
                 },
                 {
@@ -3994,20 +3994,26 @@
                     "Constants": [
                         {
                             "Type": "nap::ShaderConstant",
-                            "mID": "ShaderConstant_728e4e90",
+                            "mID": "QUAD_SAMPLE_COUNT_728e4e90",
                             "Name": "QUAD_SAMPLE_COUNT",
-                            "Value": 8
+                            "Value": 4
                         },
                         {
                             "Type": "nap::ShaderConstant",
-                            "mID": "ENABLE_ENVIRONMENT_MAPPING_df6b7cb1",
+                            "mID": "CUBE_SAMPLE_COUNT_df6b7cb1",
+                            "Name": "CUBE_SAMPLE_COUNT",
+                            "Value": 1
+                        },
+                        {
+                            "Type": "nap::ShaderConstant",
+                            "mID": "ENABLE_ENVIRONMENT_MAPPING_920ac9c1",
                             "Name": "ENABLE_ENVIRONMENT_MAPPING",
                             "Value": 1
                         }
                     ],
                     "Shader": "TextureShadowClipShader",
                     "VertexAttributeBindings": [],
-                    "BlendMode": "AlphaBlend",
+                    "BlendMode": "Opaque",
                     "DepthMode": "ReadWrite"
                 },
                 {
@@ -4165,133 +4171,133 @@
                     "Type": "nap::ImageFromFile",
                     "mID": "Poster_Plants",
                     "Usage": "Static",
-                    "ImagePath": "love/poster/Love-Transmission-Collage-Small_0014_George-Duke.png",
+                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_0014_George-Duke.png",
                     "GenerateLods": true
                 },
                 {
                     "Type": "nap::ImageFromFile",
                     "mID": "Poster_Title",
                     "Usage": "Static",
-                    "ImagePath": "love/poster/Love-Transmission-Collage-Small_0003_Love-Transmission.png",
+                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_0003_Love-Transmission.png",
                     "GenerateLods": true
                 },
                 {
                     "Type": "nap::ImageFromFile",
                     "mID": "Poster_Background",
                     "Usage": "Static",
-                    "ImagePath": "love/poster/Love-Transmission-Collage-Small_0028_Venus-Dodson.png",
+                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_0028_Venus-Dodson.png",
                     "GenerateLods": true
                 },
                 {
                     "Type": "nap::ImageFromFile",
                     "mID": "Poster_JimmySmith",
                     "Usage": "Static",
-                    "ImagePath": "love/poster/Love-Transmission-Collage-Small_0011_JimmySmith.png",
+                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_0011_JimmySmith.png",
                     "GenerateLods": true
                 },
                 {
                     "Type": "nap::ImageFromFile",
                     "mID": "Poster_Captain",
                     "Usage": "Static",
-                    "ImagePath": "love/poster/Love-Transmission-Collage-Small_0015_Captain-Sky.png",
+                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_0015_Captain-Sky.png",
                     "GenerateLods": true
                 },
                 {
                     "Type": "nap::ImageFromFile",
                     "mID": "Poster_Sky",
                     "Usage": "Static",
-                    "ImagePath": "love/poster/Love-Transmission-Collage-Small_0023_Sky.png",
+                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_0023_Sky.png",
                     "GenerateLods": true
                 },
                 {
                     "Type": "nap::ImageFromFile",
                     "mID": "Poster_Zulu",
                     "Usage": "Static",
-                    "ImagePath": "love/poster/Love-Transmission-Collage-Small_00xx_Zulu.png",
+                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_00xx_Zulu.png",
                     "GenerateLods": true
                 },
                 {
                     "Type": "nap::ImageFromFile",
                     "mID": "Poster_RareGems",
                     "Usage": "Static",
-                    "ImagePath": "love/poster/Love-Transmission-Collage-Small_0024_Rare-Gems.png",
+                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_0024_Rare-Gems.png",
                     "GenerateLods": true
                 },
                 {
                     "Type": "nap::ImageFromFile",
                     "mID": "Poster_Asha",
                     "Usage": "Static",
-                    "ImagePath": "love/poster/Love-Transmission-Collage-Small_0025_Asha-Puthli.png",
+                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_0025_Asha-Puthli.png",
                     "GenerateLods": true
                 },
                 {
                     "Type": "nap::ImageFromFile",
                     "mID": "Poster_Marilyn",
                     "Usage": "Static",
-                    "ImagePath": "love/poster/Love-Transmission-Collage-Small_0018_Marilyn-Scott.png",
+                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_0018_Marilyn-Scott.png",
                     "GenerateLods": true
                 },
                 {
                     "Type": "nap::ImageFromFile",
                     "mID": "Poster_Roundtree",
                     "Usage": "Static",
-                    "ImagePath": "love/poster/Love-Transmission-Collage-Small_0009_Roundtree.png",
+                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_0009_Roundtree.png",
                     "GenerateLods": true
                 },
                 {
                     "Type": "nap::ImageFromFile",
                     "mID": "Poster_Milky",
                     "Usage": "Static",
-                    "ImagePath": "love/poster/Love-Transmission-Collage-Small_0006_Milky-way.png",
+                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_0006_Milky-way.png",
                     "GenerateLods": true
                 },
                 {
                     "Type": "nap::ImageFromFile",
                     "mID": "Poster_Carlton",
                     "Usage": "Static",
-                    "ImagePath": "love/poster/Love-Transmission-Collage-Small_0021_Carl-Carlton.png",
+                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_0021_Carl-Carlton.png",
                     "GenerateLods": true
                 },
                 {
                     "Type": "nap::ImageFromFile",
                     "mID": "Poster_Darcus",
                     "Usage": "Static",
-                    "ImagePath": "love/poster/darcus.png",
+                    "ImagePath": "love/poster_lowres/darcus.png",
                     "GenerateLods": true
                 },
                 {
                     "Type": "nap::ImageFromFile",
                     "mID": "Poster_Curtis",
                     "Usage": "Static",
-                    "ImagePath": "love/poster/curtis.png",
+                    "ImagePath": "love/poster_lowres/curtis.png",
                     "GenerateLods": true
                 },
                 {
                     "Type": "nap::ImageFromFile",
                     "mID": "Poster_Rose",
                     "Usage": "Static",
-                    "ImagePath": "love/poster/small/Love-Transmission-Collage-Small_0007_The-players.png",
+                    "ImagePath": "love/poster_lowres/small/Love-Transmission-Collage-Small_0007_The-players.png",
                     "GenerateLods": true
                 },
                 {
                     "Type": "nap::ImageFromFile",
                     "mID": "Poster_Flamingo",
                     "Usage": "Static",
-                    "ImagePath": "love/poster/small/Love-Transmission-Collage-Small_0002_Aquarian-dream.png",
+                    "ImagePath": "love/poster_lowres/small/Love-Transmission-Collage-Small_0002_Aquarian-dream.png",
                     "GenerateLods": true
                 },
                 {
                     "Type": "nap::ImageFromFile",
                     "mID": "Poster_ZuluPlantsLeft",
                     "Usage": "Static",
-                    "ImagePath": "love/poster/ZuluPlantsLeft.png",
+                    "ImagePath": "love/poster_lowres/ZuluPlantsLeft.png",
                     "GenerateLods": true
                 },
                 {
                     "Type": "nap::ImageFromFile",
                     "mID": "Poster_ZuluPlantsRight",
                     "Usage": "Static",
-                    "ImagePath": "love/poster/ZuluPlantsRight.png",
+                    "ImagePath": "love/poster_lowres/ZuluPlantsRight.png",
                     "GenerateLods": true
                 }
             ],
