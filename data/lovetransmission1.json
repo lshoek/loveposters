@@ -17,16 +17,16 @@
                     "Name": "Preset",
                     "ParameterGUIs": [
                         "ParameterGUI",
-                        "ParameterGUICamera"
+                        "ParameterGUICamera",
+                        "EtcParameterGUI"
                     ]
                 },
                 {
                     "Type": "nap::ParameterWindow",
                     "mID": "ParameterWindow_2545984e",
-                    "Name": "Other Parameters",
+                    "Name": "Level Meters",
                     "ParameterGUIs": [
-                        "LevelParameterGUI",
-                        "EtcParameterGUI"
+                        "LevelParameterGUI"
                     ]
                 },
                 {
@@ -95,24 +95,30 @@
                     "Parameters": [
                         {
                             "Type": "nap::FluxMeasurementComponent::FilterParameterItem",
-                            "mID": "LowPassFilter",
+                            "mID": "LP",
                             "Parameter": "LowFrequencyFluxParam",
                             "Multiplier": "MultiplyLowParam",
                             "Offset": "",
-                            "Decay": "DecayParam",
+                            "TargetOnset": "TargetOnsetLow",
+                            "Decay": "DecayLow",
+                            "Stretch": "StretchLow",
                             "MinHertz": 0.0,
                             "MaxHertz": 2000.0,
+                            "EvaluationSampleCount": 512,
                             "SmoothTime": 0.03999999910593033
                         },
                         {
                             "Type": "nap::FluxMeasurementComponent::FilterParameterItem",
-                            "mID": "HighPassFilter",
+                            "mID": "HP",
                             "Parameter": "HighFrequencyFluxParam",
                             "Multiplier": "MultiplyHighParam",
                             "Offset": "",
-                            "Decay": "DecayParam",
+                            "TargetOnset": "TargetOnsetHigh",
+                            "Decay": "DecayHigh",
+                            "Stretch": "StretchHigh",
                             "MinHertz": 2000.0,
                             "MaxHertz": 10000.0,
+                            "EvaluationSampleCount": 512,
                             "SmoothTime": 0.03999999910593033
                         }
                     ],
@@ -126,7 +132,7 @@
                     "Gain": 1.0,
                     "StereoPanning": 0.5,
                     "AutoPlay": true,
-                    "StartPosition": 0.0,
+                    "StartPosition": 100000.0,
                     "Duration": 0.0,
                     "FadeInTime": 0.0,
                     "FadeOutTime": 0.0,
@@ -155,7 +161,7 @@
                         "Translate": {
                             "x": 0.0,
                             "y": 0.0,
-                            "z": 0.0
+                            "z": 1.0
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -215,6 +221,115 @@
                 {
                     "Type": "nap::KeyInputComponent",
                     "mID": "KeyInputComponent"
+                }
+            ],
+            "Children": []
+        },
+        {
+            "Type": "nap::Entity",
+            "mID": "MidiEntity",
+            "Components": [
+                {
+                    "Type": "nap::MidiTwisterComponent",
+                    "mID": "MidiTwister",
+                    "Ports": [
+                        "MidiTwisterPort"
+                    ],
+                    "Channels": [],
+                    "Numbers": [],
+                    "NoteOn": true,
+                    "NoteOff": true,
+                    "Aftertouch": true,
+                    "ControlChange": true,
+                    "ProgramChange": true,
+                    "ChannelPressure": true,
+                    "PitchBend": true,
+                    "Banks": [
+                        {
+                            "Encoders": [
+                                {
+                                    "Parameter": "IntensityParam",
+                                    "EncoderType": "Relative",
+                                    "EncoderStepSize": 0.009999999776482582
+                                },
+                                {
+                                    "Parameter": "BloomIntensityParam",
+                                    "EncoderType": "Relative",
+                                    "EncoderStepSize": 0.009999999776482582
+                                },
+                                {
+                                    "Parameter": "ScaleIntensityParam",
+                                    "EncoderType": "Relative",
+                                    "EncoderStepSize": 0.009999999776482582
+                                },
+                                {
+                                    "Parameter": "CameraSpeedParam",
+                                    "EncoderType": "Relative",
+                                    "EncoderStepSize": 0.009999999776482582
+                                },
+                                {
+                                    "Parameter": "",
+                                    "EncoderType": "Absolute",
+                                    "EncoderStepSize": 0.009999999776482582
+                                },
+                                {
+                                    "Parameter": "",
+                                    "EncoderType": "Absolute",
+                                    "EncoderStepSize": 0.009999999776482582
+                                },
+                                {
+                                    "Parameter": "",
+                                    "EncoderType": "Absolute",
+                                    "EncoderStepSize": 0.009999999776482582
+                                },
+                                {
+                                    "Parameter": "",
+                                    "EncoderType": "Absolute",
+                                    "EncoderStepSize": 0.009999999776482582
+                                },
+                                {
+                                    "Parameter": "",
+                                    "EncoderType": "Absolute",
+                                    "EncoderStepSize": 0.009999999776482582
+                                },
+                                {
+                                    "Parameter": "",
+                                    "EncoderType": "Absolute",
+                                    "EncoderStepSize": 0.009999999776482582
+                                },
+                                {
+                                    "Parameter": "",
+                                    "EncoderType": "Absolute",
+                                    "EncoderStepSize": 0.009999999776482582
+                                },
+                                {
+                                    "Parameter": "",
+                                    "EncoderType": "Absolute",
+                                    "EncoderStepSize": 0.009999999776482582
+                                },
+                                {
+                                    "Parameter": "",
+                                    "EncoderType": "Absolute",
+                                    "EncoderStepSize": 0.009999999776482582
+                                },
+                                {
+                                    "Parameter": "",
+                                    "EncoderType": "Absolute",
+                                    "EncoderStepSize": 0.009999999776482582
+                                },
+                                {
+                                    "Parameter": "",
+                                    "EncoderType": "Absolute",
+                                    "EncoderStepSize": 0.009999999776482582
+                                },
+                                {
+                                    "Parameter": "",
+                                    "EncoderType": "Absolute",
+                                    "EncoderStepSize": 0.009999999776482582
+                                }
+                            ]
+                        }
+                    ]
                 }
             ],
             "Children": []
@@ -390,7 +505,6 @@
                 "Poster_BackgroundEntity",
                 "Poster_JimmyEntity",
                 "Poster_CaptainEntity",
-                "Poster_SkyEntity",
                 "Poster_ZuluEntity",
                 "Poster_AshaEntity",
                 "Poster_RareGemsEntity",
@@ -417,7 +531,7 @@
                         "Translate": {
                             "x": 0.30000001192092898,
                             "y": -0.10000000149011612,
-                            "z": -20.0
+                            "z": -13.0
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -429,7 +543,7 @@
                             "y": 1.0,
                             "z": 1.0
                         },
-                        "UniformScale": 0.699999988079071
+                        "UniformScale": 0.6499999761581421
                     }
                 },
                 {
@@ -465,7 +579,7 @@
                         "Buffers": [],
                         "Constants": [],
                         "Material": "TextureShadowClipMaterial",
-                        "BlendMode": "NotSet",
+                        "BlendMode": "AlphaBlend",
                         "DepthMode": "NotSet"
                     },
                     "LineWidth": 1.0,
@@ -524,7 +638,7 @@
                         "y": 1.0
                     },
                     "MultiplyScale": 1.0,
-                    "RandomOffset": false,
+                    "RandomOffset": true,
                     "Enable": true
                 }
             ],
@@ -648,7 +762,7 @@
                         "y": 1.0
                     },
                     "MultiplyScale": 1.0,
-                    "RandomOffset": false,
+                    "RandomOffset": true,
                     "Enable": true
                 }
             ],
@@ -665,7 +779,7 @@
                         "Translate": {
                             "x": -0.30000001192092898,
                             "y": -0.3499999940395355,
-                            "z": -6.0
+                            "z": -7.0
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -772,7 +886,7 @@
                         "y": 1.0
                     },
                     "MultiplyScale": 1.0,
-                    "RandomOffset": false,
+                    "RandomOffset": true,
                     "Enable": true
                 }
             ],
@@ -789,7 +903,7 @@
                         "Translate": {
                             "x": 0.0,
                             "y": 0.44999998807907107,
-                            "z": -19.0
+                            "z": -18.0
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -896,7 +1010,7 @@
                         "y": 1.0
                     },
                     "MultiplyScale": 1.0,
-                    "RandomOffset": false,
+                    "RandomOffset": true,
                     "Enable": true
                 }
             ],
@@ -911,9 +1025,9 @@
                     "mID": "TransformCurtis",
                     "Properties": {
                         "Translate": {
-                            "x": 0.44999998807907107,
+                            "x": 0.5,
                             "y": 0.15000000596046449,
-                            "z": -12.0
+                            "z": -15.0
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -925,7 +1039,7 @@
                             "y": 0.7400000095367432,
                             "z": 1.0
                         },
-                        "UniformScale": 0.5
+                        "UniformScale": 0.4000000059604645
                     }
                 },
                 {
@@ -1020,7 +1134,7 @@
                         "y": 1.0
                     },
                     "MultiplyScale": 1.0,
-                    "RandomOffset": false,
+                    "RandomOffset": true,
                     "Enable": true
                 }
             ],
@@ -1035,9 +1149,9 @@
                     "mID": "TransformDarcus",
                     "Properties": {
                         "Translate": {
-                            "x": -0.44999998807907107,
-                            "y": 0.15000000596046449,
-                            "z": -9.0
+                            "x": -0.5,
+                            "y": 0.20000000298023225,
+                            "z": -12.0
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -1045,11 +1159,11 @@
                             "z": 0.0
                         },
                         "Scale": {
-                            "x": -0.6299999952316284,
+                            "x": 0.6299999952316284,
                             "y": 1.0,
                             "z": 1.0
                         },
-                        "UniformScale": 0.5
+                        "UniformScale": 0.3499999940395355
                     }
                 },
                 {
@@ -1144,7 +1258,7 @@
                         "y": 1.0
                     },
                     "MultiplyScale": 1.0,
-                    "RandomOffset": false,
+                    "RandomOffset": true,
                     "Enable": true
                 }
             ],
@@ -1268,7 +1382,7 @@
                         "y": 1.0
                     },
                     "MultiplyScale": 1.0,
-                    "RandomOffset": false,
+                    "RandomOffset": true,
                     "Enable": true
                 }
             ],
@@ -1392,7 +1506,7 @@
                         "y": 1.0
                     },
                     "MultiplyScale": 1.0,
-                    "RandomOffset": false,
+                    "RandomOffset": true,
                     "Enable": true
                 }
             ],
@@ -1421,7 +1535,7 @@
                             "y": 0.699999988079071,
                             "z": 1.0
                         },
-                        "UniformScale": 0.30000001192092898
+                        "UniformScale": 0.25
                     }
                 },
                 {
@@ -1516,7 +1630,7 @@
                         "y": 1.0
                     },
                     "MultiplyScale": 1.0,
-                    "RandomOffset": false,
+                    "RandomOffset": true,
                     "Enable": true
                 }
             ],
@@ -1531,9 +1645,9 @@
                     "mID": "TransformMilky",
                     "Properties": {
                         "Translate": {
-                            "x": -0.30000001192092898,
+                            "x": -0.4000000059604645,
                             "y": 0.5,
-                            "z": -6.0
+                            "z": -14.0
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -1640,7 +1754,7 @@
                         "y": 1.0
                     },
                     "MultiplyScale": 1.0,
-                    "RandomOffset": false,
+                    "RandomOffset": true,
                     "Enable": true
                 }
             ],
@@ -1656,7 +1770,7 @@
                     "Properties": {
                         "Translate": {
                             "x": 0.0,
-                            "y": -0.41999998688697817,
+                            "y": -0.5,
                             "z": -4.0
                         },
                         "Rotate": {
@@ -1738,7 +1852,7 @@
                                 "BorderColor": "IntOpaqueBlack",
                                 "CompareMode": "LessOrEqual",
                                 "EnableCompare": false,
-                                "Texture": "Poster_Milky"
+                                "Texture": "Poster_Plants"
                             }
                         ],
                         "Buffers": [],
@@ -1764,7 +1878,7 @@
                         "y": 1.0
                     },
                     "MultiplyScale": 1.0,
-                    "RandomOffset": false,
+                    "RandomOffset": true,
                     "Enable": true
                 }
             ],
@@ -1779,7 +1893,7 @@
                     "mID": "TransformRareGems",
                     "Properties": {
                         "Translate": {
-                            "x": 0.0,
+                            "x": -0.10000000149011612,
                             "y": 0.10000000149011612,
                             "z": -10.0
                         },
@@ -1793,7 +1907,7 @@
                             "y": 1.0,
                             "z": 1.0
                         },
-                        "UniformScale": 0.5
+                        "UniformScale": 0.4000000059604645
                     }
                 },
                 {
@@ -1888,7 +2002,7 @@
                         "y": 1.0
                     },
                     "MultiplyScale": 1.0,
-                    "RandomOffset": false,
+                    "RandomOffset": true,
                     "Enable": true
                 }
             ],
@@ -2012,7 +2126,7 @@
                         "y": 1.0
                     },
                     "MultiplyScale": 1.0,
-                    "RandomOffset": false,
+                    "RandomOffset": true,
                     "Enable": true
                 }
             ],
@@ -2029,7 +2143,7 @@
                         "Translate": {
                             "x": 0.20000000298023225,
                             "y": 0.4000000059604645,
-                            "z": -11.0
+                            "z": -17.0
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -2041,7 +2155,7 @@
                             "y": 0.6800000071525574,
                             "z": 1.0
                         },
-                        "UniformScale": 0.6000000238418579
+                        "UniformScale": 0.550000011920929
                     }
                 },
                 {
@@ -2136,131 +2250,7 @@
                         "y": 1.0
                     },
                     "MultiplyScale": 1.0,
-                    "RandomOffset": false,
-                    "Enable": true
-                }
-            ],
-            "Children": []
-        },
-        {
-            "Type": "nap::Entity",
-            "mID": "Poster_SkyEntity",
-            "Components": [
-                {
-                    "Type": "nap::TransformComponent",
-                    "mID": "TransformSky",
-                    "Properties": {
-                        "Translate": {
-                            "x": 0.0,
-                            "y": -0.25,
-                            "z": -18.0
-                        },
-                        "Rotate": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "Scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        },
-                        "UniformScale": 1.0
-                    }
-                },
-                {
-                    "Type": "nap::RenderClipMeshComponent",
-                    "mID": "RenderSky",
-                    "Visible": true,
-                    "Tags": [],
-                    "LayerRegistry": "",
-                    "Layer": "",
-                    "Mesh": "SquareMesh",
-                    "MaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "Sampler2D_2dbb2368",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0.0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_Sky"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureShadowClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    },
-                    "LineWidth": 1.0,
-                    "ClipRect": {
-                        "Min": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "Max": {
-                            "x": 0.0,
-                            "y": 0.0
-                        }
-                    },
-                    "ShadowMaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "colorTexture_3d86b3dc",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0.0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_Sky"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    }
-                },
-                {
-                    "Type": "nap::FunTransformComponent",
-                    "mID": "MoveSky",
-                    "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "IntensityParam",
-                    "RotationIntensity": "RotationIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "TranslateXIntensity": "TranslateXIntensityParam",
-                    "TranslateYIntensity": "TranslateYIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
-                    "MultiplyRotation": 0.75,
-                    "MultiplyTranslation": {
-                        "x": 1.0,
-                        "y": 1.0
-                    },
-                    "MultiplyScale": 1.0,
-                    "RandomOffset": false,
+                    "RandomOffset": true,
                     "Enable": true
                 }
             ],
@@ -2384,7 +2374,7 @@
                         "y": 1.0
                     },
                     "MultiplyScale": 1.0,
-                    "RandomOffset": false,
+                    "RandomOffset": true,
                     "Enable": true
                 },
                 {
@@ -2422,7 +2412,7 @@
                         },
                         "Scale": {
                             "x": 1.0,
-                            "y": 0.5,
+                            "y": 0.5699999928474426,
                             "z": 1.0
                         },
                         "UniformScale": 0.699999988079071
@@ -2520,7 +2510,7 @@
                         "y": 1.0
                     },
                     "MultiplyScale": 1.0,
-                    "RandomOffset": false,
+                    "RandomOffset": true,
                     "Enable": true
                 }
             ],
@@ -2535,9 +2525,9 @@
                     "mID": "TransformZuluPlantsLeft",
                     "Properties": {
                         "Translate": {
-                            "x": -0.800000011920929,
+                            "x": -0.75,
                             "y": -0.30000001192092898,
-                            "z": -24.0
+                            "z": -22.0
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -2644,7 +2634,7 @@
                         "y": 1.0
                     },
                     "MultiplyScale": 1.0,
-                    "RandomOffset": false,
+                    "RandomOffset": true,
                     "Enable": true
                 }
             ],
@@ -2659,9 +2649,9 @@
                     "mID": "TransformZuluPlantsRight",
                     "Properties": {
                         "Translate": {
-                            "x": 0.800000011920929,
+                            "x": 0.8500000238418579,
                             "y": -0.30000001192092898,
-                            "z": -24.0
+                            "z": -22.0
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -2768,7 +2758,7 @@
                         "y": 1.0
                     },
                     "MultiplyScale": 1.0,
-                    "RandomOffset": false,
+                    "RandomOffset": true,
                     "Enable": true
                 }
             ],
@@ -3015,279 +3005,6 @@
         },
         {
             "Type": "nap::Entity",
-            "mID": "Spot001Entity",
-            "Components": [
-                {
-                    "Type": "nap::TransformComponent",
-                    "mID": "TransformSpot01",
-                    "Properties": {
-                        "Translate": {
-                            "x": -1.5,
-                            "y": -0.25,
-                            "z": 1.0
-                        },
-                        "Rotate": {
-                            "x": 0.0,
-                            "y": -30.0,
-                            "z": 0.0
-                        },
-                        "Scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        },
-                        "UniformScale": 1.0
-                    }
-                },
-                {
-                    "Type": "nap::SpotLightComponent",
-                    "mID": "Spot01",
-                    "Enabled": true,
-                    "Color": {
-                        "Type": "nap::ParameterEntryRGBColorFloat",
-                        "mID": "ParameterEntryRGBColorFloat_d1169acd",
-                        "Parameter": "",
-                        "Default": {
-                            "Values": [
-                                1.0,
-                                0.10980392247438431,
-                                0.0
-                            ]
-                        }
-                    },
-                    "Intensity": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_2419ec9c",
-                        "Parameter": "LowFrequencyFluxLightParam",
-                        "Default": 3.0
-                    },
-                    "ShadowStrength": 1.5,
-                    "Enable Shadows": true,
-                    "ShadowCamera": "./ShadowCameraSpot01",
-                    "ShadowMapSize": 1024,
-                    "Attenuation": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_b9b04e0c",
-                        "Parameter": "",
-                        "Default": 1.0
-                    },
-                    "Angle": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_74404af6",
-                        "Parameter": "",
-                        "Default": 4.0
-                    },
-                    "FallOff": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_3130a045",
-                        "Parameter": "",
-                        "Default": 0.75
-                    }
-                },
-                {
-                    "Type": "nap::PerspCameraComponent",
-                    "mID": "ShadowCameraSpot01",
-                    "Properties": {
-                        "FieldOfView": 30.0,
-                        "NearClippingPlane": 0.10000000149011612,
-                        "FarClippingPlane": 10.0,
-                        "GridDimensions": {
-                            "x": 1,
-                            "y": 1
-                        },
-                        "GridLocation": {
-                            "x": 0,
-                            "y": 0
-                        }
-                    }
-                }
-            ],
-            "Children": []
-        },
-        {
-            "Type": "nap::Entity",
-            "mID": "Spot02Entity",
-            "Components": [
-                {
-                    "Type": "nap::TransformComponent",
-                    "mID": "TransformSpot02",
-                    "Properties": {
-                        "Translate": {
-                            "x": 1.5,
-                            "y": 0.25,
-                            "z": 1.0
-                        },
-                        "Rotate": {
-                            "x": 10.0,
-                            "y": 30.0,
-                            "z": 0.0
-                        },
-                        "Scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        },
-                        "UniformScale": 1.0
-                    }
-                },
-                {
-                    "Type": "nap::SpotLightComponent",
-                    "mID": "Spot02",
-                    "Enabled": true,
-                    "Color": {
-                        "Type": "nap::ParameterEntryRGBColorFloat",
-                        "mID": "ParameterEntryRGBColorFloat_0d6b5694",
-                        "Parameter": "",
-                        "Default": {
-                            "Values": [
-                                0.9803921580314636,
-                                0.34117648005485537,
-                                0.0
-                            ]
-                        }
-                    },
-                    "Intensity": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_c95d42e2",
-                        "Parameter": "LowFrequencyFluxLightParam",
-                        "Default": 3.0
-                    },
-                    "ShadowStrength": 1.5,
-                    "Enable Shadows": true,
-                    "ShadowCamera": "./ShadowCameraSpot02",
-                    "ShadowMapSize": 1024,
-                    "Attenuation": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_a9db3887",
-                        "Parameter": "",
-                        "Default": 1.0
-                    },
-                    "Angle": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_8b0a03fc",
-                        "Parameter": "",
-                        "Default": 4.0
-                    },
-                    "FallOff": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_ab2381fc",
-                        "Parameter": "",
-                        "Default": 0.75
-                    }
-                },
-                {
-                    "Type": "nap::PerspCameraComponent",
-                    "mID": "ShadowCameraSpot02",
-                    "Properties": {
-                        "FieldOfView": 30.0,
-                        "NearClippingPlane": 0.10000000149011612,
-                        "FarClippingPlane": 10.0,
-                        "GridDimensions": {
-                            "x": 1,
-                            "y": 1
-                        },
-                        "GridLocation": {
-                            "x": 0,
-                            "y": 0
-                        }
-                    }
-                }
-            ],
-            "Children": []
-        },
-        {
-            "Type": "nap::Entity",
-            "mID": "Spot03Entity",
-            "Components": [
-                {
-                    "Type": "nap::TransformComponent",
-                    "mID": "TransformSpot03",
-                    "Properties": {
-                        "Translate": {
-                            "x": 0.75,
-                            "y": -0.75,
-                            "z": 1.0
-                        },
-                        "Rotate": {
-                            "x": 10.0,
-                            "y": 20.0,
-                            "z": 0.0
-                        },
-                        "Scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        },
-                        "UniformScale": 1.0
-                    }
-                },
-                {
-                    "Type": "nap::SpotLightComponent",
-                    "mID": "Spot03",
-                    "Enabled": true,
-                    "Color": {
-                        "Type": "nap::ParameterEntryRGBColorFloat",
-                        "mID": "ParameterEntryRGBColorFloat_c5acb3f8",
-                        "Parameter": "",
-                        "Default": {
-                            "Values": [
-                                1.0,
-                                0.6039215922355652,
-                                0.0
-                            ]
-                        }
-                    },
-                    "Intensity": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_7a2b13d0",
-                        "Parameter": "HighFrequencyFluxLightParam",
-                        "Default": 2.0
-                    },
-                    "ShadowStrength": 1.5,
-                    "Enable Shadows": true,
-                    "ShadowCamera": "./ShadowCameraSpot03",
-                    "ShadowMapSize": 1024,
-                    "Attenuation": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_019af07b",
-                        "Parameter": "",
-                        "Default": 1.0
-                    },
-                    "Angle": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_0f084d37",
-                        "Parameter": "",
-                        "Default": 4.0
-                    },
-                    "FallOff": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_5a14b6a9",
-                        "Parameter": "",
-                        "Default": 0.800000011920929
-                    }
-                },
-                {
-                    "Type": "nap::PerspCameraComponent",
-                    "mID": "ShadowCameraSpot03",
-                    "Properties": {
-                        "FieldOfView": 30.0,
-                        "NearClippingPlane": 0.10000000149011612,
-                        "FarClippingPlane": 10.0,
-                        "GridDimensions": {
-                            "x": 1,
-                            "y": 1
-                        },
-                        "GridLocation": {
-                            "x": 0,
-                            "y": 0
-                        }
-                    }
-                }
-            ],
-            "Children": []
-        },
-        {
-            "Type": "nap::Entity",
             "mID": "SpotCenterEntity",
             "Components": [
                 {
@@ -3296,7 +3013,7 @@
                     "Properties": {
                         "Translate": {
                             "x": 0.0,
-                            "y": 0.0,
+                            "y": -0.05000000074505806,
                             "z": 1.0
                         },
                         "Rotate": {
@@ -3337,7 +3054,7 @@
                     "ShadowStrength": 0.5,
                     "Enable Shadows": true,
                     "ShadowCamera": "./CenterShadowCamera",
-                    "ShadowMapSize": 2048,
+                    "ShadowMapSize": 1024,
                     "Attenuation": {
                         "Type": "nap::ParameterEntryFloat",
                         "mID": "ParameterEntryFloat_b49c3cc2",
@@ -3348,13 +3065,13 @@
                         "Type": "nap::ParameterEntryFloat",
                         "mID": "ParameterEntryFloat_f499b46b",
                         "Parameter": "",
-                        "Default": 20.0
+                        "Default": 22.0
                     },
                     "FallOff": {
                         "Type": "nap::ParameterEntryFloat",
                         "mID": "ParameterEntryFloat_c67b5bd7",
                         "Parameter": "",
-                        "Default": 0.949999988079071
+                        "Default": 0.8999999761581421
                     }
                 },
                 {
@@ -3363,7 +3080,7 @@
                     "Properties": {
                         "FieldOfView": 60.0,
                         "NearClippingPlane": 0.10000000149011612,
-                        "FarClippingPlane": 10.0,
+                        "FarClippingPlane": 5.0,
                         "GridDimensions": {
                             "x": 1,
                             "y": 1
@@ -3382,6 +3099,366 @@
                     "LayerRegistry": "",
                     "Layer": "",
                     "Mesh": "",
+                    "MaterialInstance": {
+                        "Uniforms": [],
+                        "Samplers": [],
+                        "Buffers": [],
+                        "Constants": [],
+                        "Material": "ConstantMaterial",
+                        "BlendMode": "NotSet",
+                        "DepthMode": "NotSet"
+                    },
+                    "LineWidth": 1.0,
+                    "ClipRect": {
+                        "Min": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "Max": {
+                            "x": 0.0,
+                            "y": 0.0
+                        }
+                    }
+                }
+            ],
+            "Children": []
+        },
+        {
+            "Type": "nap::Entity",
+            "mID": "SpotHighEntity",
+            "Components": [
+                {
+                    "Type": "nap::TransformComponent",
+                    "mID": "TransformSpotHigh",
+                    "Properties": {
+                        "Translate": {
+                            "x": 1.25,
+                            "y": 0.25,
+                            "z": 1.0
+                        },
+                        "Rotate": {
+                            "x": 10.0,
+                            "y": 30.0,
+                            "z": 0.0
+                        },
+                        "Scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        },
+                        "UniformScale": 1.0
+                    }
+                },
+                {
+                    "Type": "nap::SpotLightComponent",
+                    "mID": "SpotHigh",
+                    "Enabled": true,
+                    "Color": {
+                        "Type": "nap::ParameterEntryRGBColorFloat",
+                        "mID": "ParameterEntryRGBColorFloat_0d6b5694",
+                        "Parameter": "",
+                        "Default": {
+                            "Values": [
+                                0.9803921580314636,
+                                0.34117648005485537,
+                                0.0
+                            ]
+                        }
+                    },
+                    "Intensity": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_c95d42e2",
+                        "Parameter": "LowFrequencyFluxLightParam",
+                        "Default": 3.0
+                    },
+                    "ShadowStrength": 1.5,
+                    "Enable Shadows": true,
+                    "ShadowCamera": "./ShadowCameraSpotHigh",
+                    "ShadowMapSize": 512,
+                    "Attenuation": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_a9db3887",
+                        "Parameter": "",
+                        "Default": 1.0
+                    },
+                    "Angle": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_8b0a03fc",
+                        "Parameter": "",
+                        "Default": 4.0
+                    },
+                    "FallOff": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_ab2381fc",
+                        "Parameter": "",
+                        "Default": 0.75
+                    }
+                },
+                {
+                    "Type": "nap::PerspCameraComponent",
+                    "mID": "ShadowCameraSpotHigh",
+                    "Properties": {
+                        "FieldOfView": 30.0,
+                        "NearClippingPlane": 0.10000000149011612,
+                        "FarClippingPlane": 5.0,
+                        "GridDimensions": {
+                            "x": 1,
+                            "y": 1
+                        },
+                        "GridLocation": {
+                            "x": 0,
+                            "y": 0
+                        }
+                    }
+                },
+                {
+                    "Type": "nap::RenderFrustumComponent",
+                    "mID": "RenderFrustumHigh",
+                    "Visible": false,
+                    "Tags": [],
+                    "LayerRegistry": "",
+                    "Layer": "",
+                    "Mesh": "BoxFrameMesh",
+                    "MaterialInstance": {
+                        "Uniforms": [],
+                        "Samplers": [],
+                        "Buffers": [],
+                        "Constants": [],
+                        "Material": "ConstantMaterial",
+                        "BlendMode": "NotSet",
+                        "DepthMode": "NotSet"
+                    },
+                    "LineWidth": 1.0,
+                    "ClipRect": {
+                        "Min": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "Max": {
+                            "x": 0.0,
+                            "y": 0.0
+                        }
+                    }
+                }
+            ],
+            "Children": []
+        },
+        {
+            "Type": "nap::Entity",
+            "mID": "SpotLeftEntity",
+            "Components": [
+                {
+                    "Type": "nap::TransformComponent",
+                    "mID": "TransformSpotLeft",
+                    "Properties": {
+                        "Translate": {
+                            "x": -1.0,
+                            "y": -0.25,
+                            "z": 1.0
+                        },
+                        "Rotate": {
+                            "x": 0.0,
+                            "y": -25.0,
+                            "z": 0.0
+                        },
+                        "Scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        },
+                        "UniformScale": 1.0
+                    }
+                },
+                {
+                    "Type": "nap::SpotLightComponent",
+                    "mID": "SpotLeft",
+                    "Enabled": true,
+                    "Color": {
+                        "Type": "nap::ParameterEntryRGBColorFloat",
+                        "mID": "ParameterEntryRGBColorFloat_d1169acd",
+                        "Parameter": "",
+                        "Default": {
+                            "Values": [
+                                1.0,
+                                0.10980392247438431,
+                                0.0
+                            ]
+                        }
+                    },
+                    "Intensity": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_2419ec9c",
+                        "Parameter": "LowFrequencyFluxLightParam",
+                        "Default": 3.5
+                    },
+                    "ShadowStrength": 1.5,
+                    "Enable Shadows": true,
+                    "ShadowCamera": "./ShadowCameraSpotLeft",
+                    "ShadowMapSize": 512,
+                    "Attenuation": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_b9b04e0c",
+                        "Parameter": "",
+                        "Default": 1.0
+                    },
+                    "Angle": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_74404af6",
+                        "Parameter": "",
+                        "Default": 4.0
+                    },
+                    "FallOff": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_3130a045",
+                        "Parameter": "",
+                        "Default": 0.949999988079071
+                    }
+                },
+                {
+                    "Type": "nap::PerspCameraComponent",
+                    "mID": "ShadowCameraSpotLeft",
+                    "Properties": {
+                        "FieldOfView": 30.0,
+                        "NearClippingPlane": 0.10000000149011612,
+                        "FarClippingPlane": 5.0,
+                        "GridDimensions": {
+                            "x": 1,
+                            "y": 1
+                        },
+                        "GridLocation": {
+                            "x": 0,
+                            "y": 0
+                        }
+                    }
+                },
+                {
+                    "Type": "nap::RenderFrustumComponent",
+                    "mID": "RenderFrustumSpotLeft",
+                    "Visible": false,
+                    "Tags": [],
+                    "LayerRegistry": "",
+                    "Layer": "",
+                    "Mesh": "BoxFrameMesh",
+                    "MaterialInstance": {
+                        "Uniforms": [],
+                        "Samplers": [],
+                        "Buffers": [],
+                        "Constants": [],
+                        "Material": "ConstantMaterial",
+                        "BlendMode": "NotSet",
+                        "DepthMode": "NotSet"
+                    },
+                    "LineWidth": 1.0,
+                    "ClipRect": {
+                        "Min": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "Max": {
+                            "x": 0.0,
+                            "y": 0.0
+                        }
+                    }
+                }
+            ],
+            "Children": []
+        },
+        {
+            "Type": "nap::Entity",
+            "mID": "SpotLowEntity",
+            "Components": [
+                {
+                    "Type": "nap::TransformComponent",
+                    "mID": "TransformSpotLow",
+                    "Properties": {
+                        "Translate": {
+                            "x": 0.75,
+                            "y": -0.75,
+                            "z": 1.0
+                        },
+                        "Rotate": {
+                            "x": 10.0,
+                            "y": 20.0,
+                            "z": 0.0
+                        },
+                        "Scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        },
+                        "UniformScale": 1.0
+                    }
+                },
+                {
+                    "Type": "nap::SpotLightComponent",
+                    "mID": "SpotLow",
+                    "Enabled": true,
+                    "Color": {
+                        "Type": "nap::ParameterEntryRGBColorFloat",
+                        "mID": "ParameterEntryRGBColorFloat_c5acb3f8",
+                        "Parameter": "",
+                        "Default": {
+                            "Values": [
+                                1.0,
+                                0.6039215922355652,
+                                0.0
+                            ]
+                        }
+                    },
+                    "Intensity": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_7a2b13d0",
+                        "Parameter": "HighFrequencyFluxLightParam",
+                        "Default": 2.0
+                    },
+                    "ShadowStrength": 1.5,
+                    "Enable Shadows": true,
+                    "ShadowCamera": "./ShadowCameraSpotLow",
+                    "ShadowMapSize": 512,
+                    "Attenuation": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_019af07b",
+                        "Parameter": "",
+                        "Default": 1.0
+                    },
+                    "Angle": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_0f084d37",
+                        "Parameter": "",
+                        "Default": 4.0
+                    },
+                    "FallOff": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_5a14b6a9",
+                        "Parameter": "",
+                        "Default": 0.800000011920929
+                    }
+                },
+                {
+                    "Type": "nap::PerspCameraComponent",
+                    "mID": "ShadowCameraSpotLow",
+                    "Properties": {
+                        "FieldOfView": 30.0,
+                        "NearClippingPlane": 0.10000000149011612,
+                        "FarClippingPlane": 5.0,
+                        "GridDimensions": {
+                            "x": 1,
+                            "y": 1
+                        },
+                        "GridLocation": {
+                            "x": 0,
+                            "y": 0
+                        }
+                    }
+                },
+                {
+                    "Type": "nap::RenderFrustumComponent",
+                    "mID": "RenderFrustumLow",
+                    "Visible": false,
+                    "Tags": [],
+                    "LayerRegistry": "",
+                    "Layer": "",
+                    "Mesh": "BoxFrameMesh",
                     "MaterialInstance": {
                         "Uniforms": [],
                         "Samplers": [],
@@ -3436,10 +3513,18 @@
             "Children": [
                 "PosterEntity",
                 "SpotCenterEntity",
-                "Spot001Entity",
-                "Spot02Entity",
-                "Spot03Entity"
+                "SpotLeftEntity",
+                "SpotHighEntity",
+                "SpotLowEntity"
             ]
+        },
+        {
+            "Type": "nap::MidiInputPort",
+            "mID": "MidiTwisterPort",
+            "Ports": [
+                "Midi Fighter Twister 0"
+            ],
+            "EnableDebugOutput": true
         },
         {
             "Type": "nap::ParameterBlendGroup",
@@ -3494,14 +3579,6 @@
             "Parameters": [
                 {
                     "Type": "nap::ParameterFloat",
-                    "mID": "HighFrequencyFluxParam",
-                    "Name": "HighFrequencyFlux",
-                    "Value": 0.0,
-                    "Minimum": 0.0,
-                    "Maximum": 1.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
                     "mID": "LowFrequencyFluxParam",
                     "Name": "LowFrequencyFlux",
                     "Value": 0.0,
@@ -3510,23 +3587,47 @@
                 },
                 {
                     "Type": "nap::ParameterMultiplyFloat",
+                    "mID": "LowFrequencyFluxLightParam",
+                    "Name": "LowFrequencyFluxLight",
+                    "Value": 0.10000000149011612,
+                    "Minimum": 0.10000000149011612,
+                    "Maximum": 5.0,
+                    "InputParameter": "LowFrequencyFluxParam",
+                    "Multiply": 5.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "StretchLow",
+                    "Name": "StretchLow",
+                    "Value": 1.0,
+                    "Minimum": 0.10000000149011612,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "HighFrequencyFluxParam",
+                    "Name": "HighFrequencyFlux",
+                    "Value": 0.0,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterMultiplyFloat",
                     "mID": "HighFrequencyFluxLightParam",
                     "Name": "HighFrequencyFluxLight",
-                    "Value": 0.0,
+                    "Value": 0.10000000149011612,
                     "Minimum": 0.10000000149011612,
                     "Maximum": 5.0,
                     "InputParameter": "HighFrequencyFluxParam",
                     "Multiply": 5.0
                 },
                 {
-                    "Type": "nap::ParameterMultiplyFloat",
-                    "mID": "LowFrequencyFluxLightParam",
-                    "Name": "LowFrequencyFluxLight",
-                    "Value": 0.10000000149011612,
-                    "Minimum": 0.0,
-                    "Maximum": 5.0,
-                    "InputParameter": "LowFrequencyFluxParam",
-                    "Multiply": 5.0
+                    "Type": "nap::ParameterFloat",
+                    "mID": "StretchHigh",
+                    "Name": "StretchHigh",
+                    "Value": 1.0,
+                    "Minimum": 0.10000000149011612,
+                    "Maximum": 2.0
                 }
             ],
             "Groups": []
@@ -3539,7 +3640,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "IntensityParam",
                     "Name": "Intensity",
-                    "Value": 0.0,
+                    "Value": 1.0,
                     "Minimum": 0.0,
                     "Maximum": 2.0
                 },
@@ -3620,7 +3721,23 @@
                     "Name": "MultiplyLow",
                     "Value": 1.0,
                     "Minimum": 0.0,
-                    "Maximum": 100.0
+                    "Maximum": 10.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "TargetOnsetLow",
+                    "Name": "TargetOnsetLow",
+                    "Value": 0.20000000298023225,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "DecayLow",
+                    "Name": "DecayLow",
+                    "Value": 0.02500000037252903,
+                    "Minimum": 0.0,
+                    "Maximum": 0.25
                 },
                 {
                     "Type": "nap::ParameterFloat",
@@ -3628,31 +3745,23 @@
                     "Name": "MultiplyHigh",
                     "Value": 2.0,
                     "Minimum": 0.0,
-                    "Maximum": 100.0
+                    "Maximum": 10.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
-                    "mID": "LowThresholdDecayParam",
-                    "Name": "LowThresholdDecay",
-                    "Value": 0.30000001192092898,
-                    "Minimum": 0.0,
-                    "Maximum": 0.8999999761581421
-                },
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "HighThresholdDecayParam",
-                    "Name": "HighThresholdDecay",
+                    "mID": "TargetOnsetHigh",
+                    "Name": "TargetOnsetHigh",
                     "Value": 0.20000000298023225,
                     "Minimum": 0.0,
-                    "Maximum": 0.8999999761581421
+                    "Maximum": 1.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
-                    "mID": "DecayParam",
-                    "Name": "Decay",
-                    "Value": 0.05000000074505806,
+                    "mID": "DecayHigh",
+                    "Name": "DecayHigh",
+                    "Value": 0.009999999776482582,
                     "Minimum": 0.0,
-                    "Maximum": 1.0
+                    "Maximum": 0.25
                 }
             ],
             "Groups": []
@@ -3673,7 +3782,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "FocusDistanceParam",
                     "Name": "FocusDistance",
-                    "Value": 3.25,
+                    "Value": 3.5,
                     "Minimum": 0.0,
                     "Maximum": 10.0
                 },
@@ -4159,6 +4268,12 @@
                     },
                     "Rows": 1,
                     "Columns": 1
+                },
+                {
+                    "Type": "nap::BoxFrameMesh",
+                    "mID": "BoxFrameMesh",
+                    "PolygonMode": "Line",
+                    "Usage": "Static"
                 }
             ],
             "Children": []
@@ -4185,7 +4300,7 @@
                     "Type": "nap::ImageFromFile",
                     "mID": "Poster_Background",
                     "Usage": "Static",
-                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_0028_Venus-Dodson.png",
+                    "ImagePath": "love/poster_lowres/back.png",
                     "GenerateLods": true
                 },
                 {
@@ -4200,13 +4315,6 @@
                     "mID": "Poster_Captain",
                     "Usage": "Static",
                     "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_0015_Captain-Sky.png",
-                    "GenerateLods": true
-                },
-                {
-                    "Type": "nap::ImageFromFile",
-                    "mID": "Poster_Sky",
-                    "Usage": "Static",
-                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_0023_Sky.png",
                     "GenerateLods": true
                 },
                 {
@@ -4399,13 +4507,17 @@
                 {
                     "Entity": "RenderCameraEntity",
                     "InstanceProperties": []
+                },
+                {
+                    "Entity": "MidiEntity",
+                    "InstanceProperties": []
                 }
             ]
         },
         {
             "Type": "nap::audio::AudioFileResource",
             "mID": "AudioFile",
-            "AudioFilePath": "debugdisco.mp3"
+            "AudioFilePath": "star.mp3"
         }
     ]
 }

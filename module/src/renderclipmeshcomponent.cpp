@@ -128,7 +128,7 @@ namespace nap
 		vkCmdSetLineWidth(commandBuffer, mLineWidth);
 
 		// Draw meshes
-		MeshInstance& mesh_instance = getMeshInstance();
+		MeshInstance& mesh_instance = mRenderableMesh.getMesh().getMeshInstance();
 		GPUMesh& mesh = mesh_instance.getGPUMesh();
 		for (int index = 0; index < mesh_instance.getNumShapes(); ++index)
 		{

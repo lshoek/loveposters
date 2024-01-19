@@ -35,7 +35,11 @@ namespace nap
 
 	void ParameterMultiplyFloat::setValue(float value)
 	{
-		mValue = value;
-		valueChanged(mValue);
+		float oldValue = mValue;
+		mValue = math::clamp(value, mMinimum, mMaximum);
+		if (oldValue != mValue)
+		{
+			valueChanged(mValue);
+		}
 	}
 }

@@ -86,7 +86,6 @@ namespace nap
 		if (!onset_comps.empty())
 		{
 			const auto& onset_comp = onset_comps.front();
-
 			for (const auto& item : onset_comp->getParameterItems())
 			{
 				auto it = mOnsetMap.find(item->mID);

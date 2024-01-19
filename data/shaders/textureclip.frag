@@ -10,11 +10,11 @@ out vec4 out_Color;
 
 uniform sampler2D colorTexture;
 
-const float EPSILON = 0.005;
+const float ALPHA_CLIP = 0.2;
 
 void main(void)
 {
-	if (texture(colorTexture, pass_UV).a < EPSILON)
+	if (texture(colorTexture, pass_UV).a < ALPHA_CLIP)
 		discard;
 
 	gl_FragDepth = gl_FragCoord.z;

@@ -77,11 +77,10 @@ namespace nap
 
 		virtual void onDraw(IRenderTarget& renderTarget, VkCommandBuffer commandBuffer, const glm::mat4& viewMatrix, const glm::mat4& projectionMatrix) override;
 
-		MaterialInstance						mShadowMaterialInstance;			///< 
-		RenderableMesh							mShadowRenderableMesh;				///<
+		MaterialInstance						mShadowMaterialInstance;					///< 
 
-		UniformMat4Instance* mShadowModelMatUniform = nullptr;			///< Pointer to the model matrix uniform
-		UniformMat4Instance* mShadowViewMatUniform = nullptr;			///< Pointer to the view matrix uniform
-		UniformMat4Instance* mShadowProjectMatUniform = nullptr;		///< Pointer to the projection matrix uniform
+		UniformMat4Instance*					mShadowModelMatUniform = nullptr;			///< Pointer to the model matrix uniform
+		UniformMat4Instance*					mShadowViewMatUniform = nullptr;			///< Pointer to the view matrix uniform
+		UniformMat4Instance*					mShadowProjectMatUniform = nullptr;			///< Pointer to the projection matrix uniform
 	};
 }

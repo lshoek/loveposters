@@ -97,7 +97,7 @@ namespace nap
 		if (mResource->mMultiplyScale > 0.0f)
 		{
 			float strength = glm::simplex<float>(glm::vec2(mRandomSeed.y, mRandomSeed.y));
-			float scale_movement = movement * 1.0f; // mResource->mScaleIntensityParam->mValue;
+			float scale_movement = movement * mResource->mScaleIntensityParam->mValue;
 			float scale_combined = (scale_movement + strength) * sMaxScaleDeviation * mResource->mMultiplyScale;
 			float uniform_scale = mCachedTransform->mUniformScale * (1.0f + scale_combined);
 			mTransformComponent->setUniformScale(uniform_scale);
