@@ -14,6 +14,7 @@
 #include <funtransformcomponent.h>
 #include <audio/component/playbackcomponent.h>
 #include <depthsorter.h>
+#include <pointspritevolume.h>
 
 namespace nap 
 {    
@@ -50,10 +51,6 @@ namespace nap
 
 		mAppGUIs = mResourceManager->getObjects<AppGUI>();
 
-		// Debug
-		//setFramerate(60.0f);
-		//capFramerate(true);
-
 		// All done!
         return true;
     }
@@ -74,12 +71,23 @@ namespace nap
 			// The world entity holds all visible renderable components in the scene.
 			std::vector<RenderableComponentInstance*> render_comps;
 			mWorldEntity->getComponentsOfTypeRecursive<RenderableComponentInstance>(render_comps);
+			auto shadow_comps = render_comps;
+
+			// Remove point sprite volume
+			auto it = shadow_comps.begin();
+			while (it != shadow_comps.end())
+			{
+				if ((*it)->get_type() == RTTI_OF(PointSpriteVolumeInstance))
+					it = shadow_comps.erase(it);
+				else
+					++it;
+			}
 
 			// Get Perspective camera to render with
 			auto& cam = mCameraEntity->getComponent<CameraComponentInstance>();
 
 			// Render shadows
-			mRenderAdvancedService->renderShadows(render_comps);
+			mRenderAdvancedService->renderShadows(shadow_comps);
 
 			// Offscreen color pass -> Render all available geometry to the color texture bound to the render target.
 			mRenderTarget->beginRendering();

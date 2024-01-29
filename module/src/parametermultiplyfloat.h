@@ -9,6 +9,7 @@
 
 // External Includes
 #include <parameternumeric.h>
+#include <parameterentrynumeric.h>
 #include <nap/signalslot.h>
 
 namespace nap
@@ -21,7 +22,7 @@ namespace nap
 		RTTI_ENABLE(ParameterFloat)
 	public:
 		ResourcePtr<ParameterFloat> mInputParameter;
-		float mMultiply = 1.0f;
+		ResourcePtr<ParameterEntryFloat> mMultiply;
 
 		/**
 		 * 
@@ -40,7 +41,9 @@ namespace nap
 
 	private:
 		void onInputParameterChanged(float value);
+		void onMultiplyParameterChanged(float value);
 
 		nap::Slot<float> mInputParameterChangedSlot = { this, &ParameterMultiplyFloat::onInputParameterChanged };
+		nap::Slot<float> mMultiplyParameterChangedSlot = { this, &ParameterMultiplyFloat::onMultiplyParameterChanged };
 	};
 }

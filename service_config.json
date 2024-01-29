@@ -2,7 +2,7 @@
     "Objects": [
         {
             "Type": "nap::IMGuiServiceConfiguration",
-            "mID": "IMGuiServiceConfiguration_d86ced98-93dd-4e73-94d9-b755950f275a",
+            "mID": "IMGuiServiceConfiguration_172cc29d-f8d8-47fa-86b8-0f3f3359c53d",
             "ColorScheme": "Dark",
             "FontSize": 17.0,
             "GlobalScale": 1.0,
@@ -135,19 +135,19 @@
         },
         {
             "Type": "nap::ParameterServiceConfiguration",
-            "mID": "ParameterServiceConfiguration_f88aaba5-0b84-4512-a9ff-8b8ec5128e48",
+            "mID": "ParameterServiceConfiguration_899f7d46-f763-4227-8d2c-8d799062cceb",
             "PresetsDirectory": "Presets"
         },
         {
             "Type": "nap::RenderAdvancedServiceConfiguration",
-            "mID": "RenderAdvancedServiceConfiguration_347e50e8-60a9-467c-a8c0-1b6c401c8cc1",
+            "mID": "RenderAdvancedServiceConfiguration_81f6b570-3b97-49a7-97c9-1f2066d30be3",
             "ShadowDepthFormat": "D16",
             "ShadowDepthFormatCube": "D16",
             "EnableShadowMapping": true
         },
         {
             "Type": "nap::RenderServiceConfiguration",
-            "mID": "RenderServiceConfiguration_30c95126-9aaf-4858-9095-1e5b44cc425e",
+            "mID": "RenderServiceConfiguration_df48bde3-5aef-4a5d-a8a5-ed4656744920",
             "Headless": false,
             "PreferredGPU": "Discrete",
             "Layers": [
@@ -155,30 +155,30 @@
             ],
             "Extensions": [],
             "VulkanMajor": 1,
-            "VulkanMinor": 3,
+            "VulkanMinor": 0,
             "AnisotropicSamples": 8,
             "EnableHighDPI": true,
             "EnableCompute": true,
-            "EnableCaching": true,
+            "EnableCaching": false,
             "EnableDebug": true,
             "EnableRobustBufferAccess": false,
             "ShowLayers": false,
             "ShowExtensions": false
         },
         {
-            "Type": "nap::audio::AudioServiceConfiguration",
-            "mID": "AudioServiceConfiguration_67215e84-29bf-487a-a0d1-a9d7fa1647ae",
+            "Type": "nap::audio::PortAudioServiceConfiguration",
+            "mID": "PortAudioServiceConfiguration_d507e18c-e7f1-4d87-9bf1-cb9ef0f9f302",
             "Audio Device Settings": {
                 "HostApi": "ASIO",
                 "InputDevice": "Focusrite USB ASIO",
                 "OutputDevice": "Focusrite USB ASIO",
-                "InputChannelCount": 2,
+                "InputChannelCount": 1,
                 "OutputChannelCount": 2,
                 "DisableInput": false,
-                "DisableOutput": false,
-                "SampleRate": 44100.0,
-                "BufferSize": 1024,
-                "InternalBufferSize": 1024
+                "DisableOutput": true,
+                "SampleRate": 48000.0,
+                "BufferSize": 64,
+                "InternalBufferSize": 64
             },
             "AllowChannelCountFailure": true,
             "AllowDeviceFailure": true

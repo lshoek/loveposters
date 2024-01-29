@@ -7,21 +7,29 @@
 
 RTTI_BEGIN_CLASS(nap::ParameterMultiplyFloat)
 	RTTI_PROPERTY("InputParameter", &nap::ParameterMultiplyFloat::mInputParameter, nap::rtti::EPropertyMetaData::Required)
-	RTTI_PROPERTY("Multiply", &nap::ParameterMultiplyFloat::mMultiply, nap::rtti::EPropertyMetaData::Default)
+	RTTI_PROPERTY("Multiply",		&nap::ParameterMultiplyFloat::mMultiply, nap::rtti::EPropertyMetaData::Default | nap::rtti::EPropertyMetaData::Embedded)
 RTTI_END_CLASS
 
 namespace nap
 {
 	bool ParameterMultiplyFloat::init(utility::ErrorState& errorState)
-	{
+	{ 
 		mInputParameter->valueChanged.connect(mInputParameterChangedSlot);
+		if (mMultiply->hasParameter())
+			mMultiply->mParameter->valueChanged.connect(mMultiplyParameterChangedSlot);
 		return true;
 	}
 
 
 	void ParameterMultiplyFloat::onInputParameterChanged(float value)
 	{
-		setValue(value * mMultiply);
+		setValue(value * mMultiply->getValue());
+	}
+
+
+	void ParameterMultiplyFloat::onMultiplyParameterChanged(float value)
+	{
+		setValue(mInputParameter->mValue * value);
 	}
 
 

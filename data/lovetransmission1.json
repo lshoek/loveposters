@@ -85,8 +85,8 @@
                 {
                     "Type": "nap::FFTAudioNodeComponent",
                     "mID": "FFTAudioNodeComponent",
-                    "Input": "./Playback",
-                    "Overlaps": "Three",
+                    "Input": "./AudioInput",
+                    "Overlaps": "Five",
                     "Channel": 0
                 },
                 {
@@ -102,10 +102,11 @@
                             "TargetOnset": "TargetOnsetLow",
                             "Decay": "DecayLow",
                             "Stretch": "StretchLow",
+                            "OnsetImpact": 6.0,
                             "MinHertz": 0.0,
                             "MaxHertz": 2000.0,
-                            "EvaluationSampleCount": 512,
-                            "SmoothTime": 0.03999999910593033
+                            "EvaluationSampleCount": 1024,
+                            "SmoothTime": 0.009999999776482582
                         },
                         {
                             "Type": "nap::FluxMeasurementComponent::FilterParameterItem",
@@ -116,10 +117,11 @@
                             "TargetOnset": "TargetOnsetHigh",
                             "Decay": "DecayHigh",
                             "Stretch": "StretchHigh",
+                            "OnsetImpact": 4.0,
                             "MinHertz": 2000.0,
                             "MaxHertz": 10000.0,
-                            "EvaluationSampleCount": 512,
-                            "SmoothTime": 0.03999999910593033
+                            "EvaluationSampleCount": 1024,
+                            "SmoothTime": 0.009999999776482582
                         }
                     ],
                     "Enable": true
@@ -161,7 +163,7 @@
                         "Translate": {
                             "x": 0.0,
                             "y": 0.0,
-                            "z": 1.0
+                            "z": 0.5
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -173,7 +175,7 @@
                             "y": 1.0,
                             "z": 1.0
                         },
-                        "UniformScale": 1.5
+                        "UniformScale": 1.0
                     }
                 },
                 {
@@ -187,9 +189,9 @@
                     "Intensity": "CameraSpeedParam",
                     "MultiplyIntensity": 0.05000000074505806,
                     "MoveExtents": {
-                        "x": 1.0,
-                        "y": 0.8500000238418579,
-                        "z": 1.5
+                        "x": 1.75,
+                        "y": 1.0,
+                        "z": 1.0
                     },
                     "FocusDepth": 1.0,
                     "Enable": true
@@ -198,7 +200,7 @@
                     "Type": "nap::PerspCameraComponent",
                     "mID": "PerspectiveCamera",
                     "Properties": {
-                        "FieldOfView": 50.0,
+                        "FieldOfView": 60.0,
                         "NearClippingPlane": 0.05000000074505806,
                         "FarClippingPlane": 10.0,
                         "GridDimensions": {
@@ -210,13 +212,6 @@
                             "y": 0
                         }
                     }
-                },
-                {
-                    "Type": "nap::FirstPersonController",
-                    "mID": "FirstPersonController",
-                    "MovementSpeed": 1.0,
-                    "RotateSpeed": 0.0010000000474974514,
-                    "PerspCameraComponent": "./PerspectiveCamera"
                 },
                 {
                     "Type": "nap::KeyInputComponent",
@@ -248,22 +243,22 @@
                         {
                             "Encoders": [
                                 {
-                                    "Parameter": "IntensityParam",
+                                    "Parameter": "MasterIntensityParam",
+                                    "EncoderType": "Absolute",
+                                    "EncoderStepSize": 0.009999999776482582
+                                },
+                                {
+                                    "Parameter": "ApertureParam",
                                     "EncoderType": "Relative",
                                     "EncoderStepSize": 0.009999999776482582
                                 },
                                 {
-                                    "Parameter": "BloomIntensityParam",
+                                    "Parameter": "DecayHigh",
                                     "EncoderType": "Relative",
                                     "EncoderStepSize": 0.009999999776482582
                                 },
                                 {
-                                    "Parameter": "ScaleIntensityParam",
-                                    "EncoderType": "Relative",
-                                    "EncoderStepSize": 0.009999999776482582
-                                },
-                                {
-                                    "Parameter": "CameraSpeedParam",
+                                    "Parameter": "MultiplyHighParam",
                                     "EncoderType": "Relative",
                                     "EncoderStepSize": 0.009999999776482582
                                 },
@@ -278,13 +273,13 @@
                                     "EncoderStepSize": 0.009999999776482582
                                 },
                                 {
-                                    "Parameter": "",
-                                    "EncoderType": "Absolute",
+                                    "Parameter": "DecayLow",
+                                    "EncoderType": "Relative",
                                     "EncoderStepSize": 0.009999999776482582
                                 },
                                 {
-                                    "Parameter": "",
-                                    "EncoderType": "Absolute",
+                                    "Parameter": "MultiplyLowParam",
+                                    "EncoderType": "Relative",
                                     "EncoderStepSize": 0.009999999776482582
                                 },
                                 {
@@ -531,7 +526,7 @@
                         "Translate": {
                             "x": 0.30000001192092898,
                             "y": -0.10000000149011612,
-                            "z": -13.0
+                            "z": -12.5
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -626,7 +621,7 @@
                     "Type": "nap::FunTransformComponent",
                     "mID": "MoveAsha",
                     "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "IntensityParam",
+                    "Intensity": "LiveIntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
@@ -750,7 +745,7 @@
                     "Type": "nap::FunTransformComponent",
                     "mID": "MoveBackground",
                     "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "IntensityParam",
+                    "Intensity": "LiveIntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
@@ -874,7 +869,7 @@
                     "Type": "nap::FunTransformComponent",
                     "mID": "MoveCaptain",
                     "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "IntensityParam",
+                    "Intensity": "LiveIntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
@@ -998,7 +993,7 @@
                     "Type": "nap::FunTransformComponent",
                     "mID": "MoveCarlton",
                     "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "IntensityParam",
+                    "Intensity": "LiveIntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
@@ -1122,7 +1117,7 @@
                     "Type": "nap::FunTransformComponent",
                     "mID": "MoveCurtis",
                     "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "IntensityParam",
+                    "Intensity": "LiveIntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
@@ -1246,7 +1241,7 @@
                     "Type": "nap::FunTransformComponent",
                     "mID": "MoveDarcus",
                     "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "IntensityParam",
+                    "Intensity": "LiveIntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
@@ -1370,7 +1365,7 @@
                     "Type": "nap::FunTransformComponent",
                     "mID": "MoveFlamingo",
                     "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "IntensityParam",
+                    "Intensity": "LiveIntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
@@ -1494,7 +1489,7 @@
                     "Type": "nap::FunTransformComponent",
                     "mID": "MoveJimmy",
                     "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "IntensityParam",
+                    "Intensity": "LiveIntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
@@ -1618,7 +1613,7 @@
                     "Type": "nap::FunTransformComponent",
                     "mID": "MoveMarilyn",
                     "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "IntensityParam",
+                    "Intensity": "LiveIntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
@@ -1742,7 +1737,7 @@
                     "Type": "nap::FunTransformComponent",
                     "mID": "MoveMilky",
                     "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "IntensityParam",
+                    "Intensity": "LiveIntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
@@ -1866,7 +1861,7 @@
                     "Type": "nap::FunTransformComponent",
                     "mID": "MovePlants",
                     "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "IntensityParam",
+                    "Intensity": "LiveIntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
@@ -1990,7 +1985,7 @@
                     "Type": "nap::FunTransformComponent",
                     "mID": "MoveRareGems",
                     "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "IntensityParam",
+                    "Intensity": "LiveIntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
@@ -2114,7 +2109,7 @@
                     "Type": "nap::FunTransformComponent",
                     "mID": "MoveRose",
                     "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "IntensityParam",
+                    "Intensity": "LiveIntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
@@ -2143,7 +2138,7 @@
                         "Translate": {
                             "x": 0.20000000298023225,
                             "y": 0.4000000059604645,
-                            "z": -17.0
+                            "z": -14.0
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -2238,7 +2233,7 @@
                     "Type": "nap::FunTransformComponent",
                     "mID": "MoveRoundTree",
                     "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "IntensityParam",
+                    "Intensity": "LiveIntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
@@ -2276,10 +2271,10 @@
                         },
                         "Scale": {
                             "x": 1.0,
-                            "y": 0.30000001192092898,
+                            "y": 0.3799999952316284,
                             "z": 1.0
                         },
-                        "UniformScale": 1.0
+                        "UniformScale": 0.800000011920929
                     }
                 },
                 {
@@ -2315,7 +2310,7 @@
                         "Buffers": [],
                         "Constants": [],
                         "Material": "TextureShadowClipMaterial",
-                        "BlendMode": "AlphaBlend",
+                        "BlendMode": "Opaque",
                         "DepthMode": "NotSet"
                     },
                     "LineWidth": 1.0,
@@ -2362,7 +2357,7 @@
                     "Type": "nap::FunTransformComponent",
                     "mID": "MoveTitle",
                     "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "IntensityParam",
+                    "Intensity": "LiveIntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
@@ -2379,7 +2374,7 @@
                 },
                 {
                     "Type": "nap::UpdateMaterialComponent",
-                    "mID": "UpdateBaseMaterial",
+                    "mID": "UpdateMaterial",
                     "Ambient": "",
                     "Diffuse": "",
                     "Specular": "",
@@ -2498,7 +2493,7 @@
                     "Type": "nap::FunTransformComponent",
                     "mID": "MoveZulu",
                     "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "IntensityParam",
+                    "Intensity": "LiveIntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
@@ -2622,7 +2617,7 @@
                     "Type": "nap::FunTransformComponent",
                     "mID": "MoveZuluPlantsLeft",
                     "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "IntensityParam",
+                    "Intensity": "LiveIntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
@@ -2746,7 +2741,7 @@
                     "Type": "nap::FunTransformComponent",
                     "mID": "MoveZuluPlantsRight",
                     "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "IntensityParam",
+                    "Intensity": "LiveIntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
                     "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
                     "TranslateXIntensity": "TranslateXIntensityParam",
@@ -2992,7 +2987,7 @@
                     "Tags": [],
                     "LayerRegistry": "",
                     "Layer": "",
-                    "Camera": "../CameraEntity/PerspectiveCamera",
+                    "Camera": "../WorldEntity/CameraEntity/PerspectiveCamera",
                     "InputTarget": "ColorTarget",
                     "OutputTexture": "DOFTexture",
                     "Aperture": "ApertureParam",
@@ -3065,7 +3060,7 @@
                         "Type": "nap::ParameterEntryFloat",
                         "mID": "ParameterEntryFloat_f499b46b",
                         "Parameter": "",
-                        "Default": 22.0
+                        "Default": 24.0
                     },
                     "FallOff": {
                         "Type": "nap::ParameterEntryFloat",
@@ -3485,6 +3480,100 @@
         },
         {
             "Type": "nap::Entity",
+            "mID": "StarsEntity",
+            "Components": [
+                {
+                    "Type": "nap::TransformComponent",
+                    "mID": "TransformStars",
+                    "Properties": {
+                        "Translate": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": -1.0
+                        },
+                        "Rotate": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "Scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        },
+                        "UniformScale": 1.0
+                    }
+                },
+                {
+                    "Type": "nap::PointSpriteVolume",
+                    "mID": "RenderSprites",
+                    "Visible": true,
+                    "Tags": [],
+                    "LayerRegistry": "",
+                    "Layer": "",
+                    "Mesh": "ParticleMesh",
+                    "MaterialInstance": {
+                        "Uniforms": [],
+                        "Samplers": [
+                            {
+                                "Type": "nap::Sampler2D",
+                                "mID": "sprite_704c37a1",
+                                "Name": "sprite",
+                                "MinFilter": "Linear",
+                                "MaxFilter": "Linear",
+                                "MipMapMode": "Linear",
+                                "AddressModeVertical": "ClampToEdge",
+                                "AddressModeHorizontal": "ClampToEdge",
+                                "MinLodLevel": 0,
+                                "MaxLodLevel": 1000,
+                                "LodBias": 0.0,
+                                "AnisotropicSamples": "Default",
+                                "BorderColor": "IntOpaqueBlack",
+                                "CompareMode": "LessOrEqual",
+                                "EnableCompare": false,
+                                "Texture": "Poster_Star"
+                            }
+                        ],
+                        "Buffers": [
+                            {
+                                "Type": "nap::BufferBindingVec4",
+                                "mID": "PositionBuffer_In_247749c0",
+                                "Name": "PositionBuffer_In",
+                                "Buffer": "StarPositionBuffer"
+                            },
+                            {
+                                "Type": "nap::BufferBindingVec4",
+                                "mID": "HashBuffer_In_1cffeb04",
+                                "Name": "HashBuffer_In",
+                                "Buffer": "HashBuffer"
+                            }
+                        ],
+                        "Constants": [],
+                        "Material": "SpriteMaterial",
+                        "BlendMode": "AlphaBlend",
+                        "DepthMode": "ReadWrite"
+                    },
+                    "LineWidth": 1.0,
+                    "ClipRect": {
+                        "Min": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "Max": {
+                            "x": 0.0,
+                            "y": 0.0
+                        }
+                    },
+                    "PointSize": "StarSizeParam",
+                    "PointScale": "HighFrequencyFluxParam",
+                    "PointScaleIntensity": "StarScaleIntensityParam",
+                    "TimeScale": "StarTimeScaleParam"
+                }
+            ],
+            "Children": []
+        },
+        {
+            "Type": "nap::Entity",
             "mID": "WorldEntity",
             "Components": [
                 {
@@ -3515,16 +3604,16 @@
                 "SpotCenterEntity",
                 "SpotLeftEntity",
                 "SpotHighEntity",
-                "SpotLowEntity"
+                "SpotLowEntity",
+                "StarsEntity",
+                "CameraEntity"
             ]
         },
         {
             "Type": "nap::MidiInputPort",
             "mID": "MidiTwisterPort",
-            "Ports": [
-                "Midi Fighter Twister 0"
-            ],
-            "EnableDebugOutput": true
+            "Ports": [],
+            "EnableDebugOutput": false
         },
         {
             "Type": "nap::ParameterBlendGroup",
@@ -3583,7 +3672,7 @@
                     "Name": "LowFrequencyFlux",
                     "Value": 0.0,
                     "Minimum": 0.0,
-                    "Maximum": 1.0
+                    "Maximum": 2.0
                 },
                 {
                     "Type": "nap::ParameterMultiplyFloat",
@@ -3593,7 +3682,12 @@
                     "Minimum": 0.10000000149011612,
                     "Maximum": 5.0,
                     "InputParameter": "LowFrequencyFluxParam",
-                    "Multiply": 5.0
+                    "Multiply": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_847281e7",
+                        "Parameter": "",
+                        "Default": 5.0
+                    }
                 },
                 {
                     "Type": "nap::ParameterFloat",
@@ -3609,7 +3703,7 @@
                     "Name": "HighFrequencyFlux",
                     "Value": 0.0,
                     "Minimum": 0.0,
-                    "Maximum": 1.0
+                    "Maximum": 2.0
                 },
                 {
                     "Type": "nap::ParameterMultiplyFloat",
@@ -3619,7 +3713,12 @@
                     "Minimum": 0.10000000149011612,
                     "Maximum": 5.0,
                     "InputParameter": "HighFrequencyFluxParam",
-                    "Multiply": 5.0
+                    "Multiply": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_3bc18cb4",
+                        "Parameter": "",
+                        "Default": 5.0
+                    }
                 },
                 {
                     "Type": "nap::ParameterFloat",
@@ -3628,6 +3727,29 @@
                     "Value": 1.0,
                     "Minimum": 0.10000000149011612,
                     "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterMultiplyFloat",
+                    "mID": "LiveIntensityParam",
+                    "Name": "LiveIntensity",
+                    "Value": 1.0,
+                    "Minimum": 0.0,
+                    "Maximum": 2.0,
+                    "InputParameter": "IntensityParam",
+                    "Multiply": {
+                        "Type": "nap::ParameterEntryFloat",
+                        "mID": "ParameterEntryFloat_81d5fead",
+                        "Parameter": "MasterIntensityParam",
+                        "Default": 1.0
+                    }
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "MasterIntensityParam",
+                    "Name": "Master",
+                    "Value": 1.0,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
                 }
             ],
             "Groups": []
@@ -3699,6 +3821,30 @@
                     "Value": 1.0,
                     "Minimum": 0.10000000149011612,
                     "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "StarSizeParam",
+                    "Name": "StarSize",
+                    "Value": 80.0,
+                    "Minimum": 0.0,
+                    "Maximum": 256.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "StarTimeScaleParam",
+                    "Name": "StarTimeScale",
+                    "Value": 0.05000000074505806,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "StarScaleIntensityParam",
+                    "Name": "StarScaleIntensity",
+                    "Value": 40.0,
+                    "Minimum": 0.0,
+                    "Maximum": 256.0
                 }
             ],
             "Groups": []
@@ -3719,7 +3865,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "MultiplyLowParam",
                     "Name": "MultiplyLow",
-                    "Value": 1.0,
+                    "Value": 2.0,
                     "Minimum": 0.0,
                     "Maximum": 10.0
                 },
@@ -3727,7 +3873,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "TargetOnsetLow",
                     "Name": "TargetOnsetLow",
-                    "Value": 0.20000000298023225,
+                    "Value": 0.25,
                     "Minimum": 0.0,
                     "Maximum": 1.0
                 },
@@ -3735,23 +3881,23 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "DecayLow",
                     "Name": "DecayLow",
-                    "Value": 0.02500000037252903,
+                    "Value": 0.33329999446868899,
                     "Minimum": 0.0,
-                    "Maximum": 0.25
+                    "Maximum": 2.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
                     "mID": "MultiplyHighParam",
                     "Name": "MultiplyHigh",
-                    "Value": 2.0,
+                    "Value": 10.0,
                     "Minimum": 0.0,
-                    "Maximum": 10.0
+                    "Maximum": 20.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
                     "mID": "TargetOnsetHigh",
                     "Name": "TargetOnsetHigh",
-                    "Value": 0.20000000298023225,
+                    "Value": 0.33329999446868899,
                     "Minimum": 0.0,
                     "Maximum": 1.0
                 },
@@ -3759,9 +3905,9 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "DecayHigh",
                     "Name": "DecayHigh",
-                    "Value": 0.009999999776482582,
+                    "Value": 1.0,
                     "Minimum": 0.0,
-                    "Maximum": 0.25
+                    "Maximum": 2.0
                 }
             ],
             "Groups": []
@@ -3839,10 +3985,10 @@
             "ColorSpace": "Linear",
             "ClearColor": {
                 "Values": [
-                    1.0,
                     0.0,
-                    0.886274516582489,
-                    1.0
+                    0.0,
+                    0.0,
+                    0.0
                 ]
             }
         },
@@ -3856,19 +4002,19 @@
             "Title": "Graphic Tool",
             "Width": 1920,
             "Height": 1200,
-            "Mode": "Immediate",
+            "Mode": "Mailbox",
             "ClearColor": {
                 "Values": [
                     0.0,
                     0.0,
                     0.0,
-                    1.0
+                    0.0
                 ]
             },
             "Samples": "Four",
             "AdditionalSwapImages": 1,
-            "RestoreSize": true,
-            "RestorePosition": true
+            "RestoreSize": false,
+            "RestorePosition": false
         },
         {
             "Type": "nap::ResourceGroup",
@@ -4161,6 +4307,49 @@
                     "VertShader": "shaders/textureshadowclip.vert",
                     "FragShader": "shaders/textureshadowclip.frag",
                     "RestrictModuleIncludes": false
+                },
+                {
+                    "Type": "nap::Material",
+                    "mID": "SpriteMaterial",
+                    "Uniforms": [
+                        {
+                            "Type": "nap::UniformStruct",
+                            "mID": "UBO_a8a9247c",
+                            "Name": "UBO",
+                            "Uniforms": [
+                                {
+                                    "Type": "nap::UniformVec3",
+                                    "mID": "color_e34f7479",
+                                    "Name": "color",
+                                    "Value": {
+                                        "x": 1.0,
+                                        "y": 1.0,
+                                        "z": 1.0
+                                    }
+                                },
+                                {
+                                    "Type": "nap::UniformFloat",
+                                    "mID": "alpha_43d96fb0",
+                                    "Name": "alpha",
+                                    "Value": 1.0
+                                }
+                            ]
+                        }
+                    ],
+                    "Samplers": [],
+                    "Buffers": [],
+                    "Constants": [],
+                    "Shader": "SpriteShader",
+                    "VertexAttributeBindings": [],
+                    "BlendMode": "Opaque",
+                    "DepthMode": "ReadWrite"
+                },
+                {
+                    "Type": "nap::ShaderFromFile",
+                    "mID": "SpriteShader",
+                    "VertShader": "shaders/sprites_instanced.vert",
+                    "FragShader": "shaders/sprites_instanced.frag",
+                    "RestrictModuleIncludes": false
                 }
             ],
             "Children": []
@@ -4274,6 +4463,62 @@
                     "mID": "BoxFrameMesh",
                     "PolygonMode": "Line",
                     "Usage": "Static"
+                },
+                {
+                    "Type": "nap::ParticleMesh",
+                    "mID": "ParticleMesh",
+                    "Usage": "Static",
+                    "CullMode": "None",
+                    "PolygonMode": "Point",
+                    "Count": 4096
+                },
+                {
+                    "Type": "nap::GPUBufferVec4",
+                    "mID": "StarPositionBuffer",
+                    "Usage": "Static",
+                    "Count": 4096,
+                    "Clear": true,
+                    "FillPolicy": "StarPositionFillPolicy"
+                },
+                {
+                    "Type": "nap::RandomFillPolicyVec4",
+                    "mID": "StarPositionFillPolicy",
+                    "LowerBound": {
+                        "x": -2.0,
+                        "y": -2.0,
+                        "z": -2.0,
+                        "w": 0.0
+                    },
+                    "UpperBound": {
+                        "x": 2.0,
+                        "y": 2.0,
+                        "z": 2.0,
+                        "w": 1.0
+                    }
+                },
+                {
+                    "Type": "nap::GPUBufferVec4",
+                    "mID": "HashBuffer",
+                    "Usage": "Static",
+                    "Count": 4096,
+                    "Clear": true,
+                    "FillPolicy": "HashFillPolicy"
+                },
+                {
+                    "Type": "nap::RandomFillPolicyVec4",
+                    "mID": "HashFillPolicy",
+                    "LowerBound": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0,
+                        "w": 0.0
+                    },
+                    "UpperBound": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0,
+                        "w": 1.0
+                    }
                 }
             ],
             "Children": []
@@ -4293,7 +4538,7 @@
                     "Type": "nap::ImageFromFile",
                     "mID": "Poster_Title",
                     "Usage": "Static",
-                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_0003_Love-Transmission.png",
+                    "ImagePath": "love/poster/Love-Transmission-Logo-Geel.png",
                     "GenerateLods": true
                 },
                 {
@@ -4407,6 +4652,20 @@
                     "Usage": "Static",
                     "ImagePath": "love/poster_lowres/ZuluPlantsRight.png",
                     "GenerateLods": true
+                },
+                {
+                    "Type": "nap::ImageFromFile",
+                    "mID": "Poster_OldLogo",
+                    "Usage": "Static",
+                    "ImagePath": "love/poster/Love-Transmission-Collage-Small_0003_Love-Transmission.png",
+                    "GenerateLods": true
+                },
+                {
+                    "Type": "nap::ImageFromFile",
+                    "mID": "Poster_Star",
+                    "Usage": "Static",
+                    "ImagePath": "love/poster/star.png",
+                    "GenerateLods": true
                 }
             ],
             "Children": []
@@ -4470,7 +4729,7 @@
                     "Type": "nap::DepthRenderTexture2D",
                     "mID": "DepthTexture",
                     "Usage": "Static",
-                    "Fill": false,
+                    "Fill": true,
                     "Width": 1920,
                     "Height": 1200,
                     "Format": "D16",
@@ -4484,10 +4743,6 @@
             "Type": "nap::Scene",
             "mID": "Scene",
             "Entities": [
-                {
-                    "Entity": "CameraEntity",
-                    "InstanceProperties": []
-                },
                 {
                     "Entity": "WorldEntity",
                     "InstanceProperties": []
