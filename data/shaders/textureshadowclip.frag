@@ -10,6 +10,7 @@
 #include "shadow.glslinc"
 #include "blinnphongutils.glslinc"
 #include "utils.glslinc"
+#include "simplex2d.glsl"
 
 // Specialization constants
 layout (constant_id = 0) const uint QUAD_SAMPLE_COUNT = 8;
@@ -60,6 +61,7 @@ in vec3 	passNormal;						//< Fragment normal in world space
 in vec3 	passUV0;						//< Texture UVs
 in float 	passFresnel;					//< Fresnel term
 in vec4 	passShadowCoords[MAX_LIGHTS];	//< Shadow Coordinates
+in vec2		passViewportCoord;
 
 // Fragment Output
 out vec4 out_Color;
@@ -115,14 +117,17 @@ void main()
 					// Remap coordinate from ndc [-1, 1] to normalized [0, 1]
 					coord.xy = (coord.xy + 1.0) * 0.5;
 
-					// Multi saample
+					// Multi sample
 					const uint map_index = getShadowMapIndex(flags);
 					float sum = 0.0;
 					for (int s=0; s<QUAD_SAMPLE_COUNT; s++) 
 					{
 						sum += 1.0 - texture(shadowMaps[map_index], vec3(coord.xy + POISSON_DISK[s]/SHADOW_POISSON_SPREAD, coord.z));
 					}
-					shadow += sum / float(QUAD_SAMPLE_COUNT);
+					float s = sum / float(QUAD_SAMPLE_COUNT);
+					vec2 grad;
+					float n = noise(passViewportCoord * vec2(1920, 1200)) * 0.5 + 0.5;
+					shadow += s - s*n*0.25;
 				}
 				break;
 			}

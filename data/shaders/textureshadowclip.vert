@@ -54,12 +54,16 @@ out vec3 	passNormal;						//< Vertex normal in world space
 out vec3	passUV0;						//< Texture UVs
 out float 	passFresnel;					//< Fresnel
 out vec4 	passShadowCoords[MAX_LIGHTS];	//< Shadow Coordinates
+out vec2	passViewportCoord;
 
 void main()
 {
 	// Calculate frag position
 	vec4 world_position = mvp.modelMatrix * vec4(in_Position, 1.0);
 	gl_Position = mvp.projectionMatrix * mvp.viewMatrix * world_position;
+
+	vec3 ndc = gl_Position.xyz / gl_Position.w;
+	passViewportCoord = ndc.xy * 0.5 + 0.5;
 
 	passPosition = world_position.xyz;
 	passUV0 = in_UV0;
