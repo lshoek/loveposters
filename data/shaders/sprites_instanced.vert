@@ -31,7 +31,6 @@ uniform UBO
 	float pointScale;
 } ubo;
 
-out vec4 passColor;
 out float passRot;
 
 const float ROTATION_INTENSITY = 32.0;

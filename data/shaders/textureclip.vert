@@ -14,7 +14,7 @@ uniform nap
 in vec3	in_Position;
 in vec3	in_UV0;
 
-out vec2 pass_UV;
+out vec2 passUV;
 
 void main(void)
 {
@@ -22,5 +22,5 @@ void main(void)
     gl_Position = mvp.projectionMatrix * mvp.viewMatrix * mvp.modelMatrix * vec4(in_Position, 1.0);
 
 	// Pass color and uv's 
-	pass_UV = in_UV0.xy;
+	passUV = in_UV0.xy;
 }

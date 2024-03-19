@@ -4,7 +4,7 @@
 
 #version 450 core
 
-in vec2 pass_UV;
+in vec2 passUV;
 
 out vec4 out_Color;
 
@@ -14,7 +14,7 @@ const float ALPHA_CLIP = 0.2;
 
 void main(void)
 {
-	if (texture(colorTexture, pass_UV).a < ALPHA_CLIP)
+	if (texture(colorTexture, passUV).a < ALPHA_CLIP)
 		discard;
 
 	gl_FragDepth = gl_FragCoord.z;

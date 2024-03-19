@@ -546,7 +546,6 @@
                     "mID": "RenderAsha",
                     "Visible": true,
                     "Tags": [],
-                    "LayerRegistry": "",
                     "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
@@ -670,7 +669,6 @@
                     "mID": "RenderBackground",
                     "Visible": true,
                     "Tags": [],
-                    "LayerRegistry": "",
                     "Layer": "",
                     "Mesh": "PosterMesh",
                     "MaterialInstance": {
@@ -794,7 +792,6 @@
                     "mID": "RenderCaptain",
                     "Visible": true,
                     "Tags": [],
-                    "LayerRegistry": "",
                     "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
@@ -918,7 +915,6 @@
                     "mID": "RenderCarlton",
                     "Visible": true,
                     "Tags": [],
-                    "LayerRegistry": "",
                     "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
@@ -1042,7 +1038,6 @@
                     "mID": "RenderCurtis",
                     "Visible": true,
                     "Tags": [],
-                    "LayerRegistry": "",
                     "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
@@ -1166,7 +1161,6 @@
                     "mID": "RenderDarcus",
                     "Visible": true,
                     "Tags": [],
-                    "LayerRegistry": "",
                     "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
@@ -1290,7 +1284,6 @@
                     "mID": "RenderFlamingo",
                     "Visible": true,
                     "Tags": [],
-                    "LayerRegistry": "",
                     "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
@@ -1414,7 +1407,6 @@
                     "mID": "RenderJimmy",
                     "Visible": true,
                     "Tags": [],
-                    "LayerRegistry": "",
                     "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
@@ -1538,7 +1530,6 @@
                     "mID": "RenderMarilyn",
                     "Visible": true,
                     "Tags": [],
-                    "LayerRegistry": "",
                     "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
@@ -1662,7 +1653,6 @@
                     "mID": "RenderMilky",
                     "Visible": true,
                     "Tags": [],
-                    "LayerRegistry": "",
                     "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
@@ -1786,7 +1776,6 @@
                     "mID": "RenderPlants",
                     "Visible": true,
                     "Tags": [],
-                    "LayerRegistry": "",
                     "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
@@ -1910,7 +1899,6 @@
                     "mID": "RenderRareGems",
                     "Visible": true,
                     "Tags": [],
-                    "LayerRegistry": "",
                     "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
@@ -2034,7 +2022,6 @@
                     "mID": "RenderRose",
                     "Visible": true,
                     "Tags": [],
-                    "LayerRegistry": "",
                     "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
@@ -2158,7 +2145,6 @@
                     "mID": "RenderRoundTree",
                     "Visible": true,
                     "Tags": [],
-                    "LayerRegistry": "",
                     "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
@@ -2282,7 +2268,6 @@
                     "mID": "RenderTitle",
                     "Visible": true,
                     "Tags": [],
-                    "LayerRegistry": "",
                     "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
@@ -2418,7 +2403,6 @@
                     "mID": "RenderZulu",
                     "Visible": true,
                     "Tags": [],
-                    "LayerRegistry": "",
                     "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
@@ -2542,7 +2526,6 @@
                     "mID": "RenderZuluPlantsLeft",
                     "Visible": true,
                     "Tags": [],
-                    "LayerRegistry": "",
                     "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
@@ -2666,7 +2649,6 @@
                     "mID": "RenderZuluPlantsRight",
                     "Visible": true,
                     "Tags": [],
-                    "LayerRegistry": "",
                     "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
@@ -2820,7 +2802,6 @@
                     "mID": "ChangeColor",
                     "Visible": true,
                     "Tags": [],
-                    "LayerRegistry": "",
                     "Layer": "",
                     "OutputTexture": "BloomTexture",
                     "MaterialInstance": {
@@ -2894,7 +2875,6 @@
                     "mID": "RenderBloom",
                     "Visible": true,
                     "Tags": [],
-                    "LayerRegistry": "",
                     "Layer": "",
                     "PassCount": 3,
                     "Kernel": "9x9",
@@ -2906,7 +2886,6 @@
                     "mID": "BlendTogether",
                     "Visible": true,
                     "Tags": [],
-                    "LayerRegistry": "",
                     "Layer": "",
                     "OutputTexture": "ColorTexture",
                     "MaterialInstance": {
@@ -2985,7 +2964,6 @@
                     "mID": "RenderDOF",
                     "Visible": true,
                     "Tags": [],
-                    "LayerRegistry": "",
                     "Layer": "",
                     "Camera": "../WorldEntity/CameraEntity/PerspectiveCamera",
                     "InputTarget": "ColorTarget",
@@ -3028,92 +3006,29 @@
                     "Type": "nap::SpotLightComponent",
                     "mID": "SpotLight",
                     "Enabled": true,
+                    "CastShadows": false,
                     "Color": {
-                        "Type": "nap::ParameterEntryRGBColorFloat",
-                        "mID": "ParameterEntryRGBColorFloat_e4f0fa89",
-                        "Parameter": "",
-                        "Default": {
-                            "Values": [
-                                1.0,
-                                1.0,
-                                1.0
-                            ]
-                        }
+                        "Values": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
                     },
-                    "Intensity": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_4dbb2bfc",
-                        "Parameter": "",
-                        "Default": 1.0
-                    },
+                    "Intensity": 1.0,
                     "ShadowStrength": 0.5,
-                    "Enable Shadows": true,
-                    "ShadowCamera": "./CenterShadowCamera",
-                    "ShadowMapSize": 1024,
-                    "Attenuation": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_b49c3cc2",
-                        "Parameter": "",
-                        "Default": 1.0
+                    "Locator": {
+                        "LineWidth": 1.0,
+                        "GnomonSize": 1.0
                     },
-                    "Angle": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_f499b46b",
-                        "Parameter": "",
-                        "Default": 24.0
+                    "Attenuation": 0.10000000149011612,
+                    "Angle": 90.0,
+                    "FieldOfViewClip": 1.0,
+                    "Falloff": 0.5,
+                    "ClippingPlanes": {
+                        "x": 1.0,
+                        "y": 1000.0
                     },
-                    "FallOff": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_c67b5bd7",
-                        "Parameter": "",
-                        "Default": 0.8999999761581421
-                    }
-                },
-                {
-                    "Type": "nap::PerspCameraComponent",
-                    "mID": "CenterShadowCamera",
-                    "Properties": {
-                        "FieldOfView": 60.0,
-                        "NearClippingPlane": 0.10000000149011612,
-                        "FarClippingPlane": 5.0,
-                        "GridDimensions": {
-                            "x": 1,
-                            "y": 1
-                        },
-                        "GridLocation": {
-                            "x": 0,
-                            "y": 0
-                        }
-                    }
-                },
-                {
-                    "Type": "nap::RenderFrustumComponent",
-                    "mID": "RenderFrustum",
-                    "Visible": false,
-                    "Tags": [],
-                    "LayerRegistry": "",
-                    "Layer": "",
-                    "Mesh": "",
-                    "MaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "ConstantMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    },
-                    "LineWidth": 1.0,
-                    "ClipRect": {
-                        "Min": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "Max": {
-                            "x": 0.0,
-                            "y": 0.0
-                        }
-                    }
+                    "ShadowMapSize": 1024
                 }
             ],
             "Children": []
@@ -3148,92 +3063,29 @@
                     "Type": "nap::SpotLightComponent",
                     "mID": "SpotHigh",
                     "Enabled": true,
+                    "CastShadows": false,
                     "Color": {
-                        "Type": "nap::ParameterEntryRGBColorFloat",
-                        "mID": "ParameterEntryRGBColorFloat_0d6b5694",
-                        "Parameter": "",
-                        "Default": {
-                            "Values": [
-                                0.9803921580314636,
-                                0.34117648005485537,
-                                0.0
-                            ]
-                        }
+                        "Values": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
                     },
-                    "Intensity": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_c95d42e2",
-                        "Parameter": "LowFrequencyFluxLightParam",
-                        "Default": 3.0
-                    },
+                    "Intensity": 1.0,
                     "ShadowStrength": 1.5,
-                    "Enable Shadows": true,
-                    "ShadowCamera": "./ShadowCameraSpotHigh",
-                    "ShadowMapSize": 512,
-                    "Attenuation": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_a9db3887",
-                        "Parameter": "",
-                        "Default": 1.0
+                    "Locator": {
+                        "LineWidth": 1.0,
+                        "GnomonSize": 1.0
                     },
-                    "Angle": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_8b0a03fc",
-                        "Parameter": "",
-                        "Default": 4.0
+                    "Attenuation": 0.10000000149011612,
+                    "Angle": 8.0,
+                    "FieldOfViewClip": 1.0,
+                    "Falloff": 0.5,
+                    "ClippingPlanes": {
+                        "x": 1.0,
+                        "y": 1000.0
                     },
-                    "FallOff": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_ab2381fc",
-                        "Parameter": "",
-                        "Default": 0.75
-                    }
-                },
-                {
-                    "Type": "nap::PerspCameraComponent",
-                    "mID": "ShadowCameraSpotHigh",
-                    "Properties": {
-                        "FieldOfView": 30.0,
-                        "NearClippingPlane": 0.10000000149011612,
-                        "FarClippingPlane": 5.0,
-                        "GridDimensions": {
-                            "x": 1,
-                            "y": 1
-                        },
-                        "GridLocation": {
-                            "x": 0,
-                            "y": 0
-                        }
-                    }
-                },
-                {
-                    "Type": "nap::RenderFrustumComponent",
-                    "mID": "RenderFrustumHigh",
-                    "Visible": false,
-                    "Tags": [],
-                    "LayerRegistry": "",
-                    "Layer": "",
-                    "Mesh": "BoxFrameMesh",
-                    "MaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "ConstantMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    },
-                    "LineWidth": 1.0,
-                    "ClipRect": {
-                        "Min": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "Max": {
-                            "x": 0.0,
-                            "y": 0.0
-                        }
-                    }
+                    "ShadowMapSize": 512
                 }
             ],
             "Children": []
@@ -3268,92 +3120,29 @@
                     "Type": "nap::SpotLightComponent",
                     "mID": "SpotLeft",
                     "Enabled": true,
+                    "CastShadows": false,
                     "Color": {
-                        "Type": "nap::ParameterEntryRGBColorFloat",
-                        "mID": "ParameterEntryRGBColorFloat_d1169acd",
-                        "Parameter": "",
-                        "Default": {
-                            "Values": [
-                                1.0,
-                                0.10980392247438431,
-                                0.0
-                            ]
-                        }
+                        "Values": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
                     },
-                    "Intensity": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_2419ec9c",
-                        "Parameter": "LowFrequencyFluxLightParam",
-                        "Default": 3.5
-                    },
+                    "Intensity": 1.0,
                     "ShadowStrength": 1.5,
-                    "Enable Shadows": true,
-                    "ShadowCamera": "./ShadowCameraSpotLeft",
-                    "ShadowMapSize": 512,
-                    "Attenuation": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_b9b04e0c",
-                        "Parameter": "",
-                        "Default": 1.0
+                    "Locator": {
+                        "LineWidth": 1.0,
+                        "GnomonSize": 1.0
                     },
-                    "Angle": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_74404af6",
-                        "Parameter": "",
-                        "Default": 4.0
+                    "Attenuation": 0.10000000149011612,
+                    "Angle": 8.0,
+                    "FieldOfViewClip": 1.0,
+                    "Falloff": 0.5,
+                    "ClippingPlanes": {
+                        "x": 1.0,
+                        "y": 1000.0
                     },
-                    "FallOff": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_3130a045",
-                        "Parameter": "",
-                        "Default": 0.949999988079071
-                    }
-                },
-                {
-                    "Type": "nap::PerspCameraComponent",
-                    "mID": "ShadowCameraSpotLeft",
-                    "Properties": {
-                        "FieldOfView": 30.0,
-                        "NearClippingPlane": 0.10000000149011612,
-                        "FarClippingPlane": 5.0,
-                        "GridDimensions": {
-                            "x": 1,
-                            "y": 1
-                        },
-                        "GridLocation": {
-                            "x": 0,
-                            "y": 0
-                        }
-                    }
-                },
-                {
-                    "Type": "nap::RenderFrustumComponent",
-                    "mID": "RenderFrustumSpotLeft",
-                    "Visible": false,
-                    "Tags": [],
-                    "LayerRegistry": "",
-                    "Layer": "",
-                    "Mesh": "BoxFrameMesh",
-                    "MaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "ConstantMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    },
-                    "LineWidth": 1.0,
-                    "ClipRect": {
-                        "Min": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "Max": {
-                            "x": 0.0,
-                            "y": 0.0
-                        }
-                    }
+                    "ShadowMapSize": 512
                 }
             ],
             "Children": []
@@ -3388,92 +3177,29 @@
                     "Type": "nap::SpotLightComponent",
                     "mID": "SpotLow",
                     "Enabled": true,
+                    "CastShadows": false,
                     "Color": {
-                        "Type": "nap::ParameterEntryRGBColorFloat",
-                        "mID": "ParameterEntryRGBColorFloat_c5acb3f8",
-                        "Parameter": "",
-                        "Default": {
-                            "Values": [
-                                1.0,
-                                0.6039215922355652,
-                                0.0
-                            ]
-                        }
+                        "Values": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
                     },
-                    "Intensity": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_7a2b13d0",
-                        "Parameter": "HighFrequencyFluxLightParam",
-                        "Default": 2.0
-                    },
+                    "Intensity": 1.0,
                     "ShadowStrength": 1.5,
-                    "Enable Shadows": true,
-                    "ShadowCamera": "./ShadowCameraSpotLow",
-                    "ShadowMapSize": 512,
-                    "Attenuation": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_019af07b",
-                        "Parameter": "",
-                        "Default": 1.0
+                    "Locator": {
+                        "LineWidth": 1.0,
+                        "GnomonSize": 1.0
                     },
-                    "Angle": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_0f084d37",
-                        "Parameter": "",
-                        "Default": 4.0
+                    "Attenuation": 0.10000000149011612,
+                    "Angle": 8.0,
+                    "FieldOfViewClip": 1.0,
+                    "Falloff": 0.5,
+                    "ClippingPlanes": {
+                        "x": 1.0,
+                        "y": 1000.0
                     },
-                    "FallOff": {
-                        "Type": "nap::ParameterEntryFloat",
-                        "mID": "ParameterEntryFloat_5a14b6a9",
-                        "Parameter": "",
-                        "Default": 0.800000011920929
-                    }
-                },
-                {
-                    "Type": "nap::PerspCameraComponent",
-                    "mID": "ShadowCameraSpotLow",
-                    "Properties": {
-                        "FieldOfView": 30.0,
-                        "NearClippingPlane": 0.10000000149011612,
-                        "FarClippingPlane": 5.0,
-                        "GridDimensions": {
-                            "x": 1,
-                            "y": 1
-                        },
-                        "GridLocation": {
-                            "x": 0,
-                            "y": 0
-                        }
-                    }
-                },
-                {
-                    "Type": "nap::RenderFrustumComponent",
-                    "mID": "RenderFrustumLow",
-                    "Visible": false,
-                    "Tags": [],
-                    "LayerRegistry": "",
-                    "Layer": "",
-                    "Mesh": "BoxFrameMesh",
-                    "MaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "ConstantMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    },
-                    "LineWidth": 1.0,
-                    "ClipRect": {
-                        "Min": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "Max": {
-                            "x": 0.0,
-                            "y": 0.0
-                        }
-                    }
+                    "ShadowMapSize": 512
                 }
             ],
             "Children": []
@@ -3509,7 +3235,6 @@
                     "mID": "RenderSprites",
                     "Visible": true,
                     "Tags": [],
-                    "LayerRegistry": "",
                     "Layer": "",
                     "Mesh": "ParticleMesh",
                     "MaterialInstance": {
@@ -4159,14 +3884,13 @@
                             "Name": "UBO",
                             "Uniforms": [
                                 {
-                                    "Type": "nap::UniformVec4",
+                                    "Type": "nap::UniformVec3",
                                     "mID": "ambient_a6bb6198",
                                     "Name": "ambient",
                                     "Value": {
                                         "x": 0.0,
                                         "y": 0.0,
-                                        "z": 0.0,
-                                        "w": 1.0
+                                        "z": 0.0
                                     }
                                 },
                                 {
@@ -4457,12 +4181,6 @@
                     },
                     "Rows": 1,
                     "Columns": 1
-                },
-                {
-                    "Type": "nap::BoxFrameMesh",
-                    "mID": "BoxFrameMesh",
-                    "PolygonMode": "Line",
-                    "Usage": "Static"
                 },
                 {
                     "Type": "nap::ParticleMesh",

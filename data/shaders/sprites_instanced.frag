@@ -2,7 +2,6 @@
 
 uniform	sampler2D sprite;
 
-in vec4 passNDC;
 in float passRot;
 
 out vec4 out_FragColor;

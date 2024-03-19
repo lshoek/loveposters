@@ -28,7 +28,7 @@ namespace nap
 		*/
 		virtual void getDependentComponents(std::vector<rtti::TypeInfo>& components) const override;
 
-		ResourcePtr<ParameterRGBAColorFloat>	mAmbient;
+		ResourcePtr<ParameterRGBColorFloat>		mAmbient;
 		ResourcePtr<ParameterRGBColorFloat>		mDiffuse;
 		ResourcePtr<ParameterRGBColorFloat>		mSpecular;
 		ResourcePtr<ParameterVec2>				mFresnel;
@@ -84,11 +84,11 @@ namespace nap
 			uniformInstance->setValue(value.toVec3());
 		}
 
-		void onUniformRGBAColorUpdate(RGBAColorFloat value, UniformVec4Instance* uniformInstance)
-		{
-			assert(uniformInstance != nullptr);
-			uniformInstance->setValue(value.toVec4());
-		}
+		//void onUniformRGBAColorUpdate(RGBAColorFloat value, UniformVec4Instance* uniformInstance)
+		//{
+		//	assert(uniformInstance != nullptr);
+		//	uniformInstance->setValue(value.toVec4());
+		//}
 
 		void onUniformBoolUpdate(bool value, UniformUIntInstance* uniformInstance)
 		{
@@ -97,7 +97,7 @@ namespace nap
 		}
 
 		// Slots
-		Slot<RGBAColorFloat>	mAmbientChangedSlot;
+		Slot<RGBColorFloat>		mAmbientChangedSlot;
 		Slot<RGBColorFloat>		mDiffuseChangedSlot;
 		Slot<RGBColorFloat>		mSpecularChangedSlot;
 		Slot<glm::vec2>			mFresnelChangedSlot;
