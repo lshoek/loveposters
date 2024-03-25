@@ -3006,7 +3006,7 @@
                     "Type": "nap::SpotLightComponent",
                     "mID": "SpotLight",
                     "Enabled": true,
-                    "CastShadows": false,
+                    "CastShadows": true,
                     "Color": {
                         "Values": [
                             1.0,
@@ -3020,13 +3020,13 @@
                         "LineWidth": 1.0,
                         "GnomonSize": 1.0
                     },
-                    "Attenuation": 0.10000000149011612,
-                    "Angle": 90.0,
+                    "Attenuation": 0.0,
+                    "Angle": 55.0,
                     "FieldOfViewClip": 1.0,
-                    "Falloff": 0.5,
+                    "Falloff": 0.75,
                     "ClippingPlanes": {
-                        "x": 1.0,
-                        "y": 1000.0
+                        "x": 0.10000000149011612,
+                        "y": 100.0
                     },
                     "ShadowMapSize": 1024
                 }
@@ -3063,12 +3063,12 @@
                     "Type": "nap::SpotLightComponent",
                     "mID": "SpotHigh",
                     "Enabled": true,
-                    "CastShadows": false,
+                    "CastShadows": true,
                     "Color": {
                         "Values": [
-                            1.0,
-                            1.0,
-                            1.0
+                            0.9803921580314636,
+                            0.34117648005485537,
+                            0.0
                         ]
                     },
                     "Intensity": 1.0,
@@ -3077,10 +3077,10 @@
                         "LineWidth": 1.0,
                         "GnomonSize": 1.0
                     },
-                    "Attenuation": 0.10000000149011612,
-                    "Angle": 8.0,
+                    "Attenuation": 0.0,
+                    "Angle": 15.0,
                     "FieldOfViewClip": 1.0,
-                    "Falloff": 0.5,
+                    "Falloff": 0.75,
                     "ClippingPlanes": {
                         "x": 1.0,
                         "y": 1000.0
@@ -3120,12 +3120,12 @@
                     "Type": "nap::SpotLightComponent",
                     "mID": "SpotLeft",
                     "Enabled": true,
-                    "CastShadows": false,
+                    "CastShadows": true,
                     "Color": {
                         "Values": [
                             1.0,
-                            1.0,
-                            1.0
+                            0.10980392247438431,
+                            0.0
                         ]
                     },
                     "Intensity": 1.0,
@@ -3134,10 +3134,10 @@
                         "LineWidth": 1.0,
                         "GnomonSize": 1.0
                     },
-                    "Attenuation": 0.10000000149011612,
-                    "Angle": 8.0,
+                    "Attenuation": 0.0,
+                    "Angle": 15.0,
                     "FieldOfViewClip": 1.0,
-                    "Falloff": 0.5,
+                    "Falloff": 0.75,
                     "ClippingPlanes": {
                         "x": 1.0,
                         "y": 1000.0
@@ -3177,12 +3177,12 @@
                     "Type": "nap::SpotLightComponent",
                     "mID": "SpotLow",
                     "Enabled": true,
-                    "CastShadows": false,
+                    "CastShadows": true,
                     "Color": {
                         "Values": [
                             1.0,
-                            1.0,
-                            1.0
+                            0.6039215922355652,
+                            0.0
                         ]
                     },
                     "Intensity": 1.0,
@@ -3191,10 +3191,10 @@
                         "LineWidth": 1.0,
                         "GnomonSize": 1.0
                     },
-                    "Attenuation": 0.10000000149011612,
-                    "Angle": 8.0,
+                    "Attenuation": 0.0,
+                    "Angle": 15.0,
                     "FieldOfViewClip": 1.0,
-                    "Falloff": 0.5,
+                    "Falloff": 0.75,
                     "ClippingPlanes": {
                         "x": 1.0,
                         "y": 1000.0
