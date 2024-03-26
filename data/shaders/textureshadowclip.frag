@@ -10,7 +10,7 @@
 #include "shadow.glslinc"
 #include "blinnphongutils.glslinc"
 #include "utils.glslinc"
-#include "random.glsl"
+#include "noise.glslinc"
 
 // Specialization constants
 layout (constant_id = 0) const uint QUAD_SAMPLE_COUNT = 8;
@@ -121,15 +121,14 @@ void main()
 					const uint map_index = getShadowMapIndex(flags);
 					float sum = 0.0;
 
-					vec3 offset = random3(vec3(passShadowCoords.xy, 0.0)) * 0.005;
-
-					// for (int s=0; s<QUAD_SAMPLE_COUNT; s++) 
-					for (int s=0; s<1; s++) 
+					for (int s=0; s<QUAD_SAMPLE_COUNT; s++) 
 					{
-						// sum += 1.0 - texture(shadowMaps[map_index], vec3(coord.xy + POISSON_DISK[s]/SHADOW_POISSON_SPREAD, coord.z));
-						sum += 1.0 - texture(shadowMaps[map_index], vec3(coord.xy + offset.xy, coord.z));
+						sum += 1.0 - texture(shadowMaps[map_index], vec3(coord.xy + POISSON_DISK[s]/SHADOW_POISSON_SPREAD, coord.z));
 					}
-					shadow += sum; // / float(QUAD_SAMPLE_COUNT);;
+					float avg = sum / float(QUAD_SAMPLE_COUNT);
+					float noisiness = 90.0;
+					vec4 n = simplexd(passShadowCoords[i].xyz * noisiness) * 0.5 + 0.5;
+					shadow += clamp(avg + avg * sqrt(n.w), 0.0, 1.0);
 				}
 				break;
 			}
