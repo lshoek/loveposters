@@ -571,7 +571,7 @@
                         "Buffers": [],
                         "Constants": [],
                         "Material": "TextureShadowClipMaterial",
-                        "BlendMode": "AlphaBlend",
+                        "BlendMode": "NotSet",
                         "DepthMode": "NotSet"
                     },
                     "LineWidth": 1.0,
@@ -893,7 +893,7 @@
                         "Translate": {
                             "x": 0.10000000149011612,
                             "y": 0.30000001192092898,
-                            "z": -16.0
+                            "z": -13.0
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -905,7 +905,7 @@
                             "y": 0.7200000286102295,
                             "z": 1.0
                         },
-                        "UniformScale": 0.800000011920929
+                        "UniformScale": 0.8500000238418579
                     }
                 },
                 {
@@ -1262,7 +1262,7 @@
                         "Translate": {
                             "x": 0.0,
                             "y": 0.4000000059604645,
-                            "z": -13.0
+                            "z": -8.0
                         },
                         "Rotate": {
                             "x": 0.0,
