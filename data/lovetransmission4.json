@@ -86,15 +86,15 @@
                     "Type": "nap::FFTAudioNodeComponent",
                     "mID": "FFTAudioNodeComponent",
                     "Input": "./AudioInput",
-                    "Overlaps": "Five",
+                    "Overlaps": "Three",
                     "Channel": 0
                 },
                 {
-                    "Type": "nap::FluxMeasurementComponent",
+                    "Type": "nap::LegacyFluxMeasurementComponent",
                     "mID": "FluxMeasurement",
                     "Parameters": [
                         {
-                            "Type": "nap::FluxMeasurementComponent::FilterParameterItem",
+                            "Type": "nap::LegacyFluxMeasurementComponent::FilterParameterItem",
                             "mID": "LP",
                             "Parameter": "LowFrequencyFluxParam",
                             "Multiplier": "MultiplyLowParam",
@@ -105,11 +105,11 @@
                             "OnsetImpact": 6.0,
                             "MinHertz": 0.0,
                             "MaxHertz": 2000.0,
-                            "EvaluationSampleCount": 1024,
+                            "EvaluationSampleCount": 512,
                             "SmoothTime": 0.009999999776482582
                         },
                         {
-                            "Type": "nap::FluxMeasurementComponent::FilterParameterItem",
+                            "Type": "nap::LegacyFluxMeasurementComponent::FilterParameterItem",
                             "mID": "HP",
                             "Parameter": "HighFrequencyFluxParam",
                             "Multiplier": "MultiplyHighParam",
@@ -117,10 +117,10 @@
                             "TargetOnset": "TargetOnsetHigh",
                             "Decay": "DecayHigh",
                             "Stretch": "StretchHigh",
-                            "OnsetImpact": 4.0,
+                            "OnsetImpact": 5.0,
                             "MinHertz": 2000.0,
                             "MaxHertz": 10000.0,
-                            "EvaluationSampleCount": 1024,
+                            "EvaluationSampleCount": 512,
                             "SmoothTime": 0.009999999776482582
                         }
                     ],
@@ -163,7 +163,7 @@
                         "Translate": {
                             "x": 0.0,
                             "y": 0.0,
-                            "z": 0.5
+                            "z": 0.75
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -200,7 +200,7 @@
                     "Type": "nap::PerspCameraComponent",
                     "mID": "PerspectiveCamera",
                     "Properties": {
-                        "FieldOfView": 60.0,
+                        "FieldOfView": 70.0,
                         "NearClippingPlane": 0.05000000074505806,
                         "FarClippingPlane": 10.0,
                         "GridDimensions": {
@@ -216,13 +216,6 @@
                 {
                     "Type": "nap::KeyInputComponent",
                     "mID": "KeyInputComponent"
-                },
-                {
-                    "Type": "nap::FirstPersonController",
-                    "mID": "FirstPersonController",
-                    "MovementSpeed": 1.0,
-                    "RotateSpeed": 0.0020000000949949028,
-                    "PerspCameraComponent": "./PerspectiveCamera"
                 }
             ],
             "Children": []
@@ -893,7 +886,7 @@
                         "Translate": {
                             "x": 0.10000000149011612,
                             "y": 0.30000001192092898,
-                            "z": -13.0
+                            "z": -14.0
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -1016,7 +1009,7 @@
                         "Translate": {
                             "x": 0.15000000596046449,
                             "y": -0.30000001192092898,
-                            "z": -4.0
+                            "z": -5.0
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -1139,7 +1132,7 @@
                         "Translate": {
                             "x": 0.0,
                             "y": -0.20000000298023225,
-                            "z": -8.0
+                            "z": -10.0
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -2497,7 +2490,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "DecayLow",
                     "Name": "DecayLow",
-                    "Value": 0.33329999446868899,
+                    "Value": 0.25,
                     "Minimum": 0.0,
                     "Maximum": 2.0
                 },
@@ -2505,7 +2498,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "MultiplyHighParam",
                     "Name": "MultiplyHigh",
-                    "Value": 10.0,
+                    "Value": 5.0,
                     "Minimum": 0.0,
                     "Maximum": 20.0
                 },
@@ -2513,7 +2506,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "TargetOnsetHigh",
                     "Name": "TargetOnsetHigh",
-                    "Value": 0.33329999446868899,
+                    "Value": 0.30000001192092898,
                     "Minimum": 0.0,
                     "Maximum": 1.0
                 },
@@ -2521,7 +2514,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "DecayHigh",
                     "Name": "DecayHigh",
-                    "Value": 1.0,
+                    "Value": 0.699999988079071,
                     "Minimum": 0.0,
                     "Maximum": 2.0
                 }
@@ -2544,7 +2537,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "FocusDistanceParam",
                     "Name": "FocusDistance",
-                    "Value": 3.5,
+                    "Value": 3.549999952316284,
                     "Minimum": 0.0,
                     "Maximum": 10.0
                 },
@@ -2616,8 +2609,8 @@
             "Visible": true,
             "SampleShading": true,
             "Title": "Graphic Tool",
-            "Width": 1920,
-            "Height": 1200,
+            "Width": 1280,
+            "Height": 720,
             "Mode": "Mailbox",
             "ClearColor": {
                 "Values": [
@@ -3218,7 +3211,7 @@
                     "mID": "ColorTexture",
                     "Usage": "Static",
                     "Width": 1920,
-                    "Height": 1200,
+                    "Height": 1080,
                     "Format": "RGBA8",
                     "ColorSpace": "Linear",
                     "ClearColor": {
@@ -3235,7 +3228,7 @@
                     "mID": "BloomTexture",
                     "Usage": "Static",
                     "Width": 1920,
-                    "Height": 1200,
+                    "Height": 1080,
                     "Format": "RGBA8",
                     "ColorSpace": "Linear",
                     "ClearColor": {
@@ -3252,7 +3245,7 @@
                     "mID": "DOFTexture",
                     "Usage": "Static",
                     "Width": 1920,
-                    "Height": 1200,
+                    "Height": 1080,
                     "Format": "RGBA8",
                     "ColorSpace": "Linear",
                     "ClearColor": {
@@ -3270,7 +3263,7 @@
                     "Usage": "Static",
                     "Fill": true,
                     "Width": 1920,
-                    "Height": 1200,
+                    "Height": 1080,
                     "Format": "D16",
                     "ColorSpace": "Linear",
                     "ClearValue": 1.0

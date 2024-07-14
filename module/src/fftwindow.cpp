@@ -10,7 +10,7 @@
 #include <imguiservice.h>
 #include <imguiutils.h>
 #include <appguiservice.h>
-#include <fluxmeasurementcomponent.h>
+#include <legacyfluxmeasurementcomponent.h>
 
 RTTI_BEGIN_CLASS_NO_DEFAULT_CONSTRUCTOR(nap::FFTWindow)
     RTTI_CONSTRUCTOR(nap::AppGUIService&)
@@ -80,8 +80,8 @@ namespace nap
 		//ImGui::SliderFloat("Centroid", &centroid, 0.0f, 1.0f);
 
 		// Onset detection
-		std::vector<FluxMeasurementComponentInstance*> onset_comps;
-		fft_comp->getEntityInstance()->getComponentsOfTypeRecursive<FluxMeasurementComponentInstance>(onset_comps);
+		std::vector<LegacyFluxMeasurementComponentInstance*> onset_comps;
+		fft_comp->getEntityInstance()->getComponentsOfTypeRecursive<LegacyFluxMeasurementComponentInstance>(onset_comps);
 
 		if (!onset_comps.empty())
 		{
