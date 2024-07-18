@@ -1,0 +1,75 @@
+{
+    "Objects": [
+        {
+            "Type": "nap::ParameterGroup",
+            "mID": "ParametersWarp",
+            "Parameters": [
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "TopLeftX",
+                    "Name": "TopLeftX",
+                    "Value": 0.0,
+                    "Minimum": 0.0,
+                    "Maximum": 1920.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "TopLeftY",
+                    "Name": "TopLeftY",
+                    "Value": 1080.0,
+                    "Minimum": 0.0,
+                    "Maximum": 1920.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "TopRightX",
+                    "Name": "TopRightX",
+                    "Value": 1920.0,
+                    "Minimum": 0.0,
+                    "Maximum": 1920.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "TopRightY",
+                    "Name": "TopRightY",
+                    "Value": 1080.0,
+                    "Minimum": 0.0,
+                    "Maximum": 1920.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "BottomRightX",
+                    "Name": "BottomRightX",
+                    "Value": 1920.0,
+                    "Minimum": 0.0,
+                    "Maximum": 1920.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "BottomRightY",
+                    "Name": "BottomRightY",
+                    "Value": 0.0,
+                    "Minimum": 0.0,
+                    "Maximum": 1920.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "BottomLeftX",
+                    "Name": "BottomLeftX",
+                    "Value": 0.0,
+                    "Minimum": 0.0,
+                    "Maximum": 1920.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "BottomLeftY",
+                    "Name": "BottomLeftY",
+                    "Value": 0.0,
+                    "Minimum": 0.0,
+                    "Maximum": 1920.0
+                }
+            ],
+            "Groups": []
+        }
+    ]
+}

@@ -85,6 +85,7 @@ namespace nap
 		ObjectPtr<EntityInstance>	mWorldEntity;						///< Pointer to the world entity
 		ObjectPtr<EntityInstance>	mAudioEntity;						///< Pointer to the audio entity
 		ObjectPtr<EntityInstance>	mRenderEntity;						///< Pointer to the render entity
+		ObjectPtr<EntityInstance>	mWarpEntity;						///< Pointer to the warp entity
 		ObjectPtr<EntityInstance>	mRenderCameraEntity;				///< Pointer to the render camera entity
 
 		std::vector<ObjectPtr<AppGUI>> mAppGUIs;						///< AppGUIs

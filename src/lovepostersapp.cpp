@@ -11,6 +11,7 @@
 #include <rendertotexturecomponent.h>
 #include <renderbloomcomponent.h>
 #include <renderdofcomponent.h>
+#include <renderhomographycomponent.h>
 #include <funtransformcomponent.h>
 #include <audio/component/playbackcomponent.h>
 #include <depthsorter.h>
@@ -48,6 +49,7 @@ namespace nap
 		mAudioEntity = mScene->findEntity("AudioEntity");
 		mRenderEntity = mScene->findEntity("RenderEntity");
 		mRenderCameraEntity = mScene->findEntity("RenderCameraEntity");
+		mWarpEntity = mScene->findEntity("WarpEntity");
 
 		mAppGUIs = mResourceManager->getObjects<AppGUI>();
 
@@ -71,31 +73,24 @@ namespace nap
 			// The world entity holds all visible renderable components in the scene.
 			std::vector<RenderableComponentInstance*> render_comps;
 			mWorldEntity->getComponentsOfTypeRecursive<RenderableComponentInstance>(render_comps);
-			auto shadow_comps = render_comps;
-
-			// Remove point sprite volume
-			auto it = shadow_comps.begin();
-			while (it != shadow_comps.end())
-			{
-				if ((*it)->get_type() == RTTI_OF(PointSpriteVolumeInstance))
-					it = shadow_comps.erase(it);
-				else
-					++it;
-			}
 
 			// Get Perspective camera to render with
 			auto& cam = mCameraEntity->getComponent<CameraComponentInstance>();
 
 			// Render shadows
-			mRenderAdvancedService->renderShadows(shadow_comps);
+			auto shadow_mask = mRenderService->getRenderMask("Shadow");
+			mRenderAdvancedService->renderShadows(render_comps, true, shadow_mask);
 
 			// Offscreen color pass -> Render all available geometry to the color texture bound to the render target.
+			auto default_mask = mRenderService->getRenderMask("Default");
 			mRenderTarget->beginRendering();
-			mRenderService->renderObjects(*mRenderTarget, cam, render_comps, std::bind(&sorter::sortObjectsByZ, std::placeholders::_1));
+			mRenderService->renderObjects(*mRenderTarget, cam, render_comps, std::bind(&sorter::sortObjectsByZ, std::placeholders::_1), default_mask);
 			mRenderTarget->endRendering();
 
 			// DOF
-			mRenderEntity->getComponent<RenderDOFComponentInstance>().draw();
+			auto* dof = mRenderEntity->findComponent<RenderDOFComponentInstance>();
+			if (dof != nullptr)
+				dof->draw();
 
 			// Offscreen contrast pass -> Use previous `ColorTexture` as input, `ColorTextureFX` as output.
 			// Input and output resources of these operations are described in JSON in their appropriate components.
@@ -119,12 +114,24 @@ namespace nap
 			// Get Perspective camera to render with
 			auto& cam = mRenderCameraEntity->getComponent<CameraComponentInstance>();
 
-			// Get composite component responsible for rendering final texture
-			auto* composite_comp = mRenderEntity->findComponentByID<RenderToTextureComponentInstance>("BlendTogether");
+			//// Get composite component responsible for rendering final texture
+			//auto* composite_comp = mRenderEntity->findComponentByID<RenderToTextureComponentInstance>("BlendTogether");
+			//if (composite_comp != nullptr)
+			//{
+			//	// Render composite component
+			//	// The nap::RenderToTextureComponentInstance transforms a plane to match the window dimensions and applies the texture to it.
+			//	mRenderService->renderObjects(*mRenderWindow, cam, { composite_comp });
+			//}
 
-			// Render composite component
-			// The nap::RenderToTextureComponentInstance transforms a plane to match the window dimensions and applies the texture to it.
-			mRenderService->renderObjects(*mRenderWindow, cam, { composite_comp });
+			if (mWarpEntity != nullptr)
+			{
+				// Get composite component responsible for rendering final texture
+				std::vector<RenderableComponentInstance*> render_comps;
+				mWarpEntity->getComponentsOfTypeRecursive<RenderableComponentInstance>(render_comps);
+
+				// Render warp components
+				mRenderService->renderObjects(*mRenderWindow, cam, { render_comps });	
+			}
 
 			// Draw GUI elements
 			mGuiService->draw();
