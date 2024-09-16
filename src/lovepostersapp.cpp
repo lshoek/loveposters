@@ -94,26 +94,29 @@ namespace nap
 			if (multi_video != nullptr)
 				multi_video->draw();
 
-			// Stencil
-			auto stencil_mask = mRenderService->getRenderMask("Stencil");
-			mStencilTarget->beginRendering();
-			mRenderService->renderObjects(*mStencilTarget, cam, render_comps, stencil_mask);
-			mStencilTarget->endRendering();
-
-			auto* composite_video = mRenderEntity->findComponentByID<RenderToTextureComponentInstance>("CompositeVideo");
-
-			// Offscreen color pass -> Render all available geometry to the color texture bound to the render target.
-			auto default_mask = mRenderService->getRenderMask("Default");
-			mColorTarget->beginRendering();
-
-			if (composite_video != nullptr)
+			// Render stencil geometry to stencil target
+			if (mStencilTarget != nullptr)
 			{
-				glm::ivec2 size = mColorTarget->getBufferSize();
-				glm::mat4 proj_matrix = OrthoCameraComponentInstance::createRenderProjectionMatrix(0.0f, (float)size.x, 0.0f, (float)size.y);
-				mRenderService->renderObjects(*mColorTarget, proj_matrix, {}, { composite_video }, std::bind(&sorter::sortObjectsByDepth, std::placeholders::_1, std::placeholders::_2));
+				auto stencil_mask = mRenderService->getRenderMask("Stencil");
+				mStencilTarget->beginRendering();
+				mRenderService->renderObjects(*mStencilTarget, cam, render_comps, stencil_mask);
+				mStencilTarget->endRendering();
 			}
 
-			mRenderService->renderObjects(*mColorTarget, cam, render_comps, std::bind(&sorter::sortObjectsByZ, std::placeholders::_1), default_mask);
+			// Offscreen color pass -> Render all available geometry to the color texture bound to the render target.
+			mColorTarget->beginRendering();
+			{
+				auto* composite_video = mRenderEntity->findComponentByID<RenderToTextureComponentInstance>("CompositeVideo");
+				if (composite_video != nullptr)
+				{
+					glm::ivec2 size = mColorTarget->getBufferSize();
+					glm::mat4 proj_matrix = OrthoCameraComponentInstance::createRenderProjectionMatrix(0.0f, (float)size.x, 0.0f, (float)size.y);
+					mRenderService->renderObjects(*mColorTarget, proj_matrix, {}, { composite_video }, std::bind(&sorter::sortObjectsByDepth, std::placeholders::_1, std::placeholders::_2));
+				}
+
+				auto mask = mRenderService->getRenderMask("Default");
+				mRenderService->renderObjects(*mColorTarget, cam, render_comps, std::bind(&sorter::sortObjectsByZ, std::placeholders::_1), (mask != 0) ? mask : mask::all);
+			}
 			mColorTarget->endRendering();
 
 			// DOF
@@ -123,7 +126,8 @@ namespace nap
 
 			// Offscreen contrast pass -> Use previous `ColorTexture` as input, `ColorTextureFX` as output.
 			// Input and output resources of these operations are described in JSON in their appropriate components.
-			mRenderEntity->findComponentByID<RenderToTextureComponentInstance>("ChangeColor")->draw();
+			auto* change_color = mRenderEntity->findComponentByID<RenderToTextureComponentInstance>("ChangeColor"); assert(change_color != nullptr);
+			change_color->draw();
 
 			// Offscreen bloom pass -> Use `ColorTextureFX` as input and output.
 			// This is fine as the bloom component blits the input to internally managed render targets on which the effect is applied.
@@ -143,16 +147,15 @@ namespace nap
 			// Get Perspective camera to render with
 			auto& cam = mRenderCameraEntity->getComponent<CameraComponentInstance>();
 
-			//// Get composite component responsible for rendering final texture
-			//auto* composite_comp = mRenderEntity->findComponentByID<RenderToTextureComponentInstance>("BlendTogether");
-			//if (composite_comp != nullptr)
-			//{
-			//	// Render composite component
-			//	// The nap::RenderToTextureComponentInstance transforms a plane to match the window dimensions and applies the texture to it.
-			//	mRenderService->renderObjects(*mRenderWindow, cam, { composite_comp });
-			//}
-
-			if (mWarpEntity != nullptr)
+			// Get composite component responsible for rendering final texture
+			auto* composite_comp = mRenderEntity->findComponentByID<RenderToTextureComponentInstance>("BlendTogether");
+			if (composite_comp != nullptr)
+			{
+				// Render composite component
+				// The nap::RenderToTextureComponentInstance transforms a plane to match the window dimensions and applies the texture to it.
+				mRenderService->renderObjects(*mRenderWindow, cam, { composite_comp });
+			}
+			else if (mWarpEntity != nullptr)
 			{
 				// Get composite component responsible for rendering final texture
 				std::vector<RenderableComponentInstance*> render_comps;
