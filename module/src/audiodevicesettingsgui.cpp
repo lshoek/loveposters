@@ -190,8 +190,16 @@ namespace nap
                     settings.mInputDevice = input_device != nullptr ? input_device->mName : "";
                     settings.mBufferSize = mBufferSizes[mBufferSizeIndex];
                     settings.mInternalBufferSize = mBufferSizes[mBufferSizeIndex];
-                    settings.mSampleRate = mSampleRates[mSampleRateIndex];
                     settings.mHostApi = mDriverSelection - 1 >= 0 ? mDrivers[mDriverSelection-1].mName : "";
+
+					if (mSampleRateIndex >= 0)
+					{
+						settings.mSampleRate = mSampleRates[mSampleRateIndex];
+					}
+					else
+					{
+						nap::Logger::warn("Failed to change sample rate");
+					}
 
                     if (mAudioService.isOpened())
                     {
