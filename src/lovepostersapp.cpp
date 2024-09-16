@@ -12,7 +12,9 @@
 #include <renderbloomcomponent.h>
 #include <renderdofcomponent.h>
 #include <renderhomographycomponent.h>
+#include <rendermultivideocomponent.h>
 #include <funtransformcomponent.h>
+#include <orthocameracomponent.h>
 #include <audio/component/playbackcomponent.h>
 #include <depthsorter.h>
 #include <pointspritevolume.h>
@@ -36,7 +38,8 @@ namespace nap
 		if (!error.check(mRenderWindow != nullptr, "unable to find render window with name: %s", "Window"))
 			return false;
 
-		mRenderTarget = mResourceManager->findObject<RenderTarget>("ColorTarget");
+		mColorTarget = mResourceManager->findObject<RenderTarget>("ColorTarget");
+		mStencilTarget = mResourceManager->findObject<RenderTarget>("StencilTarget");
 
 		// Get the scene that contains our entities and components
 		mScene = mResourceManager->findObject<Scene>("Scene");
@@ -47,9 +50,14 @@ namespace nap
 		mCameraEntity = mScene->findEntity("CameraEntity");
 		mWorldEntity = mScene->findEntity("WorldEntity");
 		mAudioEntity = mScene->findEntity("AudioEntity");
+		mVideoEntity = mScene->findEntity("VideoEntity");
 		mRenderEntity = mScene->findEntity("RenderEntity");
 		mRenderCameraEntity = mScene->findEntity("RenderCameraEntity");
 		mWarpEntity = mScene->findEntity("WarpEntity");
+
+		auto video_players = mResourceManager->getObjects<VideoPlayer>();
+		for (auto& player : video_players)
+			player->play();
 
 		mAppGUIs = mResourceManager->getObjects<AppGUI>();
 
@@ -81,11 +89,32 @@ namespace nap
 			auto shadow_mask = mRenderService->getRenderMask("Shadow");
 			mRenderAdvancedService->renderShadows(render_comps, true, shadow_mask);
 
+			// Video
+			auto* multi_video = mRenderEntity->findComponent<RenderMultiVideoComponentInstance>();
+			if (multi_video != nullptr)
+				multi_video->draw();
+
+			// Stencil
+			auto stencil_mask = mRenderService->getRenderMask("Stencil");
+			mStencilTarget->beginRendering();
+			mRenderService->renderObjects(*mStencilTarget, cam, render_comps, stencil_mask);
+			mStencilTarget->endRendering();
+
+			auto* composite_video = mRenderEntity->findComponentByID<RenderToTextureComponentInstance>("CompositeVideo");
+
 			// Offscreen color pass -> Render all available geometry to the color texture bound to the render target.
 			auto default_mask = mRenderService->getRenderMask("Default");
-			mRenderTarget->beginRendering();
-			mRenderService->renderObjects(*mRenderTarget, cam, render_comps, std::bind(&sorter::sortObjectsByZ, std::placeholders::_1), default_mask);
-			mRenderTarget->endRendering();
+			mColorTarget->beginRendering();
+
+			if (composite_video != nullptr)
+			{
+				glm::ivec2 size = mColorTarget->getBufferSize();
+				glm::mat4 proj_matrix = OrthoCameraComponentInstance::createRenderProjectionMatrix(0.0f, (float)size.x, 0.0f, (float)size.y);
+				mRenderService->renderObjects(*mColorTarget, proj_matrix, {}, { composite_video }, std::bind(&sorter::sortObjectsByDepth, std::placeholders::_1, std::placeholders::_2));
+			}
+
+			mRenderService->renderObjects(*mColorTarget, cam, render_comps, std::bind(&sorter::sortObjectsByZ, std::placeholders::_1), default_mask);
+			mColorTarget->endRendering();
 
 			// DOF
 			auto* dof = mRenderEntity->findComponent<RenderDOFComponentInstance>();

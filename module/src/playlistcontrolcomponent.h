@@ -46,7 +46,7 @@ namespace nap
         };
 
         std::vector<ResourcePtr<Item>> mItems;			// List of presets in the sequence accompanied by meta data
-		ResourcePtr<ParameterFloat> mEnable;			// True to enable the preset cycle
+		bool mEnable;									// True to enable the preset cycle
         bool mRandomizePlaylist = false;				// Indicates whether the order of the cycle of presets will be shuffled
         bool mVerbose = true;							// Whether to log playlist changes
     };
@@ -100,7 +100,7 @@ namespace nap
 		/**
 		 * @return whether preset cycling is enabled
 		 */
-		bool isEnabled() const							{ return (mResource->mEnable != nullptr) ? mResource->mEnable->mValue > 0.0f : true; }
+		bool isEnabled() const							{ return mResource->mEnable; }
 
         /**
          * Returns playlist

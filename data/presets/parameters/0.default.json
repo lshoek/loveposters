@@ -14,6 +14,59 @@
                 },
                 {
                     "Type": "nap::ParameterFloat",
+                    "mID": "MovementParam",
+                    "Name": "Movement",
+                    "Value": 0.5,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "Dancer1Angle",
+                    "Name": "Dancer1Angle",
+                    "Value": 0.0,
+                    "Minimum": 0.0,
+                    "Maximum": 360.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "Dancer1Scale",
+                    "Name": "Dancer1Scale",
+                    "Value": 1.0,
+                    "Minimum": 0.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterVec3",
+                    "mID": "Dancer1Position",
+                    "Name": "Dancer1Position",
+                    "Value": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "Clamp": true,
+                    "Minimum": -0.5,
+                    "Maximum": 0.5
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "TranslateXIntensityParam",
+                    "Name": "TranslateX",
+                    "Value": 0.25,
+                    "Minimum": 0.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "TranslateYIntensityParam",
+                    "Name": "TranslateY",
+                    "Value": 0.25,
+                    "Minimum": 0.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
                     "mID": "RotationIntensityParam",
                     "Name": "RotationIntensity",
                     "Value": 1.0,
@@ -25,56 +78,8 @@
                     "mID": "ScaleIntensityParam",
                     "Name": "ScaleIntensity",
                     "Value": 1.0,
-                    "Minimum": 0.0,
+                    "Minimum": 0.10000000149011612,
                     "Maximum": 2.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "RotationAccumulatorIntensityParam",
-                    "Name": "RotationAccumulatorIntensity",
-                    "Value": 15.0,
-                    "Minimum": 0.0,
-                    "Maximum": 100.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "ScaleAccumulatorIntensityParam",
-                    "Name": "ScaleAccumulatorIntensity",
-                    "Value": 0.0,
-                    "Minimum": 0.0,
-                    "Maximum": 0.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "TranslateXIntensityParam",
-                    "Name": "TranslateX",
-                    "Value": 0.4659999907016754,
-                    "Minimum": 0.0,
-                    "Maximum": 10.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "TranslateYIntensityParam",
-                    "Name": "TranslateY",
-                    "Value": 0.8700000047683716,
-                    "Minimum": 0.0,
-                    "Maximum": 10.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "BloomIntensityParam",
-                    "Name": "BloomIntensity",
-                    "Value": 0.75,
-                    "Minimum": 0.0,
-                    "Maximum": 10.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "CameraSpeedParam",
-                    "Name": "CameraSpeed",
-                    "Value": 1.5,
-                    "Minimum": 0.0,
-                    "Maximum": 10.0
                 }
             ],
             "Groups": []

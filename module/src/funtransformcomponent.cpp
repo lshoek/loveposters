@@ -108,6 +108,7 @@ namespace nap
 		{
 			mTranslationAccumulator += movement * glm::vec2(mResource->mTranslateXIntensityParam->mValue, mResource->mTranslateYIntensityParam->mValue) * static_cast<float>(deltaTime);
 			auto move_translate = glm::vec2(glm::simplex<float>(glm::vec2(mTranslationAccumulator.x + mRandomSeed.z, mRandomSeed.z)), glm::simplex<float>(glm::vec2(mTranslationAccumulator.y + mRandomSeed.w, mRandomSeed.w))) * sMaxTranslateDeviation;
+			move_translate *= mResource->mMultiplyTranslation;
 			auto translate = mCachedTransform->mTranslate + glm::vec3(move_translate.x, move_translate.y, 0.0f);
 			mTransformComponent->setTranslate(translate);
 		}

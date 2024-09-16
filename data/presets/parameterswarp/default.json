@@ -18,7 +18,7 @@
                     "Name": "TopLeftY",
                     "Value": 1080.0,
                     "Minimum": 0.0,
-                    "Maximum": 1920.0
+                    "Maximum": 1080.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
@@ -34,13 +34,13 @@
                     "Name": "TopRightY",
                     "Value": 1080.0,
                     "Minimum": 0.0,
-                    "Maximum": 1920.0
+                    "Maximum": 1080.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
                     "mID": "BottomRightX",
                     "Name": "BottomRightX",
-                    "Value": 1920.0,
+                    "Value": 1814.7509765625,
                     "Minimum": 0.0,
                     "Maximum": 1920.0
                 },
@@ -50,13 +50,13 @@
                     "Name": "BottomRightY",
                     "Value": 0.0,
                     "Minimum": 0.0,
-                    "Maximum": 1920.0
+                    "Maximum": 1080.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
                     "mID": "BottomLeftX",
                     "Name": "BottomLeftX",
-                    "Value": 0.0,
+                    "Value": 86.11299896240235,
                     "Minimum": 0.0,
                     "Maximum": 1920.0
                 },
@@ -66,7 +66,7 @@
                     "Name": "BottomLeftY",
                     "Value": 0.0,
                     "Minimum": 0.0,
-                    "Maximum": 1920.0
+                    "Maximum": 1080.0
                 }
             ],
             "Groups": []

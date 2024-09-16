@@ -79,11 +79,13 @@ namespace nap
 		IMGuiService*				mGuiService = nullptr;				///< Manages GUI related update / draw calls
 
 		ObjectPtr<RenderWindow>		mRenderWindow;						///< Pointer to the render window	
-		ObjectPtr<RenderTarget>		mRenderTarget;						///< Pointer to the render window	
+		ObjectPtr<RenderTarget>		mColorTarget;						///< Pointer to the color target
+		ObjectPtr<RenderTarget>		mStencilTarget;						///< Pointer to the stencil target
 		ObjectPtr<Scene>			mScene;								///< Pointer to the main scene
 		ObjectPtr<EntityInstance>	mCameraEntity;						///< Pointer to the entity that holds the perspective camera
 		ObjectPtr<EntityInstance>	mWorldEntity;						///< Pointer to the world entity
 		ObjectPtr<EntityInstance>	mAudioEntity;						///< Pointer to the audio entity
+		ObjectPtr<EntityInstance>	mVideoEntity;						///< Pointer to the video entity
 		ObjectPtr<EntityInstance>	mRenderEntity;						///< Pointer to the render entity
 		ObjectPtr<EntityInstance>	mWarpEntity;						///< Pointer to the warp entity
 		ObjectPtr<EntityInstance>	mRenderCameraEntity;				///< Pointer to the render camera entity

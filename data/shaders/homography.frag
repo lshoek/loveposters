@@ -22,6 +22,11 @@ in vec2 PassUV;
 // Fragment Output
 out vec4 out_Color;
 
+const float edge = 0.005;
+const float grid_thickness = 1.0 - 0.01;
+const float box_thickness =  1.0 - 0.005;
+const vec4 red = vec4(1.0, 0.0, 0.0, 1.0);
+
 vec2 tile(vec2 st, float zoom)
 {
 	st *= zoom;
@@ -40,7 +45,7 @@ float box(vec2 st, vec2 size, float smoothEdges)
 float grid(vec2 st)
 {
     st = tile(st, 16.0);
-    return 1.0 - box(st, vec2(0.95), 0.015);
+    return 1.0 - box(st, vec2(grid_thickness), edge);
 }
 
 void main()
@@ -62,9 +67,7 @@ void main()
 
 	if (BORDER > 0)
 	{
-		const float edge = 0.005;
-		const vec4 red = vec4(1.0, 0.0, 0.0, 1.0);
-		color += red * (box(coords, vec2(1.0), edge) - box(coords, vec2(0.99), edge));
+		color += red * (box(coords, vec2(1.0), edge) - box(coords, vec2(box_thickness), edge));
 	}
 	
 	out_Color = color;

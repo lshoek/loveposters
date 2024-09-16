@@ -11,7 +11,8 @@
         "napparametergui",
         "napfft",
         "napmiditwister",
-        "napopencv"
+        "napopencv",
+        "napvideo"
     ],
     "WindowsDllSearchPaths": []
 }
