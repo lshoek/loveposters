@@ -4,20 +4,16 @@
 // External Includes
 #include <utility/fileutils.h>
 #include <imguiutils.h>
-#include <nap/logger.h>
 #include <inputrouter.h>
-#include <rendergnomoncomponent.h>
 #include <perspcameracomponent.h>
 #include <rendertotexturecomponent.h>
 #include <renderbloomcomponent.h>
 #include <renderdofcomponent.h>
-#include <renderhomographycomponent.h>
 #include <rendermultivideocomponent.h>
 #include <funtransformcomponent.h>
 #include <orthocameracomponent.h>
 #include <audio/component/playbackcomponent.h>
 #include <depthsorter.h>
-#include <pointspritevolume.h>
 
 namespace nap 
 {    
@@ -31,15 +27,20 @@ namespace nap
 		mGuiService				= getCore().getService<nap::IMGuiService>();
 
 		// Fetch the resource manager
-        mResourceManager = getCore().getResourceManager();
+        mResourceManager 		= getCore().getResourceManager();
 
 		// Get the render window
 		mRenderWindow = mResourceManager->findObject<nap::RenderWindow>("Window");
-		if (!error.check(mRenderWindow != nullptr, "unable to find render window with name: %s", "Window"))
+		if (!error.check(mRenderWindow != nullptr, "unable to find nap::RenderWindow with name: %s", "Window"))
 			return false;
 
 		mColorTarget = mResourceManager->findObject<RenderTarget>("ColorTarget");
+		if (!error.check(mColorTarget != nullptr, "unable to find nap::RenderTarget with name: %s", "ColorTarget"))
+			return false;
+
 		mStencilTarget = mResourceManager->findObject<RenderTarget>("StencilTarget");
+		if (!error.check(mStencilTarget != nullptr, "unable to find nap::RenderTarget with name: %s", "StencilTarget"))
+			return false;
 
 		// Get the scene that contains our entities and components
 		mScene = mResourceManager->findObject<Scene>("Scene");
@@ -47,21 +48,21 @@ namespace nap
 			return false;
 
 		// Get the camera and origin Gnomon entity
-		mCameraEntity = mScene->findEntity("CameraEntity");
-		mWorldEntity = mScene->findEntity("WorldEntity");
-		mAudioEntity = mScene->findEntity("AudioEntity");
-		mVideoEntity = mScene->findEntity("VideoEntity");
-		mRenderEntity = mScene->findEntity("RenderEntity");
-		mRenderCameraEntity = mScene->findEntity("RenderCameraEntity");
-		mWarpEntity = mScene->findEntity("WarpEntity");
+		mCameraEntity 			= mScene->findEntity("CameraEntity");
+		mWorldEntity 			= mScene->findEntity("WorldEntity");
+		mAudioEntity 			= mScene->findEntity("AudioEntity");
+		mVideoEntity 			= mScene->findEntity("VideoEntity");
+		mRenderEntity 			= mScene->findEntity("RenderEntity");
+		mRenderCameraEntity 	= mScene->findEntity("RenderCameraEntity");
+		mWarpEntity 			= mScene->findEntity("WarpEntity");
 
+		// Start video players
 		auto video_players = mResourceManager->getObjects<VideoPlayer>();
 		for (auto& player : video_players)
 			player->play();
 
 		mAppGUIs = mResourceManager->getObjects<AppGUI>();
 
-		// All done!
         return true;
     }
 
@@ -86,7 +87,7 @@ namespace nap
 			auto& cam = mCameraEntity->getComponent<CameraComponentInstance>();
 
 			// Render shadows
-			auto shadow_mask = mRenderService->getRenderMask("Shadow");
+			const auto shadow_mask = mRenderService->getRenderMask("Shadow");
 			mRenderAdvancedService->renderShadows(render_comps, true, shadow_mask);
 
 			// Video
@@ -109,9 +110,9 @@ namespace nap
 				auto* composite_video = mRenderEntity->findComponentByID<RenderToTextureComponentInstance>("CompositeVideo");
 				if (composite_video != nullptr)
 				{
-					glm::ivec2 size = mColorTarget->getBufferSize();
-					glm::mat4 proj_matrix = OrthoCameraComponentInstance::createRenderProjectionMatrix(0.0f, (float)size.x, 0.0f, (float)size.y);
-					mRenderService->renderObjects(*mColorTarget, proj_matrix, {}, { composite_video }, std::bind(&sorter::sortObjectsByDepth, std::placeholders::_1, std::placeholders::_2));
+					const auto size = static_cast<glm::vec2>(mColorTarget->getBufferSize());
+					const auto proj_matrix = OrthoCameraComponentInstance::createRenderProjectionMatrix(0.0f, size.x, 0.0f, size.y);
+					mRenderService->renderObjects(*mColorTarget, proj_matrix, glm::identity<glm::mat4>(), { composite_video }, std::bind(&sorter::sortObjectsByDepth, std::placeholders::_1, std::placeholders::_2));
 				}
 
 				auto mask = mRenderService->getRenderMask("Default");
@@ -191,37 +192,55 @@ namespace nap
 		// If we pressed escape, quit the loop
 		if (inputEvent->get_type().is_derived_from(RTTI_OF(KeyPressEvent)))
 		{
-			KeyPressEvent* press_event = static_cast<KeyPressEvent*>(inputEvent.get());
-			if (press_event->mKey == nap::EKeyCode::KEY_ESCAPE)
-				quit();
+			auto* press_event = static_cast<KeyPressEvent*>(inputEvent.get());
 
-			if (press_event->mKey == nap::EKeyCode::KEY_f)
-				mRenderWindow->toggleFullscreen();
-
-			if (press_event->mKey == nap::EKeyCode::KEY_h)
-				mHideGUI = !mHideGUI;
-
-			if (press_event->mKey == nap::EKeyCode::KEY_r)
+			// Evaluate key
+			switch (press_event->mKey)
 			{
-				mRandomizeOffset = !mRandomizeOffset;
-				std::vector<FunTransformComponentInstance*> move_comps;
-				mWorldEntity->getComponentsOfTypeRecursive<FunTransformComponentInstance>(move_comps);
-				for (auto& comp : move_comps)
-					comp->randomize(mRandomizeOffset);
-			}
-
-			// For testing purposes only
-			if (press_event->mKey == nap::EKeyCode::KEY_p)
-			{
-				auto* playback = mAudioEntity->findComponent<audio::PlaybackComponentInstance>();
-				if (playback != nullptr)
+				case EKeyCode::KEY_ESCAPE:
 				{
-					if (!playback->isPlaying())
-						playback->start();
-					else
-						playback->stop();
+					quit();
+					break;
+				}
+
+				case nap::EKeyCode::KEY_f:
+				{
+					mRenderWindow->toggleFullscreen();
+					break;
+				}
+
+				case nap::EKeyCode::KEY_h:
+				{
+					mHideGUI = !mHideGUI;
+					break;
+				}
+
+				case nap::EKeyCode::KEY_r:
+				{
+					mRandomizeOffset = !mRandomizeOffset;
+					std::vector<FunTransformComponentInstance*> move_comps;
+					mWorldEntity->getComponentsOfTypeRecursive<FunTransformComponentInstance>(move_comps);
+					for (auto& comp : move_comps)
+						comp->randomize(mRandomizeOffset);
+
+					break;
+				}
+
+				case nap::EKeyCode::KEY_p:
+				{
+					// For testing purposes only
+					auto* playback = mAudioEntity->findComponent<audio::PlaybackComponentInstance>();
+					if (playback != nullptr)
+					{
+						if (!playback->isPlaying())
+							playback->start();
+						else
+							playback->stop();
+					}
+					break;
 				}
 			}
+
 		}
 		mInputService->addEvent(std::move(inputEvent));
     }

@@ -3,7 +3,7 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 // Local Includes
-#include "RenderClipMeshComponent.h"
+#include "renderclipmeshcomponent.h"
 #include "mesh.h"
 #include "renderglobals.h"
 #include "material.h"

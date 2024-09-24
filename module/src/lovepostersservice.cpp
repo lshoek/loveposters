@@ -1,7 +1,6 @@
 // Local Includes
-#include "LovePostersService.h"
+#include "lovepostersservice.h"
 #include "parameterwindow.h"
-#include "audiodevicesettingsgui.h"
 #include "audiodevicesettingsgui.h"
 #include "infowindow.h"
 #include "fftwindow.h"

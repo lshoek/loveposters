@@ -1,4 +1,4 @@
-#include "LevelMeterParameterComponent.h"
+#include "levelmeterparametercomponent.h"
 
 // External Includes
 #include <entity.h>

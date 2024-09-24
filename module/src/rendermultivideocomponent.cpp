@@ -3,7 +3,7 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 // Local Includes
-#include "RenderMultiVideoComponent.h"
+#include "rendermultivideocomponent.h"
 #include "videoshader.h"
 
 // External Includes
@@ -42,21 +42,49 @@ namespace nap
 	static void computeModelMatrix(const nap::IRenderTarget& target, glm::mat4& outMatrix)
 	{
 		// Transform to middle of target
-		glm::ivec2 tex_size = target.getBufferSize();
-		outMatrix = glm::translate(glm::mat4(), glm::vec3(
-			tex_size.x / 2.0f,
-			tex_size.y / 2.0f,
-			0.0f));
+		const auto tex_size = target.getBufferSize();
+		outMatrix = glm::translate(glm::mat4(), glm::vec3(tex_size.x / 2.0f, tex_size.y / 2.0f, 0.0f));
 
 		// Scale to fit target
 		outMatrix = glm::scale(outMatrix, glm::vec3(tex_size.x, tex_size.y, 1.0f));
 	}
 
+	/**
+	 * Checks if the uniform is available on the source material and creates it if so
+	 * @return the uniform, nullptr if not available.
+	 */
+	static UniformMat4Instance* ensureUniform(const rtti::Object& obj, const MaterialInstance& material, UniformStructInstance& mvp, const std::string& uniformName, utility::ErrorState& error)
+	{
+		// Get matrix binding
+		auto* uniform = mvp.getOrCreateUniform<UniformMat4Instance>(uniformName);
+		if (!error.check(uniform != nullptr, "%s: unable to find uniform `%s` in material `%s`", obj.mID.c_str(), uniformName.c_str(), material.getMaterial().mID.c_str()))
+			return nullptr;
 
+		return uniform;
+	}
+
+	/**
+	 * Checks if the sampler with the given name is available on the source material and creates it if so
+	 * @return new or created sampler
+	 */
+	static Sampler2DInstance* ensureSampler(const rtti::Object& obj, MaterialInstance& material, const std::string& samplerName, utility::ErrorState& error)
+	{
+		// Get matrix binding
+		auto* sampler = material.getOrCreateSampler<Sampler2DInstance>(samplerName);
+		if (!error.check(sampler != nullptr, "%s: unable to find sampler `%s` in material `%s`", obj.mID.c_str(), samplerName.c_str(), material.getMaterial().mID.c_str()))
+			return nullptr;
+
+		return sampler;
+	}
+
+	/**
+	 * RenderMultiVideoComponentInstance
+	 */
 	RenderMultiVideoComponentInstance::RenderMultiVideoComponentInstance(EntityInstance& entity, Component& resource) :
 		RenderableComponentInstance(entity, resource),
 		mTarget(*entity.getCore()),
-		mPlane(*entity.getCore())	{ }
+		mPlane(*entity.getCore())
+	{ }
 
 
 	bool RenderMultiVideoComponentInstance::init(utility::ErrorState& errorState)
@@ -65,7 +93,7 @@ namespace nap
 			return false;
 
 		// Get resource
-		RenderMultiVideoComponent* resource = getComponent<RenderMultiVideoComponent>();
+		auto* resource = getComponent<RenderMultiVideoComponent>();
 
 		// Extract player
 		for (uint i = 0; i < resource->mVideoPlayers.size(); i++)
@@ -116,14 +144,13 @@ namespace nap
 
 		// Ensure the mvp struct is available
 		mMVPStruct = mMaterialInstance.getOrCreateUniform(uniform::mvpStruct);
-		if (!errorState.check(mMVPStruct != nullptr, "%s: Unable to find uniform MVP struct: %s in material: %s",
-			this->mID.c_str(), uniform::mvpStruct, mMaterialInstance.getMaterial().mID.c_str()))
+		if (!errorState.check(mMVPStruct != nullptr, "%s: Unable to find uniform MVP struct: %s in material: %s", mID.c_str(), uniform::mvpStruct, mMaterialInstance.getMaterial().mID.c_str()))
 			return false;
 
 		// Get all matrices
-		mModelMatrixUniform = ensureUniform(uniform::modelMatrix, errorState);
-		mProjectMatrixUniform = ensureUniform(uniform::projectionMatrix, errorState);
-		mViewMatrixUniform = ensureUniform(uniform::viewMatrix, errorState);
+		mModelMatrixUniform 	= ensureUniform(*this, mMaterialInstance, *mMVPStruct, uniform::modelMatrix, errorState);
+		mProjectMatrixUniform 	= ensureUniform(*this, mMaterialInstance, *mMVPStruct, uniform::projectionMatrix, errorState);
+		mViewMatrixUniform 		= ensureUniform(*this, mMaterialInstance, *mMVPStruct, uniform::viewMatrix, errorState);
 
 		if (mModelMatrixUniform == nullptr || mProjectMatrixUniform == nullptr || mViewMatrixUniform == nullptr)
 			return false;
@@ -149,14 +176,14 @@ namespace nap
 		mBlendValueParam = resource->mBlendValue.get();
 
 		// Get sampler inputs to update from video material
-		mYSamplerA = ensureSampler("yTextureA", errorState);
-		mUSamplerA = ensureSampler("uTextureA", errorState);
-		mVSamplerA = ensureSampler("vTextureA", errorState);
+		mYSamplerA = ensureSampler(*this, mMaterialInstance, "yTextureA", errorState);
+		mUSamplerA = ensureSampler(*this, mMaterialInstance, "uTextureA", errorState);
+		mVSamplerA = ensureSampler(*this, mMaterialInstance, "vTextureA", errorState);
 
 		// Get sampler inputs to update from video material
-		mYSamplerB = ensureSampler("yTextureB", errorState);
-		mUSamplerB = ensureSampler("uTextureB", errorState);
-		mVSamplerB = ensureSampler("vTextureB", errorState);
+		mYSamplerB = ensureSampler(*this, mMaterialInstance, "yTextureB", errorState);
+		mUSamplerB = ensureSampler(*this, mMaterialInstance, "uTextureB", errorState);
+		mVSamplerB = ensureSampler(*this, mMaterialInstance, "vTextureB", errorState);
 
 		if (mYSamplerA == nullptr || mUSamplerA == nullptr || mVSamplerA == nullptr ||
 			mYSamplerB == nullptr || mUSamplerB == nullptr || mVSamplerB == nullptr)
@@ -184,7 +211,7 @@ namespace nap
 	}
 
 
-	nap::Texture2D& RenderMultiVideoComponentInstance::getOutputTexture()
+	Texture2D& RenderMultiVideoComponentInstance::getOutputTexture()
 	{
 		return mTarget.getColorTexture();
 	}
@@ -193,17 +220,17 @@ namespace nap
 	void RenderMultiVideoComponentInstance::draw()
 	{
 		// Get current command buffer, should be headless.
-		VkCommandBuffer command_buffer = mRenderService->getCurrentCommandBuffer();
+		auto command_buffer = mRenderService->getCurrentCommandBuffer();
 
 		// Create orthographic projection matrix
-		glm::ivec2 size = mTarget.getBufferSize();
+		const auto size = static_cast<glm::vec2>(mTarget.getBufferSize());
 
 		// Create projection matrix
-		glm::mat4 proj_matrix = OrthoCameraComponentInstance::createRenderProjectionMatrix(0.0f, (float)size.x, 0.0f, (float)size.y);
+		const auto proj_matrix = OrthoCameraComponentInstance::createRenderProjectionMatrix(0.0f, size.x, 0.0f, size.y);
 
 		// Call on draw
 		mTarget.beginRendering();
-		onDraw(mTarget, command_buffer, glm::mat4(), proj_matrix);
+		onDraw(mTarget, command_buffer, glm::identity<glm::mat4>(), proj_matrix);
 		mTarget.endRendering();
 	}
 
@@ -248,29 +275,6 @@ namespace nap
 			vkCmdBindIndexBuffer(commandBuffer, index_buffer.getBuffer(), 0, VK_INDEX_TYPE_UINT32);
 			vkCmdDrawIndexed(commandBuffer, index_buffer.getCount(), 1, 0, 0, 0);
 		}
-	}
-
-
-	nap::UniformMat4Instance* RenderMultiVideoComponentInstance::ensureUniform(const std::string& uniformName, utility::ErrorState& error)
-	{
-		assert(mMVPStruct != nullptr);
-		UniformMat4Instance* found_uniform = mMVPStruct->getOrCreateUniform<UniformMat4Instance>(uniformName);
-		if (!error.check(found_uniform != nullptr,
-			"%s: unable to find uniform: %s in material: %s", this->mID.c_str(), uniformName.c_str(),
-			mMaterialInstance.getMaterial().mID.c_str()))
-			return nullptr;
-		return found_uniform;
-	}
-
-
-	nap::Sampler2DInstance* RenderMultiVideoComponentInstance::ensureSampler(const std::string& samplerName, utility::ErrorState& error)
-	{
-		Sampler2DInstance* found_sampler = mMaterialInstance.getOrCreateSampler<Sampler2DInstance>(samplerName);
-		if (!error.check(found_sampler != nullptr,
-			"%s: unable to find sampler: %s in material: %s", this->mID.c_str(), samplerName.c_str(),
-			mMaterialInstance.getMaterial().mID.c_str()))
-			return nullptr;
-		return found_sampler;
 	}
 
 	

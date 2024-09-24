@@ -135,18 +135,6 @@ namespace nap
 		std::map<VideoPlayer*, int> mVideoMap;
 
 		/**
-		 * Checks if the uniform is available on the source material and creates it if so
-		 * @return the uniform, nullptr if not available.
-		 */
-		UniformMat4Instance* ensureUniform(const std::string& uniformName, utility::ErrorState& error);
-
-		/**
-		 * Checks if the sampler with the given name is available on the source material and creates it if so
-		 * @return new or created sampler
-		 */
-		Sampler2DInstance* ensureSampler(const std::string& samplerName, utility::ErrorState& error);
-
-		/**
 		 * Called every time a new video is selected.
 		 * Updates the YUV textures in the video material.
 		 * @param player the video player that switched the video.

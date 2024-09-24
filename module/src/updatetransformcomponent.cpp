@@ -1,9 +1,8 @@
-#include "UpdateTransformComponent.h"
+#include "updatetransformcomponent.h"
 
 // External Includes
 #include <entity.h>
 #include <glm/gtc/noise.hpp>
-#include <glm/gtc/random.hpp>
 
 // nap::UpdateTransformComponent run time class definition 
 RTTI_BEGIN_CLASS(nap::UpdateTransformComponent)

@@ -11,6 +11,7 @@
 #include <imguiutils.h>
 #include <appguiservice.h>
 #include <legacyfluxmeasurementcomponent.h>
+#include <utility>
 
 RTTI_BEGIN_CLASS_NO_DEFAULT_CONSTRUCTOR(nap::FFTWindow)
     RTTI_CONSTRUCTOR(nap::AppGUIService&)
@@ -90,11 +91,8 @@ namespace nap
 			{
 				auto it = mOnsetMap.find(item->mID);
 				if (it == mOnsetMap.end())
-				{
-					auto& onsets = mOnsetMap.insert({ item->mID, {} });
-					onsets.first->second.resize(mOnsetBufferSize);
-					it = onsets.first;
-				}
+					it = mOnsetMap.emplace(item->mID, std::vector<float>(mOnsetBufferSize)).first;
+
 				auto& onsets = it->second;
 				onsets[mUpdateCount % onsets.size()] = item->mParameter->mValue;
 
