@@ -38,9 +38,8 @@ namespace nap
 		if (!error.check(mColorTarget != nullptr, "unable to find nap::RenderTarget with name: %s", "ColorTarget"))
 			return false;
 
+		// Stencil target (not required)
 		mStencilTarget = mResourceManager->findObject<RenderTarget>("StencilTarget");
-		if (!error.check(mStencilTarget != nullptr, "unable to find nap::RenderTarget with name: %s", "StencilTarget"))
-			return false;
 
 		// Get the scene that contains our entities and components
 		mScene = mResourceManager->findObject<Scene>("Scene");
@@ -117,6 +116,9 @@ namespace nap
 
 				auto mask = mRenderService->getRenderMask("Default");
 				mRenderService->renderObjects(*mColorTarget, cam, render_comps, std::bind(&sorter::sortObjectsByZ, std::placeholders::_1), (mask != 0) ? mask : mask::all);
+
+				if (mShowLocators)
+					mRenderAdvancedService->renderLocators(*mColorTarget, cam, true);
 			}
 			mColorTarget->endRendering();
 
@@ -209,9 +211,15 @@ namespace nap
 					break;
 				}
 
-				case nap::EKeyCode::KEY_h:
+				case nap::EKeyCode::KEY_g:
 				{
-					mHideGUI = !mHideGUI;
+					mShowGUI = !mShowGUI;
+					break;
+				}
+
+				case nap::EKeyCode::KEY_l:
+				{
+					mShowLocators = !mShowLocators;
 					break;
 				}
 
@@ -253,7 +261,7 @@ namespace nap
 		nap::DefaultInputRouter input_router(true);
 		mInputService->processWindowEvents(*mRenderWindow, input_router, { &mScene->getRootEntity() });
 
-		if (!mHideGUI)
+		if (mShowGUI)
 		{
 			for (auto& gui : mAppGUIs)
 				gui->draw(deltaTime);

@@ -1,6 +1,11 @@
 {
     "Objects": [
         {
+            "Type": "nap::CVServiceConfiguration",
+            "mID": "CVServiceConfiguration_fcb6d6da-f340-45b6-8899-20b1d5594450",
+            "ThreadCount": -1
+        },
+        {
             "Type": "nap::IMGuiServiceConfiguration",
             "mID": "IMGuiServiceConfiguration_172cc29d-f8d8-47fa-86b8-0f3f3359c53d",
             "ColorScheme": "Dark",
@@ -155,7 +160,7 @@
             ],
             "Extensions": [],
             "VulkanMajor": 1,
-            "VulkanMinor": 0,
+            "VulkanMinor": 2,
             "AnisotropicSamples": 8,
             "EnableHighDPI": true,
             "EnableCompute": true,

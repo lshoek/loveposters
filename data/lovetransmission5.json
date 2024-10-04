@@ -86,16 +86,45 @@
                     "Type": "nap::FFTAudioNodeComponent",
                     "mID": "FFTAudioNodeComponent",
                     "Input": "./AudioInput",
-                    "Overlaps": "Five",
+                    "Overlaps": "Three",
                     "Channel": 0
                 },
                 {
-                    "Type": "nap::FluxMeasurementComponent",
+                    "Type": "nap::LegacyFluxMeasurementComponent",
                     "mID": "FluxMeasurement",
-                    "Scale": 1.0,
-                    "Decay": 0.949999988079071,
-                    "MinHertz": 0.0,
-                    "MaxHertz": 44100.0
+                    "Parameters": [
+                        {
+                            "Type": "nap::LegacyFluxMeasurementComponent::FilterParameterItem",
+                            "mID": "LP",
+                            "Parameter": "LowFrequencyFluxParam",
+                            "Multiplier": "MultiplyLowParam",
+                            "Offset": "",
+                            "TargetOnset": "TargetOnsetLow",
+                            "Decay": "DecayLow",
+                            "Stretch": "StretchLow",
+                            "OnsetImpact": 6.0,
+                            "MinHertz": 0.0,
+                            "MaxHertz": 2000.0,
+                            "EvaluationSampleCount": 512,
+                            "SmoothTime": 0.009999999776482582
+                        },
+                        {
+                            "Type": "nap::LegacyFluxMeasurementComponent::FilterParameterItem",
+                            "mID": "HP",
+                            "Parameter": "HighFrequencyFluxParam",
+                            "Multiplier": "MultiplyHighParam",
+                            "Offset": "",
+                            "TargetOnset": "TargetOnsetHigh",
+                            "Decay": "DecayHigh",
+                            "Stretch": "StretchHigh",
+                            "OnsetImpact": 5.0,
+                            "MinHertz": 2000.0,
+                            "MaxHertz": 10000.0,
+                            "EvaluationSampleCount": 512,
+                            "SmoothTime": 0.009999999776482582
+                        }
+                    ],
+                    "Enable": true
                 }
             ],
             "Children": []
@@ -111,7 +140,7 @@
                         "Translate": {
                             "x": 0.0,
                             "y": 0.0,
-                            "z": 0.5
+                            "z": 0.75
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -148,7 +177,7 @@
                     "Type": "nap::PerspCameraComponent",
                     "mID": "PerspectiveCamera",
                     "Properties": {
-                        "FieldOfView": 60.0,
+                        "FieldOfView": 70.0,
                         "NearClippingPlane": 0.05000000074505806,
                         "FarClippingPlane": 10.0,
                         "GridDimensions": {
@@ -444,37 +473,29 @@
             ],
             "Children": [
                 "Poster_TitleEntity",
-                "Poster_PlantsEntity",
+                "Poster_GomoraEntity",
                 "Poster_BackgroundEntity",
-                "Poster_JimmyEntity",
-                "Poster_CaptainEntity",
-                "Poster_ZuluEntity",
-                "Poster_AshaEntity",
-                "Poster_RareGemsEntity",
-                "Poster_MarilynEntity",
-                "Poster_RoundtreeEntity",
-                "Poster_MilkyEntity",
-                "Poster_CarltonEntity",
-                "Poster_DarcusEntity",
-                "Poster_CurtisEntity",
-                "Poster_FlamingoEntity",
+                "Poster_JammersEntity",
+                "Poster_JekysEntity",
+                "Poster_StarbootyEntity",
+                "Poster_OZoneEntity",
                 "Poster_ZuluPlantsLeftEntity",
                 "Poster_ZuluPlantsRightEntity",
-                "Poster_RoseEntity"
+                "Poster_AtlanticStarr "
             ]
         },
         {
             "Type": "nap::Entity",
-            "mID": "Poster_AshaEntity",
+            "mID": "Poster_AtlanticStarr ",
             "Components": [
                 {
                     "Type": "nap::TransformComponent",
-                    "mID": "TransformAsha",
+                    "mID": "TransformAtlanticStarr ",
                     "Properties": {
                         "Translate": {
-                            "x": 0.30000001192092896,
-                            "y": -0.10000000149011612,
-                            "z": -12.5
+                            "x": -0.3499999940395355,
+                            "y": -0.44999998807907104,
+                            "z": -16.0
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -482,18 +503,20 @@
                             "z": 0.0
                         },
                         "Scale": {
-                            "x": 0.6800000071525574,
+                            "x": 0.8100000023841858,
                             "y": 1.0,
                             "z": 1.0
                         },
-                        "UniformScale": 0.6499999761581421
+                        "UniformScale": 0.5
                     }
                 },
                 {
                     "Type": "nap::RenderClipMeshComponent",
-                    "mID": "RenderAsha",
+                    "mID": "RenderAtlanticStarr",
                     "Visible": true,
-                    "Tags": [],
+                    "Tags": [
+                        "RenderTag_Shadow"
+                    ],
                     "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
@@ -501,7 +524,7 @@
                         "Samplers": [
                             {
                                 "Type": "nap::Sampler2D",
-                                "mID": "Sampler2D_ea2d4aaf",
+                                "mID": "Sampler2D",
                                 "Name": "colorTexture",
                                 "MinFilter": "Linear",
                                 "MaxFilter": "Linear",
@@ -515,13 +538,13 @@
                                 "BorderColor": "IntOpaqueBlack",
                                 "CompareMode": "LessOrEqual",
                                 "EnableCompare": false,
-                                "Texture": "Poster_Asha"
+                                "Texture": "Poster_AtlanticStarr"
                             }
                         ],
                         "Buffers": [],
                         "Constants": [],
                         "Material": "TextureShadowClipMaterial",
-                        "BlendMode": "AlphaBlend",
+                        "BlendMode": "NotSet",
                         "DepthMode": "NotSet"
                     },
                     "LineWidth": 1.0,
@@ -540,7 +563,7 @@
                         "Samplers": [
                             {
                                 "Type": "nap::Sampler2D",
-                                "mID": "colorTexture_093e6b2c",
+                                "mID": "colorTexture",
                                 "Name": "colorTexture",
                                 "MinFilter": "Linear",
                                 "MaxFilter": "Linear",
@@ -554,7 +577,7 @@
                                 "BorderColor": "IntOpaqueBlack",
                                 "CompareMode": "LessOrEqual",
                                 "EnableCompare": false,
-                                "Texture": "Poster_Asha"
+                                "Texture": "Poster_AtlanticStarr"
                             }
                         ],
                         "Buffers": [],
@@ -566,7 +589,7 @@
                 },
                 {
                     "Type": "nap::FunTransformComponent",
-                    "mID": "MoveAsha",
+                    "mID": "MoveAtlanticStarr",
                     "Movement": "LowFrequencyFluxParam",
                     "Intensity": "LiveIntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
@@ -574,7 +597,7 @@
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
                     "ScaleIntensity": "ScaleIntensityParam",
-                    "MultiplyRotation": 1.0,
+                    "MultiplyRotation": 0.75,
                     "MultiplyTranslation": {
                         "x": 1.0,
                         "y": 1.0
@@ -616,7 +639,9 @@
                     "Type": "nap::RenderClipMeshComponent",
                     "mID": "RenderBackground",
                     "Visible": true,
-                    "Tags": [],
+                    "Tags": [
+                        "RenderTag_Shadow"
+                    ],
                     "Layer": "",
                     "Mesh": "PosterMesh",
                     "MaterialInstance": {
@@ -711,507 +736,15 @@
         },
         {
             "Type": "nap::Entity",
-            "mID": "Poster_CaptainEntity",
+            "mID": "Poster_GomoraEntity",
             "Components": [
                 {
                     "Type": "nap::TransformComponent",
-                    "mID": "TransformCaptain",
+                    "mID": "TransformGomora",
                     "Properties": {
                         "Translate": {
-                            "x": -0.30000001192092896,
-                            "y": -0.3499999940395355,
-                            "z": -7.0
-                        },
-                        "Rotate": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "Scale": {
-                            "x": 0.8899999856948853,
-                            "y": 1.0,
-                            "z": 1.0
-                        },
-                        "UniformScale": 0.5
-                    }
-                },
-                {
-                    "Type": "nap::RenderClipMeshComponent",
-                    "mID": "RenderCaptain",
-                    "Visible": true,
-                    "Tags": [],
-                    "Layer": "",
-                    "Mesh": "SquareMesh",
-                    "MaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "Sampler2D_12d532ff",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0.0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_Captain"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureShadowClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    },
-                    "LineWidth": 1.0,
-                    "ClipRect": {
-                        "Min": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "Max": {
-                            "x": 0.0,
-                            "y": 0.0
-                        }
-                    },
-                    "ShadowMaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "colorTexture_986aef28",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0.0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_Captain"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    }
-                },
-                {
-                    "Type": "nap::FunTransformComponent",
-                    "mID": "MoveCaptain",
-                    "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "LiveIntensityParam",
-                    "RotationIntensity": "RotationIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "TranslateXIntensity": "TranslateXIntensityParam",
-                    "TranslateYIntensity": "TranslateYIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
-                    "MultiplyRotation": 1.0,
-                    "MultiplyTranslation": {
-                        "x": 1.0,
-                        "y": 1.0
-                    },
-                    "MultiplyScale": 1.0,
-                    "RandomOffset": true,
-                    "Enable": true
-                }
-            ],
-            "Children": []
-        },
-        {
-            "Type": "nap::Entity",
-            "mID": "Poster_CarltonEntity",
-            "Components": [
-                {
-                    "Type": "nap::TransformComponent",
-                    "mID": "TransformCarlton",
-                    "Properties": {
-                        "Translate": {
-                            "x": 0.0,
-                            "y": 0.44999998807907104,
-                            "z": -18.0
-                        },
-                        "Rotate": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "Scale": {
-                            "x": 1.0,
-                            "y": 0.4399999976158142,
-                            "z": 1.0
-                        },
-                        "UniformScale": 1.0
-                    }
-                },
-                {
-                    "Type": "nap::RenderClipMeshComponent",
-                    "mID": "RenderCarlton",
-                    "Visible": true,
-                    "Tags": [],
-                    "Layer": "",
-                    "Mesh": "SquareMesh",
-                    "MaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "Sampler2D_750d4627",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0.0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_Carlton"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureShadowClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    },
-                    "LineWidth": 1.0,
-                    "ClipRect": {
-                        "Min": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "Max": {
-                            "x": 0.0,
-                            "y": 0.0
-                        }
-                    },
-                    "ShadowMaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "colorTexture_0a2d8689",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0.0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_Carlton"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    }
-                },
-                {
-                    "Type": "nap::FunTransformComponent",
-                    "mID": "MoveCarlton",
-                    "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "LiveIntensityParam",
-                    "RotationIntensity": "RotationIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "TranslateXIntensity": "TranslateXIntensityParam",
-                    "TranslateYIntensity": "TranslateYIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
-                    "MultiplyRotation": 0.5,
-                    "MultiplyTranslation": {
-                        "x": 1.0,
-                        "y": 1.0
-                    },
-                    "MultiplyScale": 1.0,
-                    "RandomOffset": true,
-                    "Enable": true
-                }
-            ],
-            "Children": []
-        },
-        {
-            "Type": "nap::Entity",
-            "mID": "Poster_CurtisEntity",
-            "Components": [
-                {
-                    "Type": "nap::TransformComponent",
-                    "mID": "TransformCurtis",
-                    "Properties": {
-                        "Translate": {
-                            "x": 0.5,
-                            "y": 0.15000000596046448,
-                            "z": -15.0
-                        },
-                        "Rotate": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "Scale": {
-                            "x": 1.0,
-                            "y": 0.7400000095367432,
-                            "z": 1.0
-                        },
-                        "UniformScale": 0.4000000059604645
-                    }
-                },
-                {
-                    "Type": "nap::RenderClipMeshComponent",
-                    "mID": "RenderCurtis",
-                    "Visible": true,
-                    "Tags": [],
-                    "Layer": "",
-                    "Mesh": "SquareMesh",
-                    "MaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "Sampler2D_b9d6d610",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0.0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_Curtis"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureShadowClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    },
-                    "LineWidth": 1.0,
-                    "ClipRect": {
-                        "Min": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "Max": {
-                            "x": 0.0,
-                            "y": 0.0
-                        }
-                    },
-                    "ShadowMaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "colorTexture_d25883de",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0.0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_Curtis"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    }
-                },
-                {
-                    "Type": "nap::FunTransformComponent",
-                    "mID": "MoveCurtis",
-                    "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "LiveIntensityParam",
-                    "RotationIntensity": "RotationIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "TranslateXIntensity": "TranslateXIntensityParam",
-                    "TranslateYIntensity": "TranslateYIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
-                    "MultiplyRotation": 1.0,
-                    "MultiplyTranslation": {
-                        "x": 1.0,
-                        "y": 1.0
-                    },
-                    "MultiplyScale": 1.0,
-                    "RandomOffset": true,
-                    "Enable": true
-                }
-            ],
-            "Children": []
-        },
-        {
-            "Type": "nap::Entity",
-            "mID": "Poster_DarcusEntity",
-            "Components": [
-                {
-                    "Type": "nap::TransformComponent",
-                    "mID": "TransformDarcus",
-                    "Properties": {
-                        "Translate": {
-                            "x": -0.5,
-                            "y": 0.20000000298023224,
-                            "z": -12.0
-                        },
-                        "Rotate": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "Scale": {
-                            "x": 0.6299999952316284,
-                            "y": 1.0,
-                            "z": 1.0
-                        },
-                        "UniformScale": 0.3499999940395355
-                    }
-                },
-                {
-                    "Type": "nap::RenderClipMeshComponent",
-                    "mID": "RenderDarcus",
-                    "Visible": true,
-                    "Tags": [],
-                    "Layer": "",
-                    "Mesh": "SquareMesh",
-                    "MaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "Sampler2D_00ddd758",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0.0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_Darcus"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureShadowClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    },
-                    "LineWidth": 1.0,
-                    "ClipRect": {
-                        "Min": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "Max": {
-                            "x": 0.0,
-                            "y": 0.0
-                        }
-                    },
-                    "ShadowMaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "colorTexture_6c6cd848",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0.0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_Darcus"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    }
-                },
-                {
-                    "Type": "nap::FunTransformComponent",
-                    "mID": "MoveDarcus",
-                    "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "LiveIntensityParam",
-                    "RotationIntensity": "RotationIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "TranslateXIntensity": "TranslateXIntensityParam",
-                    "TranslateYIntensity": "TranslateYIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
-                    "MultiplyRotation": 1.0,
-                    "MultiplyTranslation": {
-                        "x": 1.0,
-                        "y": 1.0
-                    },
-                    "MultiplyScale": 1.0,
-                    "RandomOffset": true,
-                    "Enable": true
-                }
-            ],
-            "Children": []
-        },
-        {
-            "Type": "nap::Entity",
-            "mID": "Poster_FlamingoEntity",
-            "Components": [
-                {
-                    "Type": "nap::TransformComponent",
-                    "mID": "TransformFlamingo",
-                    "Properties": {
-                        "Translate": {
-                            "x": -0.10000000149011612,
-                            "y": -0.44999998807907104,
+                            "x": 0.30000001192092896,
+                            "y": -0.30000001192092896,
                             "z": -5.0
                         },
                         "Rotate": {
@@ -1220,131 +753,8 @@
                             "z": 0.0
                         },
                         "Scale": {
-                            "x": 1.0,
+                            "x": 0.8500000238418579,
                             "y": 1.0,
-                            "z": 1.0
-                        },
-                        "UniformScale": 0.20000000298023224
-                    }
-                },
-                {
-                    "Type": "nap::RenderClipMeshComponent",
-                    "mID": "RenderFlamingo",
-                    "Visible": true,
-                    "Tags": [],
-                    "Layer": "",
-                    "Mesh": "SquareMesh",
-                    "MaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "Sampler2D_61d5cf15",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0.0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_Flamingo"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureShadowClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    },
-                    "LineWidth": 1.0,
-                    "ClipRect": {
-                        "Min": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "Max": {
-                            "x": 0.0,
-                            "y": 0.0
-                        }
-                    },
-                    "ShadowMaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "colorTexture_2693d1da",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0.0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_Flamingo"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    }
-                },
-                {
-                    "Type": "nap::FunTransformComponent",
-                    "mID": "MoveFlamingo",
-                    "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "LiveIntensityParam",
-                    "RotationIntensity": "RotationIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "TranslateXIntensity": "TranslateXIntensityParam",
-                    "TranslateYIntensity": "TranslateYIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
-                    "MultiplyRotation": 1.0,
-                    "MultiplyTranslation": {
-                        "x": 1.0,
-                        "y": 1.0
-                    },
-                    "MultiplyScale": 1.0,
-                    "RandomOffset": true,
-                    "Enable": true
-                }
-            ],
-            "Children": []
-        },
-        {
-            "Type": "nap::Entity",
-            "mID": "Poster_JimmyEntity",
-            "Components": [
-                {
-                    "Type": "nap::TransformComponent",
-                    "mID": "TransformJimmy",
-                    "Properties": {
-                        "Translate": {
-                            "x": 0.25,
-                            "y": -0.30000001192092896,
-                            "z": -2.0
-                        },
-                        "Rotate": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "Scale": {
-                            "x": 1.0,
-                            "y": 0.6800000071525574,
                             "z": 1.0
                         },
                         "UniformScale": 0.5
@@ -1352,378 +762,11 @@
                 },
                 {
                     "Type": "nap::RenderClipMeshComponent",
-                    "mID": "RenderJimmy",
+                    "mID": "RenderGomora",
                     "Visible": true,
-                    "Tags": [],
-                    "Layer": "",
-                    "Mesh": "SquareMesh",
-                    "MaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "Sampler2D_62fa4e14",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0.0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_JimmySmith"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureShadowClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    },
-                    "LineWidth": 1.0,
-                    "ClipRect": {
-                        "Min": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "Max": {
-                            "x": 0.0,
-                            "y": 0.0
-                        }
-                    },
-                    "ShadowMaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "colorTexture_e791366f",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0.0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_JimmySmith"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    }
-                },
-                {
-                    "Type": "nap::FunTransformComponent",
-                    "mID": "MoveJimmy",
-                    "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "LiveIntensityParam",
-                    "RotationIntensity": "RotationIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "TranslateXIntensity": "TranslateXIntensityParam",
-                    "TranslateYIntensity": "TranslateYIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
-                    "MultiplyRotation": 1.0,
-                    "MultiplyTranslation": {
-                        "x": 1.0,
-                        "y": 1.0
-                    },
-                    "MultiplyScale": 1.0,
-                    "RandomOffset": true,
-                    "Enable": true
-                }
-            ],
-            "Children": []
-        },
-        {
-            "Type": "nap::Entity",
-            "mID": "Poster_MarilynEntity",
-            "Components": [
-                {
-                    "Type": "nap::TransformComponent",
-                    "mID": "TransformMarilyn",
-                    "Properties": {
-                        "Translate": {
-                            "x": -0.3499999940395355,
-                            "y": -0.10000000149011612,
-                            "z": -9.0
-                        },
-                        "Rotate": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "Scale": {
-                            "x": 1.0,
-                            "y": 0.699999988079071,
-                            "z": 1.0
-                        },
-                        "UniformScale": 0.25
-                    }
-                },
-                {
-                    "Type": "nap::RenderClipMeshComponent",
-                    "mID": "RenderMarilyn",
-                    "Visible": true,
-                    "Tags": [],
-                    "Layer": "",
-                    "Mesh": "SquareMesh",
-                    "MaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "Sampler2D_ce19ce00",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0.0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_Marilyn"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureShadowClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    },
-                    "LineWidth": 1.0,
-                    "ClipRect": {
-                        "Min": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "Max": {
-                            "x": 0.0,
-                            "y": 0.0
-                        }
-                    },
-                    "ShadowMaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "colorTexture_443bbf8e",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0.0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_Marilyn"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    }
-                },
-                {
-                    "Type": "nap::FunTransformComponent",
-                    "mID": "MoveMarilyn",
-                    "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "LiveIntensityParam",
-                    "RotationIntensity": "RotationIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "TranslateXIntensity": "TranslateXIntensityParam",
-                    "TranslateYIntensity": "TranslateYIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
-                    "MultiplyRotation": 1.0,
-                    "MultiplyTranslation": {
-                        "x": 1.0,
-                        "y": 1.0
-                    },
-                    "MultiplyScale": 1.0,
-                    "RandomOffset": true,
-                    "Enable": true
-                }
-            ],
-            "Children": []
-        },
-        {
-            "Type": "nap::Entity",
-            "mID": "Poster_MilkyEntity",
-            "Components": [
-                {
-                    "Type": "nap::TransformComponent",
-                    "mID": "TransformMilky",
-                    "Properties": {
-                        "Translate": {
-                            "x": -0.4000000059604645,
-                            "y": 0.5,
-                            "z": -14.0
-                        },
-                        "Rotate": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "Scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        },
-                        "UniformScale": 0.20000000298023224
-                    }
-                },
-                {
-                    "Type": "nap::RenderClipMeshComponent",
-                    "mID": "RenderMilky",
-                    "Visible": true,
-                    "Tags": [],
-                    "Layer": "",
-                    "Mesh": "SquareMesh",
-                    "MaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "Sampler2D_ebd6eb77",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0.0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_Milky"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureShadowClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    },
-                    "LineWidth": 1.0,
-                    "ClipRect": {
-                        "Min": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "Max": {
-                            "x": 0.0,
-                            "y": 0.0
-                        }
-                    },
-                    "ShadowMaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "colorTexture_01fb0557",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0.0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_Milky"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    }
-                },
-                {
-                    "Type": "nap::FunTransformComponent",
-                    "mID": "MoveMilky",
-                    "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "LiveIntensityParam",
-                    "RotationIntensity": "RotationIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "TranslateXIntensity": "TranslateXIntensityParam",
-                    "TranslateYIntensity": "TranslateYIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
-                    "MultiplyRotation": 1.0,
-                    "MultiplyTranslation": {
-                        "x": 1.0,
-                        "y": 1.0
-                    },
-                    "MultiplyScale": 1.0,
-                    "RandomOffset": true,
-                    "Enable": true
-                }
-            ],
-            "Children": []
-        },
-        {
-            "Type": "nap::Entity",
-            "mID": "Poster_PlantsEntity",
-            "Components": [
-                {
-                    "Type": "nap::TransformComponent",
-                    "mID": "TransformPlants",
-                    "Properties": {
-                        "Translate": {
-                            "x": 0.0,
-                            "y": -0.5,
-                            "z": -4.0
-                        },
-                        "Rotate": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "Scale": {
-                            "x": 1.0,
-                            "y": 0.5,
-                            "z": 1.0
-                        },
-                        "UniformScale": 1.0
-                    }
-                },
-                {
-                    "Type": "nap::RenderClipMeshComponent",
-                    "mID": "RenderPlants",
-                    "Visible": true,
-                    "Tags": [],
+                    "Tags": [
+                        "RenderTag_Shadow"
+                    ],
                     "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
@@ -1745,7 +788,7 @@
                                 "BorderColor": "IntOpaqueBlack",
                                 "CompareMode": "LessOrEqual",
                                 "EnableCompare": false,
-                                "Texture": "Poster_Plants"
+                                "Texture": "Poster_Gomora"
                             }
                         ],
                         "Buffers": [],
@@ -1784,7 +827,7 @@
                                 "BorderColor": "IntOpaqueBlack",
                                 "CompareMode": "LessOrEqual",
                                 "EnableCompare": false,
-                                "Texture": "Poster_Plants"
+                                "Texture": "Poster_Gomora"
                             }
                         ],
                         "Buffers": [],
@@ -1796,7 +839,7 @@
                 },
                 {
                     "Type": "nap::FunTransformComponent",
-                    "mID": "MovePlants",
+                    "mID": "MoveGomora",
                     "Movement": "LowFrequencyFluxParam",
                     "Intensity": "LiveIntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
@@ -1818,25 +861,150 @@
         },
         {
             "Type": "nap::Entity",
-            "mID": "Poster_RareGemsEntity",
+            "mID": "Poster_JammersEntity",
             "Components": [
                 {
                     "Type": "nap::TransformComponent",
-                    "mID": "TransformRareGems",
+                    "mID": "TransformJammers",
                     "Properties": {
                         "Translate": {
                             "x": -0.10000000149011612,
-                            "y": 0.10000000149011612,
-                            "z": -10.0
+                            "y": 0.0,
+                            "z": -13.0
                         },
                         "Rotate": {
-                            "x": 0.9200000166893005,
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "Scale": {
+                            "x": 0.9800000190734863,
+                            "y": 1.0,
+                            "z": 1.0
+                        },
+                        "UniformScale": 0.550000011920929
+                    }
+                },
+                {
+                    "Type": "nap::RenderClipMeshComponent",
+                    "mID": "RenderJammers",
+                    "Visible": true,
+                    "Tags": [
+                        "RenderTag_Shadow"
+                    ],
+                    "Layer": "",
+                    "Mesh": "SquareMesh",
+                    "MaterialInstance": {
+                        "Uniforms": [],
+                        "Samplers": [
+                            {
+                                "Type": "nap::Sampler2D",
+                                "mID": "Sampler2D_12d532ff",
+                                "Name": "colorTexture",
+                                "MinFilter": "Linear",
+                                "MaxFilter": "Linear",
+                                "MipMapMode": "Linear",
+                                "AddressModeVertical": "ClampToEdge",
+                                "AddressModeHorizontal": "ClampToEdge",
+                                "MinLodLevel": 0,
+                                "MaxLodLevel": 1000,
+                                "LodBias": 0.0,
+                                "AnisotropicSamples": "Default",
+                                "BorderColor": "IntOpaqueBlack",
+                                "CompareMode": "LessOrEqual",
+                                "EnableCompare": false,
+                                "Texture": "Poster_Jammers"
+                            }
+                        ],
+                        "Buffers": [],
+                        "Constants": [],
+                        "Material": "TextureShadowClipMaterial",
+                        "BlendMode": "NotSet",
+                        "DepthMode": "NotSet"
+                    },
+                    "LineWidth": 1.0,
+                    "ClipRect": {
+                        "Min": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "Max": {
+                            "x": 0.0,
+                            "y": 0.0
+                        }
+                    },
+                    "ShadowMaterialInstance": {
+                        "Uniforms": [],
+                        "Samplers": [
+                            {
+                                "Type": "nap::Sampler2D",
+                                "mID": "colorTexture_986aef28",
+                                "Name": "colorTexture",
+                                "MinFilter": "Linear",
+                                "MaxFilter": "Linear",
+                                "MipMapMode": "Linear",
+                                "AddressModeVertical": "ClampToEdge",
+                                "AddressModeHorizontal": "ClampToEdge",
+                                "MinLodLevel": 0,
+                                "MaxLodLevel": 1000,
+                                "LodBias": 0.0,
+                                "AnisotropicSamples": "Default",
+                                "BorderColor": "IntOpaqueBlack",
+                                "CompareMode": "LessOrEqual",
+                                "EnableCompare": false,
+                                "Texture": "Poster_Jammers"
+                            }
+                        ],
+                        "Buffers": [],
+                        "Constants": [],
+                        "Material": "TextureClipMaterial",
+                        "BlendMode": "NotSet",
+                        "DepthMode": "NotSet"
+                    }
+                },
+                {
+                    "Type": "nap::FunTransformComponent",
+                    "mID": "MoveJammers",
+                    "Movement": "LowFrequencyFluxParam",
+                    "Intensity": "LiveIntensityParam",
+                    "RotationIntensity": "RotationIntensityParam",
+                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
+                    "TranslateXIntensity": "TranslateXIntensityParam",
+                    "TranslateYIntensity": "TranslateYIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
+                    "MultiplyRotation": 1.0,
+                    "MultiplyTranslation": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "MultiplyScale": 1.0,
+                    "RandomOffset": true,
+                    "Enable": true
+                }
+            ],
+            "Children": []
+        },
+        {
+            "Type": "nap::Entity",
+            "mID": "Poster_JekysEntity",
+            "Components": [
+                {
+                    "Type": "nap::TransformComponent",
+                    "mID": "TransformJekys",
+                    "Properties": {
+                        "Translate": {
+                            "x": 0.15000000596046448,
+                            "y": -0.05000000074505806,
+                            "z": -9.0
+                        },
+                        "Rotate": {
+                            "x": 0.0,
                             "y": 0.0,
                             "z": 0.0
                         },
                         "Scale": {
                             "x": 1.0,
-                            "y": 1.0,
+                            "y": 0.5799999833106995,
                             "z": 1.0
                         },
                         "UniformScale": 0.4000000059604645
@@ -1844,9 +1012,261 @@
                 },
                 {
                     "Type": "nap::RenderClipMeshComponent",
-                    "mID": "RenderRareGems",
+                    "mID": "RenderJekys",
                     "Visible": true,
-                    "Tags": [],
+                    "Tags": [
+                        "RenderTag_Shadow"
+                    ],
+                    "Layer": "",
+                    "Mesh": "SquareMesh",
+                    "MaterialInstance": {
+                        "Uniforms": [],
+                        "Samplers": [
+                            {
+                                "Type": "nap::Sampler2D",
+                                "mID": "Sampler2D_7199fcbc",
+                                "Name": "colorTexture",
+                                "MinFilter": "Linear",
+                                "MaxFilter": "Linear",
+                                "MipMapMode": "Linear",
+                                "AddressModeVertical": "ClampToEdge",
+                                "AddressModeHorizontal": "ClampToEdge",
+                                "MinLodLevel": 0,
+                                "MaxLodLevel": 1000,
+                                "LodBias": 0.0,
+                                "AnisotropicSamples": "Default",
+                                "BorderColor": "IntOpaqueBlack",
+                                "CompareMode": "LessOrEqual",
+                                "EnableCompare": false,
+                                "Texture": "Poster_Jekys"
+                            }
+                        ],
+                        "Buffers": [],
+                        "Constants": [],
+                        "Material": "TextureShadowClipMaterial",
+                        "BlendMode": "NotSet",
+                        "DepthMode": "NotSet"
+                    },
+                    "LineWidth": 1.0,
+                    "ClipRect": {
+                        "Min": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "Max": {
+                            "x": 0.0,
+                            "y": 0.0
+                        }
+                    },
+                    "ShadowMaterialInstance": {
+                        "Uniforms": [],
+                        "Samplers": [
+                            {
+                                "Type": "nap::Sampler2D",
+                                "mID": "colorTexture_cf1d224b",
+                                "Name": "colorTexture",
+                                "MinFilter": "Linear",
+                                "MaxFilter": "Linear",
+                                "MipMapMode": "Linear",
+                                "AddressModeVertical": "ClampToEdge",
+                                "AddressModeHorizontal": "ClampToEdge",
+                                "MinLodLevel": 0,
+                                "MaxLodLevel": 1000,
+                                "LodBias": 0.0,
+                                "AnisotropicSamples": "Default",
+                                "BorderColor": "IntOpaqueBlack",
+                                "CompareMode": "LessOrEqual",
+                                "EnableCompare": false,
+                                "Texture": "Poster_Jekys"
+                            }
+                        ],
+                        "Buffers": [],
+                        "Constants": [],
+                        "Material": "TextureClipMaterial",
+                        "BlendMode": "NotSet",
+                        "DepthMode": "NotSet"
+                    }
+                },
+                {
+                    "Type": "nap::FunTransformComponent",
+                    "mID": "MoveJekys",
+                    "Movement": "LowFrequencyFluxParam",
+                    "Intensity": "LiveIntensityParam",
+                    "RotationIntensity": "RotationIntensityParam",
+                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
+                    "TranslateXIntensity": "TranslateXIntensityParam",
+                    "TranslateYIntensity": "TranslateYIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
+                    "MultiplyRotation": 0.5,
+                    "MultiplyTranslation": {
+                        "x": 2.0,
+                        "y": 1.0
+                    },
+                    "MultiplyScale": 1.0,
+                    "RandomOffset": true,
+                    "Enable": true
+                }
+            ],
+            "Children": []
+        },
+        {
+            "Type": "nap::Entity",
+            "mID": "Poster_OZoneEntity",
+            "Components": [
+                {
+                    "Type": "nap::TransformComponent",
+                    "mID": "TransformOZone",
+                    "Properties": {
+                        "Translate": {
+                            "x": 0.25,
+                            "y": 0.3499999940395355,
+                            "z": -8.0
+                        },
+                        "Rotate": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "Scale": {
+                            "x": 1.0,
+                            "y": 0.8299999833106995,
+                            "z": 1.0
+                        },
+                        "UniformScale": 0.6000000238418579
+                    }
+                },
+                {
+                    "Type": "nap::RenderClipMeshComponent",
+                    "mID": "RenderOZone",
+                    "Visible": true,
+                    "Tags": [
+                        "RenderTag_Shadow"
+                    ],
+                    "Layer": "",
+                    "Mesh": "SquareMesh",
+                    "MaterialInstance": {
+                        "Uniforms": [],
+                        "Samplers": [
+                            {
+                                "Type": "nap::Sampler2D",
+                                "mID": "Sampler2D_b9d6d610",
+                                "Name": "colorTexture",
+                                "MinFilter": "Linear",
+                                "MaxFilter": "Linear",
+                                "MipMapMode": "Linear",
+                                "AddressModeVertical": "ClampToEdge",
+                                "AddressModeHorizontal": "ClampToEdge",
+                                "MinLodLevel": 0,
+                                "MaxLodLevel": 1000,
+                                "LodBias": 0.0,
+                                "AnisotropicSamples": "Default",
+                                "BorderColor": "IntOpaqueBlack",
+                                "CompareMode": "LessOrEqual",
+                                "EnableCompare": false,
+                                "Texture": "Poster_OZone"
+                            }
+                        ],
+                        "Buffers": [],
+                        "Constants": [],
+                        "Material": "TextureShadowClipMaterial",
+                        "BlendMode": "NotSet",
+                        "DepthMode": "NotSet"
+                    },
+                    "LineWidth": 1.0,
+                    "ClipRect": {
+                        "Min": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "Max": {
+                            "x": 0.0,
+                            "y": 0.0
+                        }
+                    },
+                    "ShadowMaterialInstance": {
+                        "Uniforms": [],
+                        "Samplers": [
+                            {
+                                "Type": "nap::Sampler2D",
+                                "mID": "colorTexture_d25883de",
+                                "Name": "colorTexture",
+                                "MinFilter": "Linear",
+                                "MaxFilter": "Linear",
+                                "MipMapMode": "Linear",
+                                "AddressModeVertical": "ClampToEdge",
+                                "AddressModeHorizontal": "ClampToEdge",
+                                "MinLodLevel": 0,
+                                "MaxLodLevel": 1000,
+                                "LodBias": 0.0,
+                                "AnisotropicSamples": "Default",
+                                "BorderColor": "IntOpaqueBlack",
+                                "CompareMode": "LessOrEqual",
+                                "EnableCompare": false,
+                                "Texture": "Poster_OZone"
+                            }
+                        ],
+                        "Buffers": [],
+                        "Constants": [],
+                        "Material": "TextureClipMaterial",
+                        "BlendMode": "NotSet",
+                        "DepthMode": "NotSet"
+                    }
+                },
+                {
+                    "Type": "nap::FunTransformComponent",
+                    "mID": "MoveOZone",
+                    "Movement": "LowFrequencyFluxParam",
+                    "Intensity": "LiveIntensityParam",
+                    "RotationIntensity": "RotationIntensityParam",
+                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
+                    "TranslateXIntensity": "TranslateXIntensityParam",
+                    "TranslateYIntensity": "TranslateYIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
+                    "MultiplyRotation": 1.0,
+                    "MultiplyTranslation": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "MultiplyScale": 1.0,
+                    "RandomOffset": true,
+                    "Enable": true
+                }
+            ],
+            "Children": []
+        },
+        {
+            "Type": "nap::Entity",
+            "mID": "Poster_StarbootyEntity",
+            "Components": [
+                {
+                    "Type": "nap::TransformComponent",
+                    "mID": "TransformStarbooty",
+                    "Properties": {
+                        "Translate": {
+                            "x": -0.30000001192092896,
+                            "y": 0.30000001192092896,
+                            "z": -10.0
+                        },
+                        "Rotate": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "Scale": {
+                            "x": 0.9700000286102295,
+                            "y": 1.0,
+                            "z": 1.0
+                        },
+                        "UniformScale": 0.5
+                    }
+                },
+                {
+                    "Type": "nap::RenderClipMeshComponent",
+                    "mID": "RenderStarbooty",
+                    "Visible": true,
+                    "Tags": [
+                        "RenderTag_Shadow"
+                    ],
                     "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
@@ -1868,13 +1288,13 @@
                                 "BorderColor": "IntOpaqueBlack",
                                 "CompareMode": "LessOrEqual",
                                 "EnableCompare": false,
-                                "Texture": "Poster_RareGems"
+                                "Texture": "Poster_StarBooty"
                             }
                         ],
                         "Buffers": [],
                         "Constants": [],
                         "Material": "TextureShadowClipMaterial",
-                        "BlendMode": "AlphaBlend",
+                        "BlendMode": "NotSet",
                         "DepthMode": "NotSet"
                     },
                     "LineWidth": 1.0,
@@ -1907,7 +1327,7 @@
                                 "BorderColor": "IntOpaqueBlack",
                                 "CompareMode": "LessOrEqual",
                                 "EnableCompare": false,
-                                "Texture": "Poster_RareGems"
+                                "Texture": "Poster_StarBooty"
                             }
                         ],
                         "Buffers": [],
@@ -1919,7 +1339,7 @@
                 },
                 {
                     "Type": "nap::FunTransformComponent",
-                    "mID": "MoveRareGems",
+                    "mID": "MoveStarbooty",
                     "Movement": "LowFrequencyFluxParam",
                     "Intensity": "LiveIntensityParam",
                     "RotationIntensity": "RotationIntensityParam",
@@ -1927,253 +1347,7 @@
                     "TranslateXIntensity": "TranslateXIntensityParam",
                     "TranslateYIntensity": "TranslateYIntensityParam",
                     "ScaleIntensity": "ScaleIntensityParam",
-                    "MultiplyRotation": 1.0,
-                    "MultiplyTranslation": {
-                        "x": 1.0,
-                        "y": 1.0
-                    },
-                    "MultiplyScale": 1.0,
-                    "RandomOffset": true,
-                    "Enable": true
-                }
-            ],
-            "Children": []
-        },
-        {
-            "Type": "nap::Entity",
-            "mID": "Poster_RoseEntity",
-            "Components": [
-                {
-                    "Type": "nap::TransformComponent",
-                    "mID": "TransformRose",
-                    "Properties": {
-                        "Translate": {
-                            "x": 0.30000001192092896,
-                            "y": -0.5,
-                            "z": -1.0
-                        },
-                        "Rotate": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "Scale": {
-                            "x": 1.0,
-                            "y": 1.0,
-                            "z": 1.0
-                        },
-                        "UniformScale": 0.10000000149011612
-                    }
-                },
-                {
-                    "Type": "nap::RenderClipMeshComponent",
-                    "mID": "RenderRose",
-                    "Visible": true,
-                    "Tags": [],
-                    "Layer": "",
-                    "Mesh": "SquareMesh",
-                    "MaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "Sampler2D_fee9939f",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0.0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_Rose"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureShadowClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    },
-                    "LineWidth": 1.0,
-                    "ClipRect": {
-                        "Min": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "Max": {
-                            "x": 0.0,
-                            "y": 0.0
-                        }
-                    },
-                    "ShadowMaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "colorTexture_38a61389",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0.0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_Rose"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    }
-                },
-                {
-                    "Type": "nap::FunTransformComponent",
-                    "mID": "MoveRose",
-                    "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "LiveIntensityParam",
-                    "RotationIntensity": "RotationIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "TranslateXIntensity": "TranslateXIntensityParam",
-                    "TranslateYIntensity": "TranslateYIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
-                    "MultiplyRotation": 2.0,
-                    "MultiplyTranslation": {
-                        "x": 1.0,
-                        "y": 1.0
-                    },
-                    "MultiplyScale": 1.0,
-                    "RandomOffset": true,
-                    "Enable": true
-                }
-            ],
-            "Children": []
-        },
-        {
-            "Type": "nap::Entity",
-            "mID": "Poster_RoundtreeEntity",
-            "Components": [
-                {
-                    "Type": "nap::TransformComponent",
-                    "mID": "TransformRoundTree",
-                    "Properties": {
-                        "Translate": {
-                            "x": 0.20000000298023224,
-                            "y": 0.4000000059604645,
-                            "z": -14.0
-                        },
-                        "Rotate": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "Scale": {
-                            "x": 1.0,
-                            "y": 0.6800000071525574,
-                            "z": 1.0
-                        },
-                        "UniformScale": 0.550000011920929
-                    }
-                },
-                {
-                    "Type": "nap::RenderClipMeshComponent",
-                    "mID": "RenderRoundTree",
-                    "Visible": true,
-                    "Tags": [],
-                    "Layer": "",
-                    "Mesh": "SquareMesh",
-                    "MaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "Sampler2D_819edfd1",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0.0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_Roundtree"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureShadowClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    },
-                    "LineWidth": 1.0,
-                    "ClipRect": {
-                        "Min": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "Max": {
-                            "x": 0.0,
-                            "y": 0.0
-                        }
-                    },
-                    "ShadowMaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "colorTexture_b804d005",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0.0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_Roundtree"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    }
-                },
-                {
-                    "Type": "nap::FunTransformComponent",
-                    "mID": "MoveRoundTree",
-                    "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "LiveIntensityParam",
-                    "RotationIntensity": "RotationIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "TranslateXIntensity": "TranslateXIntensityParam",
-                    "TranslateYIntensity": "TranslateYIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
-                    "MultiplyRotation": 1.0,
+                    "MultiplyRotation": 0.75,
                     "MultiplyTranslation": {
                         "x": 1.0,
                         "y": 1.0
@@ -2194,8 +1368,8 @@
                     "mID": "TransformTitle",
                     "Properties": {
                         "Translate": {
-                            "x": 0.0,
-                            "y": 0.4000000059604645,
+                            "x": -0.10000000149011612,
+                            "y": -0.3499999940395355,
                             "z": -8.0
                         },
                         "Rotate": {
@@ -2208,14 +1382,16 @@
                             "y": 0.3799999952316284,
                             "z": 1.0
                         },
-                        "UniformScale": 0.800000011920929
+                        "UniformScale": 0.550000011920929
                     }
                 },
                 {
                     "Type": "nap::RenderClipMeshComponent",
                     "mID": "RenderTitle",
                     "Visible": true,
-                    "Tags": [],
+                    "Tags": [
+                        "RenderTag_Shadow"
+                    ],
                     "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
@@ -2243,7 +1419,7 @@
                         "Buffers": [],
                         "Constants": [],
                         "Material": "TextureShadowClipMaterial",
-                        "BlendMode": "Opaque",
+                        "BlendMode": "NotSet",
                         "DepthMode": "NotSet"
                     },
                     "LineWidth": 1.0,
@@ -2322,129 +1498,6 @@
         },
         {
             "Type": "nap::Entity",
-            "mID": "Poster_ZuluEntity",
-            "Components": [
-                {
-                    "Type": "nap::TransformComponent",
-                    "mID": "TransformZulu",
-                    "Properties": {
-                        "Translate": {
-                            "x": 0.20000000298023224,
-                            "y": -0.20000000298023224,
-                            "z": -8.0
-                        },
-                        "Rotate": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                        },
-                        "Scale": {
-                            "x": 1.0,
-                            "y": 0.5699999928474426,
-                            "z": 1.0
-                        },
-                        "UniformScale": 0.699999988079071
-                    }
-                },
-                {
-                    "Type": "nap::RenderClipMeshComponent",
-                    "mID": "RenderZulu",
-                    "Visible": true,
-                    "Tags": [],
-                    "Layer": "",
-                    "Mesh": "SquareMesh",
-                    "MaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "Sampler2D_7199fcbc",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0.0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_Zulu"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureShadowClipMaterial",
-                        "BlendMode": "AlphaBlend",
-                        "DepthMode": "NotSet"
-                    },
-                    "LineWidth": 1.0,
-                    "ClipRect": {
-                        "Min": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "Max": {
-                            "x": 0.0,
-                            "y": 0.0
-                        }
-                    },
-                    "ShadowMaterialInstance": {
-                        "Uniforms": [],
-                        "Samplers": [
-                            {
-                                "Type": "nap::Sampler2D",
-                                "mID": "colorTexture_cf1d224b",
-                                "Name": "colorTexture",
-                                "MinFilter": "Linear",
-                                "MaxFilter": "Linear",
-                                "MipMapMode": "Linear",
-                                "AddressModeVertical": "ClampToEdge",
-                                "AddressModeHorizontal": "ClampToEdge",
-                                "MinLodLevel": 0,
-                                "MaxLodLevel": 1000,
-                                "LodBias": 0.0,
-                                "AnisotropicSamples": "Default",
-                                "BorderColor": "IntOpaqueBlack",
-                                "CompareMode": "LessOrEqual",
-                                "EnableCompare": false,
-                                "Texture": "Poster_Zulu"
-                            }
-                        ],
-                        "Buffers": [],
-                        "Constants": [],
-                        "Material": "TextureClipMaterial",
-                        "BlendMode": "NotSet",
-                        "DepthMode": "NotSet"
-                    }
-                },
-                {
-                    "Type": "nap::FunTransformComponent",
-                    "mID": "MoveZulu",
-                    "Movement": "LowFrequencyFluxParam",
-                    "Intensity": "LiveIntensityParam",
-                    "RotationIntensity": "RotationIntensityParam",
-                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
-                    "TranslateXIntensity": "TranslateXIntensityParam",
-                    "TranslateYIntensity": "TranslateYIntensityParam",
-                    "ScaleIntensity": "ScaleIntensityParam",
-                    "MultiplyRotation": 1.0,
-                    "MultiplyTranslation": {
-                        "x": 1.0,
-                        "y": 1.0
-                    },
-                    "MultiplyScale": 1.0,
-                    "RandomOffset": true,
-                    "Enable": true
-                }
-            ],
-            "Children": []
-        },
-        {
-            "Type": "nap::Entity",
             "mID": "Poster_ZuluPlantsLeftEntity",
             "Components": [
                 {
@@ -2473,7 +1526,9 @@
                     "Type": "nap::RenderClipMeshComponent",
                     "mID": "RenderZuluPlantsLeft",
                     "Visible": true,
-                    "Tags": [],
+                    "Tags": [
+                        "RenderTag_Shadow"
+                    ],
                     "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
@@ -2596,7 +1651,9 @@
                     "Type": "nap::RenderClipMeshComponent",
                     "mID": "RenderZuluPlantsRight",
                     "Visible": true,
-                    "Tags": [],
+                    "Tags": [
+                        "RenderTag_Shadow"
+                    ],
                     "Layer": "",
                     "Mesh": "SquareMesh",
                     "MaterialInstance": {
@@ -2954,7 +2011,7 @@
                     "Type": "nap::SpotLightComponent",
                     "mID": "SpotLight",
                     "Enabled": true,
-                    "CastShadows": false,
+                    "CastShadows": true,
                     "Color": {
                         "Values": [
                             1.0,
@@ -2968,47 +2025,15 @@
                         "LineWidth": 1.0,
                         "GnomonSize": 1.0
                     },
-                    "Attenuation": 0.10000000149011612,
-                    "Angle": 90.0,
+                    "Attenuation": 0.0,
+                    "Angle": 55.0,
                     "FieldOfViewClip": 1.0,
-                    "Falloff": 0.5,
+                    "Falloff": 0.75,
                     "ClippingPlanes": {
-                        "x": 1.0,
-                        "y": 1000.0
+                        "x": 0.10000000149011612,
+                        "y": 5.0
                     },
                     "ShadowMapSize": 1024
-                },
-                {
-                    "Type": "nap::PerspCameraComponent",
-                    "mID": "CenterShadowCamera",
-                    "Properties": {
-                        "FieldOfView": 60.0,
-                        "NearClippingPlane": 0.10000000149011612,
-                        "FarClippingPlane": 5.0,
-                        "GridDimensions": {
-                            "x": 1,
-                            "y": 1
-                        },
-                        "GridLocation": {
-                            "x": 0,
-                            "y": 0
-                        }
-                    }
-                },
-                {
-                    "Type": "nap::RenderFrustumComponent",
-                    "mID": "RenderFrustum",
-                    "Visible": false,
-                    "Tags": [],
-                    "Layer": "",
-                    "Line Width": 2.0,
-                    "Color": {
-                        "Values": [
-                            1.0,
-                            1.0,
-                            1.0
-                        ]
-                    }
                 }
             ],
             "Children": []
@@ -3043,12 +2068,12 @@
                     "Type": "nap::SpotLightComponent",
                     "mID": "SpotHigh",
                     "Enabled": true,
-                    "CastShadows": false,
+                    "CastShadows": true,
                     "Color": {
                         "Values": [
-                            1.0,
-                            1.0,
-                            1.0
+                            0.9803921580314636,
+                            0.34117648005485535,
+                            0.0
                         ]
                     },
                     "Intensity": 1.0,
@@ -3057,47 +2082,15 @@
                         "LineWidth": 1.0,
                         "GnomonSize": 1.0
                     },
-                    "Attenuation": 0.10000000149011612,
-                    "Angle": 90.0,
+                    "Attenuation": 0.0,
+                    "Angle": 15.0,
                     "FieldOfViewClip": 1.0,
-                    "Falloff": 0.5,
+                    "Falloff": 0.75,
                     "ClippingPlanes": {
-                        "x": 1.0,
-                        "y": 1000.0
+                        "x": 0.10000000149011612,
+                        "y": 5.0
                     },
                     "ShadowMapSize": 512
-                },
-                {
-                    "Type": "nap::PerspCameraComponent",
-                    "mID": "ShadowCameraSpotHigh",
-                    "Properties": {
-                        "FieldOfView": 30.0,
-                        "NearClippingPlane": 0.10000000149011612,
-                        "FarClippingPlane": 5.0,
-                        "GridDimensions": {
-                            "x": 1,
-                            "y": 1
-                        },
-                        "GridLocation": {
-                            "x": 0,
-                            "y": 0
-                        }
-                    }
-                },
-                {
-                    "Type": "nap::RenderFrustumComponent",
-                    "mID": "RenderFrustumHigh",
-                    "Visible": false,
-                    "Tags": [],
-                    "Layer": "",
-                    "Line Width": 2.0,
-                    "Color": {
-                        "Values": [
-                            1.0,
-                            1.0,
-                            1.0
-                        ]
-                    }
                 }
             ],
             "Children": []
@@ -3132,12 +2125,12 @@
                     "Type": "nap::SpotLightComponent",
                     "mID": "SpotLeft",
                     "Enabled": true,
-                    "CastShadows": false,
+                    "CastShadows": true,
                     "Color": {
                         "Values": [
                             1.0,
-                            1.0,
-                            1.0
+                            0.10980392247438431,
+                            0.0
                         ]
                     },
                     "Intensity": 1.0,
@@ -3146,47 +2139,15 @@
                         "LineWidth": 1.0,
                         "GnomonSize": 1.0
                     },
-                    "Attenuation": 0.10000000149011612,
-                    "Angle": 90.0,
+                    "Attenuation": 0.0,
+                    "Angle": 15.0,
                     "FieldOfViewClip": 1.0,
-                    "Falloff": 0.5,
+                    "Falloff": 0.75,
                     "ClippingPlanes": {
-                        "x": 1.0,
-                        "y": 1000.0
+                        "x": 0.10000000149011612,
+                        "y": 5.0
                     },
                     "ShadowMapSize": 512
-                },
-                {
-                    "Type": "nap::PerspCameraComponent",
-                    "mID": "ShadowCameraSpotLeft",
-                    "Properties": {
-                        "FieldOfView": 30.0,
-                        "NearClippingPlane": 0.10000000149011612,
-                        "FarClippingPlane": 5.0,
-                        "GridDimensions": {
-                            "x": 1,
-                            "y": 1
-                        },
-                        "GridLocation": {
-                            "x": 0,
-                            "y": 0
-                        }
-                    }
-                },
-                {
-                    "Type": "nap::RenderFrustumComponent",
-                    "mID": "RenderFrustumSpotLeft",
-                    "Visible": false,
-                    "Tags": [],
-                    "Layer": "",
-                    "Line Width": 2.0,
-                    "Color": {
-                        "Values": [
-                            1.0,
-                            1.0,
-                            1.0
-                        ]
-                    }
                 }
             ],
             "Children": []
@@ -3221,12 +2182,12 @@
                     "Type": "nap::SpotLightComponent",
                     "mID": "SpotLow",
                     "Enabled": true,
-                    "CastShadows": false,
+                    "CastShadows": true,
                     "Color": {
                         "Values": [
                             1.0,
-                            1.0,
-                            1.0
+                            0.6039215922355652,
+                            0.0
                         ]
                     },
                     "Intensity": 1.0,
@@ -3235,47 +2196,15 @@
                         "LineWidth": 1.0,
                         "GnomonSize": 1.0
                     },
-                    "Attenuation": 0.10000000149011612,
-                    "Angle": 90.0,
+                    "Attenuation": 0.0,
+                    "Angle": 15.0,
                     "FieldOfViewClip": 1.0,
-                    "Falloff": 0.5,
+                    "Falloff": 0.75,
                     "ClippingPlanes": {
-                        "x": 1.0,
-                        "y": 1000.0
+                        "x": 0.10000000149011612,
+                        "y": 5.0
                     },
                     "ShadowMapSize": 512
-                },
-                {
-                    "Type": "nap::PerspCameraComponent",
-                    "mID": "ShadowCameraSpotLow",
-                    "Properties": {
-                        "FieldOfView": 30.0,
-                        "NearClippingPlane": 0.10000000149011612,
-                        "FarClippingPlane": 5.0,
-                        "GridDimensions": {
-                            "x": 1,
-                            "y": 1
-                        },
-                        "GridLocation": {
-                            "x": 0,
-                            "y": 0
-                        }
-                    }
-                },
-                {
-                    "Type": "nap::RenderFrustumComponent",
-                    "mID": "RenderFrustumLow",
-                    "Visible": false,
-                    "Tags": [],
-                    "Layer": "",
-                    "Line Width": 2.0,
-                    "Color": {
-                        "Values": [
-                            1.0,
-                            1.0,
-                            1.0
-                        ]
-                    }
                 }
             ],
             "Children": []
@@ -3310,7 +2239,9 @@
                     "Type": "nap::PointSpriteVolume",
                     "mID": "RenderSprites",
                     "Visible": true,
-                    "Tags": [],
+                    "Tags": [
+                        "RenderTag_Shadow"
+                    ],
                     "Layer": "",
                     "Mesh": "ParticleMesh",
                     "MaterialInstance": {
@@ -3351,7 +2282,7 @@
                         ],
                         "Constants": [],
                         "Material": "SpriteMaterial",
-                        "BlendMode": "AlphaBlend",
+                        "BlendMode": "Opaque",
                         "DepthMode": "ReadWrite"
                     },
                     "LineWidth": 1.0,
@@ -3611,7 +2542,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "CameraSpeedParam",
                     "Name": "CameraSpeed",
-                    "Value": 0.0,
+                    "Value": 1.0,
                     "Minimum": 0.0,
                     "Maximum": 10.0
                 },
@@ -3682,7 +2613,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "DecayLow",
                     "Name": "DecayLow",
-                    "Value": 0.33329999446868896,
+                    "Value": 0.25,
                     "Minimum": 0.0,
                     "Maximum": 2.0
                 },
@@ -3690,7 +2621,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "MultiplyHighParam",
                     "Name": "MultiplyHigh",
-                    "Value": 10.0,
+                    "Value": 5.0,
                     "Minimum": 0.0,
                     "Maximum": 20.0
                 },
@@ -3698,7 +2629,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "TargetOnsetHigh",
                     "Name": "TargetOnsetHigh",
-                    "Value": 0.33329999446868896,
+                    "Value": 0.30000001192092896,
                     "Minimum": 0.0,
                     "Maximum": 1.0
                 },
@@ -3706,7 +2637,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "DecayHigh",
                     "Name": "DecayHigh",
-                    "Value": 1.0,
+                    "Value": 0.699999988079071,
                     "Minimum": 0.0,
                     "Maximum": 2.0
                 }
@@ -3729,7 +2660,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "FocusDistanceParam",
                     "Name": "FocusDistance",
-                    "Value": 3.5,
+                    "Value": 3.549999952316284,
                     "Minimum": 0.0,
                     "Maximum": 10.0
                 },
@@ -3759,6 +2690,16 @@
             "Value": 0,
             "Minimum": 0,
             "Maximum": 1
+        },
+        {
+            "Type": "nap::RenderTag",
+            "mID": "RenderTag_NoShadow",
+            "Name": "NoShadow"
+        },
+        {
+            "Type": "nap::RenderTag",
+            "mID": "RenderTag_Shadow",
+            "Name": "Shadow"
         },
         {
             "Type": "nap::RenderTarget",
@@ -3801,8 +2742,8 @@
             "Visible": true,
             "SampleShading": true,
             "Title": "Graphic Tool",
-            "Width": 1920,
-            "Height": 1200,
+            "Width": 1280,
+            "Height": 720,
             "Mode": "Mailbox",
             "ClearColor": {
                 "Values": [
@@ -4051,7 +2992,7 @@
                             "Type": "nap::ShaderConstant",
                             "mID": "QUAD_SAMPLE_COUNT_728e4e90",
                             "Name": "QUAD_SAMPLE_COUNT",
-                            "Value": 4
+                            "Value": 16
                         },
                         {
                             "Type": "nap::ShaderConstant",
@@ -4259,11 +3200,6 @@
                     "Columns": 1
                 },
                 {
-                    "Type": "nap::BoxFrameMesh",
-                    "mID": "BoxFrameMesh",
-                    "Usage": "Static"
-                },
-                {
                     "Type": "nap::ParticleMesh",
                     "mID": "ParticleMesh",
                     "Usage": "Static",
@@ -4328,114 +3264,51 @@
             "Members": [
                 {
                     "Type": "nap::ImageFromFile",
-                    "mID": "Poster_Plants",
+                    "mID": "Poster_AtlanticStarr",
                     "Usage": "Static",
-                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_0014_George-Duke.png",
+                    "ImagePath": "love/poster5/AtlanticStarr.png",
+                    "GenerateLods": true
+                },
+                {
+                    "Type": "nap::ImageFromFile",
+                    "mID": "Poster_Gomora",
+                    "Usage": "Static",
+                    "ImagePath": "love/poster5/Gomora.png",
                     "GenerateLods": true
                 },
                 {
                     "Type": "nap::ImageFromFile",
                     "mID": "Poster_Title",
                     "Usage": "Static",
-                    "ImagePath": "love/poster_lowres/Love-Transmission-Logo-Geel.png",
+                    "ImagePath": "love/poster5/LoveTransmissionLogo08.png",
                     "GenerateLods": true
                 },
                 {
                     "Type": "nap::ImageFromFile",
-                    "mID": "Poster_Background",
+                    "mID": "Poster_Jammers",
                     "Usage": "Static",
-                    "ImagePath": "love/poster_lowres/back.png",
+                    "ImagePath": "love/poster5/Jammers.png",
                     "GenerateLods": true
                 },
                 {
                     "Type": "nap::ImageFromFile",
-                    "mID": "Poster_JimmySmith",
+                    "mID": "Poster_Jekys",
                     "Usage": "Static",
-                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_0011_JimmySmith.png",
+                    "ImagePath": "love/poster5/Jekys.png",
                     "GenerateLods": true
                 },
                 {
                     "Type": "nap::ImageFromFile",
-                    "mID": "Poster_Captain",
+                    "mID": "Poster_OZone",
                     "Usage": "Static",
-                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_0015_Captain-Sky.png",
+                    "ImagePath": "love/poster5/O-zone.png",
                     "GenerateLods": true
                 },
                 {
                     "Type": "nap::ImageFromFile",
-                    "mID": "Poster_Zulu",
+                    "mID": "Poster_StarBooty",
                     "Usage": "Static",
-                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_00xx_Zulu.png",
-                    "GenerateLods": true
-                },
-                {
-                    "Type": "nap::ImageFromFile",
-                    "mID": "Poster_RareGems",
-                    "Usage": "Static",
-                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_0024_Rare-Gems.png",
-                    "GenerateLods": true
-                },
-                {
-                    "Type": "nap::ImageFromFile",
-                    "mID": "Poster_Asha",
-                    "Usage": "Static",
-                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_0025_Asha-Puthli.png",
-                    "GenerateLods": true
-                },
-                {
-                    "Type": "nap::ImageFromFile",
-                    "mID": "Poster_Marilyn",
-                    "Usage": "Static",
-                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_0018_Marilyn-Scott.png",
-                    "GenerateLods": true
-                },
-                {
-                    "Type": "nap::ImageFromFile",
-                    "mID": "Poster_Roundtree",
-                    "Usage": "Static",
-                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_0009_Roundtree.png",
-                    "GenerateLods": true
-                },
-                {
-                    "Type": "nap::ImageFromFile",
-                    "mID": "Poster_Milky",
-                    "Usage": "Static",
-                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_0006_Milky-way.png",
-                    "GenerateLods": true
-                },
-                {
-                    "Type": "nap::ImageFromFile",
-                    "mID": "Poster_Carlton",
-                    "Usage": "Static",
-                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_0021_Carl-Carlton.png",
-                    "GenerateLods": true
-                },
-                {
-                    "Type": "nap::ImageFromFile",
-                    "mID": "Poster_Darcus",
-                    "Usage": "Static",
-                    "ImagePath": "love/poster_lowres/darcus.png",
-                    "GenerateLods": true
-                },
-                {
-                    "Type": "nap::ImageFromFile",
-                    "mID": "Poster_Curtis",
-                    "Usage": "Static",
-                    "ImagePath": "love/poster_lowres/curtis.png",
-                    "GenerateLods": true
-                },
-                {
-                    "Type": "nap::ImageFromFile",
-                    "mID": "Poster_Rose",
-                    "Usage": "Static",
-                    "ImagePath": "love/poster_lowres/small/Love-Transmission-Collage-Small_0007_The-players.png",
-                    "GenerateLods": true
-                },
-                {
-                    "Type": "nap::ImageFromFile",
-                    "mID": "Poster_Flamingo",
-                    "Usage": "Static",
-                    "ImagePath": "love/poster_lowres/small/Love-Transmission-Collage-Small_0002_Aquarian-dream.png",
+                    "ImagePath": "love/poster5/Starbooty.png",
                     "GenerateLods": true
                 },
                 {
@@ -4454,16 +3327,16 @@
                 },
                 {
                     "Type": "nap::ImageFromFile",
-                    "mID": "Poster_OldLogo",
+                    "mID": "Poster_Star",
                     "Usage": "Static",
-                    "ImagePath": "love/poster_lowres/Love-Transmission-Collage-Small_0003_Love-Transmission.png",
+                    "ImagePath": "love/poster5/star.png",
                     "GenerateLods": true
                 },
                 {
                     "Type": "nap::ImageFromFile",
-                    "mID": "Poster_Star",
+                    "mID": "Poster_Background",
                     "Usage": "Static",
-                    "ImagePath": "love/poster_lowres/star.png",
+                    "ImagePath": "love/poster5/Thunderstorm.png",
                     "GenerateLods": true
                 }
             ],
@@ -4478,7 +3351,7 @@
                     "mID": "ColorTexture",
                     "Usage": "Static",
                     "Width": 1920,
-                    "Height": 1200,
+                    "Height": 1080,
                     "Format": "RGBA8",
                     "ColorSpace": "Linear",
                     "ClearColor": {
@@ -4495,7 +3368,7 @@
                     "mID": "BloomTexture",
                     "Usage": "Static",
                     "Width": 1920,
-                    "Height": 1200,
+                    "Height": 1080,
                     "Format": "RGBA8",
                     "ColorSpace": "Linear",
                     "ClearColor": {
@@ -4512,7 +3385,7 @@
                     "mID": "DOFTexture",
                     "Usage": "Static",
                     "Width": 1920,
-                    "Height": 1200,
+                    "Height": 1080,
                     "Format": "RGBA8",
                     "ColorSpace": "Linear",
                     "ClearColor": {
@@ -4530,7 +3403,7 @@
                     "Usage": "Static",
                     "Fill": true,
                     "Width": 1920,
-                    "Height": 1200,
+                    "Height": 1080,
                     "Format": "D16",
                     "ColorSpace": "Linear",
                     "ClearValue": 1.0

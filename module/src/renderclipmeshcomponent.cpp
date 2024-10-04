@@ -36,8 +36,12 @@ namespace nap
 		if (!RenderableMeshComponentInstance::init(errorState))
 			return false;
 
-		RenderClipMeshComponent* resource = getComponent<RenderClipMeshComponent>();
+		auto* resource = getComponent<RenderClipMeshComponent>();
 		if (!mShadowMaterialInstance.init(*mRenderService, resource->mShadowMaterialInstanceResource, errorState))
+			return false;
+
+		mShadowRenderableMesh = mRenderService->createRenderableMesh(getMesh(), mShadowMaterialInstance, errorState);
+		if (!errorState.check(mShadowRenderableMesh.isValid(), "Failed to create shadow renderable mesh"))
 			return false;
 
 		UniformStructInstance* mvp_struct = mShadowMaterialInstance.getOrCreateUniform(uniform::mvpStruct);
@@ -54,15 +58,15 @@ namespace nap
 
 	void RenderClipMeshComponentInstance::onDraw(IRenderTarget& renderTarget, VkCommandBuffer commandBuffer, const glm::mat4& viewMatrix, const glm::mat4& projectionMatrix)
 	{
-		// Get material to work with
-		if (!mRenderableMesh.isValid())
+		bool use_shadow_material = (renderTarget.getDepthFormat() != VK_FORMAT_UNDEFINED) &&
+								   (renderTarget.getColorFormat() == VK_FORMAT_UNDEFINED);
+
+		auto& renderable_mesh = use_shadow_material ? mShadowRenderableMesh : mRenderableMesh;
+		if (!renderable_mesh.isValid())
 		{
 			assert(false);
 			return;
 		}
-
-		bool use_shadow_material = (renderTarget.getDepthFormat() != VK_FORMAT_UNDEFINED) &&
-			(renderTarget.getColorFormat() == VK_FORMAT_UNDEFINED);
 
 		if (use_shadow_material)
 		{
@@ -101,15 +105,15 @@ namespace nap
 
 		// Fetch and bind pipeline
 		utility::ErrorState error_state;
-		RenderService::Pipeline pipeline = mRenderService->getOrCreatePipeline(renderTarget, mRenderableMesh.getMesh(), mat_instance, error_state);
+		RenderService::Pipeline pipeline = mRenderService->getOrCreatePipeline(renderTarget, renderable_mesh.getMesh(), mat_instance, error_state);
 		vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline.mPipeline);
 
 		// Bind shader descriptors
 		vkCmdBindDescriptorSets(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline.mLayout, 0, 1, &descriptor_set.mSet, 0, nullptr);
 
 		// Bind vertex buffers
-		const std::vector<VkBuffer>& vertexBuffers = mRenderableMesh.getVertexBuffers();
-		const std::vector<VkDeviceSize>& vertexBufferOffsets = mRenderableMesh.getVertexBufferOffsets();
+		const std::vector<VkBuffer>& vertexBuffers = renderable_mesh.getVertexBuffers();
+		const std::vector<VkDeviceSize>& vertexBufferOffsets = renderable_mesh.getVertexBufferOffsets();
 		vkCmdBindVertexBuffers(commandBuffer, 0, vertexBuffers.size(), vertexBuffers.data(), vertexBufferOffsets.data());
 
 		// TODO: move to push/pop cliprect on RenderTarget once it has been ported
@@ -128,7 +132,7 @@ namespace nap
 		vkCmdSetLineWidth(commandBuffer, mLineWidth);
 
 		// Draw meshes
-		MeshInstance& mesh_instance = mRenderableMesh.getMesh().getMeshInstance();
+		MeshInstance& mesh_instance = renderable_mesh.getMesh().getMeshInstance();
 		GPUMesh& mesh = mesh_instance.getGPUMesh();
 		for (int index = 0; index < mesh_instance.getNumShapes(); ++index)
 		{

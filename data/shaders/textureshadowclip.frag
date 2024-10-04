@@ -61,7 +61,6 @@ in vec3 	passNormal;						//< Fragment normal in world space
 in vec3 	passUV0;						//< Texture UVs
 in float 	passFresnel;					//< Fresnel term
 in vec4 	passShadowCoords[MAX_LIGHTS];	//< Shadow Coordinates
-in vec2		passViewportCoord;
 
 // Fragment Output
 out vec4 out_Color;
@@ -73,7 +72,7 @@ uniform samplerCube environmentMap;
 
 uniform sampler2D colorTexture;
 
-const float ALPHA_CLIP = 0.2;
+const float ALPHA_CLIP = 0.75;
 
 void main()
 {
@@ -173,7 +172,7 @@ void main()
 	}
 
 	// Add fresnel
-	color_result = mix(color_result, vec3(1.0), passFresnel);
+	color_result = mix(color_result, vec3(1.0), passFresnel) + mtl.ambient;
 
 	// Final color output
 	out_Color = vec4(color_result, texture_color.a * ubo.alpha);
