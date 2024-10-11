@@ -45,7 +45,7 @@
                     "Type": "nap::InfoWindow",
                     "mID": "InfoWindow_88f0b6f5",
                     "Name": "Info",
-                    "Notes": "Love Transmission #5 @ Ox Space | IFFR"
+                    "Notes": "Love Transmission /w Bevan @ CULT=US"
                 }
             ],
             "Name": "Menu"
@@ -106,7 +106,7 @@
                             "MinHertz": 0.0,
                             "MaxHertz": 2000.0,
                             "EvaluationSampleCount": 512,
-                            "SmoothTime": 0.009999999776482582
+                            "SmoothTime": 0.004999999888241291
                         },
                         {
                             "Type": "nap::LegacyFluxMeasurementComponent::FilterParameterItem",
@@ -121,7 +121,7 @@
                             "MinHertz": 2000.0,
                             "MaxHertz": 10000.0,
                             "EvaluationSampleCount": 512,
-                            "SmoothTime": 0.009999999776482582
+                            "SmoothTime": 0.004999999888241291
                         }
                     ],
                     "Enable": true

@@ -2,7 +2,11 @@
 
 // Extensions
 #extension GL_GOOGLE_include_directive : enable
+
+// Includes
 #include "noise.glslinc"
+#include "loveutils.glslinc"
+#include "utils.glslinc"
 
 // STORAGE
 layout(std430) readonly buffer PositionBuffer_In
@@ -33,7 +37,7 @@ uniform UBO
 
 out float passRot;
 
-const float ROTATION_INTENSITY = 32.0;
+const float ROTATION_INTENSITY = 16.0;
 
 
 void main()
@@ -45,7 +49,7 @@ void main()
 
 	float rot_sign = mix(-1.0, 1.0, float(index%2));
 	float rot_noise = (simplexd(p.xyz).w - 0.5) * rot_sign;
-	passRot = ubo.elapsedTime * ROTATION_INTENSITY * rot_noise;
+	passRot = t * ROTATION_INTENSITY * rot_noise;
 
 	// Generate variation
 	vec4 hash1k = hash * 1000.0;
@@ -61,6 +65,18 @@ void main()
 	gl_Position = clip;
 	
 	// Point size
-	float point_size = ubo.pointSize * p.w + ubo.pointScale * hash.w;
+	const float stretch = 2.0;
+	const vec3 noise_coord = p.xyz*stretch + vec3(0.0, 0.0, 0.2);
+	const float noise = simplexd(noise_coord).w * 0.5 + 0.5;
+
+	const float pulse_speed = 30.0;
+	const float pulse_time = (t + noise) * pulse_speed;
+	const float pulse_size = sin(pulse_time) * ubo.pointSize * 0.5;
+
+	const float noise_2 = simplexd(p.xyz).w * 0.5 + 0.5;
+	const float pulse_time_2 = (t*0.5 + noise_2);
+	const float scale_effect = sin(pulse_time_2) * 0.5 + 0.5;
+
+	float point_size = ubo.pointSize * p.w + pulse_size + ubo.pointScale * scale_effect;
 	gl_PointSize = point_size / length(view_position);
 }

@@ -1,0 +1,33 @@
+// Shader utility fuinctions
+
+vec2 rotate(vec2 uv, vec2 offset, float theta) 
+{
+	vec2 centered = uv - offset;
+	mat2 rot = mat2(
+		cos(theta), -sin(theta),
+		sin(theta), cos(theta)
+	);
+	return (rot * centered) + offset;
+}
+
+// https://www.shadertoy.com/view/4tXyWN
+uint hash21(uvec2 p)
+{
+	p *= uvec2(73333,7777);
+	p ^= (uvec2(3333777777)>>(p>>28));
+	uint n = p.x*p.y;
+	return n^(n>>15);
+}
+
+
+// https://www.shadertoy.com/view/4tXyWN
+float randfloat(uvec2 p)
+{
+	// we only need the top 24 bits to be good really
+	uint h = hash21( p );
+
+	// straight to float, see https://iquilezles.org/articles/sfrand/
+	// return uintBitsToFloat((h>>9)|0x3f800000u)-1.0;
+
+	return float(h)*(1.0/float(0xffffffffU));
+}

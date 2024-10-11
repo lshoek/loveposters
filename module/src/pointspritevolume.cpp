@@ -48,9 +48,9 @@ namespace nap
 			return false;
 
 		// Cache uniforms
-		mPointSizeUniform	= mMaterialInstance.getOrCreateUniform("UBO")->getOrCreateUniform<UniformFloatInstance>("pointSize");
-		mPointScaleUniform	= mMaterialInstance.getOrCreateUniform("UBO")->getOrCreateUniform<UniformFloatInstance>("pointScale");
-		mTimeUniform		= mMaterialInstance.getOrCreateUniform("UBO")->getOrCreateUniform<UniformFloatInstance>("elapsedTime");
+		mPointSizeUniform		= mMaterialInstance.getOrCreateUniform("UBO")->getOrCreateUniform<UniformFloatInstance>("pointSize");
+		mPointScaleUniform		= mMaterialInstance.getOrCreateUniform("UBO")->getOrCreateUniform<UniformFloatInstance>("pointScale");
+		mElapsedTimeUniform		= mMaterialInstance.getOrCreateUniform("UBO")->getOrCreateUniform<UniformFloatInstance>("elapsedTime");
 
 		return true;
 	}
@@ -58,10 +58,14 @@ namespace nap
 
 	void PointSpriteVolumeInstance::update(double deltaTime)
 	{
-		mElapsedClockTime += static_cast<float>(deltaTime) * mResource->mTimeScale->mValue;
+		const auto delta_clock = static_cast<float>(deltaTime) * mResource->mTimeScale->mValue;
+		mElapsedClockTime += delta_clock;
+
+		const auto point_scale = mResource->mPointScale->mValue * mResource->mPointScaleIntensity->mValue;
+		mPointScaleUniform->setValue(point_scale);
+
 		mPointSizeUniform->setValue(mResource->mPointSize->mValue);
-		mPointScaleUniform->setValue(mResource->mPointScale->mValue * mResource->mPointScaleIntensity->mValue);
-		mTimeUniform->setValue(mElapsedClockTime);
+		mElapsedTimeUniform->setValue(mElapsedClockTime);
 	}
 
 

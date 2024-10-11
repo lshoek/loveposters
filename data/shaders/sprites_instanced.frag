@@ -1,5 +1,11 @@
 #version 450 core
 
+// Extensions
+#extension GL_GOOGLE_include_directive : enable
+
+// Includes
+#include "loveutils.glslinc"
+
 uniform	sampler2D sprite;
 
 in float passRot;
@@ -7,16 +13,6 @@ in float passRot;
 out vec4 out_FragColor;
 
 const float ALPHA_CUTOFF = 0.99;
-
-vec2 rotate(vec2 uv, vec2 offset, float theta) 
-{
-	vec2 centered = uv - offset;
-	mat2 rot = mat2(
-		cos(theta), -sin(theta),
-		sin(theta), cos(theta)
-	);
-	return (rot * centered) + offset;
-}
 
 void main()
 {

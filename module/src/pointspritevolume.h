@@ -54,7 +54,7 @@ namespace nap
 
 		UniformFloatInstance* mPointSizeUniform = nullptr;
 		UniformFloatInstance* mPointScaleUniform = nullptr;
-		UniformFloatInstance* mTimeUniform = nullptr;
+		UniformFloatInstance* mElapsedTimeUniform = nullptr;
 
 		uint mCount = 1;
 		float mElapsedClockTime = 0.0f;
