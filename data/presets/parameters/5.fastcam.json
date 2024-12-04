@@ -16,15 +16,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "RotationIntensityParam",
                     "Name": "RotationIntensity",
-                    "Value": 1.0,
-                    "Minimum": 0.0,
-                    "Maximum": 2.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "ScaleIntensityParam",
-                    "Name": "ScaleIntensity",
-                    "Value": 1.0,
+                    "Value": 0.7419999837875366,
                     "Minimum": 0.0,
                     "Maximum": 2.0
                 },
@@ -32,49 +24,73 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "RotationAccumulatorIntensityParam",
                     "Name": "RotationAccumulatorIntensity",
-                    "Value": 1.0,
+                    "Value": 11.324000358581543,
                     "Minimum": 0.0,
-                    "Maximum": 100.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "ScaleAccumulatorIntensityParam",
-                    "Name": "ScaleAccumulatorIntensity",
-                    "Value": 1.0,
-                    "Minimum": 0.0,
-                    "Maximum": 5.0
+                    "Maximum": 20.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
                     "mID": "TranslateXIntensityParam",
                     "Name": "TranslateX",
-                    "Value": 1.0,
+                    "Value": 1.5160000324249268,
                     "Minimum": 0.0,
-                    "Maximum": 10.0
+                    "Maximum": 2.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
                     "mID": "TranslateYIntensityParam",
                     "Name": "TranslateY",
-                    "Value": 1.0,
+                    "Value": 1.3070000410079956,
                     "Minimum": 0.0,
-                    "Maximum": 10.0
+                    "Maximum": 2.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
                     "mID": "BloomIntensityParam",
                     "Name": "BloomIntensity",
-                    "Value": 3.0,
+                    "Value": 1.5160000324249268,
                     "Minimum": 0.0,
-                    "Maximum": 10.0
+                    "Maximum": 4.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
                     "mID": "CameraSpeedParam",
                     "Name": "CameraSpeed",
-                    "Value": 2.0,
+                    "Value": 1.7599999904632568,
                     "Minimum": 0.0,
                     "Maximum": 10.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "ScaleIntensityParam",
+                    "Name": "ScaleIntensity",
+                    "Value": 1.0,
+                    "Minimum": 0.10000000149011612,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "StarSizeParam",
+                    "Name": "StarSize",
+                    "Value": 34.43000030517578,
+                    "Minimum": 0.0,
+                    "Maximum": 256.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "StarTimeScaleParam",
+                    "Name": "StarTimeScale",
+                    "Value": 0.27300000190734863,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "StarScaleIntensityParam",
+                    "Name": "StarScaleIntensity",
+                    "Value": 66.08200073242188,
+                    "Minimum": 0.0,
+                    "Maximum": 256.0
                 }
             ],
             "Groups": []

@@ -59,6 +59,30 @@
                     "Value": 1.6200000047683716,
                     "Minimum": 0.0,
                     "Maximum": 10.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "StarSizeParam",
+                    "Name": "StarSize",
+                    "Value": 65.5270004272461,
+                    "Minimum": 0.0,
+                    "Maximum": 256.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "StarTimeScaleParam",
+                    "Name": "StarTimeScale",
+                    "Value": 0.05000000074505806,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "StarScaleIntensityParam",
+                    "Name": "StarScaleIntensity",
+                    "Value": 40.0,
+                    "Minimum": 0.0,
+                    "Maximum": 256.0
                 }
             ],
             "Groups": []

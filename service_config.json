@@ -174,16 +174,16 @@
             "Type": "nap::audio::PortAudioServiceConfiguration",
             "mID": "PortAudioServiceConfiguration_d507e18c-e7f1-4d87-9bf1-cb9ef0f9f302",
             "Audio Device Settings": {
-                "HostApi": "ASIO",
-                "InputDevice": "Focusrite USB ASIO",
-                "OutputDevice": "Focusrite USB ASIO",
+                "HostApi": "ALSA",
+                "InputDevice": "M2: USB Audio (hw:1,0)",
+                "OutputDevice": "",
                 "InputChannelCount": 1,
                 "OutputChannelCount": 2,
                 "DisableInput": false,
                 "DisableOutput": true,
-                "SampleRate": 48000.0,
-                "BufferSize": 64,
-                "InternalBufferSize": 64
+                "SampleRate": 44100.0,
+                "BufferSize": 128,
+                "InternalBufferSize": 128
             },
             "AllowChannelCountFailure": true,
             "AllowDeviceFailure": true

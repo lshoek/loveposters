@@ -324,8 +324,8 @@
                                     "Blender": "ParameterBlender"
                                 }
                             ],
-                            "AverageDuration": 240.0,
-                            "DurationDeviation": 120.0,
+                            "AverageDuration": 120.0,
+                            "DurationDeviation": 60.0,
                             "TransitionTime": 30.0
                         },
                         {
@@ -338,8 +338,8 @@
                                     "Blender": "ParameterBlender"
                                 }
                             ],
-                            "AverageDuration": 240.0,
-                            "DurationDeviation": 120.0,
+                            "AverageDuration": 120.0,
+                            "DurationDeviation": 60.0,
                             "TransitionTime": 30.0
                         },
                         {
@@ -352,8 +352,8 @@
                                     "Blender": "ParameterBlender"
                                 }
                             ],
-                            "AverageDuration": 240.0,
-                            "DurationDeviation": 120.0,
+                            "AverageDuration": 120.0,
+                            "DurationDeviation": 60.0,
                             "TransitionTime": 30.0
                         },
                         {
@@ -366,8 +366,8 @@
                                     "Blender": "ParameterBlender"
                                 }
                             ],
-                            "AverageDuration": 240.0,
-                            "DurationDeviation": 120.0,
+                            "AverageDuration": 120.0,
+                            "DurationDeviation": 60.0,
                             "TransitionTime": 30.0
                         },
                         {
@@ -380,8 +380,8 @@
                                     "Blender": "ParameterBlender"
                                 }
                             ],
-                            "AverageDuration": 240.0,
-                            "DurationDeviation": 120.0,
+                            "AverageDuration": 120.0,
+                            "DurationDeviation": 60.0,
                             "TransitionTime": 30.0
                         },
                         {
@@ -394,8 +394,8 @@
                                     "Blender": "ParameterBlender"
                                 }
                             ],
-                            "AverageDuration": 240.0,
-                            "DurationDeviation": 120.0,
+                            "AverageDuration": 120.0,
+                            "DurationDeviation": 60.0,
                             "TransitionTime": 30.0
                         },
                         {
@@ -408,8 +408,8 @@
                                     "Blender": "ParameterBlender"
                                 }
                             ],
-                            "AverageDuration": 240.0,
-                            "DurationDeviation": 120.0,
+                            "AverageDuration": 120.0,
+                            "DurationDeviation": 60.0,
                             "TransitionTime": 30.0
                         },
                         {
@@ -422,8 +422,8 @@
                                     "Blender": "ParameterBlender"
                                 }
                             ],
-                            "AverageDuration": 240.0,
-                            "DurationDeviation": 120.0,
+                            "AverageDuration": 120.0,
+                            "DurationDeviation": 60.0,
                             "TransitionTime": 30.0
                         }
                     ],
@@ -1977,6 +1977,13 @@
                     "FocalLength": "FocalLengthParam",
                     "FocusDistance": "FocusDistanceParam",
                     "FocusPower": "FocusPowerParam"
+                },
+                {
+                    "Type": "nap::ControlBlendComponent",
+                    "mID": "ControlBlendComponent",
+                    "Blend": "BlendParameter",
+                    "Brightness": "BrightnessParam",
+                    "Renderer": "./BlendTogether"
                 }
             ],
             "Children": []
@@ -2668,7 +2675,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "ApertureParam",
                     "Name": "Aperture",
-                    "Value": 3.5,
+                    "Value": 3.0,
                     "Minimum": 0.0,
                     "Maximum": 10.0
                 },
@@ -2679,6 +2686,29 @@
                     "Value": 1.0,
                     "Minimum": 1.0,
                     "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "BrightnessParam",
+                    "Name": "Brightness",
+                    "Value": 0.75,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
+                }
+            ],
+            "Groups": []
+        },
+        {
+            "Type": "nap::ParameterGroup",
+            "mID": "ParametersHidden",
+            "Parameters": [
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "BlendParameter",
+                    "Name": "Blend",
+                    "Value": 0.5,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
                 }
             ],
             "Groups": []

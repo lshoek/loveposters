@@ -8,6 +8,7 @@ uniform FRAGUBO
 {
 	float blend;
 	float abberation;
+	float brightness;
 } ubo;
 
 in vec3 pass_UV;
@@ -32,6 +33,13 @@ vec4 chromatic_abberation_sample(sampler2D tex, vec2 uv)
 	return col;
 }
 
+// @param color: input color
+// @param value: [-1, 1] where negative reduces brightness and positive increases it
+vec3 brightness(vec3 color, float value) 
+{
+	return clamp(color + value, 0.0, 1.0);
+} 
+
 void main(void)
 {	
 	// Get texel color values
@@ -44,5 +52,9 @@ void main(void)
 
 	// Blend into original based on blend value
 	vec3 color = mix(col0.rgb, screen_color, ubo.blend);
+
+	// Brightness post-processing
+	color = brightness(color.rgb, ubo.brightness);
+
 	out_Color = vec4(color, 1.0);
 }

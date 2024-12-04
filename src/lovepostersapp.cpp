@@ -62,6 +62,9 @@ namespace nap
 
 		mAppGUIs = mResourceManager->getObjects<AppGUI>();
 
+		// setFramerate(60.0f);
+		// capFramerate(true);
+
         return true;
     }
 

@@ -26,7 +26,7 @@
                     "Name": "RotationAccumulatorIntensity",
                     "Value": 11.324000358581543,
                     "Minimum": 0.0,
-                    "Maximum": 100.0
+                    "Maximum": 20.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
@@ -34,15 +34,15 @@
                     "Name": "TranslateX",
                     "Value": 1.5160000324249268,
                     "Minimum": 0.0,
-                    "Maximum": 10.0
+                    "Maximum": 2.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
                     "mID": "TranslateYIntensityParam",
                     "Name": "TranslateY",
-                    "Value": 1.3070000410079957,
+                    "Value": 1.3070000410079956,
                     "Minimum": 0.0,
-                    "Maximum": 10.0
+                    "Maximum": 2.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
@@ -50,15 +50,47 @@
                     "Name": "BloomIntensity",
                     "Value": 1.5160000324249268,
                     "Minimum": 0.0,
-                    "Maximum": 10.0
+                    "Maximum": 4.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
                     "mID": "CameraSpeedParam",
                     "Name": "CameraSpeed",
-                    "Value": 1.7599999904632569,
+                    "Value": 1.7599999904632568,
                     "Minimum": 0.0,
                     "Maximum": 10.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "ScaleIntensityParam",
+                    "Name": "ScaleIntensity",
+                    "Value": 1.0,
+                    "Minimum": 0.10000000149011612,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "StarSizeParam",
+                    "Name": "StarSize",
+                    "Value": 65.5270004272461,
+                    "Minimum": 0.0,
+                    "Maximum": 256.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "StarTimeScaleParam",
+                    "Name": "StarTimeScale",
+                    "Value": 0.06300000101327896,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "StarScaleIntensityParam",
+                    "Name": "StarScaleIntensity",
+                    "Value": 56.08700180053711,
+                    "Minimum": 0.0,
+                    "Maximum": 256.0
                 }
             ],
             "Groups": []
