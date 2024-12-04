@@ -4,7 +4,7 @@
 
 #version 450 core
 
-uniform FRAGUBO
+uniform UBO
 {
 	float blend;
 	float abberation;

@@ -25,7 +25,7 @@ namespace nap
 	{
 		mResource = getComponent<ControlBloomComponent>();
 
-		auto* uni_struct = mRenderToTextureComponent->getMaterialInstance().getOrCreateUniform("FRAGUBO");
+		auto* uni_struct = mRenderToTextureComponent->getMaterialInstance().getOrCreateUniform("UBO");
 		if (!errorState.check(uni_struct != nullptr, "%s: Incompatible shader interface", mID.c_str()))
 			return false;
 
