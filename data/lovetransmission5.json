@@ -3359,7 +3359,7 @@
                     "Type": "nap::ImageFromFile",
                     "mID": "Poster_Star",
                     "Usage": "Static",
-                    "ImagePath": "love/poster5/star.png",
+                    "ImagePath": "images/star.png",
                     "GenerateLods": true
                 },
                 {
