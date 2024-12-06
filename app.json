@@ -3,7 +3,7 @@
     "mID": "ProjectInfo",
     "Title": "Love Posters",
     "Version": "1.0.0",
-    "Data": "data/lovetransmission5.json",
+    "Data": "data/lovetransmission6.json",
     "PathMapping": "cache/path_mapping.json",
     "ServiceConfig": "service_config.json",
     "RequiredModules": [

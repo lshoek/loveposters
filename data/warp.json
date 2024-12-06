@@ -45,7 +45,7 @@
                     0.0
                 ]
             },
-            "ImagePath": "images/equimirrorball.png",
+            "ImagePath": "public/equimirrorball.png",
             "SampleShading": false,
             "GenerateLODs": true
         },

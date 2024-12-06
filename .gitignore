@@ -1,8 +1,7 @@
 cached_project_json.cmake
 cached_module_json.cmake
+service_config.json
 .ini/
 cache/
-data/love/poster
-data/love/poster2
-data/ship/layers
+data/love/
 *.mp3

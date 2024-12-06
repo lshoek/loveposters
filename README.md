@@ -9,6 +9,8 @@ This application depends on [NAP 0.6](https://github.com/napframework) and the n
 Other module dependencies:
 - [napappgui](https://github.com/naivisoftware/napappgui)
 - [napfft](https://github.com/lshoek/napfft)
+- [napmiditwister](https://github.com/lshoek/napmiditwister) (used in data, but opptional)
+- [napopencv](https://github.com/naivisoftware/napopencv) (only used in `warp.json`)
 
 ## Recent projects
 - https://www.instagram.com/love.transmission/

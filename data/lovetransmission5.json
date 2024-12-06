@@ -65,7 +65,7 @@
                     0.0
                 ]
             },
-            "ImagePath": "images/equimirrorball.png",
+            "ImagePath": "public/equimirrorball.png",
             "SampleShading": false,
             "GenerateLODs": true
         },
@@ -3359,7 +3359,7 @@
                     "Type": "nap::ImageFromFile",
                     "mID": "Poster_Star",
                     "Usage": "Static",
-                    "ImagePath": "images/star.png",
+                    "ImagePath": "public/star.png",
                     "GenerateLods": true
                 },
                 {
