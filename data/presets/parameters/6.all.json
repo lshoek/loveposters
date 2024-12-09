@@ -16,7 +16,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "RotationIntensityParam",
                     "Name": "RotationIntensity",
-                    "Value": 0.46299999952316286,
+                    "Value": 0.46299999952316284,
                     "Minimum": 0.0,
                     "Maximum": 2.0
                 },
@@ -48,7 +48,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "BloomIntensityParam",
                     "Name": "BloomIntensity",
-                    "Value": 2.055999994277954,
+                    "Value": 1.0,
                     "Minimum": 0.0,
                     "Maximum": 4.0
                 },
@@ -56,9 +56,17 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "CameraSpeedParam",
                     "Name": "CameraSpeed",
-                    "Value": 1.4110000133514405,
+                    "Value": 1.4110000133514404,
                     "Minimum": 0.0,
                     "Maximum": 10.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "ScaleIntensityParam",
+                    "Name": "ScaleIntensity",
+                    "Value": 1.0,
+                    "Minimum": 0.10000000149011612,
+                    "Maximum": 2.0
                 },
                 {
                     "Type": "nap::ParameterFloat",

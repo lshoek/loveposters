@@ -14,6 +14,7 @@
 #include <orthocameracomponent.h>
 #include <audio/component/playbackcomponent.h>
 #include <depthsorter.h>
+#include <sdlhelpers.h>
 
 namespace nap 
 {    
@@ -62,10 +63,11 @@ namespace nap
 
 		mAppGUIs = mResourceManager->getObjects<AppGUI>();
 
-		// setFramerate(60.0f);
-		// capFramerate(true);
+		setFramerate(60.0f);
+		capFramerate(true);
+		SDL::hideCursor();
 
-        return true;
+		return true;
     }
 
 
@@ -217,6 +219,16 @@ namespace nap
 				case nap::EKeyCode::KEY_g:
 				{
 					mShowGUI = !mShowGUI;
+					break;
+				}
+
+				case nap::EKeyCode::KEY_m:
+				{
+					mShowCursor = !mShowCursor;
+					if (mShowCursor)
+						SDL::showCursor();
+					else
+						SDL::hideCursor();
 					break;
 				}
 

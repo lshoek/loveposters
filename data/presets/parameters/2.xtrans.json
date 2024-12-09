@@ -8,7 +8,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "IntensityParam",
                     "Name": "Intensity",
-                    "Value": 0.48399999737739565,
+                    "Value": 0.48399999737739563,
                     "Minimum": 0.0,
                     "Maximum": 2.0
                 },
@@ -26,15 +26,15 @@
                     "Name": "RotationAccumulatorIntensity",
                     "Value": 16.18600082397461,
                     "Minimum": 0.0,
-                    "Maximum": 100.0
+                    "Maximum": 20.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
                     "mID": "TranslateXIntensityParam",
                     "Name": "TranslateX",
-                    "Value": 2.561000108718872,
+                    "Value": 2.0,
                     "Minimum": 0.0,
-                    "Maximum": 10.0
+                    "Maximum": 2.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
@@ -42,15 +42,15 @@
                     "Name": "TranslateY",
                     "Value": 1.0,
                     "Minimum": 0.0,
-                    "Maximum": 10.0
+                    "Maximum": 2.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
                     "mID": "BloomIntensityParam",
                     "Name": "BloomIntensity",
-                    "Value": 1.1319999694824219,
+                    "Value": 1.0,
                     "Minimum": 0.0,
-                    "Maximum": 10.0
+                    "Maximum": 4.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
@@ -59,6 +59,14 @@
                     "Value": 1.6200000047683716,
                     "Minimum": 0.0,
                     "Maximum": 10.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "ScaleIntensityParam",
+                    "Name": "ScaleIntensity",
+                    "Value": 1.0,
+                    "Minimum": 0.10000000149011612,
+                    "Maximum": 2.0
                 },
                 {
                     "Type": "nap::ParameterFloat",

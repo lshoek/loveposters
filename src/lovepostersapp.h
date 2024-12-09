@@ -93,6 +93,7 @@ namespace nap
 		std::vector<ObjectPtr<AppGUI>> mAppGUIs;						///< AppGUIs
 
 		bool mShowGUI = false;
+		bool mShowCursor = false;
 		bool mShowLocators = false;
 		bool mRandomizeOffset = false;
 	};

@@ -2040,7 +2040,7 @@
                         "x": 0.10000000149011612,
                         "y": 5.0
                     },
-                    "ShadowMapSize": 1024
+                    "ShadowMapSize": 2048
                 }
             ],
             "Children": []
@@ -2097,7 +2097,7 @@
                         "x": 0.10000000149011612,
                         "y": 5.0
                     },
-                    "ShadowMapSize": 512
+                    "ShadowMapSize": 1024
                 }
             ],
             "Children": []
@@ -2154,7 +2154,7 @@
                         "x": 0.10000000149011612,
                         "y": 5.0
                     },
-                    "ShadowMapSize": 512
+                    "ShadowMapSize": 1024
                 }
             ],
             "Children": []
@@ -2211,7 +2211,7 @@
                         "x": 0.10000000149011612,
                         "y": 5.0
                     },
-                    "ShadowMapSize": 512
+                    "ShadowMapSize": 1024
                 }
             ],
             "Children": []
@@ -2667,7 +2667,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "FocusDistanceParam",
                     "Name": "FocusDistance",
-                    "Value": 3.549999952316284,
+                    "Value": 3.700000047683716,
                     "Minimum": 0.0,
                     "Maximum": 10.0
                 },
@@ -3345,14 +3345,14 @@
                     "Type": "nap::ImageFromFile",
                     "mID": "Poster_ZuluPlantsLeft",
                     "Usage": "Static",
-                    "ImagePath": "love/poster_lowres/ZuluPlantsLeft.png",
+                    "ImagePath": "public/poster_lowres/ZuluPlantsLeft.png",
                     "GenerateLods": true
                 },
                 {
                     "Type": "nap::ImageFromFile",
                     "mID": "Poster_ZuluPlantsRight",
                     "Usage": "Static",
-                    "ImagePath": "love/poster_lowres/ZuluPlantsRight.png",
+                    "ImagePath": "public/poster_lowres/ZuluPlantsRight.png",
                     "GenerateLods": true
                 },
                 {
@@ -3380,8 +3380,8 @@
                     "Type": "nap::RenderTexture2D",
                     "mID": "ColorTexture",
                     "Usage": "Static",
-                    "Width": 1920,
-                    "Height": 1080,
+                    "Width": 1280,
+                    "Height": 800,
                     "Format": "RGBA8",
                     "ColorSpace": "Linear",
                     "ClearColor": {
@@ -3397,8 +3397,8 @@
                     "Type": "nap::RenderTexture2D",
                     "mID": "BloomTexture",
                     "Usage": "Static",
-                    "Width": 1920,
-                    "Height": 1080,
+                    "Width": 1280,
+                    "Height": 800,
                     "Format": "RGBA8",
                     "ColorSpace": "Linear",
                     "ClearColor": {
@@ -3414,8 +3414,8 @@
                     "Type": "nap::RenderTexture2D",
                     "mID": "DOFTexture",
                     "Usage": "Static",
-                    "Width": 1920,
-                    "Height": 1080,
+                    "Width": 1280,
+                    "Height": 800,
                     "Format": "RGBA8",
                     "ColorSpace": "Linear",
                     "ClearColor": {
@@ -3432,8 +3432,8 @@
                     "mID": "DepthTexture",
                     "Usage": "Static",
                     "Fill": true,
-                    "Width": 1920,
-                    "Height": 1080,
+                    "Width": 1280,
+                    "Height": 800,
                     "Format": "D16",
                     "ColorSpace": "Linear",
                     "ClearValue": 1.0

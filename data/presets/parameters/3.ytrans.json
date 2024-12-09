@@ -8,7 +8,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "IntensityParam",
                     "Name": "Intensity",
-                    "Value": 0.48399999737739565,
+                    "Value": 0.48399999737739563,
                     "Minimum": 0.0,
                     "Maximum": 2.0
                 },
@@ -48,7 +48,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "BloomIntensityParam",
                     "Name": "BloomIntensity",
-                    "Value": 2.5,
+                    "Value": 1.0,
                     "Minimum": 0.0,
                     "Maximum": 4.0
                 },
