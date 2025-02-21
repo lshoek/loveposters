@@ -9,7 +9,6 @@
 #include <imgui/imgui.h>
 #include <nap/core.h>
 #include <imguiservice.h>
-#include <imguiutils.h>
 #include <appguiservice.h>
 
 RTTI_BEGIN_CLASS_NO_DEFAULT_CONSTRUCTOR(nap::ParameterWindow)
@@ -20,24 +19,23 @@ RTTI_END_CLASS
 namespace nap
 {
 	ParameterWindow::ParameterWindow(AppGUIService& service) :
-		AppGUIWindow(service), mGuiService(service.getCore().getService<IMGuiService>()) {}
+		AppGUIWindow(service),
+		mGuiService(service.getCore().getService<IMGuiService>())
+	{}
 
 
 	void ParameterWindow::drawContent(double deltaTime)
 	{
 		ImGuiTabBarFlags tab_bar_flags = ImGuiTabBarFlags_None;
-		if (ImGui::BeginTabBar(this->mID.c_str(), tab_bar_flags))
+		if (ImGui::BeginTabBar(mID.c_str(), tab_bar_flags))
 		{
 			for (auto& gui : mParameterGUIs)
 			{
-				ImGuiTabBarFlags tab_bar_flags = ImGuiTabBarFlags_None;
-				ImGui::PushID(gui->mParameterGroup.get());
 				if (ImGui::BeginTabItem(gui->mParameterGroup->mID.c_str()))
 				{
 					gui->show(false);
 					ImGui::EndTabItem();
 				}
-				ImGui::PopID();
 			}
 			ImGui::EndTabBar();
 		}
