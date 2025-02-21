@@ -10,6 +10,7 @@
 #include <perspcameracomponent.h>
 #include <materialinstance.h>
 #include <renderablemesh.h>
+#include <colordepthrendertarget.h>
 #include <emptymesh.h>
 #include <parameternumeric.h>
 
@@ -31,7 +32,7 @@ namespace nap
 		DECLARE_COMPONENT(RenderDOFComponent, RenderDOFComponentInstance)
 	public:
 		ComponentPtr<PerspCameraComponent>	mCamera;						///< Property: 'Camera'
-		ResourcePtr<RenderTarget>			mInputTarget;					///< Property: 'InputTarget' the input color target, must be copyable
+		ResourcePtr<ColorDepthRenderTarget>	mInputTarget;					///< Property: 'InputTarget' the input color target, must be copyable
 		ResourcePtr<RenderTexture2D>		mOutputTexture;					///< Property: 'OutputTexture' the output color texture
 
 		ResourcePtr<ParameterFloat>			mAperture;

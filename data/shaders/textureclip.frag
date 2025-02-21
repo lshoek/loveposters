@@ -6,8 +6,6 @@
 
 in vec2 passUV;
 
-out vec4 out_Color;
-
 uniform sampler2D colorTexture;
 
 const float ALPHA_CLIP = 0.75;

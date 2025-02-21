@@ -23,7 +23,7 @@
                 },
                 {
                     "Type": "nap::ParameterWindow",
-                    "mID": "ParameterWindow_2545984e",
+                    "mID": "LevelMeterWindow",
                     "Name": "Level Meters",
                     "ParameterGUIs": [
                         "LevelParameterGUI"
@@ -49,6 +49,23 @@
                 }
             ],
             "Name": "Menu"
+        },
+        {
+            "Type": "nap::ColorDepthRenderTarget",
+            "mID": "ColorTarget",
+            "ColorTexture": "ColorTexture",
+            "DepthTexture": "DepthTexture",
+            "SampleShading": true,
+            "Samples": "Four",
+            "ClearColor": {
+                "Values": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            },
+            "ClearDepth": 1.0
         },
         {
             "Type": "nap::CubeMapFromFile",
@@ -2028,6 +2045,7 @@
                     },
                     "Intensity": 1.0,
                     "ShadowStrength": 0.5,
+                    "ShadowSpread": 2.0,
                     "Locator": {
                         "LineWidth": 1.0,
                         "GnomonSize": 1.0
@@ -2085,6 +2103,7 @@
                     },
                     "Intensity": 1.0,
                     "ShadowStrength": 1.5,
+                    "ShadowSpread": 2.0,
                     "Locator": {
                         "LineWidth": 1.0,
                         "GnomonSize": 1.0
@@ -2142,6 +2161,7 @@
                     },
                     "Intensity": 1.0,
                     "ShadowStrength": 1.5,
+                    "ShadowSpread": 2.0,
                     "Locator": {
                         "LineWidth": 1.0,
                         "GnomonSize": 1.0
@@ -2199,6 +2219,7 @@
                     },
                     "Intensity": 1.0,
                     "ShadowStrength": 1.5,
+                    "ShadowSpread": 2.0,
                     "Locator": {
                         "LineWidth": 1.0,
                         "GnomonSize": 1.0
@@ -2732,25 +2753,8 @@
             "Name": "Shadow"
         },
         {
-            "Type": "nap::RenderTarget",
-            "mID": "ColorTarget",
-            "ColorTexture": "ColorTexture",
-            "DepthTexture": "DepthTexture",
-            "SampleShading": true,
-            "Samples": "One",
-            "ClearColor": {
-                "Values": [
-                    0.0,
-                    0.0,
-                    0.0,
-                    0.0
-                ]
-            }
-        },
-        {
             "Type": "nap::RenderTexture2D",
             "mID": "TextureDummy",
-            "Usage": "Static",
             "Width": 16,
             "Height": 16,
             "Format": "RGBA8",
@@ -2762,7 +2766,8 @@
                     0.0,
                     0.0
                 ]
-            }
+            },
+            "Usage": "Static"
         },
         {
             "Type": "nap::RenderWindow",
@@ -2785,6 +2790,7 @@
             },
             "Samples": "Four",
             "AdditionalSwapImages": 1,
+            "Clear": true,
             "RestoreSize": false,
             "RestorePosition": false
         },
@@ -3379,7 +3385,6 @@
                 {
                     "Type": "nap::RenderTexture2D",
                     "mID": "ColorTexture",
-                    "Usage": "Static",
                     "Width": 1280,
                     "Height": 800,
                     "Format": "RGBA8",
@@ -3391,12 +3396,12 @@
                             0.0,
                             0.0
                         ]
-                    }
+                    },
+                    "Usage": "Static"
                 },
                 {
                     "Type": "nap::RenderTexture2D",
                     "mID": "BloomTexture",
-                    "Usage": "Static",
                     "Width": 1280,
                     "Height": 800,
                     "Format": "RGBA8",
@@ -3408,12 +3413,12 @@
                             0.0,
                             0.0
                         ]
-                    }
+                    },
+                    "Usage": "Static"
                 },
                 {
                     "Type": "nap::RenderTexture2D",
                     "mID": "DOFTexture",
-                    "Usage": "Static",
                     "Width": 1280,
                     "Height": 800,
                     "Format": "RGBA8",
@@ -3425,18 +3430,18 @@
                             0.0,
                             0.0
                         ]
-                    }
+                    },
+                    "Usage": "Static"
                 },
                 {
                     "Type": "nap::DepthRenderTexture2D",
                     "mID": "DepthTexture",
-                    "Usage": "Static",
-                    "Fill": true,
                     "Width": 1280,
                     "Height": 800,
                     "Format": "D16",
                     "ColorSpace": "Linear",
-                    "ClearValue": 1.0
+                    "ClearValue": 1.0,
+                    "Usage": "Static"
                 }
             ],
             "Children": []

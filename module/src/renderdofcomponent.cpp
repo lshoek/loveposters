@@ -62,10 +62,6 @@ namespace nap
 		if (!errorState.check(mResource->mInputTarget != nullptr, "InputTarget not set"))
 			return false;
 
-		// Verify the render target has a depth texture resource
-		if (!errorState.check(mResource->mInputTarget->hasDepthTexture(), "The specified InputTarget has no depth texture resource"))
-			return false;
-
 		// Get render service
 		mRenderService = getEntityInstance()->getCore()->getService<RenderService>();
 
@@ -138,7 +134,7 @@ namespace nap
 		mIntermediateTexture.mWidth = mResource->mInputTarget->getBufferSize().x;
 		mIntermediateTexture.mHeight = mResource->mInputTarget->getBufferSize().y;
 		mIntermediateTexture.mColorFormat = mResource->mInputTarget->getColorTexture().mColorFormat;
-		mIntermediateTexture.mUsage = Texture::EUsage::Static;
+		mIntermediateTexture.mUsage = Texture2D::EUsage::Static;
 		if (!mIntermediateTexture.init(errorState))
 		{
 			errorState.fail("%s: Failed to initialize internal render target", mIntermediateTexture.mID.c_str());

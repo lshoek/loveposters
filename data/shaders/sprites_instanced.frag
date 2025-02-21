@@ -21,5 +21,6 @@ void main()
 	if (col.a < ALPHA_CUTOFF) 
 		discard;
 
+	gl_FragDepth = gl_FragCoord.z;
 	out_FragColor = col;
 }
