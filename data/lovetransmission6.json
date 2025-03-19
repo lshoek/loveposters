@@ -3127,6 +3127,49 @@
                     "VertShader": "shaders/sprites_instanced.vert",
                     "FragShader": "shaders/sprites_instanced.frag",
                     "RestrictModuleIncludes": false
+                },
+                {
+                    "Type": "nap::ShaderFromFile",
+                    "mID": "CRTShader",
+                    "VertShader": "shaders/crt.vert",
+                    "FragShader": "shaders/crt.frag",
+                    "RestrictModuleIncludes": false
+                },
+                {
+                    "Type": "nap::Material",
+                    "mID": "CRTMaterial",
+                    "Uniforms": [
+                        {
+                            "Type": "nap::UniformStruct",
+                            "mID": "UBO",
+                            "Name": "UBO",
+                            "Uniforms": [
+                                {
+                                    "Type": "nap::UniformVec3",
+                                    "mID": "color",
+                                    "Name": "color",
+                                    "Value": {
+                                        "x": 1.0,
+                                        "y": 1.0,
+                                        "z": 1.0
+                                    }
+                                },
+                                {
+                                    "Type": "nap::UniformFloat",
+                                    "mID": "alpha",
+                                    "Name": "alpha",
+                                    "Value": 1.0
+                                }
+                            ]
+                        }
+                    ],
+                    "Samplers": [],
+                    "Buffers": [],
+                    "Constants": [],
+                    "Shader": "CRTShader",
+                    "VertexAttributeBindings": [],
+                    "BlendMode": "Opaque",
+                    "DepthMode": "ReadWrite"
                 }
             ],
             "Children": []

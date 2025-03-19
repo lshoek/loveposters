@@ -9,7 +9,6 @@
 #include "material.h"
 #include "renderservice.h"
 #include "gpubuffer.h"
-#include "renderglobals.h"
 
 // External Includes
 #include <entity.h>
@@ -155,4 +154,4 @@ namespace nap
 			vkCmdSetScissor(commandBuffer, 0, 1, &rect);
 		}
 	}
-} 
+}

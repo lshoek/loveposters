@@ -4,4 +4,5 @@ service_config.json
 .ini/
 cache/
 data/love/
+data/jesamy/
 *.mp3

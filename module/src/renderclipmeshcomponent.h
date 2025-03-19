@@ -11,19 +11,19 @@
 namespace nap
 {
 	class RenderClipMeshComponentInstance;
-	
+
 	/**
 	 * Resource part of the renderable mesh component. Renders a mesh to screen or any other render target.
 	 * The link to the mesh and clipping rectangle (property) are optional. You can set the mesh at runtime if necessary.
-	 * The material is required. 
+	 * The material is required.
 	 *
-	 * A mesh becomes 'renderable' when it is used in combination with a material. Such a mesh-material combination forms a 'nap::RenderableMesh'. 
-	 * Vertex attributes in both the shader and mesh should match. Otherwise, the RenderableMesh is invalid. 
+	 * A mesh becomes 'renderable' when it is used in combination with a material. Such a mesh-material combination forms a 'nap::RenderableMesh'.
+	 * Vertex attributes in both the shader and mesh should match. Otherwise, the RenderableMesh is invalid.
 	 * The nap::RenderableMesh is created based on the given mesh and the material properties.
 	 *
-	 * It is, however, possible to switch the mesh and / or material from the RenderClipMeshComponent to some other mesh and / or material. 
-	 * To do so, other components should create their own nap::RenderableMesh by calling nap::RenderService::createRenderableMesh, 
-	 * and pass the returned object to setMesh(). The object calling nap::RenderService::createRenderableMesh should own the custom mesh and / or material 
+	 * It is, however, possible to switch the mesh and / or material from the RenderClipMeshComponent to some other mesh and / or material.
+	 * To do so, other components should create their own nap::RenderableMesh by calling nap::RenderService::createRenderableMesh,
+	 * and pass the returned object to setMesh(). The object calling nap::RenderService::createRenderableMesh should own the custom mesh and / or material
 	 * and should validate the result on init().
 	 *
 	 * The model view and projection matrices are automatically set when the vertex shader exposes a struct with the 'uniform::mvpStruct' name.
@@ -77,7 +77,7 @@ namespace nap
 
 		virtual void onDraw(IRenderTarget& renderTarget, VkCommandBuffer commandBuffer, const glm::mat4& viewMatrix, const glm::mat4& projectionMatrix) override;
 
-		MaterialInstance						mShadowMaterialInstance;					///< 
+		MaterialInstance						mShadowMaterialInstance;					///<
 		RenderableMesh							mShadowRenderableMesh;
 
 		UniformMat4Instance*					mShadowModelMatUniform = nullptr;			///< Pointer to the model matrix uniform

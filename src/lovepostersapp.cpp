@@ -3,7 +3,6 @@
 
 // External Includes
 #include <utility/fileutils.h>
-#include <imguiutils.h>
 #include <inputrouter.h>
 #include <perspcameracomponent.h>
 #include <rendertotexturecomponent.h>
@@ -53,6 +52,7 @@ namespace nap
 		mAudioEntity 			= mScene->findEntity("AudioEntity");
 		mVideoEntity 			= mScene->findEntity("VideoEntity");
 		mRenderEntity 			= mScene->findEntity("RenderEntity");
+		mCompositeEntity 		= mScene->findEntity("CompositeEntity");
 		mRenderCameraEntity 	= mScene->findEntity("RenderCameraEntity");
 		mWarpEntity 			= mScene->findEntity("WarpEntity");
 
@@ -127,20 +127,26 @@ namespace nap
 			}
 			mColorTarget->endRendering();
 
-			// DOF
-			auto* dof = mRenderEntity->findComponent<RenderDOFComponentInstance>();
-			if (dof != nullptr)
-				dof->draw();
+			// Invoke draw() on components in render entity in order
+			if (mRenderEntity != nullptr)
+			{
+				std::vector<RenderableComponentInstance*> comps;
+				mRenderEntity->getComponentsOfTypeRecursive(comps);
 
-			// Offscreen contrast pass -> Use previous `ColorTexture` as input, `ColorTextureFX` as output.
-			// Input and output resources of these operations are described in JSON in their appropriate components.
-			auto* change_color = mRenderEntity->findComponentByID<RenderToTextureComponentInstance>("ChangeColor"); assert(change_color != nullptr);
-			change_color->draw();
+				for (auto& comp : comps)
+				{
+					if (!comp->isVisible())
+						continue;
 
-			// Offscreen bloom pass -> Use `ColorTextureFX` as input and output.
-			// This is fine as the bloom component blits the input to internally managed render targets on which the effect is applied.
-			// the effect result is blitted to the output texture. The effect therefore does not write to itself.
-			mRenderEntity->getComponent<RenderBloomComponentInstance>().draw();
+					// Find draw method
+					auto draw_method = nap::rtti::findMethodRecursive(comp->get_type(), "draw");
+					if (!draw_method.is_valid())
+						continue;
+
+					// Invoke draw method
+					draw_method.invoke(*comp);
+				}
+			}
 
 			// End headless recording
 			mRenderService->endHeadlessRecording();
@@ -155,23 +161,19 @@ namespace nap
 			// Get Perspective camera to render with
 			auto& cam = mRenderCameraEntity->getComponent<CameraComponentInstance>();
 
-			// Get composite component responsible for rendering final texture
-			auto* composite_comp = mRenderEntity->findComponentByID<RenderToTextureComponentInstance>("BlendTogether");
-			if (composite_comp != nullptr)
-			{
-				// Render composite component
-				// The nap::RenderToTextureComponentInstance transforms a plane to match the window dimensions and applies the texture to it.
-				mRenderService->renderObjects(*mRenderWindow, cam, { composite_comp });
-			}
-			else if (mWarpEntity != nullptr)
-			{
-				// Get composite component responsible for rendering final texture
-				std::vector<RenderableComponentInstance*> render_comps;
-				mWarpEntity->getComponentsOfTypeRecursive<RenderableComponentInstance>(render_comps);
+			std::vector<RenderableComponentInstance*> comps;
+			mCompositeEntity->getComponentsOfTypeRecursive(comps);
+			mRenderService->renderObjects(*mRenderWindow, cam, comps);
 
-				// Render warp components
-				mRenderService->renderObjects(*mRenderWindow, cam, { render_comps });	
-			}
+//			else if (mWarpEntity != nullptr)
+//			{
+//				// Get composite component responsible for rendering final texture
+//				std::vector<RenderableComponentInstance*> render_comps;
+//				mWarpEntity->getComponentsOfTypeRecursive<RenderableComponentInstance>(render_comps);
+//
+//				// Render warp components
+//				mRenderService->renderObjects(*mRenderWindow, cam, { render_comps });
+//			}
 
 			// Draw GUI elements
 			mGuiService->draw();

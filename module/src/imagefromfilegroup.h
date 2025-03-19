@@ -1,0 +1,32 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+#pragma once
+
+// External Includes
+#include <nap/group.h>
+
+// Local Includes
+#include "imagefromfile.h"
+
+namespace nap
+{
+	namespace group
+	{
+		namespace parameter
+		{
+			constexpr const char* members  = "Images";			///< Parameter Group members property name
+			constexpr const char* children = "Groups";			///< Parameter Group children property name
+
+		}
+	}
+
+	// Parameter group type definition
+	using ImageFromFileGroup = Group<ImageFromFile>;
+
+	// For backwards compatibility reasons, override the default 'Members' and 'Children' property names
+	// of the 'nap::ImageFromFileGroup' to the property names introduced before the arrival of the generic nap::Group<T>.
+	template<>
+	NAPAPI nap::Group<ImageFromFile>::Group();
+}
