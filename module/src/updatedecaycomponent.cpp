@@ -13,6 +13,8 @@ RTTI_BEGIN_CLASS(nap::UpdateDecayComponent)
 	RTTI_PROPERTY("Renderer",		&nap::UpdateDecayComponent::mRenderer,		nap::rtti::EPropertyMetaData::Required)
 	RTTI_PROPERTY("ClockSpeed",		&nap::UpdateDecayComponent::mClockSpeed,	nap::rtti::EPropertyMetaData::Required)
 	RTTI_PROPERTY("Decay",			&nap::UpdateDecayComponent::mDecay,			nap::rtti::EPropertyMetaData::Required)
+	RTTI_PROPERTY("Vertical",		&nap::UpdateDecayComponent::mVertical,		nap::rtti::EPropertyMetaData::Required)
+	RTTI_PROPERTY("Tangent",		&nap::UpdateDecayComponent::mTangent,		nap::rtti::EPropertyMetaData::Required)
 	RTTI_PROPERTY("Expand",			&nap::UpdateDecayComponent::mExpand,		nap::rtti::EPropertyMetaData::Required)
 	RTTI_PROPERTY("ExpandBlend",	&nap::UpdateDecayComponent::mExpandBlend,	nap::rtti::EPropertyMetaData::Required)
 	RTTI_PROPERTY("NoiseScale",		&nap::UpdateDecayComponent::mNoiseScale,	nap::rtti::EPropertyMetaData::Required)
@@ -63,6 +65,8 @@ namespace nap
 		mUniformStruct->getOrCreateUniform<UniformFloatInstance>("elapsedTime")->setValue(static_cast<float>(mElapsedTime));
 
 		mUniformStruct->getOrCreateUniform<UniformFloatInstance>("decay")->setValue(mResource->mDecay->mValue);
+		mUniformStruct->getOrCreateUniform<UniformFloatInstance>("vertical")->setValue(mResource->mVertical->mValue);
+		mUniformStruct->getOrCreateUniform<UniformFloatInstance>("tangent")->setValue(mResource->mTangent->mValue);
 		mUniformStruct->getOrCreateUniform<UniformFloatInstance>("expand")->setValue(mResource->mExpand->mValue);
 		mUniformStruct->getOrCreateUniform<UniformFloatInstance>("expandBlend")->setValue(mResource->mExpandBlend->mValue);
 		mUniformStruct->getOrCreateUniform<UniformFloatInstance>("noiseScale")->setValue(mResource->mNoiseScale->mValue);

@@ -30,6 +30,8 @@ namespace nap
 
 		ResourcePtr<ParameterFloat> mClockSpeed;
 		ResourcePtr<ParameterFloat> mDecay;
+		ResourcePtr<ParameterFloat> mVertical;
+		ResourcePtr<ParameterFloat> mTangent;
 		ResourcePtr<ParameterFloat> mExpand;
 		ResourcePtr<ParameterFloat> mExpandBlend;
 		ResourcePtr<ParameterFloat> mNoiseScale;

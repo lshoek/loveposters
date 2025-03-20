@@ -5,7 +5,9 @@
 #include <transformcomponent.h>
 #include <nap/resourceptr.h>
 #include <parameternumeric.h>
+#include <parametervec.h>
 
+// Local includes
 #include "affinetransform.h"
 
 namespace nap
@@ -22,7 +24,9 @@ namespace nap
 	public:
 		virtual void getDependentComponents(std::vector<rtti::TypeInfo>& components) const override;
 
-		ResourcePtr<ParameterFloat> mMovementParam;
+        ResourcePtr<ParameterVec3>  mOffsetParam;
+
+        ResourcePtr<ParameterFloat> mMovementParam;
 		ResourcePtr<ParameterFloat> mIntensityParam;
 
 		ResourcePtr<ParameterFloat> mRotationIntensityParam;

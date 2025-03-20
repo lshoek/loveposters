@@ -14,6 +14,8 @@ uniform UBO
 {
 	float decay;
 	float expand;
+	float vertical;
+	float tangent;
 	float expandBlend;
 	float noiseScale;
 	float elapsedTime;
@@ -27,9 +29,15 @@ uniform sampler2D colorTexture;
 
 void main(void)
 {
-	vec2 dx_outward = normalize(vec2(0.5)-pass_Uvs.xy);
+	const vec2 size = textureSize(colorTexture, 0);
+	const vec2 aspect = vec2(1.0, size.x/size.y);
+
+	vec2 dx_outward = normalize(vec2(0.5)-pass_Uvs.xy) + vec2(0.0, vertical);
+	vec2 turn = cross(vec3(0.5, 0.5, 0.0)-pass_Uvs, vec3(0.0, 0.0, 1.0)).xy;
+	dx_outward += normalize(turn) * tangent;
+
 	vec2 dx = simplexd(vec3((pass_Uvs.xy-0.5) * noiseScale, elapsedTime)).xy;
-	vec2 shift = mix(dx_outward, dx, expandBlend) * 1.0/textureSize(colorTexture, 0);
+	vec2 shift = mix(dx, dx_outward, expandBlend) * 1.0/size;
 	vec4 color = texture(colorTexture, pass_Uvs.xy + shift*expand);
 	out_Color = color - decay;
 }

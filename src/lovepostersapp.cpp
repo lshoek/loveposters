@@ -18,6 +18,7 @@
 #include <audio/component/playbackcomponent.h>
 #include <depthsorter.h>
 #include <sdlhelpers.h>
+#include <playlistcontrolcomponent.h>
 
 namespace nap 
 {    
@@ -37,6 +38,11 @@ namespace nap
 		mRenderWindow = mResourceManager->findObject<nap::RenderWindow>("Window");
 		if (!error.check(mRenderWindow != nullptr, "unable to find nap::RenderWindow with name: %s", "Window"))
 			return false;
+
+        // Get the control window
+        mControlWindow = mResourceManager->findObject<nap::RenderWindow>("ControlWindow");
+        if (!error.check(mControlWindow != nullptr, "unable to find nap::RenderWindow with name: %s", "mControlWindow"))
+            return false;
 
 		mColorTarget = mResourceManager->findObject<RenderTarget>("ColorTarget");
 		if (!error.check(mColorTarget != nullptr, "unable to find nap::RenderTarget with name: %s", "ColorTarget"))
@@ -59,6 +65,7 @@ namespace nap
 		mCompositeEntity 		= mScene->findEntity("CompositeEntity");
 		mRenderCameraEntity 	= mScene->findEntity("RenderCameraEntity");
 		mWarpEntity 			= mScene->findEntity("WarpEntity");
+        mPlaylistEntity         = mScene->findEntity("PlaylistEntity");
 
 		// Start video players
 		auto video_players = mResourceManager->getObjects<VideoPlayer>();
@@ -67,11 +74,29 @@ namespace nap
 
 		mAppGUIs = mResourceManager->getObjects<AppGUI>();
 
+        // Connect hot reload slot
+        mResourceManager->mPostResourcesLoadedSignal.connect(mHotReloadSlot);
+        onReset();
+
 		setFramerate(60.0f);
 		capFramerate(true);
 		SDL::hideCursor();
 
 		return true;
+    }
+
+
+    void LovePostersApp::onReset()
+    {
+        if (mStencilTarget == nullptr || mStencilTarget->mColorTexture == nullptr)
+            return;
+
+        mRenderService->queueHeadlessCommand([tex = mStencilTarget->mColorTexture](RenderService& renderService)
+        {
+            VkImageSubresourceRange image_subresource_range = { VK_IMAGE_ASPECT_COLOR_BIT, 0, tex->getMipLevels(), 0, tex->getLayerCount() };
+            VkClearColorValue clear_color = { 0, 0, 0, 0 };
+            vkCmdClearColorImage(renderService.getCurrentCommandBuffer(), std::as_const(*tex).getHandle().mImage, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, &clear_color, 1, &image_subresource_range);
+        });
     }
 
 
@@ -179,15 +204,18 @@ namespace nap
 //				mRenderService->renderObjects(*mRenderWindow, cam, { render_comps });
 //			}
 
-			// Draw GUI elements
-			mGuiService->draw();
-
-			// Stop render pass
-			mRenderWindow->endRendering();
-
-			// End recording
-			mRenderService->endRecording();
+            mRenderWindow->endRendering();
+            mRenderService->endRecording();
 		}
+
+        // Begin recording the render commands for the control window
+        if (mRenderService->beginRecording(*mControlWindow))
+        {
+            mControlWindow->beginRendering();
+            mGuiService->draw();
+            mControlWindow->endRendering();
+            mRenderService->endRecording();
+        }
 
 		// Proceed to next frame
 		mRenderService->endFrame();
@@ -266,6 +294,16 @@ namespace nap
 						else
 							playback->stop();
 					}
+
+                    // Set playlist to first ityem immediately
+                    if (mPlaylistEntity == nullptr)
+                        break;
+
+                    auto playlist = mPlaylistEntity->findComponent<PlaylistControlComponentInstance>();
+                    if (playlist != nullptr)
+                        playlist->setItem(0, true);
+
+                    onReset();
 					break;
 				}
 			}
@@ -281,6 +319,9 @@ namespace nap
 		// This is explicit because we don't know what entity should handle the events from a specific window.
 		nap::DefaultInputRouter input_router(true);
 		mInputService->processWindowEvents(*mRenderWindow, input_router, { &mScene->getRootEntity() });
+
+        // tell GUI service what window to render to
+        mGuiService->selectWindow(mControlWindow);
 
 		if (mShowGUI)
 		{

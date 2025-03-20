@@ -73,6 +73,11 @@ namespace nap
          */
 		int shutdown() override { return 0; }
 
+        /**
+         * Resets some visual components
+         */
+        void onReset();
+
     private:
         ResourceManager*			mResourceManager = nullptr;			///< Manages all the loaded data
 		RenderService*				mRenderService = nullptr;			///< Render Service that handles render calls
@@ -82,6 +87,7 @@ namespace nap
 		IMGuiService*				mGuiService = nullptr;				///< Manages GUI related update / draw calls
 
 		ObjectPtr<RenderWindow>		mRenderWindow;						///< Pointer to the render window	
+		ObjectPtr<RenderWindow>		mControlWindow;						///< Pointer to the control window
 		ObjectPtr<RenderTarget>		mColorTarget;						///< Pointer to the color target
 		ObjectPtr<RenderTarget>		mStencilTarget;						///< Pointer to the stencil target
 		ObjectPtr<Scene>			mScene;								///< Pointer to the main scene
@@ -93,12 +99,16 @@ namespace nap
 		ObjectPtr<EntityInstance>	mCompositeEntity;					///< Pointer to the composite entity
 		ObjectPtr<EntityInstance>	mWarpEntity;						///< Pointer to the warp entity
 		ObjectPtr<EntityInstance>	mRenderCameraEntity;				///< Pointer to the render camera entity
+		ObjectPtr<EntityInstance>	mPlaylistEntity;				    ///< Pointer to the playlist entity
 
 		std::vector<ObjectPtr<AppGUI>> mAppGUIs;						///< AppGUIs
 
-		bool mShowGUI = false;
+        nap::Slot<> mHotReloadSlot = { [&]() -> void { onReset(); } };
+
+        bool mShowGUI = true;
 		bool mShowCursor = false;
 		bool mShowLocators = false;
 		bool mRandomizeOffset = false;
+        bool mClearStencil = false;
 	};
 }

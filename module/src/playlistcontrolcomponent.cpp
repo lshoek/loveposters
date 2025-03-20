@@ -135,8 +135,7 @@ namespace nap
             {
                 // find the blender instance
                 auto* blender_instance = find_blender(group.mBlender.get(), blenders);
-                if(!errorState.check(blender_instance!= nullptr, "Could not find instance for blender %s",
-                                     group.mBlender->mID.c_str()))
+                if(!errorState.check(blender_instance!= nullptr, "Could not find instance for blender %s", group.mBlender->mID.c_str()))
                     return false;
 
                 // find preset index
@@ -154,9 +153,9 @@ namespace nap
                         idx++;
                     }
                 }
-                if(!errorState.check(found, "Could not find preset %s in blender %s",
-                                    group.mPreset.c_str(), blender_instance->mID.c_str()))
+                if(!errorState.check(found, "Could not find preset %s in blender %s", group.mPreset.c_str(), blender_instance->mID.c_str()))
                     return false;
+
                 preset_groups.emplace_back(ItemPresetGroup(idx, group.mParameterGroup.get(), blender_instance, group.mPreset));
             }
 
@@ -193,7 +192,7 @@ namespace nap
 		if (isEnabled())
         {
 			//mCurrentPlaylistItem = &mPlaylist[mCurrentPlaylistIndex];
-			setItem(mCurrentPlaylistIndex);
+			setItem(mCurrentPlaylistIndex, true);
 
             for(auto& group : mCurrentPlaylistItem->mGroups)
             {
@@ -229,11 +228,11 @@ namespace nap
 	}
 
 
-    void PlaylistControlComponentInstance::setItem(int index)
+    void PlaylistControlComponentInstance::setItem(int index, bool immediate)
     {
         if(index >= 0 && index < mPlaylist.size())
         {
-            setItemInternal(index, false);
+            setItemInternal(index, false, immediate);
         }else
         {
             nap::Logger::error(*this, "Wrong index %i", index);
@@ -241,7 +240,7 @@ namespace nap
     }
 
 
-    void PlaylistControlComponentInstance::setItemInternal(int index, bool randomize)
+    void PlaylistControlComponentInstance::setItemInternal(int index, bool randomize, bool immediate)
     {
         assert(index >= 0 && index < mPlaylist.size());
 
@@ -258,8 +257,9 @@ namespace nap
         for(auto& group : item->mGroups)
         {
             auto* blender = group.mBlender;
-            blender->getComponent<ParameterBlendComponent>()->mPresetIndex->setValue(group.mPresetIndex);
-            blender->getComponent<ParameterBlendComponent>()->mPresetBlendTime->setValue(mPlaylist[mCurrentPlaylistIndex].mTransitionTime);
+            auto* comp = blender->getComponent<ParameterBlendComponent>();
+            comp->mPresetIndex->setValue(group.mPresetIndex);
+            comp->mPresetBlendTime->setValue(immediate ? 0.0f : mPlaylist[mCurrentPlaylistIndex].mTransitionTime);
         }
 
         if(mVerbose)

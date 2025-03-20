@@ -16,7 +16,6 @@ in vec3 pass_UV;
 out vec4 out_Color;
 
 uniform sampler2D colorTextures[2];
-uniform sampler2D backgroundTexture;
 
 vec4 chromatic_abberation_sample(sampler2D tex, vec2 uv)
 {
@@ -46,7 +45,6 @@ void main(void)
 	// Get texel color values
 	vec4 col0 = chromatic_abberation_sample(colorTextures[0], pass_UV.xy);
 	vec4 col1 = texture(colorTextures[1], pass_UV.xy);
-	vec4 back = texture(backgroundTexture, pass_UV.xy);
 
 	// Get screened blend color
 	const vec3 vunit = vec3(1.0, 1.0, 1.0);
@@ -57,9 +55,6 @@ void main(void)
 
 	// Brightness post-processing
 	color = brightness(color.rgb, ubo.brightness);
-
-	// Blend background
-	color = mix(back.rgb, color, max(col0.a, col1.a));
 
 	out_Color = vec4(color, 1.0);
 }

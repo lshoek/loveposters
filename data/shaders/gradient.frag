@@ -15,14 +15,6 @@ out vec4 out_Color;
 
 uniform sampler2D colorTexture;
 
-// const vec4 colors[] = {
-// 	vec4(1.0, 178/255.0, 0.0, 1.0),
-// 	vec4(235/255.0, 91/255.0, 0.0, 1.0),
-// 	vec4(217/255.0, 22/255.0, 86/255.0, 1.0),
-// 	vec4(100/255.0, 13/255.0, 95/255.0, 1.0),
-// 	vec4(1.0, 178/255.0, 0.0, 1.0)
-// };
-
 void main(void)
 {
 	float x = texture(colorTexture, pass_Uvs.xy).r;

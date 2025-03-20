@@ -95,7 +95,7 @@ namespace nap
          * Manually sets playlist item to index
          * @param index index of playlist item
          */
-        void setItem(int index);
+        void setItem(int index, bool immediate = false);
 
 		/**
 		 * @return whether preset cycling is enabled
@@ -114,7 +114,7 @@ namespace nap
          */
         int getCurrentPlaylistIndex() const            { return mCurrentPlaylistIndex; }
     private:
-        void setItemInternal(int index, bool randomize);
+        void setItemInternal(int index, bool randomize, bool immediate = false);
 
         // Selects the next preset in the sequence
         void nextItem();
