@@ -1,0 +1,191 @@
+{
+    "Objects": [
+        {
+            "Type": "nap::ParameterGroup",
+            "mID": "Parameters",
+            "Parameters": [
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "IntensityParam",
+                    "Name": "Intensity",
+                    "Value": 1.0,
+                    "Minimum": 0.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "RotationIntensityParam",
+                    "Name": "RotationIntensity",
+                    "Value": 1.0,
+                    "Minimum": 0.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "RotationAccumulatorIntensityParam",
+                    "Name": "RotationAccumulatorIntensity",
+                    "Value": 1.0,
+                    "Minimum": 0.0,
+                    "Maximum": 20.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "TranslateXIntensityParam",
+                    "Name": "TranslateX",
+                    "Value": 1.0,
+                    "Minimum": 0.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "TranslateYIntensityParam",
+                    "Name": "TranslateY",
+                    "Value": 1.0,
+                    "Minimum": 0.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "BloomIntensityParam",
+                    "Name": "BloomIntensity",
+                    "Value": 1.0,
+                    "Minimum": 0.0,
+                    "Maximum": 4.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "BrightnessParam",
+                    "Name": "Brightness",
+                    "Value": 0.75,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "ScaleIntensityParam",
+                    "Name": "ScaleIntensity",
+                    "Value": 1.0,
+                    "Minimum": 0.10000000149011612,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "BlendParameter",
+                    "Name": "Blend",
+                    "Value": 0.5,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "DecayClockSpeed",
+                    "Name": "DecayClockSpeed",
+                    "Value": 1.8309999704360962,
+                    "Minimum": 0.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "Decay",
+                    "Name": "Decay",
+                    "Value": 0.009999999776482582,
+                    "Minimum": 0.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "Expand",
+                    "Name": "Expand",
+                    "Value": 1.7710000276565552,
+                    "Minimum": 0.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "ExpandBlend",
+                    "Name": "ExpandBlend",
+                    "Value": 0.5820000171661377,
+                    "Minimum": 0.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "NoiseScale",
+                    "Name": "NoiseScale",
+                    "Value": 2.0,
+                    "Minimum": 0.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "GradientClockSpeed",
+                    "Name": "GradientClockSpeed",
+                    "Value": 0.11900000274181366,
+                    "Minimum": 0.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterRGBColorFloat",
+                    "mID": "Color0",
+                    "Name": "Color0",
+                    "Value": {
+                        "Values": [
+                            0.8277592062950134,
+                            0.27684253454208374,
+                            0.27684253454208374
+                        ]
+                    }
+                },
+                {
+                    "Type": "nap::ParameterRGBColorFloat",
+                    "mID": "Color1",
+                    "Name": "Color1",
+                    "Value": {
+                        "Values": [
+                            0.5178511738777161,
+                            0.5969899892807007,
+                            0.16172637045383453
+                        ]
+                    }
+                },
+                {
+                    "Type": "nap::ParameterRGBColorFloat",
+                    "mID": "Color2",
+                    "Name": "Color2",
+                    "Value": {
+                        "Values": [
+                            0.2691916227340698,
+                            0.36697497963905334,
+                            0.8428093791007996
+                        ]
+                    }
+                },
+                {
+                    "Type": "nap::ParameterRGBColorFloat",
+                    "mID": "Color3",
+                    "Name": "Color3",
+                    "Value": {
+                        "Values": [
+                            0.5792458653450012,
+                            0.2568987011909485,
+                            0.6454849243164063
+                        ]
+                    }
+                },
+                {
+                    "Type": "nap::ParameterRGBColorFloat",
+                    "mID": "Color4",
+                    "Name": "Color4",
+                    "Value": {
+                        "Values": [
+                            0.8060200810432434,
+                            0.2480061650276184,
+                            0.2480061650276184
+                        ]
+                    }
+                }
+            ],
+            "Groups": []
+        }
+    ]
+}

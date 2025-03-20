@@ -19,8 +19,8 @@ uniform sampler2D colorTexture;
 void main(void)
 {
 	// Sample colorTexture
-	vec4 texture_color = texture(colorTexture, pass_Uvs.xy);
+	float a = texture(colorTexture, pass_Uvs.xy).a;
 
 	// Set output color
-	out_Color = vec4(ubo.color, texture_color.a * ubo.alpha); 
+	out_Color = vec4(a * ubo.color, a * ubo.alpha); 
 }
