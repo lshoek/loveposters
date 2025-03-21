@@ -18,12 +18,12 @@
                     "Name": "ArpFriqueOffset",
                     "Value": {
                         "x": 0.15800000727176666,
-                        "y": -0.5540000200271606,
+                        "y": -0.6190000176429749,
                         "z": 0.019999999552965164
                     },
                     "Clamp": true,
-                    "Minimum": -3.0,
-                    "Maximum": 3.0
+                    "Minimum": -4.0,
+                    "Maximum": 4.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
@@ -35,8 +35,8 @@
                         "z": 0.0
                     },
                     "Clamp": true,
-                    "Minimum": -3.0,
-                    "Maximum": 3.0
+                    "Minimum": -4.0,
+                    "Maximum": 4.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
@@ -48,8 +48,8 @@
                         "z": 0.45100000500679016
                     },
                     "Clamp": true,
-                    "Minimum": -3.0,
-                    "Maximum": 3.0
+                    "Minimum": -4.0,
+                    "Maximum": 4.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
@@ -61,8 +61,8 @@
                         "z": 0.49000000953674316
                     },
                     "Clamp": true,
-                    "Minimum": -3.0,
-                    "Maximum": 3.0
+                    "Minimum": -4.0,
+                    "Maximum": 4.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
@@ -74,8 +74,8 @@
                         "z": 0.3330000042915344
                     },
                     "Clamp": true,
-                    "Minimum": -3.0,
-                    "Maximum": 3.0
+                    "Minimum": -4.0,
+                    "Maximum": 4.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
@@ -83,12 +83,12 @@
                     "Name": "WomanOffset",
                     "Value": {
                         "x": 0.0,
-                        "y": 0.3959999978542328,
-                        "z": 0.8040000200271606
+                        "y": 0.23800000548362732,
+                        "z": 0.800000011920929
                     },
                     "Clamp": true,
-                    "Minimum": -3.0,
-                    "Maximum": 3.0
+                    "Minimum": -4.0,
+                    "Maximum": 4.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
@@ -100,7 +100,7 @@
                         "z": 0.0
                     },
                     "Clamp": true,
-                    "Minimum": -3.0,
+                    "Minimum": -4.0,
                     "Maximum": 4.0
                 },
                 {

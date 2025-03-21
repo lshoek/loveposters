@@ -940,7 +940,7 @@
                     "Type": "nap::PerspCameraComponent",
                     "mID": "PerspectiveCamera",
                     "Properties": {
-                        "FieldOfView": 90.0,
+                        "FieldOfView": 75.0,
                         "NearClippingPlane": 0.009999999776482582,
                         "FarClippingPlane": 20.0,
                         "GridDimensions": {
@@ -2695,8 +2695,8 @@
             "Visible": true,
             "SampleShading": false,
             "Title": "Sampler",
-            "Width": 720,
-            "Height": 1280,
+            "Width": 1440,
+            "Height": 1080,
             "Mode": "FIFO",
             "ClearColor": {
                 "Values": [
@@ -3307,8 +3307,8 @@
                 {
                     "Type": "nap::RenderTexture2D",
                     "mID": "ColorTexture",
-                    "Width": 720,
-                    "Height": 1280,
+                    "Width": 1440,
+                    "Height": 1080,
                     "Format": "RGBA8",
                     "ColorSpace": "Linear",
                     "ClearColor": {
@@ -3324,8 +3324,8 @@
                 {
                     "Type": "nap::RenderTexture2D",
                     "mID": "ColorBlendTexture",
-                    "Width": 720,
-                    "Height": 1280,
+                    "Width": 1440,
+                    "Height": 1080,
                     "Format": "RGBA8",
                     "ColorSpace": "Linear",
                     "ClearColor": {
@@ -3341,8 +3341,8 @@
                 {
                     "Type": "nap::RenderTexture2D",
                     "mID": "BloomTexture",
-                    "Width": 720,
-                    "Height": 1280,
+                    "Width": 1440,
+                    "Height": 1080,
                     "Format": "RGBA8",
                     "ColorSpace": "Linear",
                     "ClearColor": {
@@ -3358,8 +3358,8 @@
                 {
                     "Type": "nap::RenderTexture2D",
                     "mID": "EffectTexture",
-                    "Width": 720,
-                    "Height": 1280,
+                    "Width": 1440,
+                    "Height": 1080,
                     "Format": "RGBA8",
                     "ColorSpace": "Linear",
                     "ClearColor": {
@@ -3375,8 +3375,8 @@
                 {
                     "Type": "nap::RenderTexture2D",
                     "mID": "StencilTextureA",
-                    "Width": 720,
-                    "Height": 1280,
+                    "Width": 1440,
+                    "Height": 1080,
                     "Format": "R32",
                     "ColorSpace": "Linear",
                     "ClearColor": {
@@ -3392,8 +3392,8 @@
                 {
                     "Type": "nap::RenderTexture2D",
                     "mID": "StencilTextureB",
-                    "Width": 720,
-                    "Height": 1280,
+                    "Width": 1440,
+                    "Height": 1080,
                     "Format": "R32",
                     "ColorSpace": "Linear",
                     "ClearColor": {
