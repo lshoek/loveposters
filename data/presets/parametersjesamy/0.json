@@ -22,73 +22,73 @@
                         "z": 1.0
                     },
                     "Clamp": true,
-                    "Minimum": -3.0,
-                    "Maximum": 3.0
+                    "Minimum": -4.0,
+                    "Maximum": 4.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
                     "mID": "JesamyOffsetParam",
                     "Name": "JesamyOffset",
                     "Value": {
-                        "x": -2.0,
+                        "x": -4.0,
                         "y": 0.0,
                         "z": 0.0
                     },
                     "Clamp": true,
-                    "Minimum": -3.0,
-                    "Maximum": 3.0
+                    "Minimum": -4.0,
+                    "Maximum": 4.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
                     "mID": "KeytarOffsetParam",
                     "Name": "KeytarOffset",
                     "Value": {
-                        "x": 2.0,
+                        "x": 4.0,
                         "y": 0.0,
                         "z": 0.0
                     },
                     "Clamp": true,
-                    "Minimum": -3.0,
-                    "Maximum": 3.0
+                    "Minimum": -4.0,
+                    "Maximum": 4.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
                     "mID": "ManOffsetParam",
                     "Name": "ManOffset",
                     "Value": {
-                        "x": -2.0,
+                        "x": -4.0,
                         "y": 0.0,
                         "z": 0.0
                     },
                     "Clamp": true,
-                    "Minimum": -3.0,
-                    "Maximum": 3.0
+                    "Minimum": -4.0,
+                    "Maximum": 4.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
                     "mID": "TambourineOffsetParam",
                     "Name": "TambourineOffset",
                     "Value": {
-                        "x": -2.0,
+                        "x": -4.0,
                         "y": 0.0,
                         "z": 0.0
                     },
                     "Clamp": true,
-                    "Minimum": -3.0,
-                    "Maximum": 3.0
+                    "Minimum": -4.0,
+                    "Maximum": 4.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
                     "mID": "WomanOffsetParam",
                     "Name": "WomanOffset",
                     "Value": {
-                        "x": 2.0,
+                        "x": 4.0,
                         "y": 0.0,
                         "z": 0.0
                     },
                     "Clamp": true,
-                    "Minimum": -3.0,
-                    "Maximum": 3.0
+                    "Minimum": -4.0,
+                    "Maximum": 4.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
@@ -100,7 +100,7 @@
                         "z": 0.0
                     },
                     "Clamp": true,
-                    "Minimum": -3.0,
+                    "Minimum": -4.0,
                     "Maximum": 4.0
                 },
                 {

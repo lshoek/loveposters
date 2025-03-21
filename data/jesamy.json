@@ -2292,8 +2292,8 @@
                         "z": 0.0
                     },
                     "Clamp": true,
-                    "Minimum": -3.0,
-                    "Maximum": 3.0
+                    "Minimum": -4.0,
+                    "Maximum": 4.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
@@ -2305,8 +2305,8 @@
                         "z": 0.0
                     },
                     "Clamp": true,
-                    "Minimum": -3.0,
-                    "Maximum": 3.0
+                    "Minimum": -4.0,
+                    "Maximum": 4.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
@@ -2318,8 +2318,8 @@
                         "z": 0.0
                     },
                     "Clamp": true,
-                    "Minimum": -3.0,
-                    "Maximum": 3.0
+                    "Minimum": -4.0,
+                    "Maximum": 4.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
@@ -2331,8 +2331,8 @@
                         "z": 0.0
                     },
                     "Clamp": true,
-                    "Minimum": -3.0,
-                    "Maximum": 3.0
+                    "Minimum": -4.0,
+                    "Maximum": 4.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
@@ -2344,8 +2344,8 @@
                         "z": 0.0
                     },
                     "Clamp": true,
-                    "Minimum": -3.0,
-                    "Maximum": 3.0
+                    "Minimum": -4.0,
+                    "Maximum": 4.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
@@ -2357,8 +2357,8 @@
                         "z": 0.0
                     },
                     "Clamp": true,
-                    "Minimum": -3.0,
-                    "Maximum": 3.0
+                    "Minimum": -4.0,
+                    "Maximum": 4.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
@@ -2370,7 +2370,7 @@
                         "z": 0.0
                     },
                     "Clamp": true,
-                    "Minimum": -3.0,
+                    "Minimum": -4.0,
                     "Maximum": 4.0
                 },
                 {
