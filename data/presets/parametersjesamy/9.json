@@ -18,8 +18,8 @@
                     "Name": "ArpFriqueOffset",
                     "Value": {
                         "x": 3.0,
-                        "y": -0.03999999910593033,
-                        "z": -1.6269999742507935
+                        "y": 0.10700000077486038,
+                        "z": -0.9879999756813049
                     },
                     "Clamp": true,
                     "Minimum": -3.0,
@@ -171,7 +171,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "Decay",
                     "Name": "Decay",
-                    "Value": 0.0020000000949949026,
+                    "Value": 0.009999999776482582,
                     "Minimum": 0.0,
                     "Maximum": 0.10000000149011612
                 },
@@ -187,7 +187,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "Tangent",
                     "Name": "Tangent",
-                    "Value": 15.809000015258789,
+                    "Value": 20.0,
                     "Minimum": -10.0,
                     "Maximum": 20.0
                 },

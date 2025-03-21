@@ -22,8 +22,8 @@
                         "z": 0.5690000057220459
                     },
                     "Clamp": true,
-                    "Minimum": -2.0,
-                    "Maximum": 2.0
+                    "Minimum": -3.0,
+                    "Maximum": 3.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
@@ -35,8 +35,8 @@
                         "z": 0.0
                     },
                     "Clamp": true,
-                    "Minimum": -2.0,
-                    "Maximum": 2.0
+                    "Minimum": -3.0,
+                    "Maximum": 3.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
@@ -48,8 +48,8 @@
                         "z": 0.49000000953674316
                     },
                     "Clamp": true,
-                    "Minimum": -2.0,
-                    "Maximum": 2.0
+                    "Minimum": -3.0,
+                    "Maximum": 3.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
@@ -61,8 +61,8 @@
                         "z": 0.5289999842643738
                     },
                     "Clamp": true,
-                    "Minimum": -2.0,
-                    "Maximum": 2.0
+                    "Minimum": -3.0,
+                    "Maximum": 3.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
@@ -74,8 +74,8 @@
                         "z": 0.17599999904632568
                     },
                     "Clamp": true,
-                    "Minimum": -2.0,
-                    "Maximum": 2.0
+                    "Minimum": -3.0,
+                    "Maximum": 3.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
@@ -87,8 +87,8 @@
                         "z": 0.921999990940094
                     },
                     "Clamp": true,
-                    "Minimum": -2.0,
-                    "Maximum": 2.0
+                    "Minimum": -3.0,
+                    "Maximum": 3.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
@@ -100,7 +100,7 @@
                         "z": 0.0
                     },
                     "Clamp": true,
-                    "Minimum": -2.0,
+                    "Minimum": -3.0,
                     "Maximum": 4.0
                 },
                 {
@@ -139,7 +139,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "BloomIntensityParam",
                     "Name": "BloomIntensity",
-                    "Value": 0.25,
+                    "Value": 0.20000000298023224,
                     "Minimum": 0.0,
                     "Maximum": 4.0
                 },
@@ -189,7 +189,7 @@
                     "Name": "Tangent",
                     "Value": 1.0,
                     "Minimum": -10.0,
-                    "Maximum": 10.0
+                    "Maximum": 20.0
                 },
                 {
                     "Type": "nap::ParameterFloat",

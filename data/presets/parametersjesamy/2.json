@@ -22,8 +22,8 @@
                         "z": 0.2549999952316284
                     },
                     "Clamp": true,
-                    "Minimum": -2.0,
-                    "Maximum": 2.0
+                    "Minimum": -3.0,
+                    "Maximum": 3.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
@@ -35,60 +35,60 @@
                         "z": 0.0
                     },
                     "Clamp": true,
-                    "Minimum": -2.0,
-                    "Maximum": 2.0
+                    "Minimum": -3.0,
+                    "Maximum": 3.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
                     "mID": "KeytarOffsetParam",
                     "Name": "KeytarOffset",
                     "Value": {
-                        "x": 0.3959999978542328,
+                        "x": 0.32100000977516174,
                         "y": 0.0,
-                        "z": 0.3330000042915344
+                        "z": 0.49399998784065247
                     },
                     "Clamp": true,
-                    "Minimum": -2.0,
-                    "Maximum": 2.0
+                    "Minimum": -3.0,
+                    "Maximum": 3.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
                     "mID": "ManOffsetParam",
                     "Name": "ManOffset",
                     "Value": {
-                        "x": -0.1979999989271164,
-                        "y": -0.03999999910593033,
-                        "z": 0.2160000056028366
+                        "x": -0.10700000077486038,
+                        "y": 0.25,
+                        "z": 0.21199999749660492
                     },
                     "Clamp": true,
-                    "Minimum": -2.0,
-                    "Maximum": 2.0
+                    "Minimum": -3.0,
+                    "Maximum": 3.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
                     "mID": "TambourineOffsetParam",
                     "Name": "TambourineOffset",
                     "Value": {
-                        "x": -0.5149999856948853,
-                        "y": 0.0,
-                        "z": 0.2549999952316284
+                        "x": -0.3930000066757202,
+                        "y": 0.10700000077486038,
+                        "z": 0.42399999499320984
                     },
                     "Clamp": true,
-                    "Minimum": -2.0,
-                    "Maximum": 2.0
+                    "Minimum": -3.0,
+                    "Maximum": 3.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
                     "mID": "WomanOffsetParam",
                     "Name": "WomanOffset",
                     "Value": {
-                        "x": 0.1979999989271164,
-                        "y": 0.07900000363588333,
-                        "z": 0.2160000056028366
+                        "x": 0.17900000512599945,
+                        "y": 0.17900000512599945,
+                        "z": 0.6349999904632568
                     },
                     "Clamp": true,
-                    "Minimum": -2.0,
-                    "Maximum": 2.0
+                    "Minimum": -3.0,
+                    "Maximum": 3.0
                 },
                 {
                     "Type": "nap::ParameterVec3",
@@ -100,7 +100,7 @@
                         "z": 0.0
                     },
                     "Clamp": true,
-                    "Minimum": -2.0,
+                    "Minimum": -3.0,
                     "Maximum": 4.0
                 },
                 {
@@ -123,7 +123,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "TranslateXIntensityParam",
                     "Name": "TranslateX",
-                    "Value": 0.5,
+                    "Value": 0.3799999952316284,
                     "Minimum": 0.0,
                     "Maximum": 2.0
                 },
@@ -139,7 +139,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "BloomIntensityParam",
                     "Name": "BloomIntensity",
-                    "Value": 0.25,
+                    "Value": 0.15000000596046448,
                     "Minimum": 0.0,
                     "Maximum": 4.0
                 },
@@ -161,14 +161,6 @@
                 },
                 {
                     "Type": "nap::ParameterFloat",
-                    "mID": "BlendParameter",
-                    "Name": "Blend",
-                    "Value": 0.5,
-                    "Minimum": 0.0,
-                    "Maximum": 1.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
                     "mID": "DecayClockSpeed",
                     "Name": "DecayClockSpeed",
                     "Value": 1.8309999704360962,
@@ -185,6 +177,22 @@
                 },
                 {
                     "Type": "nap::ParameterFloat",
+                    "mID": "Vertical",
+                    "Name": "Vertical",
+                    "Value": 0.0,
+                    "Minimum": -10.0,
+                    "Maximum": 10.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "Tangent",
+                    "Name": "Tangent",
+                    "Value": 0.0,
+                    "Minimum": -10.0,
+                    "Maximum": 20.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
                     "mID": "Expand",
                     "Name": "Expand",
                     "Value": 1.7710000276565552,
@@ -197,7 +205,7 @@
                     "Name": "ExpandBlend",
                     "Value": 0.5820000171661377,
                     "Minimum": 0.0,
-                    "Maximum": 2.0
+                    "Maximum": 1.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
@@ -205,15 +213,15 @@
                     "Name": "NoiseScale",
                     "Value": 2.0,
                     "Minimum": 0.0,
-                    "Maximum": 2.0
+                    "Maximum": 10.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
                     "mID": "GradientClockSpeed",
                     "Name": "GradientClockSpeed",
                     "Value": 0.11900000274181366,
-                    "Minimum": -1.0,
-                    "Maximum": 2.0
+                    "Minimum": -10.0,
+                    "Maximum": 10.0
                 },
                 {
                     "Type": "nap::ParameterRGBColorFloat",
