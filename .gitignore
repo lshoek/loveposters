@@ -5,4 +5,5 @@ service_config.json
 cache/
 data/love/
 data/jesamy/
+data/taste/
 *.mp3
