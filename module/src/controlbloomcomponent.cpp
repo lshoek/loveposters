@@ -41,6 +41,6 @@ namespace nap
 	{
 		float intensity = (mResource->mIntensityParam != nullptr) ? mResource->mIntensityParam->mValue : 0.0f;
 		float movement = (mResource->mMovementParam != nullptr) ? mResource->mMovementParam->mValue : 1.0f;
-		mBlendUniform->setValue(std::min(mResource->mBaseIntensity + movement * intensity, 1.0f));
+		mBlendUniform->setValue(mResource->mBaseIntensity + movement * intensity);
 	}
 }

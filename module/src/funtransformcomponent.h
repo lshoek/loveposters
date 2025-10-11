@@ -24,9 +24,9 @@ namespace nap
 	public:
 		virtual void getDependentComponents(std::vector<rtti::TypeInfo>& components) const override;
 
-        ResourcePtr<ParameterVec3>  mOffsetParam;
+		ResourcePtr<ParameterVec3>  mOffsetParam;
 
-        ResourcePtr<ParameterFloat> mMovementParam;
+		ResourcePtr<ParameterFloat> mMovementParam;
 		ResourcePtr<ParameterFloat> mIntensityParam;
 
 		ResourcePtr<ParameterFloat> mRotationIntensityParam;

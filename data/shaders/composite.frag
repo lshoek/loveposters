@@ -46,12 +46,14 @@ void main(void)
 	vec4 col0 = chromatic_abberation_sample(colorTextures[0], pass_UV.xy);
 	vec4 col1 = texture(colorTextures[1], pass_UV.xy);
 
-	// Get screened blend color
-	const vec3 vunit = vec3(1.0, 1.0, 1.0);
-	vec3 screen_color = vunit-(vunit-col0.rgb)*(vunit-col1.rgb);
+	// // Get screened blend color
+	// const vec3 vunit = vec3(1.0, 1.0, 1.0);
+	// vec3 screen_color = vunit-(vunit-col0.rgb)*(vunit-col1.rgb);
 
-	// Blend into original based on blend value
-	vec3 color = mix(col0.rgb, screen_color, ubo.blend);
+	// // Blend into original based on blend value
+	// vec3 color = mix(col0.rgb, screen_color, ubo.blend);
+
+	vec3 color = col0.rgb + col1.rgb * ubo.blend; 
 
 	// Brightness post-processing
 	color = brightness(color.rgb, ubo.brightness);

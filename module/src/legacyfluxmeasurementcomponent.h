@@ -45,6 +45,7 @@ namespace nap
 			float mMaxHz = 44100.0f;
 			float mOnsetImpact = 2.0f;
 			float mSmoothTime = 0.05f;
+			float mStretchSmoothTime = 0.5f;
 			uint mEvaluationSampleCount = 1000;
 		};
 
@@ -81,12 +82,16 @@ namespace nap
 				mTargetOnset(item.mTargetOnset.get()),
 				mDecay(item.mDecay.get()),
 				mStretch(item.mStretch.get()),
+				mStretchSmoother({ glm::mix(mStretch->mMinimum, mStretch->mMaximum, 0.5f), item.mStretchSmoothTime }),
 				mOnsetImpact(item.mOnsetImpact),
 				mOnsetSmoother({ 0.0f, item.mSmoothTime }),
 				mMinHz(item.mMinHz),
 				mMaxHz(item.mMaxHz),
-				mEvaluationSampleCount(item.mEvaluationSampleCount)
-			{ }
+				mEvaluationSampleCount(item.mEvaluationSampleCount),
+				mInitialStretch(glm::mix(mStretch->mMinimum, mStretch->mMaximum, 0.5f))
+			{
+				mStretchSmoother.mMaxSpeed = 1.0f;
+			}
 
 			// Exponential Moving Average
 			float computeMovingAverage(float newValue, float& outAverage);
@@ -102,7 +107,7 @@ namespace nap
 			float mMaxHz;
 			float mOnsetImpact;
 			math::FloatSmoothOperator mOnsetSmoother;
-			math::FloatSmoothOperator mStretchSmoother{ 1.0f, 0.5f };
+			math::FloatSmoothOperator mStretchSmoother;
 			uint mEvaluationSampleCount;
 
 		private:
@@ -111,6 +116,7 @@ namespace nap
 			float mOnsetValue = 0.0f;
 			float mVelocity = 0.0f;
 			float mAcceleration = 0.0f;
+			float mInitialStretch = 1.0f;
 		};
 
 		// Constructor
@@ -119,6 +125,8 @@ namespace nap
 
 		// Initialize the component
 		bool init(utility::ErrorState& errorState) override;
+
+		bool reset(utility::ErrorState& errorState);
 
 		/**
 		 * Update this component
@@ -136,8 +144,6 @@ namespace nap
 		FFTAudioNodeComponentInstance* mFFTAudioComponent = nullptr;
 
 		std::vector<OnsetData> mOnsetList;
-
 		FFTBuffer::AmplitudeSpectrum mPreviousBuffer;
-		float mElapsedTime = 0.0f;
 	};
 }

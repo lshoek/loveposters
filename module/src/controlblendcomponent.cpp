@@ -6,9 +6,11 @@
 
 // nap::ControlBlendComponent run time class definition
 RTTI_BEGIN_CLASS(nap::ControlBlendComponent)
-	RTTI_PROPERTY("Blend",      &nap::ControlBlendComponent::mBlend,    	nap::rtti::EPropertyMetaData::Required)
-	RTTI_PROPERTY("Brightness", &nap::ControlBlendComponent::mBrightness,   nap::rtti::EPropertyMetaData::Required)
-	RTTI_PROPERTY("Renderer",   &nap::ControlBlendComponent::mRenderer,		nap::rtti::EPropertyMetaData::Required)
+	RTTI_PROPERTY("Blend",      &nap::ControlBlendComponent::mBlend,    	nap::rtti::EPropertyMetaData::Default)
+	RTTI_PROPERTY("Brightness", &nap::ControlBlendComponent::mBrightness,   nap::rtti::EPropertyMetaData::Default)
+	RTTI_PROPERTY("Saturation", &nap::ControlBlendComponent::mSaturation,   nap::rtti::EPropertyMetaData::Default)
+	RTTI_PROPERTY("Contrast",	&nap::ControlBlendComponent::mContrast,		nap::rtti::EPropertyMetaData::Default)
+	RTTI_PROPERTY("Renderer",   &nap::ControlBlendComponent::mRenderer,		nap::rtti::EPropertyMetaData::Default)
 RTTI_END_CLASS
 
 // nap::ControlBlendComponentInstance run time class definition
@@ -46,16 +48,29 @@ namespace nap
         if (!errorState.check(ubo != nullptr, "Missing uniform struct with name `UBO`"))
             return false;
 
-        mBlendUniform = ubo->getOrCreateUniform<UniformFloatInstance>("blend");
-        if (!errorState.check(mBlendUniform != nullptr, "Missing uniform struct member with name `blend`"))
-            return false;
+		if (mBlendUniform != nullptr)
+		{
+			mBlendUniform = ubo->getOrCreateUniform<UniformFloatInstance>("blend");
+			resource->mBlend->valueChanged.connect(mBlendChangedSlot);
+		}
 
-		mBrightnessUniform = ubo->getOrCreateUniform<UniformFloatInstance>("brightness");
-		if (!errorState.check(mBrightnessUniform != nullptr, "Missing uniform struct member with name `brightness`"))
-			return false;
+		if (resource->mBrightness != nullptr)
+		{
+			mBrightnessUniform = ubo->getOrCreateUniform<UniformFloatInstance>("brightness");
+			resource->mBrightness->valueChanged.connect(mBrightnessChangedSlot);
+		}
 
-        resource->mBlend->valueChanged.connect(mBlendChangedSlot);
-        resource->mBrightness->valueChanged.connect(mBrightnessChangedSlot);
+		if (resource->mSaturation != nullptr)
+		{
+			mSaturationUniform = ubo->getOrCreateUniform<UniformFloatInstance>("saturation");
+			resource->mSaturation->valueChanged.connect(mSaturationChangedSlot);
+		}
+
+		if (resource->mContrast != nullptr)
+		{
+			mContrastUniform = ubo->getOrCreateUniform<UniformFloatInstance>("contrast");
+			resource->mContrast->valueChanged.connect(mBrightnessChangedSlot);
+		}
 
 		return true;
 	}
@@ -63,12 +78,25 @@ namespace nap
 
     void ControlBlendComponentInstance::onBlendChanged(float blend)
     {
+		assert(mBlendUniform != nullptr);
         mBlendUniform->setValue(blend);
     }
 
-
 	void ControlBlendComponentInstance::onBrightnessChanged(float brightness)
 	{
+		assert(mBrightnessUniform != nullptr);
 		mBrightnessUniform->setValue(brightness);
+	}
+
+	void ControlBlendComponentInstance::onSaturationChanged(float saturation)
+	{
+		assert(mSaturationUniform != nullptr);
+		mSaturationUniform->setValue(saturation);
+	}
+
+	void ControlBlendComponentInstance::onConstrastChanged(float contrast)
+	{
+		assert(mContrastUniform != nullptr);
+		mContrastUniform->setValue(contrast);
 	}
 }

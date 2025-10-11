@@ -70,7 +70,7 @@ namespace nap
 			};
 			return;
 		}
-		mRandomSeed = { 0.0f, 0.0f, 0.0f, 0.0f };
+		mRandomSeed = {};
 	}
 
 
@@ -94,7 +94,7 @@ namespace nap
 			mTransformComponent->setRotate(rotate);
 		}
 
-		// Scale
+		// Scalemath
 		if (mResource->mMultiplyScale > 0.0f)
 		{
 			float strength = glm::simplex<float>(glm::vec2(mRandomSeed.y, mRandomSeed.y));

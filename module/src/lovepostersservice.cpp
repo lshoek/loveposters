@@ -18,6 +18,9 @@ namespace nap
 {
 	bool LovePostersService::init(nap::utility::ErrorState& errorState)
 	{
+		// Seed random number generator
+		std::srand(0);
+
         return true;
 	}
 

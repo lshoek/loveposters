@@ -9,6 +9,7 @@
 // Nap includes
 #include <entity.h>
 #include <nap/core.h>
+#include <nap/logger.h>
 
 RTTI_BEGIN_CLASS(nap::LegacyFluxMeasurementComponent::FilterParameterItem)
 	RTTI_PROPERTY("Parameter", &nap::LegacyFluxMeasurementComponent::FilterParameterItem::mParameter, nap::rtti::EPropertyMetaData::Required)
@@ -22,6 +23,7 @@ RTTI_BEGIN_CLASS(nap::LegacyFluxMeasurementComponent::FilterParameterItem)
 	RTTI_PROPERTY("MaxHertz", &nap::LegacyFluxMeasurementComponent::FilterParameterItem::mMaxHz, nap::rtti::EPropertyMetaData::Default)
 	RTTI_PROPERTY("EvaluationSampleCount", &nap::LegacyFluxMeasurementComponent::FilterParameterItem::mEvaluationSampleCount, nap::rtti::EPropertyMetaData::Default)
 	RTTI_PROPERTY("SmoothTime", &nap::LegacyFluxMeasurementComponent::FilterParameterItem::mSmoothTime, nap::rtti::EPropertyMetaData::Default)
+	RTTI_PROPERTY("StretchSmoothTime", &nap::LegacyFluxMeasurementComponent::FilterParameterItem::mStretchSmoothTime, nap::rtti::EPropertyMetaData::Default)
 RTTI_END_CLASS
 
 RTTI_BEGIN_CLASS(nap::LegacyFluxMeasurementComponent)
@@ -67,16 +69,25 @@ namespace nap
 		if (!errorState.check(mFFTAudioComponent != nullptr, "Missing nap::FFTAudioComponentInstance under entity"))
 			return false;
 
+		return reset(errorState);
+	}
+
+
+	bool LegacyFluxMeasurementComponentInstance::reset(utility::ErrorState& errorState)
+	{
 		const uint bin_count = mFFTAudioComponent->getFFTBuffer().getBinCount();
+		mOnsetList.clear();
 		mOnsetList.reserve(mResource->mParameters.size());
 		for (auto& entry : mResource->mParameters)
 		{
 			if (!errorState.check(entry->mMinHz < entry->mMaxHz, "%s: Invalid filter parameter item. Minimum hertz higher than maximum hertz.", mResource->mID.c_str()))
 				return false;
 
+			if (!errorState.check(entry->mEvaluationSampleCount > 0, "%s: Invalid evaluation sample count.", mResource->mID.c_str()))
+				return false;
+
 			mOnsetList.emplace_back(*entry);
 		}
-
 		mPreviousBuffer.resize(bin_count);
 		return true;
 	}
@@ -88,7 +99,6 @@ namespace nap
 			return;
 
 		const float delta_time = static_cast<float>(deltaTime);
-		mElapsedTime += delta_time;
 
 		// Fetch amplitudes
 		const auto& amps = mFFTAudioComponent->getFFTBuffer().getAmplitudeSpectrum();
@@ -122,14 +132,17 @@ namespace nap
 			float onset = std::max(max_onset + entry.mVelocity * delta_time, 0.0f);
 
 			// Compute stretch factor to normalize output to target average over a time period
-			float stretch = 1.0f;
+			float stretch = entry.mInitialStretch;
 			if (entry.mStretch != nullptr)
 			{
 				float average_onset = std::max(entry.computeMovingAverage(onset, entry.mSampleAverage), glm::epsilon<float>()*2.0f);
 				float target_onset = (entry.mTargetOnset != nullptr) ? entry.mTargetOnset->mValue : 0.25f;
 				float factor = target_onset / average_onset;
-				entry.mStretch->setValue(entry.mStretchSmoother.update(factor, delta_time));
-				stretch = entry.mStretch->mValue;
+				float stretch_smooth = glm::clamp(entry.mStretchSmoother.update(factor, delta_time), entry.mStretch->mMinimum, entry.mStretch->mMaximum);
+
+				// Ensure stretch does not blow right after init
+				stretch = glm::mix(entry.mInitialStretch, stretch_smooth, std::min(static_cast<float>(entry.mSamplesEvaluated) / static_cast<float>(entry.mEvaluationSampleCount), 1.0f));
+				entry.mStretch->setValue(stretch);
 			}
 
 			entry.mOnsetValue = onset;

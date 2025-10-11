@@ -19,6 +19,8 @@ namespace nap
 	public:
 		ResourcePtr<ParameterFloat> mBlend;             ///< Property: 'Blend' Blend value [0, 1]
 		ResourcePtr<ParameterFloat> mBrightness;        ///< Property: 'Brightness' Brightness value [-1, 1]
+		ResourcePtr<ParameterFloat> mSaturation;        ///< Property: 'Saturation' 
+		ResourcePtr<ParameterFloat> mContrast;			///< Property: 'Contrast'
         ComponentPtr<RenderableComponent> mRenderer;    ///< Property: 'Renderer' Component that renders the blend effect
     };
 
@@ -48,9 +50,17 @@ namespace nap
 		void onBrightnessChanged(float);
 		Slot<float> mBrightnessChangedSlot = { this, &ControlBlendComponentInstance::onBrightnessChanged };
 
+		void onSaturationChanged(float);
+		Slot<float> mSaturationChangedSlot = { this, &ControlBlendComponentInstance::onSaturationChanged };
+
+		void onConstrastChanged(float);
+		Slot<float> mContrastChangedSlot = { this, &ControlBlendComponentInstance::onConstrastChanged };
+
         nap::ComponentInstancePtr<RenderableComponent> mRenderer = initComponentInstancePtr(this, &ControlBlendComponent::mRenderer);
 
         UniformFloatInstance* mBlendUniform = nullptr;
         UniformFloatInstance* mBrightnessUniform = nullptr;
+        UniformFloatInstance* mSaturationUniform = nullptr;
+        UniformFloatInstance* mContrastUniform = nullptr;
     };
 }

@@ -19,6 +19,7 @@
 #include <depthsorter.h>
 #include <sdlhelpers.h>
 #include <playlistcontrolcomponent.h>
+#include <legacyfluxmeasurementcomponent.h>
 
 namespace nap 
 {    
@@ -100,7 +101,7 @@ namespace nap
     }
 
 
-    // Called when the window is going to render
+    // Called when the window is going to renderco
     void LovePostersApp::render()
     {
 		// Signal the beginning of a new frame, allowing it to be recorded.
@@ -293,6 +294,15 @@ namespace nap
 							playback->start();
 						else
 							playback->stop();
+					}
+
+					std::vector<LegacyFluxMeasurementComponentInstance*> flux;
+					mAudioEntity->getComponentsOfTypeRecursive(flux);
+					utility::ErrorState error_state;
+					for (auto* f : flux)
+					{
+						if (!f->reset(error_state))
+							nap::Logger::error(error_state.toString());
 					}
 
                     // Set playlist to first ityem immediately
