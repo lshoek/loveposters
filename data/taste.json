@@ -157,7 +157,7 @@
                         "Translate": {
                             "x": 0.0,
                             "y": 0.0,
-                            "z": 0.5
+                            "z": 0.0
                         },
                         "Rotate": {
                             "x": 0.0,
@@ -180,7 +180,7 @@
                     "Type": "nap::PerspCameraComponent",
                     "mID": "PerspectiveCamera",
                     "Properties": {
-                        "FieldOfView": 75.0,
+                        "FieldOfView": 90.0,
                         "NearClippingPlane": 0.009999999776482582,
                         "FarClippingPlane": 20.0,
                         "GridDimensions": {
@@ -212,9 +212,10 @@
                     "Offset": "CameraOffsetParam",
                     "RotationHorizontal": 0.10000000149011612,
                     "RotationVertical": 0.10000000149011612,
-                    "Pan": 0.5,
-                    "ShiftHorizontal": 0.5,
-                    "ShiftVertical": 0.125,
+                    "AnchorDistance": 0.5,
+                    "Pan": 0.05000000074505806,
+                    "ShiftHorizontal": 0.20000000298023224,
+                    "ShiftVertical": 0.0,
                     "RotateClockSpeed": 0.10000000149011612,
                     "ShiftClockSpeed": 0.10000000149011612,
                     "Enable": true
@@ -1226,7 +1227,7 @@
                     "MultiplyRotation": 0.5,
                     "MultiplyTranslation": {
                         "x": 0.5,
-                        "y": 0.4000000059604645
+                        "y": 0.20000000298023224
                     },
                     "MultiplyScale": 1.0,
                     "RandomOffset": true,
@@ -1375,7 +1376,7 @@
                     "MultiplyRotation": 0.5,
                     "MultiplyTranslation": {
                         "x": 1.0,
-                        "y": 0.4000000059604645
+                        "y": 0.20000000298023224
                     },
                     "MultiplyScale": 1.0,
                     "RandomOffset": true,
@@ -1524,7 +1525,7 @@
                     "MultiplyRotation": 0.5,
                     "MultiplyTranslation": {
                         "x": 1.0,
-                        "y": 0.4000000059604645
+                        "y": 0.20000000298023224
                     },
                     "MultiplyScale": 1.0,
                     "RandomOffset": true,
@@ -1673,7 +1674,7 @@
                     "MultiplyRotation": 0.5,
                     "MultiplyTranslation": {
                         "x": 1.0,
-                        "y": 0.4000000059604645
+                        "y": 0.20000000298023224
                     },
                     "MultiplyScale": 1.0,
                     "RandomOffset": true,
@@ -1822,7 +1823,7 @@
                     "MultiplyRotation": 0.5,
                     "MultiplyTranslation": {
                         "x": 1.0,
-                        "y": 0.4000000059604645
+                        "y": 0.20000000298023224
                     },
                     "MultiplyScale": 1.0,
                     "RandomOffset": true,
@@ -1970,8 +1971,8 @@
                     "ScaleIntensity": "ScaleIntensityParam",
                     "MultiplyRotation": 0.25,
                     "MultiplyTranslation": {
-                        "x": 0.5,
-                        "y": 0.4000000059604645
+                        "x": 0.25,
+                        "y": 0.20000000298023224
                     },
                     "MultiplyScale": 1.0,
                     "RandomOffset": true,
@@ -1993,7 +1994,7 @@
                             "mID": "Item",
                             "Groups": [
                                 {
-                                    "Preset": "presets/parameterstaste/peacecall_portrait.json",
+                                    "Preset": "presets/parameterstaste/0.runintolove_landscape.json",
                                     "ParameterGroup": "ParametersTaste",
                                     "Blender": "ParameterBlender"
                                 }
@@ -2004,7 +2005,7 @@
                         }
                     ],
                     "RandomizePlaylist": false,
-                    "Enable": false,
+                    "Enable": true,
                     "Verbose": false
                 },
                 {
@@ -2349,7 +2350,7 @@
                 {
                     "Type": "nap::ControlBloomComponent",
                     "mID": "ControlBloom",
-                    "BaseIntensity": 0.375,
+                    "BaseIntensity": 1.0,
                     "Movement": "HighFrequencyFluxParam",
                     "Intensity": "BloomIntensityParam",
                     "RenderToTexture": "./BlendTogether"
@@ -2655,7 +2656,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "MultiplyHighParam",
                     "Name": "MultiplyHigh",
-                    "Value": 12.0,
+                    "Value": 5.0,
                     "Minimum": 0.0,
                     "Maximum": 20.0
                 },
@@ -2686,7 +2687,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "TargetOnsetLow",
                     "Name": "TargetOnsetLow",
-                    "Value": 0.20000000298023224,
+                    "Value": 0.25,
                     "Minimum": 0.0,
                     "Maximum": 1.0
                 },
@@ -2694,7 +2695,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "TargetOnsetHigh",
                     "Name": "TargetOnsetHigh",
-                    "Value": 0.4000000059604645,
+                    "Value": 0.25,
                     "Minimum": 0.0,
                     "Maximum": 1.0
                 }
@@ -2948,7 +2949,7 @@
                     "Name": "TranslateY",
                     "Value": 0.0,
                     "Minimum": 0.0,
-                    "Maximum": 4.0
+                    "Maximum": 2.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
@@ -3105,8 +3106,8 @@
             "AlwaysOnTop": false,
             "SampleShading": false,
             "Title": "Sampler",
-            "Width": 810,
-            "Height": 1440,
+            "Width": 1080,
+            "Height": 1920,
             "Mode": "Mailbox",
             "ClearColor": {
                 "Values": [
@@ -3842,7 +3843,7 @@
         {
             "Type": "nap::audio::AudioFileResource",
             "mID": "AlbumSamplerAudio",
-            "AudioFilePath": "taste/album2/B4 - INTO THE NIGHT MIX _25-09-26.wav"
+            "AudioFilePath": "taste/album2/A3 - Another Taste - Run Into Love - Carvery Mastered.wav"
         }
     ]
 }

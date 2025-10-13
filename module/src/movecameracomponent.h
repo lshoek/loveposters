@@ -31,6 +31,7 @@ namespace nap
 
 		float mRotationHorizontal = 1.0f;
 		float mRotationVertical = 1.0f;
+		float mAnchorDistance = 0.5f;
 		float mPan = 1.0f;
 
 		float mShiftHorizontal = 0.0f;

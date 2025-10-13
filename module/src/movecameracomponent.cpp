@@ -2,6 +2,8 @@
 
 // External Includes
 #include <entity.h>
+#include <glm/gtx/quaternion.hpp>
+#include <glm/gtx/transform.hpp>
 #include <glm/gtc/noise.hpp>
 #include <glm/gtc/random.hpp>
 #include <orthocameracomponent.h>
@@ -13,6 +15,7 @@ RTTI_BEGIN_CLASS(nap::MoveCameraComponent)
 	RTTI_PROPERTY("Offset", &nap::MoveCameraComponent::mOffsetParam, nap::rtti::EPropertyMetaData::Required)
 	RTTI_PROPERTY("RotationHorizontal", &nap::MoveCameraComponent::mRotationHorizontal, nap::rtti::EPropertyMetaData::Default)
 	RTTI_PROPERTY("RotationVertical", &nap::MoveCameraComponent::mRotationVertical, nap::rtti::EPropertyMetaData::Default)
+	RTTI_PROPERTY("AnchorDistance", &nap::MoveCameraComponent::mAnchorDistance, nap::rtti::EPropertyMetaData::Default)
 	RTTI_PROPERTY("Pan", &nap::MoveCameraComponent::mPan, nap::rtti::EPropertyMetaData::Default)
 	RTTI_PROPERTY("ShiftHorizontal", &nap::MoveCameraComponent::mShiftHorizontal, nap::rtti::EPropertyMetaData::Default)
 	RTTI_PROPERTY("ShiftVertical", &nap::MoveCameraComponent::mShiftVertical, nap::rtti::EPropertyMetaData::Default)
@@ -77,18 +80,19 @@ namespace nap
 			glm::simplex<float>(glm::vec2(rotate_speed + mRandomSeed.y, mRandomSeed.y)),
 			glm::simplex<float>(glm::vec2(rotate_speed + mRandomSeed.z, mRandomSeed.z))
 		};
-		const float theta_x = noise.x * mResource->mRotationHorizontal * glm::half_pi<float>();
-		const float theta_y = noise.y * mResource->mRotationVertical * glm::half_pi<float>();
+		const float yaw = noise.x * mResource->mRotationHorizontal * glm::half_pi<float>();
+		const float pitch = noise.y * mResource->mRotationVertical * glm::half_pi<float>();
 
-		const auto displacement = glm::vec3(0.0f, 0.0f, (noise.z * 0.5f + 0.5f) * mResource->mPan);
-		const auto polar = glm::angleAxis(theta_x, math::X_AXIS) * glm::angleAxis(theta_y, math::Y_AXIS);
-		const auto polar_translate = polar * displacement;
-		const auto translate = anchor + polar_translate;
+		const glm::mat4 yaw_rotation = glm::rotate(yaw, math::Y_AXIS);
+		const glm::vec3& right = mTransformComponent->getLocalTransform()[0];
+		const glm::mat4 pitch_rotation = glm::rotate(pitch, right);
+		const auto displacement = glm::vec3(0.0f, 0.0f, mResource->mAnchorDistance + (noise.z * 0.5f + 0.5f) * mResource->mPan);
+		const glm::mat4 pivot_transform = yaw_rotation * pitch_rotation * glm::translate(displacement);
+
+		const glm::quat rotate = glm::normalize(glm::quat_cast(pivot_transform));
+		const glm::vec4 translate = pivot_transform[3] + glm::vec4(anchor, 0.0f);
+
 		mTransformComponent->setTranslate(translate);
-
-		// Focus
-		const auto orient_mat = glm::lookAt(translate, anchor, math::Y_AXIS);
-		const auto lookat_quat = glm::quat_cast(glm::transpose(orient_mat));
-		mTransformComponent->setRotate(lookat_quat);
+		mTransformComponent->setRotate(rotate);
 	}
 }
