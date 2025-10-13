@@ -1,0 +1,273 @@
+{
+    "Objects": [
+        {
+            "Type": "nap::ParameterGroup",
+            "mID": "ParametersTaste",
+            "Parameters": [
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "IntensityParam",
+                    "Name": "Intensity",
+                    "Value": 2.0,
+                    "Minimum": 0.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterVec3",
+                    "mID": "BackgroundOffsetParam",
+                    "Name": "BackgroundOffset",
+                    "Value": {
+                        "x": 0.0,
+                        "y": 0.3449999988079071,
+                        "z": -1.0
+                    },
+                    "Clamp": true,
+                    "Minimum": -1.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterVec3",
+                    "mID": "Building1OffsetParam",
+                    "Name": "Building1Offset",
+                    "Value": {
+                        "x": -0.34599998593330383,
+                        "y": 0.2759999930858612,
+                        "z": -0.8999999761581421
+                    },
+                    "Clamp": true,
+                    "Minimum": -1.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterVec3",
+                    "mID": "Building2OffsetParam",
+                    "Name": "Building2Offset",
+                    "Value": {
+                        "x": 0.1979999989271164,
+                        "y": 0.14800000190734863,
+                        "z": -0.800000011920929
+                    },
+                    "Clamp": true,
+                    "Minimum": -1.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterVec3",
+                    "mID": "Building3OffsetParam",
+                    "Name": "Building3Offset",
+                    "Value": {
+                        "x": 0.6909999847412109,
+                        "y": 0.0,
+                        "z": -0.699999988079071
+                    },
+                    "Clamp": true,
+                    "Minimum": -2.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterVec3",
+                    "mID": "Building4OffsetParam",
+                    "Name": "Building4Offset",
+                    "Value": {
+                        "x": -0.8399999737739563,
+                        "y": -0.04600000008940697,
+                        "z": -0.4000000059604645
+                    },
+                    "Clamp": true,
+                    "Minimum": -2.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterVec3",
+                    "mID": "RoadOffsetParam",
+                    "Name": "RoadOffset",
+                    "Value": {
+                        "x": 0.0,
+                        "y": -0.6899999976158142,
+                        "z": -0.30000001192092896
+                    },
+                    "Clamp": true,
+                    "Minimum": -1.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterVec3",
+                    "mID": "Car1OffsetParam",
+                    "Name": "Car1Offset",
+                    "Value": {
+                        "x": 0.6669999957084656,
+                        "y": -0.1509999930858612,
+                        "z": -0.09200000017881393
+                    },
+                    "Clamp": true,
+                    "Minimum": -1.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterVec3",
+                    "mID": "Car2OffsetParam",
+                    "Name": "Car2Offset",
+                    "Value": {
+                        "x": 0.41999998688697815,
+                        "y": -0.10499999672174454,
+                        "z": -0.15000000596046448
+                    },
+                    "Clamp": true,
+                    "Minimum": -1.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterVec3",
+                    "mID": "Car3OffsetParam",
+                    "Name": "Car3Offset",
+                    "Value": {
+                        "x": -0.12300000339746475,
+                        "y": -0.12800000607967377,
+                        "z": -0.10000000149011612
+                    },
+                    "Clamp": true,
+                    "Minimum": -1.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterVec3",
+                    "mID": "Car4OffsetParam",
+                    "Name": "Car4Offset",
+                    "Value": {
+                        "x": 0.7900000214576721,
+                        "y": -0.17299999296665192,
+                        "z": -0.05000000074505806
+                    },
+                    "Clamp": true,
+                    "Minimum": -1.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterVec3",
+                    "mID": "Car5OffsetParam",
+                    "Name": "Car5Offset",
+                    "Value": {
+                        "x": 0.14800000190734863,
+                        "y": -0.16099999845027924,
+                        "z": 0.0
+                    },
+                    "Clamp": true,
+                    "Minimum": -1.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterVec3",
+                    "mID": "Car6OffsetParam",
+                    "Name": "Car6Offset",
+                    "Value": {
+                        "x": -0.32100000977516174,
+                        "y": -0.18400000035762787,
+                        "z": 0.10000000149011612
+                    },
+                    "Clamp": true,
+                    "Minimum": -1.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterVec3",
+                    "mID": "Car7OffsetParam",
+                    "Name": "Car7Offset",
+                    "Value": {
+                        "x": 0.32100000977516174,
+                        "y": -0.2070000022649765,
+                        "z": 0.20000000298023224
+                    },
+                    "Clamp": true,
+                    "Minimum": -1.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterVec3",
+                    "mID": "CameraOffsetParam",
+                    "Name": "CameraOffset",
+                    "Value": {
+                        "x": 0.0,
+                        "y": 0.10000000149011612,
+                        "z": -0.1459999978542328
+                    },
+                    "Clamp": true,
+                    "Minimum": -4.0,
+                    "Maximum": 4.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "RotationIntensityParam",
+                    "Name": "RotationIntensity",
+                    "Value": 1.7879999876022339,
+                    "Minimum": 0.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "RotationAccumulatorIntensityParam",
+                    "Name": "RotationAccumulatorIntensity",
+                    "Value": 16.222999572753906,
+                    "Minimum": 0.0,
+                    "Maximum": 20.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "TranslateXIntensityParam",
+                    "Name": "TranslateX",
+                    "Value": 0.9459999799728394,
+                    "Minimum": 0.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "TranslateYIntensityParam",
+                    "Name": "TranslateY",
+                    "Value": 1.3849999904632568,
+                    "Minimum": 0.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "BloomIntensityParam",
+                    "Name": "BloomIntensity",
+                    "Value": 1.5,
+                    "Minimum": 0.0,
+                    "Maximum": 50.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "BrightnessParam",
+                    "Name": "Brightness",
+                    "Value": 0.1420000046491623,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "SaturationParam",
+                    "Name": "Saturation",
+                    "Value": 2.0,
+                    "Minimum": 0.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "ContrastParam",
+                    "Name": "Contrast",
+                    "Value": 0.14300000667572021,
+                    "Minimum": -1.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "ScaleIntensityParam",
+                    "Name": "ScaleIntensity",
+                    "Value": 0.5,
+                    "Minimum": 0.10000000149011612,
+                    "Maximum": 2.0
+                }
+            ],
+            "Groups": []
+        }
+    ]
+}

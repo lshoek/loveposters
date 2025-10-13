@@ -180,7 +180,7 @@
                     "Type": "nap::PerspCameraComponent",
                     "mID": "PerspectiveCamera",
                     "Properties": {
-                        "FieldOfView": 90.0,
+                        "FieldOfView": 75.0,
                         "NearClippingPlane": 0.009999999776482582,
                         "FarClippingPlane": 20.0,
                         "GridDimensions": {
@@ -209,13 +209,14 @@
                     "mID": "MoveCameraComponent",
                     "Movement": "LowFrequencyFluxParam",
                     "Intensity": "IntensityParam",
-                    "MultiplyIntensity": 0.10000000149011612,
-                    "MoveExtents": {
-                        "x": 0.10000000149011612,
-                        "y": 0.10000000149011612,
-                        "z": 0.0
-                    },
-                    "FocusDepth": 0.0,
+                    "Offset": "CameraOffsetParam",
+                    "RotationHorizontal": 0.10000000149011612,
+                    "RotationVertical": 0.10000000149011612,
+                    "Pan": 0.5,
+                    "ShiftHorizontal": 0.5,
+                    "ShiftVertical": 0.125,
+                    "RotateClockSpeed": 0.10000000149011612,
+                    "ShiftClockSpeed": 0.10000000149011612,
                     "Enable": true
                 }
             ],
@@ -458,7 +459,7 @@
                         "Buffers": [],
                         "Constants": [],
                         "Material": "TextureMaterial",
-                        "BlendMode": "NotSet",
+                        "BlendMode": "AlphaBlend",
                         "DepthMode": "NotSet"
                     },
                     "LineWidth": 1.0,
@@ -605,7 +606,7 @@
                         "Buffers": [],
                         "Constants": [],
                         "Material": "TextureMaterial",
-                        "BlendMode": "NotSet",
+                        "BlendMode": "AlphaBlend",
                         "DepthMode": "NotSet"
                     },
                     "LineWidth": 1.0,
@@ -752,7 +753,7 @@
                         "Buffers": [],
                         "Constants": [],
                         "Material": "TextureMaterial",
-                        "BlendMode": "NotSet",
+                        "BlendMode": "AlphaBlend",
                         "DepthMode": "NotSet"
                     },
                     "LineWidth": 1.0,
@@ -899,7 +900,7 @@
                         "Buffers": [],
                         "Constants": [],
                         "Material": "TextureMaterial",
-                        "BlendMode": "NotSet",
+                        "BlendMode": "AlphaBlend",
                         "DepthMode": "NotSet"
                     },
                     "LineWidth": 1.0,
@@ -1015,7 +1016,7 @@
                 {
                     "Type": "nap::RenderableMeshComponent",
                     "mID": "RenderCar1",
-                    "Visible": true,
+                    "Visible": false,
                     "Tags": [
                         "RenderTag_NoShadow",
                         "RenderTag_Default"
@@ -1080,7 +1081,7 @@
                     },
                     "MultiplyScale": 1.0,
                     "RandomOffset": true,
-                    "Enable": true
+                    "Enable": false
                 }
             ],
             "Children": []
@@ -1146,7 +1147,7 @@
                         "Buffers": [],
                         "Constants": [],
                         "Material": "TextureMaterial",
-                        "BlendMode": "NotSet",
+                        "BlendMode": "AlphaBlend",
                         "DepthMode": "NotSet"
                     },
                     "LineWidth": 1.0,
@@ -1225,7 +1226,7 @@
                     "MultiplyRotation": 0.5,
                     "MultiplyTranslation": {
                         "x": 0.5,
-                        "y": 0.20000000298023224
+                        "y": 0.4000000059604645
                     },
                     "MultiplyScale": 1.0,
                     "RandomOffset": true,
@@ -1295,7 +1296,7 @@
                         "Buffers": [],
                         "Constants": [],
                         "Material": "TextureMaterial",
-                        "BlendMode": "NotSet",
+                        "BlendMode": "AlphaBlend",
                         "DepthMode": "NotSet"
                     },
                     "LineWidth": 1.0,
@@ -1374,7 +1375,7 @@
                     "MultiplyRotation": 0.5,
                     "MultiplyTranslation": {
                         "x": 1.0,
-                        "y": 0.20000000298023224
+                        "y": 0.4000000059604645
                     },
                     "MultiplyScale": 1.0,
                     "RandomOffset": true,
@@ -1444,7 +1445,7 @@
                         "Buffers": [],
                         "Constants": [],
                         "Material": "TextureMaterial",
-                        "BlendMode": "NotSet",
+                        "BlendMode": "AlphaBlend",
                         "DepthMode": "NotSet"
                     },
                     "LineWidth": 1.0,
@@ -1523,7 +1524,7 @@
                     "MultiplyRotation": 0.5,
                     "MultiplyTranslation": {
                         "x": 1.0,
-                        "y": 0.20000000298023224
+                        "y": 0.4000000059604645
                     },
                     "MultiplyScale": 1.0,
                     "RandomOffset": true,
@@ -1672,7 +1673,7 @@
                     "MultiplyRotation": 0.5,
                     "MultiplyTranslation": {
                         "x": 1.0,
-                        "y": 0.20000000298023224
+                        "y": 0.4000000059604645
                     },
                     "MultiplyScale": 1.0,
                     "RandomOffset": true,
@@ -1742,7 +1743,7 @@
                         "Buffers": [],
                         "Constants": [],
                         "Material": "TextureMaterial",
-                        "BlendMode": "NotSet",
+                        "BlendMode": "AlphaBlend",
                         "DepthMode": "NotSet"
                     },
                     "LineWidth": 1.0,
@@ -1821,7 +1822,7 @@
                     "MultiplyRotation": 0.5,
                     "MultiplyTranslation": {
                         "x": 1.0,
-                        "y": 0.20000000298023224
+                        "y": 0.4000000059604645
                     },
                     "MultiplyScale": 1.0,
                     "RandomOffset": true,
@@ -1891,7 +1892,7 @@
                         "Buffers": [],
                         "Constants": [],
                         "Material": "TextureMaterial",
-                        "BlendMode": "NotSet",
+                        "BlendMode": "AlphaBlend",
                         "DepthMode": "NotSet"
                     },
                     "LineWidth": 1.0,
@@ -1969,8 +1970,8 @@
                     "ScaleIntensity": "ScaleIntensityParam",
                     "MultiplyRotation": 0.25,
                     "MultiplyTranslation": {
-                        "x": 0.25,
-                        "y": 0.20000000298023224
+                        "x": 0.5,
+                        "y": 0.4000000059604645
                     },
                     "MultiplyScale": 1.0,
                     "RandomOffset": true,
@@ -1992,7 +1993,7 @@
                             "mID": "Item",
                             "Groups": [
                                 {
-                                    "Preset": "presets/parameterstaste/default.json",
+                                    "Preset": "presets/parameterstaste/peacecall_portrait.json",
                                     "ParameterGroup": "ParametersTaste",
                                     "Blender": "ParameterBlender"
                                 }
@@ -2348,7 +2349,7 @@
                 {
                     "Type": "nap::ControlBloomComponent",
                     "mID": "ControlBloom",
-                    "BaseIntensity": 1.0,
+                    "BaseIntensity": 0.375,
                     "Movement": "HighFrequencyFluxParam",
                     "Intensity": "BloomIntensityParam",
                     "RenderToTexture": "./BlendTogether"
@@ -2654,7 +2655,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "MultiplyHighParam",
                     "Name": "MultiplyHigh",
-                    "Value": 5.0,
+                    "Value": 12.0,
                     "Minimum": 0.0,
                     "Maximum": 20.0
                 },
@@ -2693,7 +2694,7 @@
                     "Type": "nap::ParameterFloat",
                     "mID": "TargetOnsetHigh",
                     "Name": "TargetOnsetHigh",
-                    "Value": 0.20000000298023224,
+                    "Value": 0.4000000059604645,
                     "Minimum": 0.0,
                     "Maximum": 1.0
                 }
@@ -2905,6 +2906,19 @@
                     "Maximum": 1.0
                 },
                 {
+                    "Type": "nap::ParameterVec3",
+                    "mID": "CameraOffsetParam",
+                    "Name": "CameraOffset",
+                    "Value": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "Clamp": true,
+                    "Minimum": -4.0,
+                    "Maximum": 4.0
+                },
+                {
                     "Type": "nap::ParameterFloat",
                     "mID": "RotationIntensityParam",
                     "Name": "RotationIntensity",
@@ -2934,7 +2948,7 @@
                     "Name": "TranslateY",
                     "Value": 0.0,
                     "Minimum": 0.0,
-                    "Maximum": 2.0
+                    "Maximum": 4.0
                 },
                 {
                     "Type": "nap::ParameterFloat",
@@ -2975,122 +2989,6 @@
                     "Value": 1.0,
                     "Minimum": 0.10000000149011612,
                     "Maximum": 2.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "DecayClockSpeed",
-                    "Name": "DecayClockSpeed",
-                    "Value": 1.0,
-                    "Minimum": 0.0,
-                    "Maximum": 2.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "Vertical",
-                    "Name": "Vertical",
-                    "Value": 0.0,
-                    "Minimum": -10.0,
-                    "Maximum": 10.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "Tangent",
-                    "Name": "Tangent",
-                    "Value": 0.0,
-                    "Minimum": -10.0,
-                    "Maximum": 20.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "Expand",
-                    "Name": "Expand",
-                    "Value": 0.0,
-                    "Minimum": 0.0,
-                    "Maximum": 10.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "ExpandBlend",
-                    "Name": "ExpandBlend",
-                    "Value": 1.0,
-                    "Minimum": 0.0,
-                    "Maximum": 1.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "NoiseScale",
-                    "Name": "NoiseScale",
-                    "Value": 1.0,
-                    "Minimum": 0.0,
-                    "Maximum": 10.0
-                },
-                {
-                    "Type": "nap::ParameterFloat",
-                    "mID": "GradientClockSpeed",
-                    "Name": "GradientClockSpeed",
-                    "Value": 1.0,
-                    "Minimum": -10.0,
-                    "Maximum": 10.0
-                },
-                {
-                    "Type": "nap::ParameterRGBColorFloat",
-                    "mID": "Color0",
-                    "Name": "Color0",
-                    "Value": {
-                        "Values": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ]
-                    }
-                },
-                {
-                    "Type": "nap::ParameterRGBColorFloat",
-                    "mID": "Color1",
-                    "Name": "Color1",
-                    "Value": {
-                        "Values": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ]
-                    }
-                },
-                {
-                    "Type": "nap::ParameterRGBColorFloat",
-                    "mID": "Color2",
-                    "Name": "Color2",
-                    "Value": {
-                        "Values": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ]
-                    }
-                },
-                {
-                    "Type": "nap::ParameterRGBColorFloat",
-                    "mID": "Color3",
-                    "Name": "Color3",
-                    "Value": {
-                        "Values": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ]
-                    }
-                },
-                {
-                    "Type": "nap::ParameterRGBColorFloat",
-                    "mID": "Color4",
-                    "Name": "Color4",
-                    "Value": {
-                        "Values": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ]
-                    }
                 }
             ],
             "Groups": []
@@ -3201,7 +3099,7 @@
         {
             "Type": "nap::RenderWindow",
             "mID": "Window",
-            "Borderless": true,
+            "Borderless": false,
             "Resizable": true,
             "Visible": true,
             "AlwaysOnTop": false,
@@ -3209,7 +3107,7 @@
             "Title": "Sampler",
             "Width": 810,
             "Height": 1440,
-            "Mode": "FIFO",
+            "Mode": "Mailbox",
             "ClearColor": {
                 "Values": [
                     0.0,
@@ -3843,8 +3741,8 @@
                 {
                     "Type": "nap::RenderTexture2D",
                     "mID": "ColorTexture",
-                    "Width": 810,
-                    "Height": 1440,
+                    "Width": 1440,
+                    "Height": 2560,
                     "Format": "RGBA8",
                     "ColorSpace": "Linear",
                     "ClearColor": {
@@ -3860,8 +3758,8 @@
                 {
                     "Type": "nap::RenderTexture2D",
                     "mID": "ColorBlendTexture",
-                    "Width": 810,
-                    "Height": 1440,
+                    "Width": 1440,
+                    "Height": 2560,
                     "Format": "RGBA8",
                     "ColorSpace": "Linear",
                     "ClearColor": {
@@ -3877,8 +3775,8 @@
                 {
                     "Type": "nap::RenderTexture2D",
                     "mID": "BloomTexture",
-                    "Width": 810,
-                    "Height": 1440,
+                    "Width": 1440,
+                    "Height": 2560,
                     "Format": "RGBA8",
                     "ColorSpace": "Linear",
                     "ClearColor": {
@@ -3894,8 +3792,8 @@
                 {
                     "Type": "nap::RenderTexture2D",
                     "mID": "StencilTexture",
-                    "Width": 810,
-                    "Height": 1440,
+                    "Width": 1440,
+                    "Height": 2560,
                     "Format": "RGBA8",
                     "ColorSpace": "Linear",
                     "ClearColor": {
@@ -3944,7 +3842,7 @@
         {
             "Type": "nap::audio::AudioFileResource",
             "mID": "AlbumSamplerAudio",
-            "AudioFilePath": "taste/album2/Run Into Love (Radio Edit) - Carvery Mastered.wav"
+            "AudioFilePath": "taste/album2/B4 - INTO THE NIGHT MIX _25-09-26.wav"
         }
     ]
 }

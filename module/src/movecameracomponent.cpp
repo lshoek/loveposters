@@ -10,9 +10,14 @@
 RTTI_BEGIN_CLASS(nap::MoveCameraComponent)
 	RTTI_PROPERTY("Movement", &nap::MoveCameraComponent::mMovementParam, nap::rtti::EPropertyMetaData::Required)
 	RTTI_PROPERTY("Intensity", &nap::MoveCameraComponent::mIntensityParam, nap::rtti::EPropertyMetaData::Required)
-	RTTI_PROPERTY("MultiplyIntensity", &nap::MoveCameraComponent::mMultiplyIntensity, nap::rtti::EPropertyMetaData::Default)
-	RTTI_PROPERTY("MoveExtents", &nap::MoveCameraComponent::mMoveExtents, nap::rtti::EPropertyMetaData::Default)
-	RTTI_PROPERTY("FocusDepth", &nap::MoveCameraComponent::mFocusDepth, nap::rtti::EPropertyMetaData::Default)
+	RTTI_PROPERTY("Offset", &nap::MoveCameraComponent::mOffsetParam, nap::rtti::EPropertyMetaData::Required)
+	RTTI_PROPERTY("RotationHorizontal", &nap::MoveCameraComponent::mRotationHorizontal, nap::rtti::EPropertyMetaData::Default)
+	RTTI_PROPERTY("RotationVertical", &nap::MoveCameraComponent::mRotationVertical, nap::rtti::EPropertyMetaData::Default)
+	RTTI_PROPERTY("Pan", &nap::MoveCameraComponent::mPan, nap::rtti::EPropertyMetaData::Default)
+	RTTI_PROPERTY("ShiftHorizontal", &nap::MoveCameraComponent::mShiftHorizontal, nap::rtti::EPropertyMetaData::Default)
+	RTTI_PROPERTY("ShiftVertical", &nap::MoveCameraComponent::mShiftVertical, nap::rtti::EPropertyMetaData::Default)
+	RTTI_PROPERTY("RotateClockSpeed", &nap::MoveCameraComponent::mRotateClockSpeed, nap::rtti::EPropertyMetaData::Default)
+	RTTI_PROPERTY("ShiftClockSpeed", &nap::MoveCameraComponent::mShiftClockSpeed, nap::rtti::EPropertyMetaData::Default)
 	RTTI_PROPERTY("Enable", &nap::MoveCameraComponent::mEnable, nap::rtti::EPropertyMetaData::Default)
 RTTI_END_CLASS
 
@@ -38,8 +43,15 @@ namespace nap
 		mResource = getComponent<MoveCameraComponent>();
 		mTransformComponent = &getEntityInstance()->getComponent<TransformComponentInstance>();
 		mCachedTransform = std::make_unique<AffineTransform>(*mTransformComponent);
-		mRandomSeed = { glm::linearRand<float>(0.0f, 1000.0f), glm::linearRand<float>(0.0f, 1000.0f), glm::linearRand<float>(0.0f, 1000.0f), glm::linearRand<float>(0.0f, 1000.0f) };
-
+		mRandomSeed = {
+			glm::linearRand<float>(0.0f, 1000.0f),
+			glm::linearRand<float>(0.0f, 1000.0f),
+			glm::linearRand<float>(0.0f, 1000.0f),
+		};
+		mRandomSeedShift = {
+			glm::linearRand<float>(0.0f, 1000.0f),
+			glm::linearRand<float>(0.0f, 1000.0f)
+		};
 		return true;
 	}
 
@@ -50,25 +62,32 @@ namespace nap
 			return;
 
 		mMovementTime += static_cast<float>(deltaTime) * mResource->mIntensityParam->mValue;
-		float movement_speed = mMovementTime * mResource->mMultiplyIntensity;
 
-		glm::vec3 noise = {
-			glm::simplex<float>(glm::vec2(movement_speed + mRandomSeed.x, mRandomSeed.x)),
-			glm::simplex<float>(glm::vec2(movement_speed + mRandomSeed.y, mRandomSeed.y)),
-			glm::simplex<float>(glm::vec2(movement_speed + mRandomSeed.z, mRandomSeed.z))
+		const float shift_speed = mMovementTime * mResource->mShiftClockSpeed;
+		const glm::vec2 noise_shift = {
+			glm::simplex<float>(glm::vec2(shift_speed + mRandomSeedShift.x, mRandomSeedShift.x)),
+			glm::simplex<float>(glm::vec2(shift_speed + mRandomSeedShift.y, mRandomSeedShift.y)),
 		};
+		const auto shift = noise_shift * glm::vec2(mResource->mShiftHorizontal, mResource->mShiftVertical);
+		const auto anchor = mCachedTransform->mTranslate + mResource->mOffsetParam->mValue + glm::vec3(shift, 0.0f);
 
-		float theta_x = noise.x * mResource->mMoveExtents.x * glm::half_pi<float>();
-		float distance = ((noise.z + 1.0f) * 0.5f) * mResource->mMoveExtents.z;
-		glm::vec3 polar_translate = glm::angleAxis(theta_x, math::Y_AXIS) * glm::vec3(0.0f, 0.0f, distance);
-		glm::vec3 height_translate = { 0.0f, noise.y * mResource->mMoveExtents.y, 0.0f };
+		const float rotate_speed = mMovementTime * mResource->mRotateClockSpeed;
+		const glm::vec3 noise = {
+			glm::simplex<float>(glm::vec2(rotate_speed + mRandomSeed.x, mRandomSeed.x)),
+			glm::simplex<float>(glm::vec2(rotate_speed + mRandomSeed.y, mRandomSeed.y)),
+			glm::simplex<float>(glm::vec2(rotate_speed + mRandomSeed.z, mRandomSeed.z))
+		};
+		const float theta_x = noise.x * mResource->mRotationHorizontal * glm::half_pi<float>();
+		const float theta_y = noise.y * mResource->mRotationVertical * glm::half_pi<float>();
 
-		auto translate = mCachedTransform->mTranslate + height_translate  + polar_translate;
+		const auto displacement = glm::vec3(0.0f, 0.0f, (noise.z * 0.5f + 0.5f) * mResource->mPan);
+		const auto polar = glm::angleAxis(theta_x, math::X_AXIS) * glm::angleAxis(theta_y, math::Y_AXIS);
+		const auto polar_translate = polar * displacement;
+		const auto translate = anchor + polar_translate;
 		mTransformComponent->setTranslate(translate);
 
 		// Focus
-		glm::vec3 focus_point = { 0.0f, 0.0f, -mResource->mFocusDepth };
-		glm::mat3 orient_mat = glm::lookAt(translate, focus_point, math::Y_AXIS);
+		const auto orient_mat = glm::lookAt(translate, anchor, math::Y_AXIS);
 		const auto lookat_quat = glm::quat_cast(glm::transpose(orient_mat));
 		mTransformComponent->setRotate(lookat_quat);
 	}

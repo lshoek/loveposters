@@ -2,6 +2,7 @@
 
 #include <component.h>
 #include <parameternumeric.h>
+#include <parametervec.h>
 
 #include "affinetransform.h"
 
@@ -26,10 +27,17 @@ namespace nap
 
 		ResourcePtr<ParameterFloat> mMovementParam;
 		ResourcePtr<ParameterFloat> mIntensityParam;
+		ResourcePtr<ParameterVec3> mOffsetParam;
 
-		glm::vec3 mMoveExtents = { 1.0f, 1.0f, 0.0f };
-		float mMultiplyIntensity = 1.0f;
-		float mFocusDepth = -1.0f;
+		float mRotationHorizontal = 1.0f;
+		float mRotationVertical = 1.0f;
+		float mPan = 1.0f;
+
+		float mShiftHorizontal = 0.0f;
+		float mShiftVertical = 0.0f;
+
+		float mRotateClockSpeed = 1.0f;
+		float mShiftClockSpeed = 1.0f;
 		bool mEnable = true;
 	};
 
@@ -62,7 +70,8 @@ namespace nap
 		TransformComponentInstance* mTransformComponent = nullptr;
 
 		std::unique_ptr<AffineTransform> mCachedTransform;
-		glm::vec4 mRandomSeed;
+		glm::vec3 mRandomSeed;
+		glm::vec2 mRandomSeedShift;
 
 		float mMovementTime = 0.0f;
 		glm::vec2 mTranslationAccumulator = { 0.0f, 0.0f };
