@@ -5,8 +5,13 @@
 #include <glm/gtc/noise.hpp>
 #include <glm/gtc/random.hpp>
 
+#include "renderablemeshcomponent.h"
+#include "renderclipmeshcomponent.h"
+
 // nap::FunTransformComponent run time class definition 
 RTTI_BEGIN_CLASS(nap::FunTransformComponent)
+	RTTI_PROPERTY("Texture",						&nap::FunTransformComponent::mTexture,								nap::rtti::EPropertyMetaData::Default)
+	RTTI_PROPERTY("ScaleAspect",					&nap::FunTransformComponent::mScaleAspect,							nap::rtti::EPropertyMetaData::Default)
 	RTTI_PROPERTY("Position",						&nap::FunTransformComponent::mOffsetParam,						    nap::rtti::EPropertyMetaData::Required)
 	RTTI_PROPERTY("Movement",						&nap::FunTransformComponent::mMovementParam,						nap::rtti::EPropertyMetaData::Required)
 	RTTI_PROPERTY("Intensity",						&nap::FunTransformComponent::mIntensityParam,						nap::rtti::EPropertyMetaData::Required)
@@ -32,14 +37,16 @@ RTTI_END_CLASS
 
 namespace nap
 {
-	static const float sMaxRotationDeviation = 0.125f;
-	static const float sMaxScaleDeviation = 0.25f;
-	static const float sMaxTranslateDeviation = 0.125f;
+	static constexpr float sMaxRotationDeviation = 0.125f;
+	static constexpr float sMaxScaleDeviation = 0.25f;
+	static constexpr float sMaxTranslateDeviation = 0.125f;
 
 
 	void FunTransformComponent::getDependentComponents(std::vector<rtti::TypeInfo>& components) const
 	{
 		components.emplace_back(RTTI_OF(TransformComponent));
+		components.emplace_back(RTTI_OF(RenderableMeshComponent));
+		components.emplace_back(RTTI_OF(RenderClipMeshComponent));
 	}
 
 
@@ -52,6 +59,37 @@ namespace nap
 		mCachedTransform = std::make_unique<AffineTransform>(*mTransformComponent);
 		mRandomize = mResource->mRandomOffset;
 		randomize(mRandomize);
+
+		// Set texture and scale aspect
+		auto* texture = mResource->mTexture.get();
+		if (mEnabled && texture != nullptr)
+		{
+			auto* renderer = getEntityInstance()->findComponent<RenderableMeshComponentInstance>();
+			if (renderer != nullptr)
+			{
+				auto* sampler = renderer->getMaterialInstance().getOrCreateSampler<Sampler2DInstance>("colorTexture");
+				if (sampler != nullptr)
+					sampler->setTexture(*texture);
+			}
+			auto* clip_renderer = getEntityInstance()->findComponent<RenderClipMeshComponentInstance>();
+			if (renderer != nullptr)
+			{
+				auto* sampler = clip_renderer->mShadowMaterialInstance.getOrCreateSampler<Sampler2DInstance>("colorTexture");
+				if (sampler != nullptr)
+					sampler->setTexture(*texture);
+			}
+			if (mResource->mScaleAspect)
+			{
+				const auto size = texture->getSize();
+				const float inv_max_dim = 1.0f/std::max(size.x, size.y);
+				const auto scale = glm::vec3(
+					size.x * inv_max_dim,
+					size.y * inv_max_dim,
+					1.0f
+				);
+				mTransformComponent->setScale(scale);
+			}
+		}
 
 		return true;
 	}

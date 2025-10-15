@@ -117,9 +117,6 @@ namespace nap
 			std::vector<RenderableComponentInstance*> render_comps;
 			mWorldEntity->getComponentsOfTypeRecursive<RenderableComponentInstance>(render_comps);
 
-			// Get Perspective camera to render with
-			auto& cam = mCameraEntity->getComponent<CameraComponentInstance>();
-
 			// Render shadows
 			const auto shadow_mask = mRenderService->getRenderMask("Shadow");
 			mRenderAdvancedService->renderShadows(render_comps, true, shadow_mask);
@@ -128,6 +125,9 @@ namespace nap
 			auto* multi_video = mRenderEntity->findComponent<RenderMultiVideoComponentInstance>();
 			if (multi_video != nullptr)
 				multi_video->draw();
+
+			// Get Perspective camera to render with
+			auto& cam = mCameraEntity->getComponent<CameraComponentInstance>();
 
 			// Render stencil geometry to stencil target
 			if (mStencilTarget != nullptr)
@@ -169,7 +169,7 @@ namespace nap
 						continue;
 
 					// Find draw method
-					auto draw_method = nap::rtti::findMethodRecursive(comp->get_type(), "draw");
+					auto draw_method = rtti::findMethodRecursive(comp->get_type(), "draw");
 					if (!draw_method.is_valid())
 						continue;
 

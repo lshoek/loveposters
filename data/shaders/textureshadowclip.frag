@@ -165,7 +165,8 @@ void main()
 		// Sample environment map
 		if (ENABLE_ENVIRONMENT_MAPPING > 0 && ubo.environment > 0)
 		{
-			vec3 I = normalize(passPosition - vec3(0.0, 0.25, 0.0));
+			const vec3 source_offset = vec3(0.0, 0.0, -3.0);
+			vec3 I = normalize(passPosition - source_offset);
 			vec3 R = reflect(I, normalize(passNormal));
 			mat4 rot = rotationMatrix(vec3(0.0, 1.0, 0.0), ubo.elapsedTime * 0.075);
 			R = normalize((rot * vec4(R, 0.0)).xyz);

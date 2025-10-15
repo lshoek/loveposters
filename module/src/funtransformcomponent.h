@@ -6,6 +6,7 @@
 #include <nap/resourceptr.h>
 #include <parameternumeric.h>
 #include <parametervec.h>
+#include <texture.h>
 
 // Local includes
 #include "affinetransform.h"
@@ -24,17 +25,16 @@ namespace nap
 	public:
 		virtual void getDependentComponents(std::vector<rtti::TypeInfo>& components) const override;
 
-		ResourcePtr<ParameterVec3>  mOffsetParam;
+		ResourcePtr<Texture2D>		mTexture;
+		bool						mScaleAspect = false;
 
+		ResourcePtr<ParameterVec3>  mOffsetParam;
 		ResourcePtr<ParameterFloat> mMovementParam;
 		ResourcePtr<ParameterFloat> mIntensityParam;
-
 		ResourcePtr<ParameterFloat> mRotationIntensityParam;
 		ResourcePtr<ParameterFloat> mRotationAccumulatorIntensityParam;
-
 		ResourcePtr<ParameterFloat> mTranslateXIntensityParam;
 		ResourcePtr<ParameterFloat> mTranslateYIntensityParam;
-
 		ResourcePtr<ParameterFloat> mScaleIntensityParam;
 
 		float mMultiplyRotation = 1.0f;

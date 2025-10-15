@@ -43,12 +43,12 @@ namespace nap
 		if (!errorState.check(mShadowRenderableMesh.isValid(), "Failed to create shadow renderable mesh"))
 			return false;
 
-		UniformStructInstance* mvp_struct = mShadowMaterialInstance.getOrCreateUniform(uniform::mvpStruct);
-		if (mvp_struct != nullptr)
+		UniformStructInstance* mvp = mShadowMaterialInstance.getOrCreateUniform(uniform::mvpStruct);
+		if (mvp != nullptr)
 		{
-			mShadowModelMatUniform = mvp_struct->getOrCreateUniform<UniformMat4Instance>(uniform::modelMatrix);
-			mShadowViewMatUniform = mvp_struct->getOrCreateUniform<UniformMat4Instance>(uniform::viewMatrix);
-			mShadowProjectMatUniform = mvp_struct->getOrCreateUniform<UniformMat4Instance>(uniform::projectionMatrix);
+			mShadowModelMatUniform = mvp->getOrCreateUniform<UniformMat4Instance>(uniform::modelMatrix);
+			mShadowViewMatUniform = mvp->getOrCreateUniform<UniformMat4Instance>(uniform::viewMatrix);
+			mShadowProjectMatUniform = mvp->getOrCreateUniform<UniformMat4Instance>(uniform::projectionMatrix);
 		}
 
 		return true;
