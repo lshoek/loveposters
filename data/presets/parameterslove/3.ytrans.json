@@ -1,0 +1,216 @@
+{
+    "Objects": [
+        {
+            "Type": "nap::ParameterGroup",
+            "mID": "ParametersLove",
+            "Parameters": [
+                {
+                    "Type": "nap::ParameterVec3",
+                    "mID": "Layer0OffsetParam",
+                    "Name": "Layer0Offset",
+                    "Value": {
+                        "x": -1.7610000371932983,
+                        "y": -0.2840000092983246,
+                        "z": 1.0
+                    },
+                    "Clamp": true,
+                    "Minimum": -5.0,
+                    "Maximum": 5.0
+                },
+                {
+                    "Type": "nap::ParameterVec3",
+                    "mID": "Layer1OffsetParam",
+                    "Name": "Layer1Offset",
+                    "Value": {
+                        "x": -1.225000023841858,
+                        "y": 1.0800000429153442,
+                        "z": 0.625
+                    },
+                    "Clamp": true,
+                    "Minimum": -5.0,
+                    "Maximum": 5.0
+                },
+                {
+                    "Type": "nap::ParameterVec3",
+                    "mID": "Layer2OffsetParam",
+                    "Name": "Layer2Offset",
+                    "Value": {
+                        "x": 0.4410000145435333,
+                        "y": 0.17000000178813934,
+                        "z": 0.8330000042915344
+                    },
+                    "Clamp": true,
+                    "Minimum": -5.0,
+                    "Maximum": 5.0
+                },
+                {
+                    "Type": "nap::ParameterVec3",
+                    "mID": "Layer3OffsetParam",
+                    "Name": "Layer3Offset",
+                    "Value": {
+                        "x": -1.0290000438690186,
+                        "y": -0.5109999775886536,
+                        "z": 0.5389999747276306
+                    },
+                    "Clamp": true,
+                    "Minimum": -5.0,
+                    "Maximum": 5.0
+                },
+                {
+                    "Type": "nap::ParameterVec3",
+                    "mID": "Layer4OffsetParam",
+                    "Name": "Layer4Offset",
+                    "Value": {
+                        "x": 0.39800000190734863,
+                        "y": 2.1019999980926514,
+                        "z": 0.24500000476837158
+                    },
+                    "Clamp": true,
+                    "Minimum": -5.0,
+                    "Maximum": 5.0
+                },
+                {
+                    "Type": "nap::ParameterVec3",
+                    "mID": "Layer5OffsetParam",
+                    "Name": "Layer5Offset",
+                    "Value": {
+                        "x": 0.5109999775886536,
+                        "y": -1.225000023841858,
+                        "z": 0.1469999998807907
+                    },
+                    "Clamp": true,
+                    "Minimum": -5.0,
+                    "Maximum": 5.0
+                },
+                {
+                    "Type": "nap::ParameterVec3",
+                    "mID": "Layer6OffsetParam",
+                    "Name": "Layer6Offset",
+                    "Value": {
+                        "x": 1.534000039100647,
+                        "y": 0.625,
+                        "z": -0.4410000145435333
+                    },
+                    "Clamp": true,
+                    "Minimum": -5.0,
+                    "Maximum": 5.0
+                },
+                {
+                    "Type": "nap::ParameterVec3",
+                    "mID": "Layer7OffsetParam",
+                    "Name": "Layer7Offset",
+                    "Value": {
+                        "x": 0.1469999998807907,
+                        "y": 0.0,
+                        "z": -1.0
+                    },
+                    "Clamp": true,
+                    "Minimum": -5.0,
+                    "Maximum": 5.0
+                },
+                {
+                    "Type": "nap::ParameterVec3",
+                    "mID": "Layer8OffsetParam",
+                    "Name": "Layer8Offset",
+                    "Value": {
+                        "x": -1.0800000429153442,
+                        "y": -1.1929999589920044,
+                        "z": 1.2000000476837158
+                    },
+                    "Clamp": true,
+                    "Minimum": -5.0,
+                    "Maximum": 5.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "IntensityParam",
+                    "Name": "Intensity",
+                    "Value": 0.48399999737739563,
+                    "Minimum": 0.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "RotationIntensityParam",
+                    "Name": "RotationIntensity",
+                    "Value": 1.0,
+                    "Minimum": 0.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "RotationAccumulatorIntensityParam",
+                    "Name": "RotationAccumulatorIntensity",
+                    "Value": 16.18600082397461,
+                    "Minimum": 0.0,
+                    "Maximum": 20.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "TranslateXIntensityParam",
+                    "Name": "TranslateX",
+                    "Value": 1.0199999809265137,
+                    "Minimum": 0.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "TranslateYIntensityParam",
+                    "Name": "TranslateY",
+                    "Value": 2.0,
+                    "Minimum": 0.0,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "BloomIntensityParam",
+                    "Name": "BloomIntensity",
+                    "Value": 1.0,
+                    "Minimum": 0.0,
+                    "Maximum": 4.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "CameraSpeedParam",
+                    "Name": "CameraSpeed",
+                    "Value": 0.75,
+                    "Minimum": 0.0,
+                    "Maximum": 10.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "ScaleIntensityParam",
+                    "Name": "ScaleIntensity",
+                    "Value": 1.0,
+                    "Minimum": 0.10000000149011612,
+                    "Maximum": 2.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "StarSizeParam",
+                    "Name": "StarSize",
+                    "Value": 50.0,
+                    "Minimum": 0.0,
+                    "Maximum": 256.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "StarTimeScaleParam",
+                    "Name": "StarTimeScale",
+                    "Value": 0.05000000074505806,
+                    "Minimum": 0.0,
+                    "Maximum": 1.0
+                },
+                {
+                    "Type": "nap::ParameterFloat",
+                    "mID": "StarScaleIntensityParam",
+                    "Name": "StarScaleIntensity",
+                    "Value": 40.0,
+                    "Minimum": 0.0,
+                    "Maximum": 256.0
+                }
+            ],
+            "Groups": []
+        }
+    ]
+}

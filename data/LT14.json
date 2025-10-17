@@ -213,7 +213,7 @@
                     "RotationHorizontal": 0.25,
                     "RotationVertical": 0.25,
                     "AnchorDistance": 2.0,
-                    "Pan": 1.0,
+                    "Pan": 2.0,
                     "ShiftHorizontal": 1.0,
                     "ShiftVertical": 1.0,
                     "RotateClockSpeed": 0.10000000149011612,
@@ -386,7 +386,7 @@
                         "y": 1.0
                     },
                     "MultiplyScale": 1.0,
-                    "RandomOffset": false,
+                    "RandomOffset": true,
                     "Enable": true
                 },
                 {
@@ -427,7 +427,7 @@
                             "y": 1.0,
                             "z": 1.0
                         },
-                        "UniformScale": 2.0
+                        "UniformScale": 2.25
                     }
                 },
                 {
@@ -489,7 +489,7 @@
                         "y": 1.0
                     },
                     "MultiplyScale": 1.0,
-                    "RandomOffset": false,
+                    "RandomOffset": true,
                     "Enable": true
                 }
             ],
@@ -518,7 +518,7 @@
                             "y": 1.0,
                             "z": 1.0
                         },
-                        "UniformScale": 1.0
+                        "UniformScale": 0.75
                     }
                 },
                 {
@@ -580,7 +580,7 @@
                         "y": 1.0
                     },
                     "MultiplyScale": 1.0,
-                    "RandomOffset": false,
+                    "RandomOffset": true,
                     "Enable": true
                 }
             ],
@@ -671,7 +671,7 @@
                         "y": 1.0
                     },
                     "MultiplyScale": 1.0,
-                    "RandomOffset": false,
+                    "RandomOffset": true,
                     "Enable": true
                 }
             ],
@@ -762,7 +762,7 @@
                         "y": 1.0
                     },
                     "MultiplyScale": 1.0,
-                    "RandomOffset": false,
+                    "RandomOffset": true,
                     "Enable": true
                 }
             ],
@@ -791,7 +791,7 @@
                             "y": 1.0,
                             "z": 1.0
                         },
-                        "UniformScale": 2.0
+                        "UniformScale": 2.25
                     }
                 },
                 {
@@ -853,7 +853,7 @@
                         "y": 1.0
                     },
                     "MultiplyScale": 1.0,
-                    "RandomOffset": false,
+                    "RandomOffset": true,
                     "Enable": true
                 }
             ],
@@ -944,7 +944,7 @@
                         "y": 1.0
                     },
                     "MultiplyScale": 1.0,
-                    "RandomOffset": false,
+                    "RandomOffset": true,
                     "Enable": true
                 }
             ],
@@ -1035,7 +1035,98 @@
                         "y": 1.0
                     },
                     "MultiplyScale": 1.0,
-                    "RandomOffset": false,
+                    "RandomOffset": true,
+                    "Enable": true
+                }
+            ],
+            "Children": []
+        },
+        {
+            "Type": "nap::Entity",
+            "mID": "EntityLayer8",
+            "Components": [
+                {
+                    "Type": "nap::TransformComponent",
+                    "mID": "TransformLayer8",
+                    "Properties": {
+                        "Translate": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "Rotate": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0
+                        },
+                        "Scale": {
+                            "x": 1.0,
+                            "y": 1.0,
+                            "z": 1.0
+                        },
+                        "UniformScale": 2.0
+                    }
+                },
+                {
+                    "Type": "nap::RenderClipMeshComponent",
+                    "mID": "RenderLayer8",
+                    "Visible": true,
+                    "Tags": [
+                        "RenderTag_Default",
+                        "RenderTag_Shadow"
+                    ],
+                    "Layer": "",
+                    "Mesh": "SquareMesh",
+                    "MaterialInstance": {
+                        "Uniforms": [],
+                        "Samplers": [],
+                        "Buffers": [],
+                        "Constants": [],
+                        "Material": "TextureShadowClipMaterial",
+                        "BlendMode": "NotSet",
+                        "DepthMode": "NotSet"
+                    },
+                    "LineWidth": 1.0,
+                    "ClipRect": {
+                        "Min": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "Max": {
+                            "x": 0.0,
+                            "y": 0.0
+                        }
+                    },
+                    "ShadowMaterialInstance": {
+                        "Uniforms": [],
+                        "Samplers": [],
+                        "Buffers": [],
+                        "Constants": [],
+                        "Material": "TextureClipMaterial",
+                        "BlendMode": "NotSet",
+                        "DepthMode": "NotSet"
+                    }
+                },
+                {
+                    "Type": "nap::FunTransformComponent",
+                    "mID": "MoveLayer8",
+                    "Texture": "Image_Logo",
+                    "ScaleAspect": true,
+                    "Position": "Layer8OffsetParam",
+                    "Movement": "LowFrequencyFluxParam",
+                    "Intensity": "LiveIntensityParam",
+                    "RotationIntensity": "RotationIntensityParam",
+                    "RotationAccumulatorIntensity": "RotationAccumulatorIntensityParam",
+                    "TranslateXIntensity": "TranslateXIntensityParam",
+                    "TranslateYIntensity": "TranslateYIntensityParam",
+                    "ScaleIntensity": "ScaleIntensityParam",
+                    "MultiplyRotation": 1.0,
+                    "MultiplyTranslation": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "MultiplyScale": 1.0,
+                    "RandomOffset": true,
                     "Enable": true
                 }
             ],
@@ -1051,16 +1142,120 @@
                     "Items": [
                         {
                             "Type": "nap::PlaylistControlComponent::Item",
-                            "mID": "Item",
-                            "Groups": [],
-                            "AverageDuration": 10.0,
-                            "DurationDeviation": 0.0,
-                            "TransitionTime": 0.0
+                            "mID": "Item_0",
+                            "Groups": [
+                                {
+                                    "Preset": "presets/parameterslove/0.default.json",
+                                    "ParameterGroup": "ParametersLove",
+                                    "Blender": "ParameterBlender"
+                                }
+                            ],
+                            "AverageDuration": 120.0,
+                            "DurationDeviation": 60.0,
+                            "TransitionTime": 30.0
+                        },
+                        {
+                            "Type": "nap::PlaylistControlComponent::Item",
+                            "mID": "Item_1",
+                            "Groups": [
+                                {
+                                    "Preset": "presets/parameterslove/1.chill.json",
+                                    "ParameterGroup": "ParametersLove",
+                                    "Blender": "ParameterBlender"
+                                }
+                            ],
+                            "AverageDuration": 120.0,
+                            "DurationDeviation": 60.0,
+                            "TransitionTime": 30.0
+                        },
+                        {
+                            "Type": "nap::PlaylistControlComponent::Item",
+                            "mID": "Item_2",
+                            "Groups": [
+                                {
+                                    "Preset": "presets/parameterslove/2.xtrans.json",
+                                    "ParameterGroup": "ParametersLove",
+                                    "Blender": "ParameterBlender"
+                                }
+                            ],
+                            "AverageDuration": 120.0,
+                            "DurationDeviation": 60.0,
+                            "TransitionTime": 30.0
+                        },
+                        {
+                            "Type": "nap::PlaylistControlComponent::Item",
+                            "mID": "Item_3",
+                            "Groups": [
+                                {
+                                    "Preset": "presets/parameterslove/3.ytrans.json",
+                                    "ParameterGroup": "ParametersLove",
+                                    "Blender": "ParameterBlender"
+                                }
+                            ],
+                            "AverageDuration": 120.0,
+                            "DurationDeviation": 60.0,
+                            "TransitionTime": 30.0
+                        },
+                        {
+                            "Type": "nap::PlaylistControlComponent::Item",
+                            "mID": "Item_4",
+                            "Groups": [
+                                {
+                                    "Preset": "presets/parameterslove/4.xytrans.json",
+                                    "ParameterGroup": "ParametersLove",
+                                    "Blender": "ParameterBlender"
+                                }
+                            ],
+                            "AverageDuration": 120.0,
+                            "DurationDeviation": 60.0,
+                            "TransitionTime": 30.0
+                        },
+                        {
+                            "Type": "nap::PlaylistControlComponent::Item",
+                            "mID": "Item_5",
+                            "Groups": [
+                                {
+                                    "Preset": "presets/parameterslove/5.fastcam.json",
+                                    "ParameterGroup": "ParametersLove",
+                                    "Blender": "ParameterBlender"
+                                }
+                            ],
+                            "AverageDuration": 120.0,
+                            "DurationDeviation": 60.0,
+                            "TransitionTime": 30.0
+                        },
+                        {
+                            "Type": "nap::PlaylistControlComponent::Item",
+                            "mID": "Item_6",
+                            "Groups": [
+                                {
+                                    "Preset": "presets/parameterslove/6.all.json",
+                                    "ParameterGroup": "ParametersLove",
+                                    "Blender": "ParameterBlender"
+                                }
+                            ],
+                            "AverageDuration": 120.0,
+                            "DurationDeviation": 60.0,
+                            "TransitionTime": 30.0
+                        },
+                        {
+                            "Type": "nap::PlaylistControlComponent::Item",
+                            "mID": "Item_7",
+                            "Groups": [
+                                {
+                                    "Preset": "presets/parameterslove/7.rotationdance.json",
+                                    "ParameterGroup": "ParametersLove",
+                                    "Blender": "ParameterBlender"
+                                }
+                            ],
+                            "AverageDuration": 120.0,
+                            "DurationDeviation": 60.0,
+                            "TransitionTime": 30.0
                         }
                     ],
-                    "RandomizePlaylist": false,
-                    "Enable": true,
-                    "Verbose": false
+                    "RandomizePlaylist": true,
+                    "Enable": false,
+                    "Verbose": true
                 },
                 {
                     "Type": "nap::ParameterBlendComponent",
@@ -1110,7 +1305,8 @@
                 "EntityLayer5",
                 "EntityLayer4",
                 "EntityLayer6",
-                "EntityLayer7"
+                "EntityLayer7",
+                "EntityLayer8"
             ]
         },
         {
@@ -1313,8 +1509,8 @@
                     "Visible": true,
                     "Tags": [],
                     "Layer": "",
-                    "PassCount": 1,
-                    "Kernel": "9x9",
+                    "PassCount": 2,
+                    "Kernel": "5x5",
                     "InputTexture": "BloomTexture",
                     "OutputTexture": "BloomTexture"
                 },
@@ -1454,7 +1650,7 @@
                         "GnomonSize": 1.0
                     },
                     "Attenuation": 0.0,
-                    "Angle": 70.0,
+                    "Angle": 75.0,
                     "FieldOfViewClip": 1.0,
                     "Falloff": 0.75,
                     "ClippingPlanes": {
@@ -1475,7 +1671,7 @@
                     "mID": "TransformSpotOrange",
                     "Properties": {
                         "Translate": {
-                            "x": 1.25,
+                            "x": 0.0,
                             "y": 1.0,
                             "z": 5.0
                         },
@@ -1500,8 +1696,8 @@
                     "Color": {
                         "Values": [
                             0.9803921580314636,
-                            0.34117648005485535,
-                            0.0
+                            0.29019609093666077,
+                            0.003921568859368563
                         ]
                     },
                     "Intensity": 1.0,
@@ -1558,8 +1754,8 @@
                     "Color": {
                         "Values": [
                             1.0,
-                            0.10980392247438431,
-                            0.0
+                            0.23529411852359772,
+                            0.1568627506494522
                         ]
                     },
                     "Intensity": 1.0,
@@ -1591,12 +1787,12 @@
                     "mID": "TransformSpotYellow",
                     "Properties": {
                         "Translate": {
-                            "x": 1.5,
+                            "x": 3.0,
                             "y": -3.0,
                             "z": 3.0
                         },
                         "Rotate": {
-                            "x": 60.0,
+                            "x": 50.0,
                             "y": 20.0,
                             "z": 0.0
                         },
@@ -1615,9 +1811,9 @@
                     "CastShadows": true,
                     "Color": {
                         "Values": [
-                            1.0,
-                            0.6039215922355652,
-                            0.0
+                            0.25882354378700256,
+                            0.3450980484485626,
+                            1.0
                         ]
                     },
                     "Intensity": 1.0,
@@ -1671,7 +1867,8 @@
                     "mID": "RenderSprites",
                     "Visible": true,
                     "Tags": [
-                        "RenderTag_Default"
+                        "RenderTag_Default",
+                        "RenderTag_Stencil"
                     ],
                     "Layer": "",
                     "Mesh": "ParticleMesh",
@@ -1837,6 +2034,13 @@
                     "mID": "Image_Star",
                     "Usage": "Static",
                     "ImagePath": "public/star.png",
+                    "GenerateLods": true
+                },
+                {
+                    "Type": "nap::ImageFromFile",
+                    "mID": "Image_Logo",
+                    "Usage": "Static",
+                    "ImagePath": "love/LT14/Logo_x3.png",
                     "GenerateLods": true
                 }
             ],
@@ -2123,6 +2327,19 @@
                     "Type": "nap::ParameterVec3",
                     "mID": "Layer7OffsetParam",
                     "Name": "Layer7Offset",
+                    "Value": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "Clamp": true,
+                    "Minimum": -5.0,
+                    "Maximum": 5.0
+                },
+                {
+                    "Type": "nap::ParameterVec3",
+                    "mID": "Layer8OffsetParam",
+                    "Name": "Layer8Offset",
                     "Value": {
                         "x": 0.0,
                         "y": 0.0,
