@@ -26,22 +26,22 @@ namespace nap
     bool LovePostersApp::init(utility::ErrorState& error)
     {
 		// Retrieve services
-		mRenderService			= getCore().getService<nap::RenderService>();
-		mRenderAdvancedService	= getCore().getService<nap::RenderAdvancedService>();
-		mSceneService			= getCore().getService<nap::SceneService>();
-		mInputService			= getCore().getService<nap::InputService>();
-		mGuiService				= getCore().getService<nap::IMGuiService>();
+		mRenderService			= getCore().getService<RenderService>();
+		mRenderAdvancedService	= getCore().getService<RenderAdvancedService>();
+		mSceneService			= getCore().getService<SceneService>();
+		mInputService			= getCore().getService<InputService>();
+		mGuiService				= getCore().getService<IMGuiService>();
 
 		// Fetch the resource manager
         mResourceManager 		= getCore().getResourceManager();
 
 		// Get the render window
-		mRenderWindow = mResourceManager->findObject<nap::RenderWindow>("Window");
+		mRenderWindow = mResourceManager->findObject<RenderWindow>("Window");
 		if (!error.check(mRenderWindow != nullptr, "unable to find nap::RenderWindow with name: %s", "Window"))
 			return false;
 
         // Get the control window
-        mControlWindow = mResourceManager->findObject<nap::RenderWindow>("ControlWindow");
+        mControlWindow = mResourceManager->findObject<RenderWindow>("ControlWindow");
         if (!error.check(mControlWindow != nullptr, "unable to find nap::RenderWindow with name: %s", "mControlWindow"))
             return false;
 
@@ -245,19 +245,19 @@ namespace nap
 					break;
 				}
 
-				case nap::EKeyCode::KEY_f:
+				case EKeyCode::KEY_f:
 				{
 					mRenderWindow->toggleFullscreen();
 					break;
 				}
 
-				case nap::EKeyCode::KEY_g:
+				case EKeyCode::KEY_g:
 				{
 					mShowGUI = !mShowGUI;
 					break;
 				}
 
-				case nap::EKeyCode::KEY_m:
+				case EKeyCode::KEY_m:
 				{
 					mShowCursor = !mShowCursor;
 					if (mShowCursor)
@@ -267,13 +267,13 @@ namespace nap
 					break;
 				}
 
-				case nap::EKeyCode::KEY_l:
+				case EKeyCode::KEY_l:
 				{
 					mShowLocators = !mShowLocators;
 					break;
 				}
 
-				case nap::EKeyCode::KEY_r:
+				case EKeyCode::KEY_r:
 				{
 					mRandomizeOffset = !mRandomizeOffset;
 					std::vector<FunTransformComponentInstance*> move_comps;
@@ -284,7 +284,7 @@ namespace nap
 					break;
 				}
 
-				case nap::EKeyCode::KEY_p:
+				case EKeyCode::KEY_p:
 				{
 					// For testing purposes only
 					auto* playback = mAudioEntity->findComponent<audio::PlaybackComponentInstance>();
@@ -327,7 +327,7 @@ namespace nap
     {
 		// Use a default input router to forward input events (recursively) to all input components in the scene
 		// This is explicit because we don't know what entity should handle the events from a specific window.
-		nap::DefaultInputRouter input_router(true);
+		DefaultInputRouter input_router(true);
 		mInputService->processWindowEvents(*mRenderWindow, input_router, { &mScene->getRootEntity() });
 
         // tell GUI service what window to render to
